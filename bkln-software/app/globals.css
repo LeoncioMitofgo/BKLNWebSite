@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-bg-dark: #0a0a0a;
+  --color-bg-surface: #111111;
+  --color-brand-blue: #00a85a;
+  --color-accent-blue: #00d97e;
+  --color-text-primary: #f0f0f0;
+  --color-text-secondary: #6b7280;
+  --color-success: #00d97e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  --font-primary: var(--font-inter), 'Inter', sans-serif;
+  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+.hero-grid-overlay {
+  background-image:
+    linear-gradient(rgba(0, 217, 126, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 217, 126, 0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0a0a0a;
+  color: #f0f0f0;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  letter-spacing: -0.02em;
+}
+
+/* Scrollbar personalizado */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00a85a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00d97e;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
