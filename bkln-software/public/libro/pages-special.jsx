@@ -80,7 +80,7 @@ function CoverPage({ onNav }) {
           num="iii"
           title="Avanzado"
           subtitle="Del código al mundo real"
-          desc="Web con Flask, bases de datos, APIs, análisis de datos y despliegue."
+          desc="Web y scraping, SQLite, APIs REST, Pandas, automatización, testing y Python profesional."
           onNav={() => onNav('l3-m1')}
         />
       </div>

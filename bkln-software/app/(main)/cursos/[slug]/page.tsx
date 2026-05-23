@@ -222,7 +222,7 @@ export default async function CoursePage({ params }: PageProps) {
                   <div className="bg-brand-blue/10 border border-brand-blue/20 rounded-lg p-5">
                     <h3 className="text-text-primary font-semibold mb-2 text-sm">Libro interactivo</h3>
                     <p className="text-text-secondary text-xs mb-3">
-                      7 capítulos del Libro 1 disponibles ahora mismo. Sin registro.
+                      3 libros · 24 módulos disponibles ahora mismo. Sin registro.
                     </p>
                     <a
                       href={course.bookUrl}
