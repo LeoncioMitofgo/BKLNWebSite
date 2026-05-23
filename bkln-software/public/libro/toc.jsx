@@ -53,7 +53,7 @@ const TOC = [
     chapters: [
       { id: 'l3-m1', num: '01', title: 'Python y la web', status: 'ready' },
       { id: 'l3-m2', num: '02', title: 'Bases de datos', status: 'ready' },
-      { id: 'l3-m3', num: '03', title: 'APIs y servicios externos', status: 'stub' },
+      { id: 'l3-m3', num: '03', title: 'APIs y servicios externos', status: 'ready' },
       { id: 'l3-m4', num: '04', title: 'Análisis de datos', status: 'stub' },
       { id: 'l3-m5', num: '05', title: 'Automatización', status: 'stub' },
       { id: 'l3-m6', num: '06', title: 'Testing y calidad', status: 'stub' },
