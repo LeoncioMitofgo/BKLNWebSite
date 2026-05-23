@@ -461,7 +461,7 @@ with Session(engine) as session:
           'Porque sqlite3 solo acepta consultas en mayúsculas.',
         ]}
         correct={1}
-        explanation="La inyección SQL ocurre cuando un valor de usuario se inserta directamente en la consulta. Por ejemplo, si nombre = \"' OR '1'='1\", la condición WHERE se vuelve siempre verdadera. Los parámetros ? escapan los valores automáticamente."
+        explanation={"La inyección SQL ocurre cuando un valor de usuario se inserta directamente en la consulta. Por ejemplo, si nombre = \"' OR '1'='1\", la condición WHERE se vuelve siempre verdadera. Los parámetros ? escapan los valores automáticamente."}
       />
 
       {/* ── Ejercicios ── */}
