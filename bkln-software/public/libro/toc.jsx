@@ -41,7 +41,7 @@ const TOC = [
       { id: 'l2-m3', num: '03', title: 'Programación orientada a objetos', status: 'ready' },
       { id: 'l2-m4', num: '04', title: 'Manejo de errores', status: 'ready' },
       { id: 'l2-m5', num: '05', title: 'Archivos y datos', status: 'ready' },
-      { id: 'l2-m6', num: '06', title: 'Módulos y paquetes', status: 'stub' },
+      { id: 'l2-m6', num: '06', title: 'Módulos y paquetes', status: 'ready' },
       { id: 'l2-m7', num: '07', title: 'Comprensiones e iteradores', status: 'stub' },
       { id: 'l2-m8', num: '08', title: 'Proyecto final intermedio', status: 'stub' },
     ],
