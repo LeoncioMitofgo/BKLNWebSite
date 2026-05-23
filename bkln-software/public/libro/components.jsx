@@ -251,20 +251,20 @@ function Quiz({ question, options, correct, explanation }) {
 
 /* ---------- Pyodide singleton ---------- */
 let pyodidePromise = null;
-function loadPyodide() {
+function getPyodide() {
   if (pyodidePromise) return pyodidePromise;
   pyodidePromise = new Promise((resolve, reject) => {
-    if (window.loadPyodide) {
+    const init = () => {
       window.loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/' })
         .then(resolve).catch(reject);
+    };
+    if (typeof window.loadPyodide === 'function' && window.loadPyodide !== getPyodide) {
+      init();
       return;
     }
     const s = document.createElement('script');
     s.src = 'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/pyodide.js';
-    s.onload = () => {
-      window.loadPyodide({ indexURL: 'https://cdn.jsdelivr.net/pyodide/v0.26.2/full/' })
-        .then(resolve).catch(reject);
-    };
+    s.onload = init;
     s.onerror = () => reject(new Error('No se pudo cargar Pyodide'));
     document.head.appendChild(s);
   });
@@ -296,7 +296,7 @@ function PyRunner({ initial, hint, solution }) {
     setErr(false);
     setStatus('loading');
     try {
-      const py = await loadPyodide();
+      const py = await getPyodide();
       setStatus('running');
       let buf = '';
       py.setStdout({ batched: (s) => { buf += s + '\n'; } });
