@@ -71,7 +71,7 @@ function ChapterL1M3({ onNav }) {
 
       <p>
         Suena tonto, pero <code>%</code> es uno de los operadores que más vas a usar en tu vida
-        de programadora. Una pista de por qué:
+        de programador. Una pista de por qué:
       </p>
 
       <CodeBlock code={`# ¿Un número es par?  → su resto al dividir entre 2 es 0

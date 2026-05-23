@@ -498,7 +498,7 @@ Teléfono: +34600112233`}</ReplOutput>
       <p>
         Cada paso usa una herramienta del módulo. Esto es lo que en el mundo real se llama
         <em> "data cleaning"</em>, y es probablemente la actividad a la que más tiempo dedica
-        una programadora de datos.
+        un programador de datos.
       </p>
 
       <PullQuote>

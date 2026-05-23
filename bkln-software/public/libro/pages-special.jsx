@@ -194,7 +194,7 @@ function IntroPage({ onNav }) {
       />
 
       <p>
-        Este libro está pensado para alguien que <strong>nunca ha programado</strong>. Si esa eres tú, estás
+        Este libro está pensado para alguien que <strong>nunca ha programado</strong>. Si ese eres tú, estás
         exactamente en el lugar correcto. No necesitas matemáticas avanzadas, ni saber inglés, ni tener
         una computadora cara. Solo necesitas curiosidad y una hora al día.
       </p>
@@ -280,12 +280,12 @@ print("Hola,", nombre)`} />
 
       <p>
         Si terminas los tres libros, vas a poder construir cosas reales: una página web, un
-        análisis de datos, un bot que automatice tareas aburridas. No serás "programadora profesional"
+        análisis de datos, un bot que automatice tareas aburridas. No serás "programador profesional"
         todavía, pero tendrás la base sólida para llegar ahí. El resto es práctica.
       </p>
 
       <p style={{ marginTop: 'var(--s-6)' }}>
-        <em>¿Lista? Pasa la página.</em>
+        <em>¿Listo? Pasa la página.</em>
       </p>
 
       <ChapterNav

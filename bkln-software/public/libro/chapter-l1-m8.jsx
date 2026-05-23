@@ -436,7 +436,7 @@ main()`}
       <h2>Retos finales</h2>
 
       <p style={{ color: 'var(--ink-2)' }}>
-        Cinco retos opcionales. No vienen con solución completa — para eso ya estás preparada. Si
+        Cinco retos opcionales. No vienen con solución completa — para eso ya estás preparado. Si
         terminas dos o tres, ya puedes considerar el Libro 1 dominado. Los más avanzados pueden
         intentar los cinco antes de pasar al Libro 2.
       </p>
@@ -628,7 +628,7 @@ import random
           maxWidth: '40ch',
           margin: '0 auto var(--s-5)',
         }}>
-          Ya sabes los fundamentos de Python. Cuando estés lista,
+          Ya sabes los fundamentos de Python. Cuando estés listo,
           el Libro 2 te espera.
         </p>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 'var(--s-3)', flexWrap: 'wrap' }}>

@@ -226,7 +226,7 @@ function ChapterL1M1({ onNav }) {
 
       <h3>Versión 2 — En tu computadora</h3>
 
-      <p>Ahora vamos a hacerlo en VS Code, como una programadora de verdad:</p>
+      <p>Ahora vamos a hacerlo en VS Code, como un programador de verdad:</p>
 
       <ol>
         <li>Abre VS Code.</li>
@@ -251,7 +251,7 @@ function ChapterL1M1({ onNav }) {
 
       <ReplOutput>Hola, mundo</ReplOutput>
 
-      <Callout kind="success" title="Eres oficialmente programadora">
+      <Callout kind="success" title="Eres oficialmente programador">
         Acabas de ejecutar un programa de Python desde la terminal. No es trivial —
         es exactamente la misma forma en que los profesionales ejecutan sus programas todos los días.
       </Callout>
@@ -292,7 +292,7 @@ function ChapterL1M1({ onNav }) {
 
       <p>
         En Python, cualquier línea que empieza con <code>#</code> es un <strong>comentario</strong>.
-        Python los ignora completamente. Sirven para dejar notas para ti misma o para otras personas
+        Python los ignora completamente. Sirven para dejar notas para ti mismo o para otras personas
         que lean tu código.
       </p>
 
@@ -303,7 +303,7 @@ function ChapterL1M1({ onNav }) {
 print("Hola, mundo")  # también pueden ir al final de una línea`} />
 
       <p>
-        Los comentarios <strong>no son opcionales</strong> para una buena programadora.
+        Los comentarios <strong>no son opcionales</strong> para un buen programador.
         Vas a leer mucho más código del que vas a escribir, y los comentarios son lo único
         que te salva cuando vuelves a un programa después de tres meses.
       </p>

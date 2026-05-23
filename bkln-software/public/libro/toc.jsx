@@ -28,7 +28,7 @@ const TOC = [
       { id: 'l1-m5', num: '05', title: 'Funciones', status: 'ready' },
       { id: 'l1-m6', num: '06', title: 'Listas y tuplas', status: 'ready' },
       { id: 'l1-m7', num: '07', title: 'Cadenas de texto', status: 'ready' },
-      { id: 'l1-m8', num: '08', title: 'Proyecto final básico', status: 'stub' },
+      { id: 'l1-m8', num: '08', title: 'Proyecto final básico', status: 'ready' },
     ],
   },
   {
@@ -36,9 +36,9 @@ const TOC = [
     bookNum: 'Libro 2',
     bookTitle: 'Python intermedio — Programando con estructura',
     chapters: [
-      { id: 'l2-m1', num: '01', title: 'Diccionarios y conjuntos', status: 'stub' },
-      { id: 'l2-m2', num: '02', title: 'Funciones avanzadas', status: 'stub' },
-      { id: 'l2-m3', num: '03', title: 'Programación orientada a objetos', status: 'stub' },
+      { id: 'l2-m1', num: '01', title: 'Diccionarios y conjuntos', status: 'ready' },
+      { id: 'l2-m2', num: '02', title: 'Funciones avanzadas', status: 'ready' },
+      { id: 'l2-m3', num: '03', title: 'Programación orientada a objetos', status: 'ready' },
       { id: 'l2-m4', num: '04', title: 'Manejo de errores', status: 'stub' },
       { id: 'l2-m5', num: '05', title: 'Archivos y datos', status: 'stub' },
       { id: 'l2-m6', num: '06', title: 'Módulos y paquetes', status: 'stub' },

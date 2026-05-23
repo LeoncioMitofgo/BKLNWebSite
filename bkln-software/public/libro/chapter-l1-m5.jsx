@@ -31,7 +31,7 @@ function ChapterL1M5({ onNav }) {
 
       <CodeBlock code={`def saludar():
     print("¡Hola!")
-    print("Bienvenida al programa.")
+    print("Bienvenido al programa.")
 
 # Llamar a la función (ejecutarla)
 saludar()

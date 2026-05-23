@@ -460,8 +460,8 @@ Con IVA: 24.1879 euros`}</ReplOutput>
       <h2>Ejercicios</h2>
 
       <p style={{ color: 'var(--ink-2)' }}>
-        Cinco ejercicios. Empieza por el primero y avanza en orden. Cuando estés atascada,
-        usa la pista; cuando estés <em>realmente</em> atascada, abre la solución y entiéndela
+        Cinco ejercicios. Empieza por el primero y avanza en orden. Cuando estés atascado,
+        usa la pista; cuando estés <em>realmente</em> atascado, abre la solución y entiéndela
         antes de seguir.
       </p>
 
