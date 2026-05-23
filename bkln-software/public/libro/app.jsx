@@ -185,6 +185,7 @@ function Reader({ activeId, onNav }) {
   if (activeId === 'l3-m4') return <ChapterL3M4 onNav={onNav} />;
   if (activeId === 'l3-m5') return <ChapterL3M5 onNav={onNav} />;
   if (activeId === 'l3-m6') return <ChapterL3M6 onNav={onNav} />;
+  if (activeId === 'l3-m7') return <ChapterL3M7 onNav={onNav} />;
 
   // Stub for everything else — find the chapter title from TOC
   for (const book of TOC) {
