@@ -96,6 +96,9 @@ function CoverPage({ onNav }) {
         gap: 'var(--s-3)',
       }}>
         <span className="eyebrow">// para jóvenes y adultos · principiantes absolutos · español</span>
+        <span className="eyebrow" style={{ textAlign: 'center' }}>
+          Leoncio Felipe Mitogo · <span style={{ color: 'var(--highlight)' }}>BKLN Software &amp; Systems</span>
+        </span>
         <span className="eyebrow">manual de aprendizaje · ed. 01</span>
       </div>
 
