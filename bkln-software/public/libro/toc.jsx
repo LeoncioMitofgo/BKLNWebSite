@@ -56,7 +56,7 @@ const TOC = [
       { id: 'l3-m3', num: '03', title: 'APIs y servicios externos', status: 'ready' },
       { id: 'l3-m4', num: '04', title: 'Análisis de datos', status: 'ready' },
       { id: 'l3-m5', num: '05', title: 'Automatización', status: 'ready' },
-      { id: 'l3-m6', num: '06', title: 'Testing y calidad', status: 'stub' },
+      { id: 'l3-m6', num: '06', title: 'Testing y calidad', status: 'ready' },
       { id: 'l3-m7', num: '07', title: 'Python profesional', status: 'stub' },
       { id: 'l3-m8', num: '08', title: 'Proyecto final avanzado', status: 'stub' },
     ],
