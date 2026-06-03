@@ -68,7 +68,7 @@ export default function RootLayout({
           data-api-url="https://bklnbot.up.railway.app"
           data-bot-name="Asistente BKLN"
           data-welcome="¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?"
-          data-primary-color="#0066FF"
+          data-primary-color="#00a85a"
           async
         />
       </body>
