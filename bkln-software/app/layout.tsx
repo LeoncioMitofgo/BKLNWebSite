@@ -62,10 +62,10 @@ export default function RootLayout({
         {children}
         {/* BKLN Support Bot Widget */}
         <script
-          src="https://claude-support-bot-production.up.railway.app/widget.js"
+          src="http://187.124.13.49:8000/widget.js"
           data-tenant-id="00000000-0000-0000-0000-000000000001"
           data-tenant-key="demo-key"
-          data-api-url="https://claude-support-bot-production.up.railway.app"
+          data-api-url="http://187.124.13.49:8000"
           data-bot-name="Asistente BKLN"
           data-welcome="¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?"
           data-primary-color="#00a85a"
