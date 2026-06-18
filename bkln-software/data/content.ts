@@ -196,6 +196,7 @@ export const products: Product[] = [
     id: '5',
     slug: 'gestescolar',
     title: 'GestEscolar',
+    fileUrl: "",
     description: 'Sistema de gestión escolar completo para Windows — instalación, formación y manual incluidos. Funciona offline en red local. Licencia perpetua.',
     longDescription:
       'GestEscolar es un sistema de gestión escolar integral listo para instalar en cualquier colegio con Windows. Cubre el ciclo académico completo: registro de alumnos con ficha médica y tutor, matrículas con seguimiento de pagos, calificaciones por trimestre, gestión de profesores y aulas, y circulares internas.\n\nFunciona completamente offline en la red local del centro — sin suscripciones a la nube, sin dependencias externas. Accesible desde cualquier equipo conectado a la red del colegio.\n\nIncluye generación de documentos listos para imprimir: carnets de estudiante, listas por aula, boletines de notas trimestrales e historial de pagos. Dos roles de usuario: Administrador y Secretaria.',
@@ -234,6 +235,7 @@ export const products: Product[] = [
     id: '6',
     slug: 'zentry',
     title: 'Zentry',
+    fileUrl: "",
     description: 'Licencia de uso vitalicia — un acceso desde el que gestionar todos tus eventos con QR. Backend incluido y gestionado por BKLN. Eventos y invitados ilimitados.',
     longDescription:
       'Zentry es una plataforma de gestión de eventos y control de acceso por QR. Con una sola licencia obtienes un acceso único desde el que puedes crear todos los eventos que necesites, añadir invitados ilimitados con tickets VIP, Normal o Staff, y gestionar el control de acceso en tiempo real.\n\nNo necesitas configurar nada — el backend está incluido y es gestionado íntegramente por BKLN. Tú solo accedes con tu login y empiezas a crear eventos desde cualquier dispositivo: Android, iOS, Web, Windows, macOS o Linux.\n\nEl scanner valida QR en tiempo real: detecta entradas duplicadas, bloquea cuando se alcanza el aforo y responde con audio y vibración diferenciados. Los QR de cada invitado se comparten directamente por WhatsApp con un toque.',
@@ -268,6 +270,7 @@ export const products: Product[] = [
     id: '7',
     slug: 'match-date',
     title: 'Match&Date',
+    fileUrl : "",
     description: 'Plataforma de citas y eventos completa — swipe, matching mutuo, chat en tiempo real, perfiles detallados e integración con eventos en vivo. Lista para producción.',
     longDescription:
       'Match&Date es una plataforma de citas digital completa orientada al mercado hispanohablante. Combina la mecánica de swipe tipo Tinder con perfiles de alta profundidad (zodíaco, estilo de vida, hábitos, preferencias) y un sistema de eventos presenciales integrado.\n\nEl sistema de matching es mutuo y en tiempo real: cuando dos usuarios se dan like simultáneamente aparece una notificación animada. El chat incluye indicador de escritura en vivo, emojis, read receipts y actualizaciones instantáneas vía Supabase Realtime. El onboarding guía al usuario en 4 pasos con subida de avatar, selección de intereses y configuración de preferencias.\n\nConstructa íntegramente en JavaScript puro con Supabase como backend — autenticación, base de datos PostgreSQL, Row Level Security, funciones RPC para el algoritmo de matching y Storage para avatares. Sin frameworks, sin dependencias de build.',
@@ -298,6 +301,7 @@ export const products: Product[] = [
     id: '8',
     slug: 'ventasclaro',
     title: 'VentasClaro',
+    fileUrl: "",
     description: 'Sube tu Excel o CSV de ventas y obtén un informe visual al instante — gráficas, KPIs y exportación a PDF. Sin configuración, sin fórmulas.',
     longDescription:
       'VentasClaro es una herramienta web que convierte cualquier archivo de ventas en Excel o CSV en un informe visual completo en segundos. No hace falta saber de tecnología ni tocar una sola fórmula.\n\nArrastras tu archivo, la aplicación detecta automáticamente las columnas de fecha, producto, cantidad y precio, y genera: ingresos totales en XAF, unidades vendidas, ticket medio, ranking de los 8 productos más vendidos y evolución de ventas en el tiempo. Todo con gráficas interactivas.\n\nEl informe se puede exportar a PDF con un clic usando la impresión del navegador. Los archivos nunca se almacenan en el servidor — se procesan en memoria y se descartan inmediatamente.\n\nIncluye código fuente completo (Python + FastAPI + HTML/CSS/JS) listo para instalar en tu propio servidor o equipo local. Sin suscripciones, sin nube obligatoria.',
@@ -335,6 +339,7 @@ export const products: Product[] = [
     id: '10',
     slug: 'miempleo',
     title: 'MiEmpleo GE',
+    fileUrl: "",  
     description: 'Portal de empleo llave en mano para Guinea Ecuatorial — vacantes, perfiles profesionales, mensajería en tiempo real, panel de empresa y suscripciones. White-label disponible.',
     longDescription:
       'MiEmpleo GE es la plataforma de empleo digital pensada para el mercado de Guinea Ecuatorial. Conecta empresas que buscan talento con profesionales que buscan oportunidades — todo en español, con la realidad local como punto de partida.\n\nLas empresas publican vacantes, gestionan candidaturas por estado (recibida, en revisión, entrevista, contratada) y acceden a un directorio de profesionales verificados. Los profesionales completan su perfil, suben su CV, se postulan con un clic y hacen seguimiento de todo desde su dashboard.\n\nMensajería interna en tiempo real, sistema de notificaciones instantáneas, tres roles diferenciados (empresa, profesional, particular) y un panel de administración completo. Modelo de monetización por planes de suscripción (free y premium) con activación manual desde el admin — sin depender de pasarelas de pago externas.\n\nDisponible como licencia white-label: BKLN instala, configura y entrega el sistema bajo tu marca y dominio. Incluye formación del equipo y soporte durante el lanzamiento.',
@@ -371,6 +376,7 @@ export const products: Product[] = [
     id: '9',
     slug: 'brookai',
     title: 'BrookAI',
+    fileUrl: "",  
     description: 'Bot de atención al cliente con IA que aprende de tus documentos y responde en tu web y WhatsApp. Multi-tenant y revendible — un sistema, múltiples clientes, cada uno con su propia identidad.',
     longDescription:
       'BrookAI es un sistema SaaS de chatbot con inteligencia artificial construido para funcionar en producción desde el primer día. Se integra en cualquier web con un fragmento de código y en WhatsApp Business API — el mismo bot, en todos los canales donde están tus clientes.\n\nEl bot responde usando exclusivamente los documentos que tú subes: catálogos, manuales, preguntas frecuentes, listas de precios, políticas. No inventa — busca en tu propio contenido usando RAG (pgvector + LangChain) y responde con tus propias palabras. Si no sabe responder después de varios intentos, deriva la conversación automáticamente a un agente humano.\n\nCada cliente tiene su propio espacio aislado (multi-tenant): sus documentos, su configuración, su historial de conversaciones y sus métricas. Desde el panel de administración puede gestionar todo sin tocar código — subir documentos, personalizar el nombre y tono del bot, ver el historial y revisar qué preguntas no supo responder.\n\nSi eres agencia o consultor, BrookAI es revendible: puedes ofrecer el servicio a tus propios clientes bajo tu marca, con cada uno en su propio tenant y configuración independiente.\n\nStack: FastAPI (Python) · Claude API (Anthropic) · LangChain + pgvector · Supabase · Widget Vanilla JS · React + Vite · WhatsApp Business API. En producción en bklnsoftware.tech.',
