@@ -1,16 +1,19 @@
 'use client'
+
 import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 interface DownloadButtonProps {
-  slug: string
-  fileUrl: string
+  product: {
+    slug: string
+    fileUrl: string
+  }
 }
 
-export function DownloadButton({ slug, fileUrl }: DownloadButtonProps) {
+export function DownloadButton({ product }: DownloadButtonProps) {
   function handleDownload() {
-    fetch(`/api/download/${slug}`, { method: 'POST' }).catch(() => {})
-    window.open(fileUrl, '_blank')
+    fetch(`/api/download/${product.slug}`, { method: 'POST' }).catch(() => {})
+    window.open(product.fileUrl, '_blank')
   }
 
   return (
