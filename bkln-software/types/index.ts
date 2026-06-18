@@ -13,6 +13,7 @@ export interface Service {
 }
 
 export interface Product {
+  fileUrl: string
   id: string
   slug: string
   title: string

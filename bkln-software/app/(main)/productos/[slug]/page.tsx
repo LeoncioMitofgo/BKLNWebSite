@@ -70,7 +70,10 @@ export default async function ProductPage({ params }: PageProps) {
                 {product.priceOnRequest ? 'Bajo pedido' : formatPrice(product.price)}
               </span>
               {product.isFree ? (
-                <DownloadButton product={product} />
+                <DownloadButton product={{
+                  slug: product.slug,
+                  fileUrl:product.fileUrl
+                }} />
               ) : product.priceOnRequest ? (
                 <Link href={`/contacto?producto=${product.slug}`}><Button>Solicitar presupuesto</Button></Link>
               ) : (
