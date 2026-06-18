@@ -1,0 +1,229 @@
+/* ================================================================
+   print.css — Estilos para generación de PDF del libro IA
+   Se carga SOBRE styles.css. Usa el tema claro (warm paper) como base.
+   ================================================================ */
+
+/* --- Full width, sin sidebar ni chrome --- */
+.app    { display: block !important; }
+.sidebar, .progress, .mobile-bar { display: none !important; }
+
+.reader {
+  margin: 0 !important;
+  padding: 0 !important;
+  max-width: none !important;
+  width: 100% !important;
+  min-height: unset !important;
+}
+
+.reader-inner {
+  max-width: 70ch;
+  margin: 0 auto;
+  padding: var(--s-7) var(--s-4);
+  page-break-before: always;
+}
+
+/* La primera sección real no lleva salto al inicio */
+.print-book > .reader-inner:first-of-type {
+  page-break-before: auto;
+}
+
+/* --- Quitar ruido de fondo en impresión --- */
+body::before { display: none !important; }
+
+/* --- Portada --- */
+.print-cover {
+  min-height: 96vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 var(--s-8);
+  page-break-after: always;
+  border-bottom: 3px solid var(--accent);
+}
+
+.print-cover-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: var(--s-6);
+}
+
+.print-cover h1 {
+  font-family: var(--font-display);
+  font-size: 4.2rem;
+  line-height: 1.1;
+  margin: 0 0 var(--s-3) 0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.print-cover h1 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.print-cover-sub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--ink-3);
+  margin-bottom: var(--s-8);
+  letter-spacing: 0.06em;
+}
+
+.print-cover-toc {
+  border-top: 1px solid var(--border);
+  padding-top: var(--s-5);
+  columns: 2;
+  column-gap: var(--s-7);
+}
+
+.print-cover-toc-book {
+  break-inside: avoid;
+  margin-bottom: var(--s-5);
+}
+
+.print-cover-toc-book-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: var(--s-2);
+}
+
+.print-cover-toc-chapter {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  padding: 2px 0;
+  border-bottom: 1px dotted var(--border-soft);
+  gap: var(--s-3);
+}
+
+.print-cover-toc-chapter span:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--ink-2);
+}
+
+.print-cover-footer {
+  margin-top: auto;
+  padding-top: var(--s-6);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--ink-3);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* --- Divisores de libro --- */
+.print-book-divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 70vh;
+  padding: var(--s-9) var(--s-8);
+  page-break-before: always;
+  page-break-after: always;
+  border-top: 3px solid var(--accent);
+  border-bottom: 1px solid var(--border);
+}
+
+.print-book-divider-roman {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 7rem;
+  line-height: 1;
+  color: var(--accent);
+  opacity: 0.18;
+  margin-bottom: calc(-1 * var(--s-5));
+  user-select: none;
+}
+
+.print-book-divider h2 {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0 0 var(--s-3) 0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  border: none !important;
+  padding: 0 !important;
+}
+
+.print-book-divider p {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink-3);
+  margin: 0 0 var(--s-6) 0;
+}
+
+.print-book-divider-chapters {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  line-height: 1.9;
+  border-top: 1px solid var(--border-soft);
+  padding-top: var(--s-4);
+}
+
+/* --- Nota al lector --- */
+.print-nota {
+  max-width: 70ch;
+  margin: 0 auto;
+  padding: var(--s-8) var(--s-4);
+  page-break-before: always;
+}
+
+.print-nota h2 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  margin-bottom: var(--s-4);
+}
+
+/* --- Evitar huérfanos y viudas --- */
+h2, h3, h4    { page-break-after: avoid; }
+.exercise     { page-break-inside: avoid; }
+.callout      { page-break-inside: avoid; }
+.quiz         { page-break-inside: avoid; }
+figure        { page-break-inside: avoid; }
+.codeblock    { page-break-inside: avoid; }
+
+/* --- Pista impresa (inline) --- */
+.print-hint {
+  margin-top: var(--s-3);
+  padding: var(--s-2) var(--s-4);
+  background: var(--highlight-soft);
+  border-left: 3px solid var(--highlight);
+  border-radius: var(--r-sm);
+  font-size: 0.88em;
+  color: var(--ink-3);
+  line-height: 1.5;
+}
+
+/* --- Quiz en modo impresión --- */
+.print-quiz .quiz-opt {
+  pointer-events: none;
+  cursor: default;
+}
+
+/* --- Capítulos stub (Libro III) --- */
+.print-stub {
+  padding: var(--s-7) var(--s-6);
+  background: var(--paper-2);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-lg);
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--ink-3);
+  margin: var(--s-6) 0;
+}

@@ -1,21 +1,28 @@
-import Image from 'next/image'
+﻿import Image from 'next/image'
 
 const technologies = [
+  // Mobile
   {
     name: 'Android',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg',
     color: '#3DDC84',
   },
   {
-    name: 'Python',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
-    color: '#3776AB',
+    name: 'Kotlin',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg',
+    color: '#7F52FF',
   },
   {
-    name: 'Node.js',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
-    color: '#339933',
+    name: 'Java',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg',
+    color: '#007396',
   },
+  {
+    name: 'Flutter',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg',
+    color: '#02569B',
+  },
+  // Frontend
   {
     name: 'React',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
@@ -27,14 +34,41 @@ const technologies = [
     color: '#ffffff',
   },
   {
-    name: 'Electron',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg',
-    color: '#47848F',
+    name: 'TypeScript',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
+    color: '#3178C6',
   },
+  {
+    name: 'Tailwind',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
+    color: '#06B6D4',
+  },
+  // Backend
+  {
+    name: 'Node.js',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg',
+    color: '#339933',
+  },
+  {
+    name: 'Python',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+    color: '#3776AB',
+  },
+  {
+    name: 'FastAPI',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg',
+    color: '#009688',
+  },
+  // Bases de datos
   {
     name: 'PostgreSQL',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg',
     color: '#336791',
+  },
+  {
+    name: 'MySQL',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg',
+    color: '#4479A1',
   },
   {
     name: 'MongoDB',
@@ -42,64 +76,52 @@ const technologies = [
     color: '#47A248',
   },
   {
-    name: 'Docker',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
-    color: '#2496ED',
-  },
-  {
-    name: 'TensorFlow',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg',
-    color: '#FF6F00',
-  },
-  {
-    name: 'Flutter',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg',
-    color: '#02569B',
-  },
-  {
-    name: 'FastAPI',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/fastapi/fastapi-original.svg',
-    color: '#009688',
-  },
-  {
-    name: 'Kotlin',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg',
-    color: '#7F52FF',
-  },
-  {
-    name: 'TypeScript',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
-    color: '#3178C6',
+    name: 'Supabase',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg',
+    color: '#3ECF8E',
   },
   {
     name: 'Firebase',
     icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg',
     color: '#FFCA28',
   },
+  // DevOps / Deploy
   {
-    name: 'Redis',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg',
-    color: '#DC382D',
+    name: 'Docker',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg',
+    color: '#2496ED',
   },
   {
-    name: 'Supabase',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/supabase/supabase-original.svg',
-    color: '#3ECF8E',
+    name: 'Git',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg',
+    color: '#F05032',
   },
   {
-    name: 'Tailwind',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
-    color: '#06B6D4',
+    name: 'Vercel',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg',
+    color: '#ffffff',
+  },
+  // IA / ML
+  {
+    name: 'TensorFlow',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tensorflow/tensorflow-original.svg',
+    color: '#FF6F00',
+  },
+  // Desktop
+  {
+    name: 'Electron',
+    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/electron/electron-original.svg',
+    color: '#47848F',
   },
 ]
 
 export function TechStack() {
   return (
-    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-3">
+    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-3">
       {technologies.map((tech) => (
         <div
           key={tech.name}
-          className="bg-bg-surface border border-white/5 rounded-lg p-3 flex flex-col items-center gap-2.5 hover:border-brand-blue/30 hover:bg-brand-blue/5 transition-all group cursor-default"
+          className="bg-bg-surface border border-white/5 rounded-lg p-3 flex flex-col items-center gap-2.5 hover:border-brand-green/30 hover:bg-brand-green/5 transition-all group cursor-default"
         >
           <div className="relative w-8 h-8">
             <Image

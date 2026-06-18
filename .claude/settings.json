@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\leonc\\\\BKLNWebSite\\\\bkln-software\\\\node_modules\\\\next\\\\\" -Depth 1 | Where-Object {$_.Name -match \"README|CHANGELOG|docs|guide\"} | Select-Object Name, FullName)",
+      "Bash(npm run *)",
+      "Bash(Copy-Item \"C:\\\\Users\\\\leonc\\\\BKLNWebSite\\\\bklnlogo.png\" \"C:\\\\Users\\\\leonc\\\\BKLNWebSite\\\\bkln-software\\\\public\\\\logo.png\")"
+    ]
+  }
+}

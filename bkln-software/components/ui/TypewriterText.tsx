@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect, useRef } from 'react'
 
 interface TypewriterTextProps {
@@ -57,12 +57,12 @@ export function TypewriterText({ text, delay = 600, className, tag }: Typewriter
   return (
     <span className={className}>
       {tag && (
-        <span className="text-accent-blue opacity-70">&lt;{tag}&gt;</span>
+        <span className="text-accent-green opacity-70">&lt;{tag}&gt;</span>
       )}
       {displayed}
       <span className={`inline-block w-[2px] h-[0.85em] bg-current align-middle ml-[2px] ${done ? 'cursor-blink' : 'opacity-100'}`} />
       {tag && done && (
-        <span className="text-accent-blue opacity-70">&lt;/{tag}&gt;</span>
+        <span className="text-accent-green opacity-70">&lt;/{tag}&gt;</span>
       )}
     </span>
   )

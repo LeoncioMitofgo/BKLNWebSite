@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { cn } from '@/lib/utils'
 import { type ButtonHTMLAttributes, forwardRef } from 'react'
@@ -15,9 +15,9 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        'bg-brand-blue text-white hover:bg-accent-blue hover:shadow-lg hover:shadow-brand-blue/25 active:scale-95',
+        'bg-brand-green text-white hover:bg-accent-green hover:shadow-lg hover:shadow-brand-green/25 active:scale-95',
       outline:
-        'border border-brand-blue text-accent-blue hover:bg-brand-blue/10 active:scale-95',
+        'border border-brand-green text-accent-green hover:bg-brand-green/10 active:scale-95',
       ghost:
         'text-text-secondary hover:text-text-primary hover:bg-bg-surface active:scale-95',
     }

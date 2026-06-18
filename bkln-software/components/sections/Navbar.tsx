@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
@@ -54,7 +54,7 @@ export function Navbar() {
                 className={cn(
                   'px-3 py-2 rounded-md text-sm font-medium transition-colors',
                   pathname === link.href
-                    ? 'text-accent-blue bg-brand-blue/10'
+                    ? 'text-accent-green bg-brand-green/10'
                     : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
                 )}
               >
@@ -90,7 +90,7 @@ export function Navbar() {
                 className={cn(
                   'block px-3 py-2.5 rounded-md text-sm font-medium transition-colors',
                   pathname === link.href
-                    ? 'text-accent-blue bg-brand-blue/10'
+                    ? 'text-accent-green bg-brand-green/10'
                     : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
                 )}
               >

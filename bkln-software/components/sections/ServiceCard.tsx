@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import {
   Smartphone, Globe, Monitor, Code2, Database, Brain, Lightbulb,
@@ -12,15 +12,14 @@ const iconMap: Record<string, LucideIcon> = {
   Smartphone, Globe, Monitor, Code2, Database, Brain, Lightbulb,
 }
 
-// Imágenes Unsplash por slug de servicio
 const serviceImages: Record<string, string> = {
-  'apps-android': 'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&auto=format&fit=crop&q=80',
-  'desarrollo-web': 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format&fit=crop&q=80',
-  'desktop-electron': 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&auto=format&fit=crop&q=80',
-  'python-automatizacion': 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=600&auto=format&fit=crop&q=80',
-  'databases-apis': 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=600&auto=format&fit=crop&q=80',
-  'ia-machine-learning': 'https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&auto=format&fit=crop&q=80',
-  'consultoria-tech': 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&auto=format&fit=crop&q=80',
+  'apps-android': '/course-android.jpg',
+  'desarrollo-web': '/course-web.jpg',
+  'desktop-electron': '/service-desktop.jpg',
+  'python-automatizacion': '/course-python.jpg',
+  'databases-apis': '/course-sql.jpg',
+  'ia-machine-learning': '/course-ia.jpg',
+  'consultoria-tech': '/service-consulting.jpg',
 }
 
 interface ServiceCardProps {
@@ -32,7 +31,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
   const imageUrl = serviceImages[service.slug]
 
   return (
-    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-blue/30 hover:shadow-lg hover:shadow-brand-blue/10 transition-all duration-300">
+    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       {/* Image header */}
       {imageUrl && (
         <div className="h-36 relative overflow-hidden">
@@ -46,7 +45,7 @@ export function ServiceCard({ service }: ServiceCardProps) {
           <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/20 to-bg-dark/80" />
           {/* Icon overlay */}
           <div className="absolute bottom-3 left-4">
-            <div className="w-10 h-10 bg-brand-blue/80 backdrop-blur-sm rounded-md flex items-center justify-center border border-accent-blue/30">
+            <div className="w-10 h-10 bg-brand-green/80 backdrop-blur-sm rounded-md flex items-center justify-center border border-accent-green/30">
               <Icon size={18} className="text-white" />
             </div>
           </div>

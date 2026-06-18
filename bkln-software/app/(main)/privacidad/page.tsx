@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function PrivacidadPage() {
               <strong className="text-text-primary">BKLN Software & Systems</strong> es el responsable
               del tratamiento de los datos que nos facilitas a través de este sitio web.
               Puedes contactarnos en{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-blue hover:underline">
+              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
                 hello@bklnsoftware.com
               </a>
               .
@@ -98,7 +98,7 @@ export default function PrivacidadPage() {
             </ul>
             <p>
               Para ejercer cualquiera de estos derechos, escríbenos a{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-blue hover:underline">
+              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
                 hello@bklnsoftware.com
               </a>
               . Respondemos en menos de 72 horas hábiles.
@@ -114,10 +114,10 @@ export default function PrivacidadPage() {
           </section>
 
           <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row gap-3">
-            <Link href="/terminos" className="text-accent-blue hover:underline text-sm">
+            <Link href="/terminos" className="text-accent-green hover:underline text-sm">
               Ver Términos de Servicio
             </Link>
-            <Link href="/contacto" className="text-accent-blue hover:underline text-sm">
+            <Link href="/contacto" className="text-accent-green hover:underline text-sm">
               Contactar
             </Link>
           </div>

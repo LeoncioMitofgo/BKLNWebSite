@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { Clock, BookOpen } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
@@ -32,7 +32,7 @@ export function CourseCard({ course }: CourseCardProps) {
     <div className={`group bg-bg-surface border rounded-lg overflow-hidden transition-all duration-300 ${
       isComingSoon
         ? 'border-white/5 opacity-60'
-        : 'border-white/5 hover:border-brand-blue/30 hover:shadow-lg hover:shadow-brand-blue/10'
+        : 'border-white/5 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10'
     }`}>
       {/* Image */}
       <div className="h-44 relative overflow-hidden">

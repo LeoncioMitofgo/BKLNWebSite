@@ -18,9 +18,10 @@ export interface Product {
   title: string
   description: string
   longDescription: string
-  category: 'android' | 'desktop' | 'scripts' | 'free' | 'web'
+  category: 'android' | 'desktop' | 'scripts' | 'free' | 'web' | 'ia'
   price: number
   isFree: boolean
+  priceOnRequest?: boolean
   image: string
   screenshots: string[]
   rating: number

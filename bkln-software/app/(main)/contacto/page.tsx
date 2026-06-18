@@ -1,4 +1,4 @@
-import { Mail, MessageCircle, Clock, CheckCircle } from 'lucide-react'
+﻿import { Mail, MessageCircle, Clock, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { ContactForm } from '@/components/sections/ContactForm'
 
@@ -14,7 +14,7 @@ export default function ContactoPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            Hablemos de tu <span className="text-accent-blue">proyecto</span>
+            Hablemos de tu <span className="text-accent-green">proyecto</span>
           </h1>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
             Cuéntanos qué necesitas y te enviamos una propuesta detallada sin compromiso.
@@ -35,14 +35,14 @@ export default function ContactoPage() {
             <div className="space-y-5">
               <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-brand-blue/15 rounded-md flex items-center justify-center">
-                    <Mail size={16} className="text-accent-blue" />
+                  <div className="w-9 h-9 bg-brand-green/15 rounded-md flex items-center justify-center">
+                    <Mail size={16} className="text-accent-green" />
                   </div>
                   <h3 className="text-text-primary font-semibold text-sm">Email directo</h3>
                 </div>
                 <a
                   href="mailto:hello@bklnsoftware.com"
-                  className="text-accent-blue hover:underline text-sm"
+                  className="text-accent-green hover:underline text-sm"
                 >
                   hello@bklnsoftware.com
                 </a>
@@ -50,8 +50,8 @@ export default function ContactoPage() {
 
               <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-brand-blue/15 rounded-md flex items-center justify-center">
-                    <MessageCircle size={16} className="text-accent-blue" />
+                  <div className="w-9 h-9 bg-brand-green/15 rounded-md flex items-center justify-center">
+                    <MessageCircle size={16} className="text-accent-green" />
                   </div>
                   <h3 className="text-text-primary font-semibold text-sm">WhatsApp</h3>
                 </div>
@@ -59,7 +59,7 @@ export default function ContactoPage() {
                   href="https://wa.me/240222798086"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-accent-blue hover:underline text-sm"
+                  className="text-accent-green hover:underline text-sm"
                 >
                   Escribir por WhatsApp
                 </a>
@@ -68,8 +68,8 @@ export default function ContactoPage() {
 
               <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-brand-blue/15 rounded-md flex items-center justify-center">
-                    <Clock size={16} className="text-accent-blue" />
+                  <div className="w-9 h-9 bg-brand-green/15 rounded-md flex items-center justify-center">
+                    <Clock size={16} className="text-accent-green" />
                   </div>
                   <h3 className="text-text-primary font-semibold text-sm">Tiempo de respuesta</h3>
                 </div>

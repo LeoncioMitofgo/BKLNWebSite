@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
@@ -16,7 +16,7 @@ export function Logo({ className, size = 'md' }: LogoProps) {
         size === 'lg' && 'text-3xl',
       )}>
         <span className="text-white">BKLN</span>
-        <span className="text-accent-blue"> Software & Systems</span>
+        <span className="text-accent-green"> Software & Systems</span>
       </span>
     </Link>
   )

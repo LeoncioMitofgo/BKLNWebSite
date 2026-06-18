@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import Link from 'next/link'
@@ -6,7 +6,7 @@ import { UserPlus } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 const inputClass =
-  'w-full bg-bg-surface border border-white/10 rounded-md px-4 py-2.5 text-text-primary text-sm placeholder:text-text-secondary/50 focus:outline-none focus:border-brand-blue focus:ring-1 focus:ring-brand-blue/30 transition-colors'
+  'w-full bg-bg-surface border border-white/10 rounded-md px-4 py-2.5 text-text-primary text-sm placeholder:text-text-secondary/50 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green/30 transition-colors'
 
 export default function RegistroPage() {
   const [formData, setFormData] = useState({ name: '', email: '', password: '' })
@@ -23,8 +23,8 @@ export default function RegistroPage() {
     <div className="w-full max-w-md">
       <div className="bg-bg-surface border border-white/5 rounded-lg p-8">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-brand-blue/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <span className="text-accent-blue font-bold text-lg">B</span>
+          <div className="w-12 h-12 bg-brand-green/20 rounded-lg flex items-center justify-center mx-auto mb-4">
+            <span className="text-accent-green font-bold text-lg">B</span>
           </div>
           <h1 className="text-2xl font-bold text-text-primary">Crear cuenta</h1>
           <p className="text-text-secondary text-sm mt-1">Accede a cursos y descarga productos</p>
@@ -74,7 +74,7 @@ export default function RegistroPage() {
 
         <p className="text-center text-text-secondary text-sm mt-5">
           ¿Ya tienes cuenta?{' '}
-          <Link href="/login" className="text-accent-blue hover:underline">
+          <Link href="/login" className="text-accent-green hover:underline">
             Inicia sesión
           </Link>
         </p>

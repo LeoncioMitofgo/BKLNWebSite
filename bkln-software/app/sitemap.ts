@@ -1,5 +1,5 @@
-import { MetadataRoute } from 'next'
-import { projects, products, courses, blogPosts } from '@/data/seed'
+﻿import { MetadataRoute } from 'next'
+import { projects, products, courses, blogPosts } from '@/data/content'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://bklnsoftware.com'

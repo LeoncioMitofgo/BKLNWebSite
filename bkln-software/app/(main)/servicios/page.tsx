@@ -1,10 +1,10 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowRight, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/sections/ServiceCard'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { services } from '@/data/seed'
+import { services } from '@/data/content'
 
 export const metadata: Metadata = {
   title: 'Servicios',
@@ -42,7 +42,7 @@ export default function ServiciosPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            Servicios de <span className="text-accent-blue">Software</span>
+            Servicios de <span className="text-accent-green">Software</span>
           </h1>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
             Desarrollamos soluciones digitales a medida — desde apps móviles hasta sistemas con
@@ -74,14 +74,14 @@ export default function ServiciosPage() {
             {processSteps.map((step, i) => (
               <div key={step.number} className="relative">
                 <div className="bg-bg-dark border border-white/5 rounded-lg p-6 text-center h-full">
-                  <div className="w-12 h-12 bg-brand-blue/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-accent-blue font-bold">{step.number}</span>
+                  <div className="w-12 h-12 bg-brand-green/15 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-accent-green font-bold">{step.number}</span>
                   </div>
                   <h3 className="text-text-primary font-semibold mb-2">{step.title}</h3>
                   <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
                 </div>
                 {i < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-brand-blue">
+                  <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 text-brand-green">
                     <ArrowRight size={20} />
                   </div>
                 )}

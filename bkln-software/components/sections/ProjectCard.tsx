@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { ExternalLink } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
@@ -14,11 +14,11 @@ const categoryLabels: Record<Project['category'], string> = {
 }
 
 const categoryImages: Record<Project['category'], string> = {
-  android: 'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&auto=format&fit=crop&q=80',
-  web: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=600&auto=format&fit=crop&q=80',
-  desktop: 'https://images.unsplash.com/photo-1555066931-bf19f8fd1085?w=600&auto=format&fit=crop&q=80',
-  python: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=600&auto=format&fit=crop&q=80',
-  ia: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&auto=format&fit=crop&q=80',
+  android: '/course-android.jpg',
+  web: '/course-web.jpg',
+  desktop: '/project-desktop.jpg',
+  python: '/project-python.jpg',
+  ia: '/project-ia.jpg',
 }
 
 interface ProjectCardProps {
@@ -31,7 +31,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
     : categoryImages[project.category]
 
   return (
-    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-blue/30 hover:shadow-lg hover:shadow-brand-blue/10 transition-all duration-300">
+    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       <div className="h-48 relative overflow-hidden">
         <Image
           src={imageUrl}

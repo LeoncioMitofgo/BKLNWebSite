@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { Logo } from '@/components/ui/Logo'
 
 const navLinks = [
@@ -12,7 +12,7 @@ const navLinks = [
 
 const socialLinks = [
   {
-    href: 'https://github.com/bklnsoftware',
+    href: 'https://github.com/LeoncioMitofgo',
     label: 'GitHub',
     svg: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
@@ -75,7 +75,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-accent-blue transition-colors text-sm"
+                    className="text-text-secondary hover:text-accent-green transition-colors text-sm"
                   >
                     {link.label}
                   </Link>
@@ -99,7 +99,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-md bg-bg-dark border border-white/10 flex items-center justify-center text-text-secondary hover:text-accent-blue hover:border-accent-blue/30 transition-all"
+                  className="w-9 h-9 rounded-md bg-bg-dark border border-white/10 flex items-center justify-center text-text-secondary hover:text-accent-green hover:border-accent-green/30 transition-all"
                 >
                   {svg}
                 </a>
@@ -113,10 +113,10 @@ export function Footer() {
             © {new Date().getFullYear()} BKLN Software & Systems. Todos los derechos reservados.
           </p>
           <div className="flex gap-4 text-xs text-text-secondary">
-            <Link href="/privacidad" className="hover:text-accent-blue transition-colors">
+            <Link href="/privacidad" className="hover:text-accent-green transition-colors">
               Privacidad
             </Link>
-            <Link href="/terminos" className="hover:text-accent-blue transition-colors">
+            <Link href="/terminos" className="hover:text-accent-green transition-colors">
               Términos
             </Link>
           </div>

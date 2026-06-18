@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Globe, CheckCircle, MessageSquare, Rocket, Search, Code2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
@@ -8,9 +8,8 @@ import { ServiceCard } from '@/components/sections/ServiceCard'
 import { CourseCard } from '@/components/sections/CourseCard'
 import { ProductCard } from '@/components/sections/ProductCard'
 import { BlogCard } from '@/components/sections/BlogCard'
-import { TestimonialCard } from '@/components/sections/TestimonialCard'
 import { TechStack } from '@/components/sections/TechStack'
-import { services, courses, testimonials, products, blogPosts } from '@/data/seed'
+import { services, courses, products, blogPosts } from '@/data/content'
 
 const stats = [
   { value: 'Malabo', label: 'Sede central' },
@@ -64,26 +63,25 @@ export default function HomePage() {
       <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden min-h-[90vh] flex items-center">
         <div className="absolute inset-0">
           <Image
-            src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=1800&auto=format&fit=crop&q=80"
+            src="/hero-bg.jpg"
             alt="Hero background"
             fill
             className="object-cover opacity-15"
             priority
-            unoptimized
           />
           <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/60 via-bg-dark/80 to-bg-dark" />
         </div>
         <div className="absolute inset-0 opacity-10 hero-grid-overlay" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-blue/15 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-green/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto text-center w-full">
-          <div className="inline-flex items-center gap-2 bg-brand-blue/10 border border-brand-blue/20 text-accent-blue text-sm px-4 py-2 rounded-full mb-8">
+          <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 text-accent-green text-sm px-4 py-2 rounded-full mb-8">
             <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
             Malabo, Guinea Ecuatorial · Disponibles para nuevos proyectos
           </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary mb-6 leading-tight">
             Code.{' '}
-            <span className="text-accent-blue">Create.</span>
+            <span className="text-accent-green">Create.</span>
             <br />
             Educate.
           </h1>
@@ -115,7 +113,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
-                <p className="text-3xl font-bold text-accent-blue">{stat.value}</p>
+                <p className="text-3xl font-bold text-accent-green">{stat.value}</p>
                 <p className="text-text-secondary text-sm mt-1">{stat.label}</p>
               </div>
             ))}
@@ -128,7 +126,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="text-accent-blue text-sm font-medium uppercase tracking-wider mb-3 block">
+              <span className="text-accent-green text-sm font-medium uppercase tracking-wider mb-3 block">
                 Quiénes somos
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-6 leading-tight">
@@ -153,10 +151,10 @@ export default function HomePage() {
               {whyUs.map((item) => (
                 <div
                   key={item.title}
-                  className="bg-bg-surface border border-white/5 rounded-lg p-5 hover:border-brand-blue/20 transition-colors"
+                  className="bg-bg-surface border border-white/5 rounded-lg p-5 hover:border-brand-green/20 transition-colors"
                 >
-                  <div className="w-8 h-8 rounded-md bg-brand-blue/20 flex items-center justify-center mb-3">
-                    <CheckCircle size={16} className="text-accent-blue" />
+                  <div className="w-8 h-8 rounded-md bg-brand-green/20 flex items-center justify-center mb-3">
+                    <CheckCircle size={16} className="text-accent-green" />
                   </div>
                   <h3 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h3>
                   <p className="text-text-secondary text-xs leading-relaxed">{item.description}</p>
@@ -201,14 +199,14 @@ export default function HomePage() {
             {processSteps.map((step, i) => (
               <div key={step.step} className="relative">
                 {i < processSteps.length - 1 && (
-                  <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-brand-blue/20 z-0" />
+                  <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-brand-green/20 z-0" />
                 )}
-                <div className="bg-bg-surface border border-white/5 rounded-lg p-6 relative z-10 hover:border-brand-blue/30 transition-colors">
+                <div className="bg-bg-surface border border-white/5 rounded-lg p-6 relative z-10 hover:border-brand-green/30 transition-colors">
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-10 h-10 rounded-md bg-brand-blue/20 flex items-center justify-center text-accent-blue">
+                    <div className="w-10 h-10 rounded-md bg-brand-green/20 flex items-center justify-center text-accent-green">
                       {step.icon}
                     </div>
-                    <span className="text-brand-blue/40 font-bold text-2xl">{step.step}</span>
+                    <span className="text-brand-green/40 font-bold text-2xl">{step.step}</span>
                   </div>
                   <h3 className="text-text-primary font-semibold mb-2">{step.title}</h3>
                   <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
@@ -251,9 +249,9 @@ export default function HomePage() {
       {/* Marketplace spotlight */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-brand-blue/20 to-bg-surface border border-brand-blue/20 rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="bg-gradient-to-r from-brand-green/20 to-bg-surface border border-brand-green/20 rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-brand-blue/20 text-accent-blue text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
+              <div className="inline-flex items-center gap-2 bg-brand-green/20 text-accent-green text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
                 <Globe size={12} />
                 Marketplace propio
               </div>
@@ -285,6 +283,48 @@ export default function HomePage() {
                 className="object-contain"
                 style={{ height: 'auto' }}
               />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MiEmpleo spotlight */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-gradient-to-r from-brand-blue/20 to-bg-surface border border-brand-blue/20 rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
+            <div className="w-48 h-24 shrink-0 flex items-center justify-center">
+              <Image
+                src="/miempleo-logo.png"
+                alt="MiEmpleo GE"
+                width={192}
+                height={96}
+                className="rounded-lg bg-white px-3 py-2 object-contain"
+                style={{ height: 'auto' }}
+              />
+            </div>
+            <div className="flex-1">
+              <div className="inline-flex items-center gap-2 bg-brand-blue/20 text-accent-blue text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
+                <Globe size={12} />
+                Portal de empleo · Guinea Ecuatorial
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">
+                MiEmpleo GE
+              </h2>
+              <p className="text-text-secondary mb-6 max-w-lg leading-relaxed">
+                La plataforma de empleo digital para Guinea Ecuatorial — vacantes, perfiles profesionales,
+                mensajería en tiempo real, panel de empresa y suscripciones premium. Disponible como
+                solución white-label para otros mercados.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a href="https://miempleo.vercel.app" target="_blank" rel="noopener noreferrer">
+                  <Button>
+                    Visitar plataforma <ArrowRight size={16} />
+                  </Button>
+                </a>
+                <Link href="/portfolio/miempleo">
+                  <Button variant="outline">Ver caso de estudio</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -346,23 +386,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Testimonios */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader title="Lo que dicen nuestros clientes" centered />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <TestimonialCard key={t.id} testimonial={t} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CTA worldwide */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-3xl mx-auto text-center">
-          <div className="w-14 h-14 rounded-xl bg-brand-blue/20 border border-brand-blue/20 flex items-center justify-center mx-auto mb-6">
-            <MessageSquare size={24} className="text-accent-blue" />
+          <div className="w-14 h-14 rounded-xl bg-brand-green/20 border border-brand-green/20 flex items-center justify-center mx-auto mb-6">
+            <MessageSquare size={24} className="text-accent-green" />
           </div>
           <h2 className="text-3xl font-bold text-text-primary mb-4">
             ¿Tienes un proyecto en mente?

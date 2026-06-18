@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
@@ -28,7 +28,7 @@ export default function TerminosPage() {
               <strong className="text-text-primary">BKLN Software & Systems</strong> es una empresa
               de desarrollo de software con sede en Guinea Ecuatorial. Ofrecemos servicios de
               desarrollo a medida, productos de software y cursos online. Puedes contactarnos en{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-blue hover:underline">
+              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
                 hello@bklnsoftware.com
               </a>
               .
@@ -151,7 +151,7 @@ export default function TerminosPage() {
             <h2 className="text-text-primary font-semibold text-lg">9. Contacto</h2>
             <p>
               Si tienes alguna duda sobre estos términos, escríbenos a{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-blue hover:underline">
+              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
                 hello@bklnsoftware.com
               </a>
               .
@@ -159,10 +159,10 @@ export default function TerminosPage() {
           </section>
 
           <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row gap-3">
-            <Link href="/privacidad" className="text-accent-blue hover:underline text-sm">
+            <Link href="/privacidad" className="text-accent-green hover:underline text-sm">
               Ver Política de Privacidad
             </Link>
-            <Link href="/contacto" className="text-accent-blue hover:underline text-sm">
+            <Link href="/contacto" className="text-accent-green hover:underline text-sm">
               Contactar
             </Link>
           </div>

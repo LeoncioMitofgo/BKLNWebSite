@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import Image from 'next/image'
 import { Star, Download } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
@@ -12,14 +12,16 @@ const categoryLabels: Record<Product['category'], string> = {
   scripts: 'Scripts & Tools',
   free: 'Gratis',
   web: 'Web App',
+  ia: 'IA',
 }
 
 const categoryImages: Record<Product['category'], string> = {
-  android: 'https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?w=600&auto=format&fit=crop&q=80',
-  desktop: 'https://images.unsplash.com/photo-1593642632559-0c6d3fc62b89?w=600&auto=format&fit=crop&q=80',
-  scripts: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=600&auto=format&fit=crop&q=80',
-  free: 'https://images.unsplash.com/photo-1555066931-bf19f8fd1085?w=600&auto=format&fit=crop&q=80',
-  web: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&auto=format&fit=crop&q=80',
+  android: '/course-android.jpg',
+  desktop: '/service-desktop.jpg',
+  scripts: '/product-scripts.jpg',
+  free: '/project-desktop.jpg',
+  web: '/product-web.jpg',
+  ia: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80',
 }
 
 interface ProductCardProps {
@@ -27,12 +29,12 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product }: ProductCardProps) {
-  const imageUrl = product.image.startsWith('http')
+  const imageUrl = product.image?.startsWith('http')
     ? product.image
-    : categoryImages[product.category]
+    : (product.image || categoryImages[product.category])
 
   return (
-    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-blue/30 hover:shadow-lg hover:shadow-brand-blue/10 transition-all duration-300">
+    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       <div className="h-40 relative overflow-hidden">
         <Image
           src={imageUrl}

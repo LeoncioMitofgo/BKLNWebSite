@@ -1,11 +1,11 @@
-@import "tailwindcss";
+﻿@import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
 @theme {
   --color-bg-dark: #0a0a0a;
   --color-bg-surface: #111111;
-  --color-brand-blue: #00a85a;
-  --color-accent-blue: #00d97e;
+  --color-brand-green: #00a85a;
+  --color-accent-green: #00d97e;
   --color-text-primary: #f0f0f0;
   --color-text-secondary: #6b7280;
   --color-success: #00d97e;

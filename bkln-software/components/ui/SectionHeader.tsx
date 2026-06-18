@@ -1,4 +1,4 @@
-import { cn } from '@/lib/utils'
+﻿import { cn } from '@/lib/utils'
 
 interface SectionHeaderProps {
   title: string
@@ -16,7 +16,7 @@ export function SectionHeader({ title, subtitle, centered = false, className }: 
           {subtitle}
         </p>
       )}
-      <div className={cn('mt-4 h-1 w-16 rounded-full bg-accent-blue', centered && 'mx-auto')} />
+      <div className={cn('mt-4 h-1 w-16 rounded-full bg-accent-green', centered && 'mx-auto')} />
     </div>
   )
 }

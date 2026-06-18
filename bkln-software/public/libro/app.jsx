@@ -5,6 +5,9 @@
 
 const { useEffect: useEffectApp, useState: useStateApp, useMemo: useMemoApp } = React;
 
+const PROGRESS_KEY = 'bkln-libro-progress';
+const LAST_KEY = 'bkln-libro-last';
+
 const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "light",
   "density": "comfortable",
@@ -16,7 +19,12 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
 function useHashRoute(defaultId) {
   const [id, setId] = useStateApp(() => {
     const h = window.location.hash.slice(1);
-    return h || defaultId;
+    if (h) return h;
+    try {
+      const last = localStorage.getItem(LAST_KEY);
+      if (last) return last;
+    } catch {}
+    return defaultId;
   });
   useEffectApp(() => {
     const onHash = () => {
@@ -33,7 +41,11 @@ function useHashRoute(defaultId) {
   return [id, nav];
 }
 
-function Sidebar({ activeId, onNav, isOpen, onClose }) {
+function Sidebar({ activeId, onNav, isOpen, onClose, completed }) {
+  const flat = flatTOC();
+  const doneCount = flat.filter(c => completed.includes(c.id)).length;
+  const pct = flat.length > 0 ? Math.round((doneCount / flat.length) * 100) : 0;
+
   return (
     <aside className={`sidebar ${isOpen ? 'open' : ''}`}>
       <div className="toc-brand">
@@ -41,6 +53,16 @@ function Sidebar({ activeId, onNav, isOpen, onClose }) {
           Python<span className="dot">.</span> <em>desde cero</em>
         </a>
         <div className="toc-brand-sub">// serie en tres libros</div>
+      </div>
+
+      <div style={{ padding: '0 var(--s-3) var(--s-4)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontFamily: 'var(--font-mono)', fontSize: '0.65rem', color: 'var(--ink-3)', letterSpacing: '0.06em', textTransform: 'uppercase', marginBottom: 5 }}>
+          <span>Progreso</span>
+          <span>{doneCount} / {flat.length}</span>
+        </div>
+        <div style={{ height: 3, background: 'var(--border)', borderRadius: 2, overflow: 'hidden' }}>
+          <div style={{ height: '100%', width: `${pct}%`, background: 'var(--highlight)', transition: 'width 0.4s ease' }} />
+        </div>
       </div>
 
       <ul className="toc-list" style={{ marginBottom: 'var(--s-5)' }}>
@@ -75,6 +97,9 @@ function Sidebar({ activeId, onNav, isOpen, onClose }) {
                   <span className="toc-num">{ch.num}</span>
                   <span>
                     {ch.title}
+                    {completed.includes(ch.id) && (
+                      <span style={{ color: 'var(--highlight)', marginLeft: 5, fontSize: '0.72rem' }}>✓</span>
+                    )}
                     {ch.status === 'stub' && (
                       <span style={{
                         fontFamily: 'var(--font-mono)',
@@ -216,10 +241,34 @@ function BookApp() {
     ? window.useTweaks(TWEAK_DEFAULTS)
     : [TWEAK_DEFAULTS, () => {}];
 
+  const [completed, setCompleted] = useStateApp(() => {
+    try { return JSON.parse(localStorage.getItem(PROGRESS_KEY) || '[]'); }
+    catch { return []; }
+  });
+
+  const markDone = (id) => {
+    setCompleted(prev => {
+      if (prev.includes(id)) return prev;
+      const next = [...prev, id];
+      try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+
+  // Expose for ChapterNav (set on every render so closure is always fresh)
+  window.__bookProgress = { completed, markDone };
+
   useEffectApp(() => { applyTweaks(tweaks); }, [tweaks]);
 
   // close sidebar on route change (mobile)
   useEffectApp(() => { setSidebarOpen(false); }, [activeId]);
+
+  // Save last visited chapter (skip cover so returning users land on real content)
+  useEffectApp(() => {
+    if (activeId && activeId !== 'cover') {
+      try { localStorage.setItem(LAST_KEY, activeId); } catch {}
+    }
+  }, [activeId]);
 
   // Find progress label
   const progressInfo = useMemoApp(() => {
@@ -236,6 +285,7 @@ function BookApp() {
         onNav={navTo}
         isOpen={sidebarOpen}
         onClose={() => setSidebarOpen(false)}
+        completed={completed}
       />
 
       <main className="reader" data-screen-label={activeId}>

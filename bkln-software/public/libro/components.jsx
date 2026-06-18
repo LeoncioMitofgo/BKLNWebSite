@@ -433,6 +433,21 @@ function ChapterHeader({ book, module, title, dek, time }) {
 
 /* ---------- Chapter navigation footer ---------- */
 function ChapterNav({ prev, next, onNav }) {
+  const currentId = window.location.hash.slice(1);
+  const [isDone, setIsDone] = React.useState(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('bkln-libro-progress') || '[]');
+      return saved.includes(currentId);
+    } catch { return false; }
+  });
+
+  const handleMark = () => {
+    if (isDone) return;
+    window.__bookProgress?.markDone(currentId);
+    setIsDone(true);
+    if (next) setTimeout(() => onNav(next.id), 250);
+  };
+
   return (
     <nav className="chapter-nav">
       {prev ? (
@@ -441,6 +456,27 @@ function ChapterNav({ prev, next, onNav }) {
           <span className="label">{prev.title}</span>
         </a>
       ) : <span className="chapter-nav-link disabled"><span className="dir">— inicio —</span></span>}
+
+      <button
+        type="button"
+        onClick={handleMark}
+        disabled={isDone}
+        style={{
+          padding: '0.45rem 1.1rem',
+          background: isDone ? 'transparent' : 'var(--highlight)',
+          color: isDone ? 'var(--highlight)' : '#fff',
+          border: isDone ? '1px solid var(--highlight)' : '1px solid transparent',
+          borderRadius: 'var(--r-sm)',
+          fontFamily: 'var(--font-body)',
+          fontSize: '0.82rem',
+          cursor: isDone ? 'default' : 'pointer',
+          transition: 'all 0.2s',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        {isDone ? '✓ Completado' : 'Marcar completado →'}
+      </button>
+
       {next ? (
         <a className="chapter-nav-link next" href={`#${next.id}`} onClick={(e) => { e.preventDefault(); onNav(next.id); }}>
           <span className="dir">Siguiente →</span>

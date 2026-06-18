@@ -1,4 +1,4 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { BookOpen, Download, User } from 'lucide-react'
 import type { Metadata } from 'next'
 
@@ -12,8 +12,8 @@ export default function DashboardPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <div className="bg-bg-surface border border-white/5 rounded-lg p-5 flex items-center gap-4">
-            <div className="w-12 h-12 bg-brand-blue/15 rounded-lg flex items-center justify-center">
-              <BookOpen size={20} className="text-accent-blue" />
+            <div className="w-12 h-12 bg-brand-green/15 rounded-lg flex items-center justify-center">
+              <BookOpen size={20} className="text-accent-green" />
             </div>
             <div>
               <p className="text-2xl font-bold text-text-primary">0</p>
@@ -21,8 +21,8 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="bg-bg-surface border border-white/5 rounded-lg p-5 flex items-center gap-4">
-            <div className="w-12 h-12 bg-brand-blue/15 rounded-lg flex items-center justify-center">
-              <Download size={20} className="text-accent-blue" />
+            <div className="w-12 h-12 bg-brand-green/15 rounded-lg flex items-center justify-center">
+              <Download size={20} className="text-accent-green" />
             </div>
             <div>
               <p className="text-2xl font-bold text-text-primary">0</p>
@@ -30,8 +30,8 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="bg-bg-surface border border-white/5 rounded-lg p-5 flex items-center gap-4">
-            <div className="w-12 h-12 bg-brand-blue/15 rounded-lg flex items-center justify-center">
-              <User size={20} className="text-accent-blue" />
+            <div className="w-12 h-12 bg-brand-green/15 rounded-lg flex items-center justify-center">
+              <User size={20} className="text-accent-green" />
             </div>
             <div>
               <p className="text-text-primary font-semibold text-sm">Mi cuenta</p>
@@ -47,7 +47,7 @@ export default function DashboardPage() {
             <BookOpen size={40} className="mx-auto mb-3 opacity-30" />
             <p>Aún no tienes cursos. Visita nuestra tienda.</p>
             <Link href="/cursos" className="inline-block mt-4">
-              <span className="text-accent-blue hover:underline text-sm">Ver cursos disponibles →</span>
+              <span className="text-accent-green hover:underline text-sm">Ver cursos disponibles →</span>
             </Link>
           </div>
         </div>

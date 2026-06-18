@@ -1,8 +1,8 @@
-'use client'
+﻿'use client'
 
 import { useState } from 'react'
 import { ProductCard } from '@/components/sections/ProductCard'
-import { products } from '@/data/seed'
+import { products } from '@/data/content'
 import type { Product } from '@/types'
 
 const categories: { value: Product['category'] | 'todos'; label: string }[] = [
@@ -27,7 +27,7 @@ export default function ProductosPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            Tienda de <span className="text-accent-blue">Productos</span>
+            Tienda de <span className="text-accent-green">Productos</span>
           </h1>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
             Apps Android, software desktop, scripts y herramientas — algunos gratuitos, otros de
@@ -46,8 +46,8 @@ export default function ProductosPage() {
                 onClick={() => setActiveCategory(cat.value)}
                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeCategory === cat.value
-                    ? 'bg-brand-blue text-white'
-                    : 'bg-bg-surface text-text-secondary border border-white/10 hover:border-brand-blue/30 hover:text-text-primary'
+                    ? 'bg-brand-green text-white'
+                    : 'bg-bg-surface text-text-secondary border border-white/10 hover:border-brand-green/30 hover:text-text-primary'
                 }`}
               >
                 {cat.label}
