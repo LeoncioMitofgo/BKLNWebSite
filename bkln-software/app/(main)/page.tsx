@@ -298,7 +298,7 @@ export default function HomePage() {
                 alt="MiEmpleo GE"
                 width={192}
                 height={96}
-                className="rounded-lg bg-white px-3 py-2 object-contain"
+                className="rounded-lg bg-transparent px-3 py-2 object-contain"
                 style={{ height: 'auto' }}
               />
             </div>

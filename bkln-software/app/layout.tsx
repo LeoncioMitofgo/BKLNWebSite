@@ -22,6 +22,10 @@ export const metadata: Metadata = {
     default: 'BKLN Software & Systems',
     template: '%s | BKLN Software & Systems',
   },
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   description:
     'Estudio de software con sede en Malabo, Guinea Ecuatorial — desarrollo Android, Web, automatización e IA para negocios de aquí y del mundo.',
   keywords: [
