@@ -2,7 +2,7 @@
 import { projects, products, courses, blogPosts } from '@/data/content'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://bklnsoftware.com'
+  const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.bklnsoftware.tech'
 
   const staticRoutes = [
     { url: baseUrl, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 1 },

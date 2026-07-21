@@ -14,23 +14,27 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
-const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://bklnsoftware.com'
+const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.bklnsoftware.tech'
+
+const homeDescription =
+  'Estudio de software y academia de programación en Malabo, Guinea Ecuatorial — cursos de Python, IA y certificaciones cloud, además de desarrollo Android, Web, automatización e IA para negocios de aquí y del mundo.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'BKLN Software & Systems',
+    default: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
     template: '%s | BKLN Software & Systems',
   },
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
-  description:
-    'Estudio de software con sede en Malabo, Guinea Ecuatorial — desarrollo Android, Web, automatización e IA para negocios de aquí y del mundo.',
+  description: homeDescription,
   keywords: [
     'software', 'desarrollo web', 'android', 'python', 'IA', 'inteligencia artificial',
     'BKLN', 'Malabo', 'Guinea Ecuatorial', 'aplicaciones móviles', 'automatización',
+    'cursos de programación', 'aprender a programar', 'academia de programación Guinea Ecuatorial',
+    'curso de Python en español', 'certificación AZ-900', 'clases de programación Malabo',
   ],
   authors: [{ name: 'BKLN Software & Systems', url: siteUrl }],
   openGraph: {
@@ -38,14 +42,14 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: siteUrl,
     siteName: 'BKLN Software & Systems',
-    title: 'BKLN Software & Systems — Code. Create. Educate.',
-    description: 'Estudio de software con sede en Malabo — apps Android, Web, automatización e IA para el mundo.',
+    title: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
+    description: homeDescription,
     images: [{ url: '/logo8.png', width: 512, height: 512, alt: 'BKLN Software & Systems' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BKLN Software & Systems — Code. Create. Educate.',
-    description: 'Estudio de software con sede en Malabo — apps Android, Web, automatización e IA para el mundo.',
+    title: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
+    description: homeDescription,
     images: ['/logo8.png'],
   },
   robots: {
@@ -55,6 +59,33 @@ export const metadata: Metadata = {
   },
 }
 
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'BKLN Software & Systems',
+  url: siteUrl,
+  logo: `${siteUrl}/logo8.png`,
+  image: `${siteUrl}/logo8.png`,
+  description: homeDescription,
+  email: 'hello@bklnsoftware.com',
+  telephone: '+240222798086',
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Malabo',
+    addressCountry: 'GQ',
+  },
+  areaServed: ['Guinea Ecuatorial', 'África Central'],
+  knowsAbout: [
+    'Desarrollo de software', 'Desarrollo Android', 'Desarrollo web', 'Python',
+    'Inteligencia artificial', 'Cursos de programación', 'Automatización', 'Bases de datos',
+  ],
+  sameAs: [
+    'https://github.com/LeoncioMitofgo',
+    'https://linkedin.com/company/bklnsoftware',
+    'https://twitter.com/bklnsoftware',
+  ],
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,6 +93,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
+      </head>
       <body className="min-h-screen bg-bg-dark text-text-primary font-primary antialiased">
         {children}
         {/* BKLN Support Bot Widget — configurado vía variables de entorno, ver .env.local.example */}
