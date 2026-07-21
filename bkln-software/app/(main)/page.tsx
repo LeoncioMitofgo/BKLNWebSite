@@ -282,6 +282,7 @@ export default function HomePage() {
                 height={176}
                 className="object-contain"
                 style={{ height: 'auto' }}
+                unoptimized
               />
             </div>
           </div>
@@ -293,13 +294,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="bg-gradient-to-r from-brand-blue/20 to-bg-surface border border-brand-blue/20 rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="w-48 h-24 shrink-0 flex items-center justify-center">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element -- next/image + fill no renderiza este logo de forma fiable, ver revisión */}
+              <img
                 src="/miempleo-logo.png"
                 alt="MiEmpleo GE"
-                width={192}
-                height={96}
-                className="rounded-lg bg-transparent px-3 py-2 object-contain"
-                style={{ height: 'auto' }}
+                className="rounded-lg bg-transparent px-3 py-2 object-contain w-full h-full"
               />
             </div>
             <div className="flex-1">

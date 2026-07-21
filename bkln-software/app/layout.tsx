@@ -64,17 +64,19 @@ export default function RootLayout({
     <html lang="es" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <body className="min-h-screen bg-bg-dark text-text-primary font-primary antialiased">
         {children}
-        {/* BKLN Support Bot Widget */}
-        <script
-          src="https://api.africasport365.com/widget.js"
-          data-tenant-id="00000000-0000-0000-0000-000000000001"
-          data-tenant-key="demo-key"
-          data-api-url="https://api.africasport365.com"
-          data-bot-name="Asistente BKLN"
-          data-welcome="¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?"
-          data-primary-color="#00a85a"
-          async
-        />
+        {/* BKLN Support Bot Widget — configurado vía variables de entorno, ver .env.local.example */}
+        {process.env.NEXT_PUBLIC_CHATBOT_TENANT_ID && process.env.NEXT_PUBLIC_CHATBOT_TENANT_KEY && (
+          <script
+            src={process.env.NEXT_PUBLIC_CHATBOT_API_URL ? `${process.env.NEXT_PUBLIC_CHATBOT_API_URL}/widget.js` : undefined}
+            data-tenant-id={process.env.NEXT_PUBLIC_CHATBOT_TENANT_ID}
+            data-tenant-key={process.env.NEXT_PUBLIC_CHATBOT_TENANT_KEY}
+            data-api-url={process.env.NEXT_PUBLIC_CHATBOT_API_URL}
+            data-bot-name="Asistente BKLN"
+            data-welcome="¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?"
+            data-primary-color="#00a85a"
+            async
+          />
+        )}
       </body>
     </html>
   )

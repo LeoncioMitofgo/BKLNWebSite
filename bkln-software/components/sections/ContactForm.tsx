@@ -63,10 +63,15 @@ function ContactFormInner() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       })
-      if (!res.ok) throw new Error()
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) throw new Error(data.error)
       setSubmitted(true)
-    } catch {
-      setError('Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo.')
+    } catch (err) {
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : 'Hubo un problema al enviar tu solicitud. Por favor intenta de nuevo.'
+      )
     } finally {
       setSubmitting(false)
     }

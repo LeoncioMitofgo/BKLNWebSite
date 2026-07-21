@@ -7,14 +7,7 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Logo } from '@/components/ui/Logo'
 import { cn } from '@/lib/utils'
-
-const navLinks = [
-  { label: 'Servicios', href: '/servicios' },
-  { label: 'Productos', href: '/productos' },
-  { label: 'Cursos', href: '/cursos' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Blog', href: '/blog' },
-]
+import { navLinks } from '@/data/nav'
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)

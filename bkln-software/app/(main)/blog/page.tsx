@@ -1,30 +1,13 @@
-﻿'use client'
-
-import { useState } from 'react'
-import { BlogCard } from '@/components/sections/BlogCard'
+import type { Metadata } from 'next'
+import { BlogExplorer } from '@/components/sections/BlogExplorer'
 import { blogPosts } from '@/data/content'
-import type { BlogPost } from '@/types'
 
-const categories: { value: BlogPost['category'] | 'todos'; label: string }[] = [
-  { value: 'todos', label: 'Todos' },
-  { value: 'python', label: 'Python' },
-  { value: 'android', label: 'Android' },
-  { value: 'ia-ml', label: 'IA & ML' },
-  { value: 'web', label: 'Web' },
-  { value: 'databases', label: 'Databases' },
-  { value: 'tutoriales', label: 'Tutoriales' },
-]
+export const metadata: Metadata = {
+  title: 'Blog',
+  description: 'Artículos, tutoriales y guías sobre desarrollo de software, IA y tecnología.',
+}
 
 export default function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState<BlogPost['category'] | 'todos'>('todos')
-
-  const filtered =
-    activeCategory === 'todos'
-      ? blogPosts
-      : blogPosts.filter((p) => p.category === activeCategory)
-
-  const [featured, ...rest] = filtered
-
   return (
     <div className="min-h-screen pt-24">
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
@@ -38,43 +21,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="py-8 px-4 sm:px-6 lg:px-8 border-b border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat.value}
-                onClick={() => setActiveCategory(cat.value)}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
-                  activeCategory === cat.value
-                    ? 'bg-brand-green text-white'
-                    : 'bg-bg-surface text-text-secondary border border-white/10 hover:border-brand-green/30 hover:text-text-primary'
-                }`}
-              >
-                {cat.label}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-8">
-          {featured && <BlogCard post={featured} featured />}
-          {rest.length > 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {rest.map((post) => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-            </div>
-          )}
-          {filtered.length === 0 && (
-            <div className="text-center py-16 text-text-secondary">
-              No hay artículos en esta categoría aún.
-            </div>
-          )}
-        </div>
-      </section>
+      <BlogExplorer posts={blogPosts} />
     </div>
   )
 }

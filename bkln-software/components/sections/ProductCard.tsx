@@ -21,7 +21,7 @@ const categoryImages: Record<Product['category'], string> = {
   scripts: '/product-scripts.jpg',
   free: '/project-desktop.jpg',
   web: '/product-web.jpg',
-  ia: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80',
+  ia: '/product-ia.jpg',
 }
 
 interface ProductCardProps {
@@ -72,11 +72,11 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
         <div className="flex items-center justify-between">
           <span className="text-text-primary font-bold text-lg">
-            {formatPrice(product.price)}
+            {product.priceOnRequest ? 'Bajo pedido' : formatPrice(product.price)}
           </span>
           <Link href={`/productos/${product.slug}`}>
             <Button size="sm" variant={product.isFree ? 'outline' : 'primary'}>
-              {product.isFree ? 'Descargar' : 'Comprar'}
+              {product.priceOnRequest ? 'Ver detalle' : product.isFree ? 'Descargar' : 'Comprar'}
             </Button>
           </Link>
         </div>

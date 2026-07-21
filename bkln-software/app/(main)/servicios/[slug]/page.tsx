@@ -3,12 +3,22 @@ import Link from 'next/link'
 import { ArrowLeft, CheckCircle, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { services } from '@/data/content'
+import { ProjectCard } from '@/components/sections/ProjectCard'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { services, projects } from '@/data/content'
+import type { Project } from '@/types'
 
 interface PageProps {
   params: Promise<{ slug: string }>
+}
+
+const serviceToProjectCategory: Partial<Record<string, Project['category']>> = {
+  'apps-android': 'android',
+  'desarrollo-web': 'web',
+  'desktop-electron': 'desktop',
+  'python-automatizacion': 'python',
+  'ia-machine-learning': 'ia',
 }
 
 export async function generateStaticParams() {
@@ -26,6 +36,11 @@ export default async function ServicePage({ params }: PageProps) {
   const { slug } = await params
   const service = services.find((s) => s.slug === slug)
   if (!service) notFound()
+
+  const relatedCategory = serviceToProjectCategory[service.slug]
+  const relatedProjects = relatedCategory
+    ? projects.filter((p) => p.category === relatedCategory).slice(0, 3)
+    : []
 
   return (
     <div className="min-h-screen pt-24">
@@ -90,6 +105,21 @@ export default async function ServicePage({ params }: PageProps) {
             </div>
           </div>
         </div>
+
+        {/* Proyectos relacionados */}
+        {relatedProjects.length > 0 && (
+          <div className="mb-10">
+            <SectionHeader
+              title="Proyectos relacionados"
+              subtitle="Casos reales donde aplicamos este servicio."
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              {relatedProjects.map((project) => (
+                <ProjectCard key={project.id} project={project} />
+              ))}
+            </div>
+          </div>
+        )}
 
         {/* Formulario */}
         <div className="border-t border-white/5 pt-10">

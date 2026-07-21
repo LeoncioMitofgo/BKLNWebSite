@@ -3,11 +3,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, CheckCircle, Star, ShieldCheck, RefreshCw } from 'lucide-react'
 import type { Metadata } from 'next'
-import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { DownloadButton } from '@/components/ui/DownloadButton'
+import { BuyButton } from '@/components/ui/BuyButton'
 import { formatPrice } from '@/lib/utils'
-import { products } from '@/data/content'
+import { products, projects } from '@/data/content'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -32,6 +32,8 @@ export default async function ProductPage({ params }: PageProps) {
   const { slug } = await params
   const product = products.find((p) => p.slug === slug)
   if (!product) notFound()
+
+  const relatedProject = projects.find((p) => p.slug === product.slug)
 
   return (
     <div className="min-h-screen pt-24">
@@ -77,9 +79,17 @@ export default async function ProductPage({ params }: PageProps) {
               ) : product.priceOnRequest ? (
                 <Link href={`/contacto?producto=${product.slug}`}><Button>Solicitar presupuesto</Button></Link>
               ) : (
-                <Button>Comprar ahora</Button>
+                <BuyButton productId={product.id} />
               )}
             </div>
+            {relatedProject && (
+              <Link
+                href={`/portfolio/${relatedProject.slug}`}
+                className="inline-flex items-center gap-1.5 text-accent-green hover:underline text-sm mt-4"
+              >
+                Ver caso de estudio de este proyecto →
+              </Link>
+            )}
           </div>
         </div>
 

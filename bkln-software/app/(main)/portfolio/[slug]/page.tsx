@@ -5,7 +5,7 @@ import { ArrowLeft, ExternalLink, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { projects } from '@/data/content'
+import { projects, products } from '@/data/content'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -30,6 +30,8 @@ export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params
   const project = projects.find((p) => p.slug === slug)
   if (!project) notFound()
+
+  const relatedProduct = products.find((p) => p.slug === project.slug)
 
   return (
     <div className="min-h-screen pt-24">
@@ -124,6 +126,11 @@ export default async function ProjectPage({ params }: PageProps) {
                 Ver proyecto en vivo <ExternalLink size={15} />
               </Button>
             </a>
+          )}
+          {relatedProduct && (
+            <Link href={`/productos/${relatedProduct.slug}`}>
+              <Button variant="outline">Comprar este proyecto</Button>
+            </Link>
           )}
           <Link href="/contacto">
             <Button variant="outline">Iniciar proyecto similar</Button>

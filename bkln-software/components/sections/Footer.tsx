@@ -1,14 +1,6 @@
 ﻿import Link from 'next/link'
 import { Logo } from '@/components/ui/Logo'
-
-const navLinks = [
-  { label: 'Servicios', href: '/servicios' },
-  { label: 'Productos', href: '/productos' },
-  { label: 'Cursos', href: '/cursos' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Contacto', href: '/contacto' },
-]
+import { footerLinks } from '@/data/nav'
 
 const socialLinks = [
   {
@@ -71,7 +63,7 @@ export function Footer() {
               Navegación
             </h3>
             <ul className="space-y-2">
-              {navLinks.map((link) => (
+              {footerLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

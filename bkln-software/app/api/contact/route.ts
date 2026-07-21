@@ -9,10 +9,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Faltan campos requeridos' }, { status: 400 })
     }
 
-    // Enviar email con Resend
     const resendKey = process.env.RESEND_API_KEY
-    if (resendKey) {
-      const emailBody = `
+    if (!resendKey) {
+      console.error('RESEND_API_KEY no configurada — solicitud de contacto perdida:', { name, email, projectType })
+      return NextResponse.json(
+        { error: 'El formulario no está activado todavía. Escríbenos directamente a hello@bklnsoftware.com.' },
+        { status: 503 }
+      )
+    }
+
+    const emailBody = `
 Nueva solicitud de proyecto — BKLN Software & Systems
 
 Nombre: ${name}
@@ -23,21 +29,29 @@ Presupuesto: ${budget}
 
 Descripción:
 ${description}
-      `.trim()
+    `.trim()
 
-      await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${resendKey}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
-          to: 'hello@bklnsoftware.com',
-          subject: `Nueva solicitud de ${name} — ${projectType}`,
-          text: emailBody,
-        }),
-      })
+    const resendRes = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${resendKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
+        to: 'hello@bklnsoftware.com',
+        subject: `Nueva solicitud de ${name} — ${projectType}`,
+        text: emailBody,
+      }),
+    })
+
+    if (!resendRes.ok) {
+      const errBody = await resendRes.text()
+      console.error('Resend rechazó el envío:', resendRes.status, errBody)
+      return NextResponse.json(
+        { error: 'No pudimos enviar tu solicitud. Escríbenos directamente a hello@bklnsoftware.com.' },
+        { status: 502 }
+      )
     }
 
     return NextResponse.json({ success: true })
