@@ -13,6 +13,7 @@ const categoryLabels: Record<Course['category'], string> = {
   'ia-ml': 'IA & ML',
   android: 'Android',
   marketplaces: 'Marketplaces',
+  cloud: 'Cloud',
 }
 
 const levelLabels: Record<Course['level'], string> = {

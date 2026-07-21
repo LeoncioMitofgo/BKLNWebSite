@@ -44,7 +44,7 @@ export interface Course {
   title: string
   description: string
   longDescription: string
-  category: 'python' | 'web' | 'databases' | 'ia-ml' | 'android' | 'marketplaces'
+  category: 'python' | 'web' | 'databases' | 'ia-ml' | 'android' | 'marketplaces' | 'cloud'
   price: number
   thumbnail: string
   duration: string

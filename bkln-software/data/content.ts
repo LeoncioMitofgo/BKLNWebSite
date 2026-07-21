@@ -648,6 +648,83 @@ export const courses: Course[] = [
     modules: [],
     includes: [],
   },
+  {
+    id: '6',
+    slug: 'az-900-azure-fundamentals',
+    title: 'AZ-900: Microsoft Azure Fundamentals',
+    description: 'Prepárate para la certificación AZ-900 con un libro interactivo: conceptos de la nube, arquitectura y servicios de Azure, gestión y gobernanza — con quizzes y un simulacro de examen completo.',
+    longDescription:
+      'El AZ-900 (Microsoft Certified: Azure Fundamentals) es la certificación de entrada al ecosistema Azure. No requiere experiencia previa ni conocimientos técnicos profundos: mide que comprendas los conceptos de la nube, los servicios principales de Azure y cómo se gestiona y gobierna la plataforma.\n\nEl libro se organiza en tres partes: Parte I cubre los conceptos fundamentales de la nube (qué es, modelos de servicio IaaS/PaaS/SaaS, modelos de despliegue, beneficios y el modelo de responsabilidad compartida); Parte II entra en la arquitectura y los servicios core de Azure (regiones y zonas, jerarquía de recursos, cómputo, redes, almacenamiento e identidad con Entra ID); Parte III se centra en gestión y gobernanza (costes, cumplimiento, herramientas de gestión y supervisión).\n\nLos 15 módulos están disponibles ahora mismo, sin registro ni pago. Cada uno incluye quizzes interactivos que revelan la respuesta correcta con su explicación, y tu progreso se guarda automáticamente en el navegador. El libro cierra con un simulacro de examen completo, un glosario de términos y consejos para el día del examen.',
+    category: 'cloud',
+    price: 0,
+    thumbnail: '/course-az900.webp',
+    duration: '15 módulos + simulacro',
+    level: 'principiante',
+    rating: 0,
+    students: 0,
+    status: 'available',
+    bookUrl: '/libro-az900/index.html',
+    instructor: {
+      name: 'BKLN Software',
+      bio: 'Desarrolladores con experiencia real en proyectos comerciales: apps Android, marketplaces, APIs, automatización e IA. Enseñamos lo que usamos.',
+      avatar: '',
+    },
+    modules: [
+      {
+        id: 'p1',
+        title: 'Parte I · Conceptos de la nube',
+        duration: '≈ 1h 42min de lectura',
+        lessons: [
+          { id: 'p1-m1', title: '¿Qué es la nube?', duration: '18 min', isFree: true },
+          { id: 'p1-m2', title: 'IaaS, PaaS y SaaS', duration: '22 min', isFree: true },
+          { id: 'p1-m3', title: 'Modelos de despliegue', duration: '20 min', isFree: true },
+          { id: 'p1-m4', title: 'Beneficios de la nube', duration: '22 min', isFree: true },
+          { id: 'p1-m5', title: 'CapEx, OpEx y responsabilidad', duration: '20 min', isFree: true },
+        ],
+      },
+      {
+        id: 'p2',
+        title: 'Parte II · Arquitectura y servicios',
+        duration: '≈ 2h 20min de lectura',
+        lessons: [
+          { id: 'p2-m1', title: 'Regiones y zonas', duration: '22 min', isFree: true },
+          { id: 'p2-m2', title: 'Jerarquía de recursos', duration: '20 min', isFree: true },
+          { id: 'p2-m3', title: 'Servicios de cómputo', duration: '26 min', isFree: true },
+          { id: 'p2-m4', title: 'Redes', duration: '24 min', isFree: true },
+          { id: 'p2-m5', title: 'Almacenamiento', duration: '24 min', isFree: true },
+          { id: 'p2-m6', title: 'Identidad (Entra ID)', duration: '24 min', isFree: true },
+        ],
+      },
+      {
+        id: 'p3',
+        title: 'Parte III · Gestión y gobernanza',
+        duration: '≈ 1h 24min de lectura',
+        lessons: [
+          { id: 'p3-m1', title: 'Gestión de costes', duration: '22 min', isFree: true },
+          { id: 'p3-m2', title: 'Gobernanza y cumplimiento', duration: '22 min', isFree: true },
+          { id: 'p3-m3', title: 'Herramientas de gestión', duration: '20 min', isFree: true },
+          { id: 'p3-m4', title: 'Supervisión', duration: '20 min', isFree: true },
+        ],
+      },
+      {
+        id: 'extra',
+        title: 'Evaluación y recursos',
+        duration: '≈ 38min',
+        lessons: [
+          { id: 'extra-m1', title: 'Simulacro de examen', duration: '30 min', isFree: true },
+          { id: 'extra-m2', title: 'Glosario de términos', duration: '—', isFree: true },
+          { id: 'extra-m3', title: 'Consejos para el día del examen', duration: '8 min', isFree: true },
+        ],
+      },
+    ],
+    includes: [
+      '15 módulos organizados en 3 partes + simulacro de examen final',
+      'Quizzes interactivos con explicación de cada respuesta',
+      'Glosario de términos y consejos para el día del examen',
+      'Seguimiento de progreso guardado automáticamente en el navegador',
+      'Sin registro, sin pago — acceso de por vida',
+    ],
+  },
 ]
 
 export const projects: Project[] = [
