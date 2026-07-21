@@ -9,6 +9,7 @@ import { CourseCard } from '@/components/sections/CourseCard'
 import { ProductCard } from '@/components/sections/ProductCard'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { TechStack } from '@/components/sections/TechStack'
+import { AnnouncementBanner } from '@/components/sections/AnnouncementBanner'
 import { services, courses, products, blogPosts } from '@/data/content'
 
 const stats = [
@@ -75,9 +76,12 @@ export default function HomePage() {
         <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-green/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto text-center w-full">
-          <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 text-accent-green text-sm px-4 py-2 rounded-full mb-8">
-            <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
-            Malabo, Guinea Ecuatorial · Disponibles para nuevos proyectos
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+            <AnnouncementBanner />
+            <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 text-accent-green text-sm px-4 py-2 rounded-full">
+              <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
+              Malabo, Guinea Ecuatorial · Disponibles para nuevos proyectos
+            </div>
           </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary mb-6 leading-tight">
             Code.{' '}
