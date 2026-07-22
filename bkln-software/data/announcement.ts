@@ -13,7 +13,7 @@ export interface Announcement {
  */
 export const announcement: Announcement | null = {
   label: 'Nuevo curso gratis',
-  title: 'AZ-1900 · Microsoft Azure Fundamentals ya disponible',
+  title: 'AZ-900 · Microsoft Azure Fundamentals ya disponible',
   href: '/cursos/az-900-azure-fundamentals',
   expiresAt: '2026-09-30',
 }
