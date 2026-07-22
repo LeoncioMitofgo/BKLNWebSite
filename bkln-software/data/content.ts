@@ -881,6 +881,31 @@ export const projects: Project[] = [
       'CSS @media print con clases .no-print para generar documentos limpios desde cualquier vista',
     ],
   },
+  {
+    id: '11',
+    slug: 'bkln-pos',
+    title: 'BKLN POS',
+    description: 'Sistema de punto de venta para datáfonos Android — catálogo, cobro con tarjeta, cierre de caja y panel de gestión remoto, con sincronización offline-first. Desarrollado para un cliente del sector retail.',
+    longDescription:
+      'Una cadena de tiendas necesitaba modernizar su punto de venta: dejar atrás la caja registradora tradicional y darle a cada mostrador un datáfono real, con cobro por tarjeta integrado y todo el negocio conectado en tiempo real. BKLN POS es el sistema completo que construimos para eso — la app del datáfono y un panel de gestión independiente para el dueño del negocio.\n\nEn el mostrador, el operador inicia sesión con su PIN, recorre el catálogo, arma el carrito y cobra con tarjeta a través del lector físico integrado en el propio terminal Android. Al cerrar el turno, el sistema genera el cierre de caja con el desglose de ventas e ingresos del día, listo para cuadrar contabilidad.\n\nEl panel de gestión, una segunda app independiente, le da al dueño visibilidad total sin tener que estar en la tienda: ventas en tiempo real por terminal y por operador, gestión remota del catálogo de productos, y control de qué datáfono está activo en cada mostrador.\n\nAmbas apps funcionan offline-first — si se cae la conexión a mitad de una venta, la operación se guarda localmente y se sincroniza sola en cuanto vuelve la red, sin perder ni duplicar ventas. La lógica de negocio crítica (asignación de terminal, cierre de caja, validación de operador) corre también en el servidor, para que ninguna de las dos apps sea la única fuente de verdad.\n\nStack: Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
+    category: 'android',
+    technologies: ['Kotlin', 'Jetpack Compose', 'Hilt', 'Room', 'Retrofit', 'WorkManager', 'Supabase', 'PostgreSQL'],
+    image: '/bklnpos-icon.webp',
+    gallery: ['/bklnpos-icon.webp'],
+    year: 2026,
+    challenges: [
+      'Cobro con tarjeta integrado en el datáfono, con manejo de errores de red, timeout NFC y "sin papel" en la impresora de recibos',
+      'Evitar que dos mostradores reclamen el mismo terminal o dupliquen una venta si se pierde la conexión a mitad de una operación',
+      'Cierre de caja que cuadre siempre, incluso si el dispositivo se queda sin red justo al cerrar el turno',
+      'Una segunda app de gestión que refleje el negocio en tiempo real sin ralentizar el datáfono en el mostrador',
+    ],
+    solutions: [
+      'Integración directa con el SDK del lector de tarjetas del terminal, con reintentos y feedback de audio/vibración distinto por resultado (aprobado, rechazado, sin papel, timeout)',
+      'Cola local con WorkManager que sincroniza en segundo plano, con la asignación de terminal resuelta de forma atómica en el backend',
+      'Cierre de caja con validación server-side — el estado remoto siempre manda, el dispositivo nunca "asume" que un cierre se aplicó',
+      'Panel de gestión sobre el mismo backend con su propio ciclo de sincronización — el dueño ve el negocio en tiempo real sin tocar el flujo del mostrador',
+    ],
+  },
 ]
 
 export const blogPosts: BlogPost[] = [
