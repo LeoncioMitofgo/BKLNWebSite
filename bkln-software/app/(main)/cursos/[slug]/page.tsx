@@ -124,7 +124,7 @@ export default async function CoursePage({ params }: PageProps) {
         {course.instructor.bio && (
           <div className="flex items-start gap-4 bg-bg-surface border border-white/5 rounded-lg p-5 mb-8">
             <div className="w-14 h-14 bg-brand-green/20 rounded-full flex items-center justify-center shrink-0">
-              <span className="text-accent-green text-xl font-bold">B</span>
+              <Image src="/brand-symbol.png" alt="BKLN Software & Systems" width={56} height={56} className="w-full h-full object-contain p-2" />
             </div>
             <div>
               <p className="text-text-primary font-semibold text-sm mb-1">{course.instructor.name}</p>

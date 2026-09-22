@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { UserPlus } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
@@ -23,8 +24,8 @@ export default function RegistroPage() {
     <div className="w-full max-w-md">
       <div className="bg-bg-surface border border-white/5 rounded-lg p-8">
         <div className="text-center mb-8">
-          <div className="w-12 h-12 bg-brand-green/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-            <span className="text-accent-green font-bold text-lg">B</span>
+          <div className="w-14 h-14 flex items-center justify-center mx-auto mb-4">
+            <Image src="/brand-symbol.png" alt="BKLN Software & Systems" width={56} height={56} className="w-full h-full object-contain" />
           </div>
           <h1 className="text-2xl font-bold text-text-primary">Crear cuenta</h1>
           <p className="text-text-secondary text-sm mt-1">Accede a cursos y descarga productos</p>

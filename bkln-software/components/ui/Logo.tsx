@@ -1,4 +1,5 @@
 ﻿import Link from 'next/link'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
 interface LogoProps {
@@ -9,15 +10,14 @@ interface LogoProps {
 export function Logo({ className, size = 'md' }: LogoProps) {
   return (
     <Link href="/" className={cn('inline-flex items-center shrink-0', className)}>
-      <span className={cn(
-        'font-bold tracking-tight',
-        size === 'sm' && 'text-base',
-        size === 'md' && 'text-xl',
-        size === 'lg' && 'text-3xl',
-      )}>
-        <span className="text-white">BKLN</span>
-        <span className="text-accent-green"> Software & Systems</span>
-      </span>
+      <Image
+        src="/brand-logo.png"
+        alt="BKLN Software & Systems"
+        width={size === 'sm' ? 150 : size === 'md' ? 190 : 260}
+        height={size === 'sm' ? 48 : size === 'md' ? 61 : 83}
+        className="h-auto w-auto max-w-full object-contain"
+        priority={size === 'sm'}
+      />
     </Link>
   )
 }

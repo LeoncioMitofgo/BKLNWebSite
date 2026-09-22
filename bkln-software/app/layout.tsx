@@ -26,8 +26,8 @@ export const metadata: Metadata = {
     template: '%s | BKLN Software & Systems',
   },
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/brand-icon.png',
+    apple: '/brand-icon.png',
   },
   description: homeDescription,
   keywords: [
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
     siteName: 'BKLN Software & Systems',
     title: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
     description: homeDescription,
-    images: [{ url: '/logo8.png', width: 512, height: 512, alt: 'BKLN Software & Systems' }],
+    images: [{ url: '/brand-logo.png', alt: 'BKLN Software & Systems' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
     description: homeDescription,
-    images: ['/logo8.png'],
+    images: ['/brand-logo.png'],
   },
   robots: {
     index: true,
@@ -64,8 +64,8 @@ const structuredData = {
   '@type': 'LocalBusiness',
   name: 'BKLN Software & Systems',
   url: siteUrl,
-  logo: `${siteUrl}/logo8.png`,
-  image: `${siteUrl}/logo8.png`,
+  logo: `${siteUrl}/brand-logo.png`,
+  image: `${siteUrl}/brand-logo.png`,
   description: homeDescription,
   email: 'hello@bklnsoftware.com',
   telephone: '+240222798086',
