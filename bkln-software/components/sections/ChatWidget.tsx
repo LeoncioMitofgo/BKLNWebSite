@@ -68,7 +68,7 @@ export default function ChatWidget() {
         setLoading(true)
 
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_CHAT_API_URL}/chat`, {
+            const response = await fetch('/api/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -152,8 +152,8 @@ export default function ChatWidget() {
                                 >
                                     <div
                                         className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${message.sender === 'user'
-                                                ? 'bg-green-600 text-white'
-                                                : 'bg-slate-800 text-slate-100'
+                                            ? 'bg-green-600 text-white'
+                                            : 'bg-slate-800 text-slate-100'
                                             }`}
                                     >
                                         <p className="whitespace-pre-wrap">{message.text}</p>
