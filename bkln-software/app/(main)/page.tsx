@@ -2,7 +2,6 @@
 import Image from 'next/image'
 import { ArrowRight, Globe, CheckCircle, MessageSquare, Rocket, Search, Code2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
-import { TypewriterText } from '@/components/ui/TypewriterText'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/sections/ServiceCard'
 import { CourseCard } from '@/components/sections/CourseCard'
@@ -14,7 +13,7 @@ import { services, courses, products, blogPosts } from '@/data/content'
 
 const stats = [
   { value: 'Malabo', label: 'Sede central' },
-  { value: '10+', label: 'Proyectos entregados' },
+  { value: '35+', label: 'Proyectos entregados' },
   { value: 'ES · EN · FR', label: 'Idiomas' },
   { value: '24/7', label: 'Soporte' },
 ]
@@ -23,40 +22,51 @@ const processSteps = [
   {
     icon: <Search size={22} />,
     step: '01',
-    title: 'Consulta',
-    description: 'Analizamos tus necesidades y definimos el alcance del proyecto juntos.',
+    title: 'Entendemos el reto',
+    description: 'Aterrizamos tu idea, tus objetivos y las restricciones reales del negocio antes de escribir código.',
   },
   {
     icon: <Code2 size={22} />,
     step: '02',
-    title: 'Desarrollo',
-    description: 'Construimos tu solución con actualizaciones periódicas y feedback continuo.',
+    title: 'Diseñamos la solución',
+    description: 'Definimos alcance, arquitectura, prioridades y un plan de trabajo que puedas entender y validar.',
   },
   {
     icon: <CheckCircle size={22} />,
     step: '03',
-    title: 'Revisión',
-    description: 'Pruebas exhaustivas y ajustes hasta que el producto esté perfecto.',
+    title: 'Construimos y validamos',
+    description: 'Desarrollamos por etapas, enseñamos avances y probamos cada flujo antes de darlo por terminado.',
   },
   {
     icon: <Rocket size={22} />,
     step: '04',
-    title: 'Entrega',
-    description: 'Deploy, documentación y soporte post-lanzamiento incluidos.',
+    title: 'Lanzamos contigo',
+    description: 'Entregamos el producto, la documentación y el soporte necesario para que puedas operarlo con confianza.',
   },
 ]
 
 const whyUs = [
-  { title: 'Contexto local', description: 'Conocemos el mercado de Guinea Ecuatorial: XAF, infraestructura, idiomas. No hay que explicarnos nada.' },
-  { title: 'Full-stack', description: 'Android, Web, Desktop, Python, IA — un solo equipo para todo, sin subcontratar.' },
-  { title: 'Estándares internacionales', description: 'El código que entregamos aquí es el mismo que entregaríamos en cualquier otro país. Un solo nivel.' },
-  { title: 'El código es tuyo', description: 'Sin dependencias innecesarias, sin vendor lock-in. Documentación clara desde el primer día.' },
+  { title: 'Entendemos el contexto', description: 'Diseñamos para conectividad variable, moneda local, dispositivos reales y las necesidades concretas de cada mercado.' },
+  { title: 'Construimos de principio a fin', description: 'Producto, frontend, backend, móvil, datos e infraestructura bajo una misma dirección técnica.' },
+  { title: 'Experiencia demostrable', description: 'Más de 35 proyectos entre plataformas, apps, sistemas de gestión, automatización e inteligencia artificial.' },
+  { title: 'Tu producto, tu código', description: 'Entregamos soluciones documentadas y mantenibles, sin encerrarte en dependencias innecesarias ni decisiones opacas.' },
 ]
 
 export default function HomePage() {
   const featuredServices = services.filter((s) => s.featured)
   const latestPosts = blogPosts.slice(0, 3)
-  const featuredProducts = products.slice(0, 3)
+  const featuredProductSlugs = ['brookai', 'zentry', 'gestescolar']
+  const featuredProducts = featuredProductSlugs
+    .map((slug) => products.find((product) => product.slug === slug))
+    .filter((product): product is (typeof products)[number] => Boolean(product))
+  const featuredCourseSlugs = [
+    'python-desde-cero',
+    'ia-machine-learning-python',
+    'flutter-supabase-aplicaciones-reales',
+  ]
+  const featuredCourses = featuredCourseSlugs
+    .map((slug) => courses.find((course) => course.slug === slug))
+    .filter((course): course is (typeof courses)[number] => Boolean(course))
 
   return (
     <div className="min-h-screen">
@@ -67,21 +77,17 @@ export default function HomePage() {
             src="/hero-bg.jpg"
             alt="Hero background"
             fill
-            className="object-cover opacity-15"
+            className="object-cover opacity-20"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/60 via-bg-dark/80 to-bg-dark" />
+          <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/50 via-bg-dark/75 to-bg-dark" />
         </div>
         <div className="absolute inset-0 opacity-10 hero-grid-overlay" />
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand-green/15 rounded-full blur-3xl pointer-events-none" />
 
         <div className="relative max-w-7xl mx-auto text-center w-full">
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+          <div className="flex flex-col items-center gap-3 mb-8">
             <AnnouncementBanner />
-            <div className="inline-flex items-center gap-2 bg-brand-green/10 border border-brand-green/20 text-accent-green text-sm px-4 py-2 rounded-full">
-              <span className="w-2 h-2 bg-success rounded-full animate-pulse" />
-              Malabo, Guinea Ecuatorial · Disponibles para nuevos proyectos
-            </div>
+            <p className="text-text-secondary text-sm">Malabo, Guinea Ecuatorial · Disponibles para nuevos proyectos</p>
           </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary mb-6 leading-tight">
             Code.{' '}
@@ -89,22 +95,22 @@ export default function HomePage() {
             <br />
             Educate.
           </h1>
-          <p className="text-text-secondary text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-mono">
-            <TypewriterText
-              text="Software a medida desde Guinea Ecuatorial — para negocios de aquí y para el mundo. Apps Android, desarrollo web, automatización e IA."
-              delay={600}
-              tag="p"
-            />
+          <p className="text-text-primary text-xl sm:text-2xl max-w-3xl mx-auto mb-4 leading-relaxed font-semibold">
+            Software a medida para convertir problemas reales en productos digitales.
+          </p>
+          <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+            Desde Guinea Ecuatorial construimos apps, plataformas web, automatizaciones e IA para negocios
+            de aquí y de cualquier parte del mundo.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href="/servicios">
+            <Link href="/contacto">
               <Button size="lg">
-                Ver servicios <ArrowRight size={18} />
+                Solicitar propuesta <ArrowRight size={18} />
               </Button>
             </Link>
             <Link href="/portfolio">
               <Button variant="outline" size="lg">
-                Ver portfolio
+                Ver proyectos
               </Button>
             </Link>
           </div>
@@ -134,16 +140,18 @@ export default function HomePage() {
                 Quiénes somos
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-6 leading-tight">
-                Un estudio de software con sede en Malabo
+                Tecnología útil, construida con criterio
               </h2>
               <p className="text-text-secondary leading-relaxed mb-4">
-                BKLN Software & Systems es un estudio de software fundado en Malabo. Hacemos aplicaciones,
-                plataformas web, automatización e integraciones con IA — para clientes de aquí y de fuera.
-                Sin rodeos.
+                BKLN Software & Systems es un estudio independiente con sede en Malabo. Ayudamos a negocios,
+                equipos y emprendedores a convertir una idea o un proceso difícil en software que funciona de
+                verdad: aplicaciones móviles, plataformas web, sistemas internos, automatización e IA.
               </p>
               <p className="text-text-secondary leading-relaxed mb-8">
-                Además formamos a la próxima generación de desarrolladores con cursos prácticos y recursos
-                técnicos en español.
+                Hemos construido más de 35 proyectos y trabajamos con una convicción sencilla: la tecnología
+                debe adaptarse al problema, no al revés. Por eso combinamos visión de producto, ejecución
+                técnica y comunicación clara, desde el primer alcance hasta el soporte posterior al lanzamiento.
+                También compartimos lo que aprendemos mediante cursos y recursos prácticos en español.
               </p>
               <Link href="/portfolio">
                 <Button variant="outline">
@@ -174,7 +182,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Servicios"
-            subtitle="Soluciones de software a medida para cada necesidad — desde apps móviles hasta sistemas con inteligencia artificial."
+            subtitle="Convertimos necesidades concretas en productos digitales útiles: apps y plataformas, desarrollo web e inteligencia artificial aplicada."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredServices.map((service) => (
@@ -196,7 +204,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Cómo trabajamos"
-            subtitle="Un proceso simple y transparente, de la idea al producto terminado."
+            subtitle="Claridad en cada etapa: sabes qué estamos construyendo, por qué y cuál es el siguiente paso."
             centered
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -221,7 +229,7 @@ export default function HomePage() {
           <div className="mt-10 text-center">
             <Link href="/contacto">
               <Button size="lg">
-                Iniciar proyecto <ArrowRight size={18} />
+                Hablemos de tu proyecto <ArrowRight size={18} />
               </Button>
             </Link>
           </div>
@@ -233,11 +241,11 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Productos digitales"
-            subtitle="Apps, herramientas y templates listos para usar — algunos gratis, todos de calidad."
+            subtitle="Productos construidos para resolver problemas concretos, listos para usar, adaptar o llevar más lejos."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} showPrice={false} />
             ))}
           </div>
           <div className="mt-8 text-center">
@@ -257,20 +265,20 @@ export default function HomePage() {
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-brand-green/20 text-accent-green text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
                 <Globe size={12} />
-                Marketplace propio
+                Producto propio · Próximo lanzamiento
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">
                 BKLN Marketplace
               </h2>
               <p className="text-text-secondary mb-6 max-w-lg leading-relaxed">
-                Plataforma C2C para África Central con mensajería en tiempo real, sistema de suscripciones,
-                autenticación multi-método y panel de administración — 18 páginas construidas desde cero
-                en JavaScript puro, sin frameworks.
+                Marketplace local para comprar, vender y conectar sin complicaciones. Incluye publicaciones
+                con fotos, categorías, chat directo, perfiles de vendedores y planes de visibilidad para
+                quienes quieren hacer crecer su negocio. La plataforma está lista para su lanzamiento oficial.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="https://bklnmarketplace.com" target="_blank" rel="noopener noreferrer">
                   <Button>
-                    Visitar marketplace <ArrowRight size={16} />
+                    Explorar plataforma <ArrowRight size={16} />
                   </Button>
                 </a>
                 <Link href="/portfolio/bkln-marketplace">
@@ -308,23 +316,23 @@ export default function HomePage() {
             <div className="flex-1">
               <div className="inline-flex items-center gap-2 bg-brand-blue/20 text-accent-blue text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
                 <Globe size={12} />
-                Portal de empleo · Guinea Ecuatorial
+                Producto propio · Próximo lanzamiento
               </div>
               <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">
                 MiEmpleo GE
               </h2>
               <p className="text-text-secondary mb-6 max-w-lg leading-relaxed">
-                La plataforma de empleo digital para Guinea Ecuatorial — vacantes, perfiles profesionales,
-                mensajería en tiempo real, panel de empresa y suscripciones premium. Disponible como
-                solución white-label para otros mercados.
+                Plataforma profesional para encontrar empleo, publicar vacantes y conectar talento en Guinea
+                Ecuatorial. Reúne ofertas por sectores, perfiles profesionales, oportunidades formales e
+                informales y espacios diferenciados para empresas y candidatos. Lista para su lanzamiento oficial.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a href="https://miempleo.vercel.app" target="_blank" rel="noopener noreferrer">
                   <Button>
-                    Visitar plataforma <ArrowRight size={16} />
+                    Explorar plataforma <ArrowRight size={16} />
                   </Button>
                 </a>
-                <Link href="/portfolio/miempleo">
+                <Link href="/portfolio/marketplace-empleo-servicios">
                   <Button variant="outline">Ver caso de estudio</Button>
                 </Link>
               </div>
@@ -338,10 +346,10 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Cursos"
-            subtitle="Aprende las tecnologías más demandadas con cursos prácticos en español."
+            subtitle="Aprende con materiales prácticos en español, creados desde los mismos proyectos que construimos para clientes reales."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {courses.slice(0, 3).map((course) => (
+            {featuredCourses.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}
           </div>
@@ -360,7 +368,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Stack tecnológico"
-            subtitle="Trabajamos con las herramientas más modernas y demandadas del mercado."
+            subtitle="Elegimos la tecnología que mejor encaja con tu producto: rendimiento, coste, mantenimiento y capacidad de crecer sin complicaciones."
             centered
           />
           <TechStack />
@@ -372,7 +380,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Blog técnico"
-            subtitle="Artículos, guías y tutoriales escritos por el equipo de BKLN."
+            subtitle="Decisiones, aprendizajes y soluciones que nacen de construir software real: desde automatización hasta datos, seguridad y productos digitales."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {latestPosts.map((post) => (
@@ -382,7 +390,7 @@ export default function HomePage() {
           <div className="mt-8 text-center">
             <Link href="/blog">
               <Button variant="outline">
-                Ver todos los artículos <ArrowRight size={16} />
+                Explorar el blog técnico <ArrowRight size={16} />
               </Button>
             </Link>
           </div>
@@ -396,22 +404,22 @@ export default function HomePage() {
             <MessageSquare size={24} className="text-accent-green" />
           </div>
           <h2 className="text-3xl font-bold text-text-primary mb-4">
-            ¿Tienes un proyecto en mente?
+            Convierte una idea en algo que funcione
           </h2>
           <p className="text-text-secondary text-lg mb-8 leading-relaxed">
-            Ya seas una empresa en Malabo, una PYME en Bata o un proyecto desde cualquier parte del
-            mundo — si tienes un problema real, tenemos las herramientas para resolverlo. Trabajamos
-            en español, inglés y francés.
+            Cuéntanos qué quieres construir, qué proceso necesitas mejorar o dónde se está atascando
+            tu negocio. Analizamos el reto, proponemos el siguiente paso y te damos una orientación clara
+            sobre alcance, tecnología y presupuesto. Trabajamos en español, inglés y francés.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contacto">
               <Button size="lg">
-                Iniciar proyecto <ArrowRight size={18} />
+                Solicitar propuesta <ArrowRight size={18} />
               </Button>
             </Link>
             <Link href="/portfolio">
               <Button variant="outline" size="lg">
-                Ver portfolio
+                Ver proyectos
               </Button>
             </Link>
           </div>

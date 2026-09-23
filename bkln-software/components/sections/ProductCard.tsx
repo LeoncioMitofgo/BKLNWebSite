@@ -26,9 +26,10 @@ const categoryImages: Record<Product['category'], string> = {
 
 interface ProductCardProps {
   product: Product
+  showPrice?: boolean
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, showPrice = true }: ProductCardProps) {
   const imageUrl = product.image?.startsWith('http')
     ? product.image
     : (product.image || categoryImages[product.category])
@@ -70,13 +71,19 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.downloads.toLocaleString()}
           </span>
         </div>
-        <div className="flex items-center justify-between">
-          <span className="text-text-primary font-bold text-lg">
-            {product.priceOnRequest ? 'Bajo pedido' : formatPrice(product.price)}
-          </span>
+        <div className="flex items-center justify-between gap-3">
+          {showPrice && (
+            <span className="text-text-primary font-bold text-lg">
+              {product.priceOnRequest ? 'Bajo pedido' : formatPrice(product.price)}
+            </span>
+          )}
           <Link href={`/productos/${product.slug}`}>
-            <Button size="sm" variant={product.isFree ? 'outline' : 'primary'}>
-              {product.priceOnRequest ? 'Ver detalle' : product.isFree ? 'Descargar' : 'Comprar'}
+            <Button
+              size="sm"
+              variant={product.isFree ? 'outline' : 'primary'}
+              className={!showPrice ? 'ml-auto' : undefined}
+            >
+              {!showPrice ? 'Ver producto' : product.priceOnRequest ? 'Ver detalle' : product.isFree ? 'Descargar' : 'Comprar'}
             </Button>
           </Link>
         </div>

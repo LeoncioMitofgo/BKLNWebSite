@@ -36,19 +36,19 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Logo size="sm" />
+          <Logo size="sm" className="mt-4 -ml-4 origin-left scale-[0.8]" />
 
           {/* Nav links desktop */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'px-3 py-2 rounded-md text-sm font-medium transition-colors',
+                  'relative px-0.5 py-2 text-sm font-semibold tracking-wide transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent-green after:transition-all after:duration-200',
                   pathname === link.href
-                    ? 'text-accent-green bg-brand-green/10'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
+                    ? 'text-white after:w-full'
+                    : 'text-text-primary/75 after:w-0 hover:text-white hover:after:w-full'
                 )}
               >
                 {link.label}
@@ -59,7 +59,7 @@ export function Navbar() {
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <Link href="/contacto" className="hidden md:block">
-              <Button size="sm">Contactar</Button>
+              <Button size="sm">Solicitar propuesta</Button>
             </Link>
             <button
               className="md:hidden p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-white/5"
@@ -81,10 +81,10 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={cn(
-                  'block px-3 py-2.5 rounded-md text-sm font-medium transition-colors',
+                  'block px-3 py-2.5 rounded-md text-sm font-semibold transition-colors',
                   pathname === link.href
                     ? 'text-accent-green bg-brand-green/10'
-                    : 'text-text-secondary hover:text-text-primary hover:bg-white/5'
+                    : 'text-text-primary/80 hover:text-white hover:bg-white/10'
                 )}
               >
                 {link.label}
@@ -93,7 +93,7 @@ export function Navbar() {
             <div className="pt-2">
               <Link href="/contacto" className="block">
                 <Button className="w-full" size="sm">
-                  Contactar
+                  Solicitar propuesta
                 </Button>
               </Link>
             </div>

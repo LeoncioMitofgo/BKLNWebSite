@@ -2,6 +2,13 @@
 import { Logo } from '@/components/ui/Logo'
 import { footerLinks } from '@/data/nav'
 
+const resourceLinks = [
+  { label: 'Cursos', href: '/cursos' },
+  { label: 'Blog técnico', href: '/blog' },
+  { label: 'Privacidad', href: '/privacidad' },
+  { label: 'Términos', href: '/terminos' },
+]
+
 const socialLinks = [
   {
     href: 'https://github.com/LeoncioMitofgo',
@@ -45,25 +52,26 @@ const socialLinks = [
 export function Footer() {
   return (
     <footer className="bg-bg-surface border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
           {/* Brand */}
           <div>
             <div className="mb-4">
               <Logo size="sm" />
             </div>
-            <p className="text-text-secondary text-sm leading-relaxed max-w-xs">
-              Code. Create. Educate. — Software & Systems para empresas e individuos en todo el mundo.
+            <p className="text-text-secondary text-sm leading-relaxed max-w-xs mb-5">
+              Construimos software útil para negocios, equipos y emprendedores desde Malabo para el mundo.
             </p>
+            <p className="text-accent-green text-xs font-medium">Code. Create. Educate.</p>
           </div>
 
-          {/* Links */}
+          {/* Navegación */}
           <div>
             <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              Navegación
+              Explorar
             </h3>
             <ul className="space-y-2">
-              {footerLinks.map((link) => (
+              {footerLinks.slice(0, -1).map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -76,13 +84,38 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Contact + Social */}
+          {/* Recursos */}
           <div>
             <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              Contacto
+              Recursos
             </h3>
-            <p className="text-text-secondary text-sm mb-2">hello@bklnsoftware.com</p>
-            <p className="text-text-secondary text-sm mb-6">Respuesta en 24h hábiles</p>
+            <ul className="space-y-2.5">
+              {resourceLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-text-secondary hover:text-accent-green transition-colors text-sm"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Contacto + redes */}
+          <div>
+            <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
+              Hablemos
+            </h3>
+            <p className="text-text-secondary text-sm leading-relaxed mb-1">Malabo, Guinea Ecuatorial</p>
+            <p className="text-text-secondary text-sm mb-4">Respuesta en 24h hábiles · ES / EN / FR</p>
+            <Link
+              href="/contacto"
+              className="inline-flex items-center text-accent-green hover:text-white text-sm font-semibold transition-colors mb-5"
+            >
+              Solicitar propuesta <span aria-hidden="true" className="ml-1">→</span>
+            </Link>
             <div className="flex gap-3">
               {socialLinks.map(({ svg, href, label }) => (
                 <a

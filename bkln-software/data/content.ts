@@ -81,7 +81,7 @@ export const services: Service[] = [
       'Soporte post-lanzamiento 30 días',
     ],
     timeline: '4 a 14 semanas según complejidad',
-    featured: true,
+    featured: false,
   },
   {
     id: '4',
@@ -161,7 +161,7 @@ export const services: Service[] = [
       'Soporte post-lanzamiento 30 días',
     ],
     timeline: '4 a 16 semanas según complejidad',
-    featured: false,
+    featured: true,
   },
   {
     id: '7',
