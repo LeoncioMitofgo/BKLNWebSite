@@ -28,8 +28,8 @@ export default function TerminosPage() {
               <strong className="text-text-primary">BKLN Software & Systems</strong> es una empresa
               de desarrollo de software con sede en Guinea Ecuatorial. Ofrecemos servicios de
               desarrollo a medida, productos de software y cursos online. Puedes contactarnos en{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
-                hello@bklnsoftware.com
+              <a href="mailto:hello@bklnsoftware.tech" className="text-accent-green hover:underline">
+                hello@bklnsoftware.tech
               </a>
               .
             </p>
@@ -151,8 +151,8 @@ export default function TerminosPage() {
             <h2 className="text-text-primary font-semibold text-lg">9. Contacto</h2>
             <p>
               Si tienes alguna duda sobre estos términos, escríbenos a{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
-                hello@bklnsoftware.com
+              <a href="mailto:hello@bklnsoftware.tech" className="text-accent-green hover:underline">
+                hello@bklnsoftware.tech
               </a>
               .
             </p>

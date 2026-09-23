@@ -49,7 +49,7 @@ function PrintCover() {
       </div>
 
       <div className="print-cover-footer">
-        <span>hello@bklnsoftware.com · bklnsoftware.tech</span>
+        <span>hello@bklnsoftware.tech · bklnsoftware.tech</span>
         <span>+240 222 798 086</span>
         <span>Malabo · Guinea Ecuatorial</span>
       </div>
@@ -80,8 +80,8 @@ function PrintNota() {
         Para la experiencia completa con código ejecutable, visita:
         <strong> bklnsoftware.tech/cursos</strong>
       </p>
-      <p style={{fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--ink-3)'}}>
-        // versión web: bklnsoftware.tech · contacto: hello@bklnsoftware.com · +240 222 798 086
+      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.82rem', color: 'var(--ink-3)' }}>
+        // versión web: bklnsoftware.tech · contacto: hello@bklnsoftware.tech · +240 222 798 086
       </p>
     </div>
   );
@@ -104,7 +104,7 @@ function PrintBookDivider({ roman, title, subtitle, chapters }) {
 }
 
 function PrintApp() {
-  const noop = () => {};
+  const noop = () => { };
   const books = TOC.filter(t => !t.kind);
   const [b1, b2, b3] = books;
 

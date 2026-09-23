@@ -28,8 +28,8 @@ export default function PrivacidadPage() {
               <strong className="text-text-primary">BKLN Software & Systems</strong> es el responsable
               del tratamiento de los datos que nos facilitas a través de este sitio web.
               Puedes contactarnos en{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
-                hello@bklnsoftware.com
+              <a href="mailto:hello@bklnsoftware.tech" className="text-accent-green hover:underline">
+                hello@bklnsoftware.tech
               </a>
               .
             </p>
@@ -98,8 +98,8 @@ export default function PrivacidadPage() {
             </ul>
             <p>
               Para ejercer cualquiera de estos derechos, escríbenos a{' '}
-              <a href="mailto:hello@bklnsoftware.com" className="text-accent-green hover:underline">
-                hello@bklnsoftware.com
+              <a href="mailto:hello@bklnsoftware.tech" className="text-accent-green hover:underline">
+                hello@bklnsoftware.tech
               </a>
               . Respondemos en menos de 72 horas hábiles.
             </p>

@@ -1,288 +1,436 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./support.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="./support.js"></script>
 </head>
+
 <body>
-<x-dc>
-<helmet>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-<style>
-  *{box-sizing:border-box}
-  body{margin:0;background:#e4e0d5;color:#1b1a17;font-family:'Newsreader',Georgia,serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-  a{color:#2f6db3;text-decoration:none}
-  a:hover{color:#22528a}
-  ::selection{background:#d5e2f0}
-  ::-webkit-scrollbar{width:10px;height:10px}
-  ::-webkit-scrollbar-thumb{background:#c4bda c;border-radius:0}
-</style>
-</helmet>
+  <x-dc>
+    <helmet>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+      <style>
+        * {
+          box-sizing: border-box
+        }
 
-<div style="--acc:{{accent}};--acc-soft:{{accSoft}};display:flex;min-height:100vh;background:#efece4;font-family:var(--bodyfont,'Newsreader',Georgia,serif)">
+        body {
+          margin: 0;
+          background: #e4e0d5;
+          color: #1b1a17;
+          font-family: 'Newsreader', Georgia, serif;
+          -webkit-font-smoothing: antialiased;
+          text-rendering: optimizeLegibility
+        }
 
-  <aside style="width:322px;flex:none;position:sticky;top:0;height:100vh;overflow:auto;background:#e7e3d8;border-right:1px solid #d3cdbd">
-    <div style="padding:26px 26px 20px;border-bottom:1px solid #d3cdbd">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8a8575;font-weight:500;line-height:1.6">// BKLN Software &amp; Systems</div>
-      <div style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;margin-top:8px;line-height:1.15">Azure Fundamentals</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--acc,#2f6db3);letter-spacing:.14em;margin-top:5px;font-weight:500">EXAMEN AZ-900</div>
-    </div>
-    <div style="padding:16px 26px 10px">
-      <div style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a8575;margin-bottom:7px">
-        <span>Progreso</span><span>{{progressLabel}}</span>
-      </div>
-      <div style="height:4px;background:#d3cdbd;overflow:hidden">
-        <div style="height:100%;width:{{progressPct}};background:var(--acc,#2f6db3);transition:width .3s"></div>
-      </div>
-    </div>
-    <nav style="padding:12px 14px 40px">
-      <sc-for list="{{navGroups}}" as="g" hint-placeholder-count="5">
-        <div style="margin-top:16px">
-          <button onClick="{{g.onClick}}" style="display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#7a7565;font-weight:500;padding:6px 12px">{{g.title}}</button>
-          <sc-for list="{{g.items}}" as="it" hint-placeholder-count="4">
-            <button onClick="{{it.onClick}}" style="{{it.style}}">
-              <span style="{{it.numStyle}}">{{it.num}}</span>
-              <span style="flex:1;min-width:0">{{it.title}}</span>
-              <sc-if value="{{it.visited}}"><span style="color:var(--acc,#2f6db3);font-size:11px;flex:none">●</span></sc-if>
-            </button>
-          </sc-for>
+        a {
+          color: #2f6db3;
+          text-decoration: none
+        }
+
+        a:hover {
+          color: #22528a
+        }
+
+        ::selection {
+          background: #d5e2f0
+        }
+
+        ::-webkit-scrollbar {
+          width: 10px;
+          height: 10px
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: #c4bda c;
+          border-radius: 0
+        }
+      </style>
+    </helmet>
+
+    <div
+      style="--acc:{{accent}};--acc-soft:{{accSoft}};display:flex;min-height:100vh;background:#efece4;font-family:var(--bodyfont,'Newsreader',Georgia,serif)">
+
+      <aside
+        style="width:322px;flex:none;position:sticky;top:0;height:100vh;overflow:auto;background:#e7e3d8;border-right:1px solid #d3cdbd">
+        <div style="padding:26px 26px 20px;border-bottom:1px solid #d3cdbd">
+          <div
+            style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#8a8575;font-weight:500;line-height:1.6">
+            // BKLN Software &amp; Systems</div>
+          <div
+            style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:19px;letter-spacing:-.01em;margin-top:8px;line-height:1.15">
+            Azure Fundamentals</div>
+          <div
+            style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--acc,#2f6db3);letter-spacing:.14em;margin-top:5px;font-weight:500">
+            EXAMEN AZ-900</div>
         </div>
-      </sc-for>
-    </nav>
-  </aside>
-
-  <main style="flex:1;min-width:0;background:#f4f1ea;display:flex;flex-direction:column">
-    <div style="position:sticky;top:0;z-index:5;background:rgba(244,241,234,.92);backdrop-filter:blur(6px);border-bottom:1px solid #e0dacb;padding:13px 40px;display:flex;justify-content:space-between;align-items:center">
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8575">{{crumbLabel}}</div>
-      <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--acc,#2f6db3)">{{crumbRight}}</div>
-    </div>
-
-    <sc-if value="{{examOn}}">
-      <div style="background:#17161f;color:#fff;padding:14px 40px;display:flex;gap:28px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em">
-        <span style="color:#b9b4c9">RESPONDIDAS <b style="color:#fff">{{examAnswered}}</b> / {{examTotal}}</span>
-        <span style="color:#b9b4c9">ACIERTOS <b style="color:#6fd08a">{{examCorrect}}</b></span>
-        <span style="color:#b9b4c9">PUNTUACIÓN <b style="color:var(--acc,#8ab6e6)">{{examPct}}</b></span>
-        <span style="{{examVerdictStyle}}">{{examVerdict}}</span>
-      </div>
-    </sc-if>
-
-    <div style="flex:1">
-      <sc-if value="{{isCover}}">
-        <div style="max-width:820px;margin:0 auto;padding:96px 48px 80px;min-height:calc(100vh - 52px);display:flex;flex-direction:column">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8a8575;line-height:1.9">// BKLN Software &amp; Systems · Serie de Certificación</div>
-          <div style="height:2px;background:#1b1a17;margin:22px 0 44px"></div>
-          <div style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,#2f6db3);font-weight:500">Microsoft Certified: Azure Fundamentals</div>
-          <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:74px;line-height:1;letter-spacing:-.03em;margin:20px 0 0">Azure<br>Fundamentals.</h1>
-          <p style="font-size:24px;line-height:1.4;color:#4a463b;margin:26px 0 0;max-width:620px">Guía completa de preparación para el examen <b style="color:#1b1a17">AZ-900</b> — desde cero hasta aprobado, con quizzes interactivos y un simulacro real.</p>
-
-          <div style="margin-top:56px;display:flex;flex-direction:column;gap:0;border-top:1px solid #d3cdbd">
-            <div style="display:flex;gap:22px;padding:20px 4px;border-bottom:1px solid #d3cdbd;align-items:baseline">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">I</span>
-              <span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px">Conceptos de la nube</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8575">5 módulos · 25–30%</span>
-            </div>
-            <div style="display:flex;gap:22px;padding:20px 4px;border-bottom:1px solid #d3cdbd;align-items:baseline">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">II</span>
-              <span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px">Arquitectura y servicios de Azure</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8575">6 módulos · 35–40%</span>
-            </div>
-            <div style="display:flex;gap:22px;padding:20px 4px;border-bottom:1px solid #d3cdbd;align-items:baseline">
-              <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">III</span>
-              <span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px">Gestión y gobernanza de Azure</span>
-              <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8575">4 módulos · 30–35%</span>
-            </div>
+        <div style="padding:16px 26px 10px">
+          <div
+            style="display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a8575;margin-bottom:7px">
+            <span>Progreso</span><span>{{progressLabel}}</span>
           </div>
-
-          <button onClick="{{startOnClick}}" style="margin-top:48px;align-self:flex-start;background:#1b1a17;color:#f4f1ea;border:0;padding:16px 30px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-weight:500" style-hover="background:var(--acc,#2f6db3)">Empezar a estudiar →</button>
-
-          <div style="margin-top:auto;padding-top:64px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8a8575;line-height:1.9">
-            hello@bklnsoftware.com · bklnsoftware.tech<br>+240 222 798 086 · Malabo · Guinea Ecuatorial · ed. 01 · 2026
+          <div style="height:4px;background:#d3cdbd;overflow:hidden">
+            <div style="height:100%;width:{{progressPct}};background:var(--acc,#2f6db3);transition:width .3s"></div>
           </div>
         </div>
-      </sc-if>
-
-      <sc-if value="{{isToc}}">
-        <div style="max-width:780px;margin:0 auto;padding:60px 48px 100px">
-          <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,#2f6db3)">// Contenido</div>
-          <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;letter-spacing:-.02em;margin:14px 0 40px">El plan completo.</h1>
-          <sc-for list="{{tocGroups}}" as="g" hint-placeholder-count="3">
-            <div style="margin-bottom:36px">
-              <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a8575;border-bottom:2px solid #1b1a17;padding-bottom:8px;margin-bottom:4px">{{g.title}}</div>
-              <sc-for list="{{g.items}}" as="it" hint-placeholder-count="5">
-                <button onClick="{{it.onClick}}" style="display:flex;gap:20px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #e0dacb;padding:15px 4px;cursor:pointer;font-family:inherit" style-hover="background:#efeade">
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">{{it.num}}</span>
-                  <span style="flex:1;font-size:18px;color:#2a2820">{{it.title}}</span>
-                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#a09a89">{{it.time}}</span>
+        <nav style="padding:12px 14px 40px">
+          <sc-for list="{{navGroups}}" as="g" hint-placeholder-count="5">
+            <div style="margin-top:16px">
+              <button onClick="{{g.onClick}}"
+                style="display:block;width:100%;text-align:left;background:none;border:0;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:#7a7565;font-weight:500;padding:6px 12px">{{g.title}}</button>
+              <sc-for list="{{g.items}}" as="it" hint-placeholder-count="4">
+                <button onClick="{{it.onClick}}" style="{{it.style}}">
+                  <span style="{{it.numStyle}}">{{it.num}}</span>
+                  <span style="flex:1;min-width:0">{{it.title}}</span>
+                  <sc-if value="{{it.visited}}"><span
+                      style="color:var(--acc,#2f6db3);font-size:11px;flex:none">●</span></sc-if>
                 </button>
               </sc-for>
             </div>
           </sc-for>
+        </nav>
+      </aside>
+
+      <main style="flex:1;min-width:0;background:#f4f1ea;display:flex;flex-direction:column">
+        <div
+          style="position:sticky;top:0;z-index:5;background:rgba(244,241,234,.92);backdrop-filter:blur(6px);border-bottom:1px solid #e0dacb;padding:13px 40px;display:flex;justify-content:space-between;align-items:center">
+          <div
+            style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8575">
+            {{crumbLabel}}</div>
+          <div
+            style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--acc,#2f6db3)">
+            {{crumbRight}}</div>
         </div>
-      </sc-if>
 
-      <sc-if value="{{hasBlocks}}">
-        <article style="max-width:760px;margin:0 auto;padding:52px 48px 40px">
-          <sc-for list="{{blocks}}" as="b" hint-placeholder-count="7">
+        <sc-if value="{{examOn}}">
+          <div
+            style="background:#17161f;color:#fff;padding:14px 40px;display:flex;gap:28px;align-items:center;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.06em">
+            <span style="color:#b9b4c9">RESPONDIDAS <b style="color:#fff">{{examAnswered}}</b> / {{examTotal}}</span>
+            <span style="color:#b9b4c9">ACIERTOS <b style="color:#6fd08a">{{examCorrect}}</b></span>
+            <span style="color:#b9b4c9">PUNTUACIÓN <b style="color:var(--acc,#8ab6e6)">{{examPct}}</b></span>
+            <span style="{{examVerdictStyle}}">{{examVerdict}}</span>
+          </div>
+        </sc-if>
 
-            <sc-if value="{{b.isParthead}}">
-              <div style="padding:70px 0 4px">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,#2f6db3)">{{b.label}}</div>
-                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1;letter-spacing:-.03em;margin:18px 0 0">{{b.title}}</h1>
-                <p style="font-size:21px;line-height:1.45;color:#4a463b;margin:20px 0 0;max-width:560px;font-style:italic">{{b.sub}}</p>
-                <div style="height:2px;background:#1b1a17;margin:34px 0 0"></div>
-              </div>
-            </sc-if>
+        <div style="flex:1">
+          <sc-if value="{{isCover}}">
+            <div
+              style="max-width:820px;margin:0 auto;padding:96px 48px 80px;min-height:calc(100vh - 52px);display:flex;flex-direction:column">
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#8a8575;line-height:1.9">
+                // BKLN Software &amp; Systems · Serie de Certificación</div>
+              <div style="height:2px;background:#1b1a17;margin:22px 0 44px"></div>
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,#2f6db3);font-weight:500">
+                Microsoft Certified: Azure Fundamentals</div>
+              <h1
+                style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:74px;line-height:1;letter-spacing:-.03em;margin:20px 0 0">
+                Azure<br>Fundamentals.</h1>
+              <p style="font-size:24px;line-height:1.4;color:#4a463b;margin:26px 0 0;max-width:620px">Guía completa de
+                preparación para el examen <b style="color:#1b1a17">AZ-900</b> — desde cero hasta aprobado, con quizzes
+                interactivos y un simulacro real.</p>
 
-            <sc-if value="{{b.isPartindex}}">
-              <div style="display:flex;flex-direction:column;margin-top:2px">
-                <sc-for list="{{b.items}}" as="it" hint-placeholder-count="5">
-                  <button onClick="{{it.onClick}}" style="display:flex;gap:20px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #e0dacb;padding:17px 4px;cursor:pointer;font-family:inherit" style-hover="background:#efeade">
-                    <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:36px;font-weight:500">{{it.num}}</span>
-                    <span style="flex:1;font-size:19px;color:#2a2820;font-family:'Space Grotesk',sans-serif;font-weight:500">{{it.title}}</span>
-                    <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#a09a89">{{it.time}}</span>
-                  </button>
-                </sc-for>
-              </div>
-            </sc-if>
-
-            <sc-if value="{{b.isHead}}">
-              <header style="margin:0 0 32px">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--acc,#2f6db3);margin-bottom:16px;font-weight:500">{{b.label}}</div>
-                <h1 style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;line-height:1.07;letter-spacing:-.025em;margin:0 0 14px">{{b.title}}</h1>
-                <p style="font-size:19px;line-height:1.5;color:#5c574c;margin:0;font-style:italic;font-weight:500">{{b.sub}}</p>
-              </header>
-            </sc-if>
-
-            <sc-if value="{{b.isLead}}"><p style="font-size:21px;line-height:1.55;color:#25231d;margin:0 0 26px;font-weight:500">{{b.text}}</p></sc-if>
-            <sc-if value="{{b.isP}}"><p style="font-size:17.5px;line-height:1.72;color:#33302a;margin:0 0 20px">{{b.text}}</p></sc-if>
-
-            <sc-if value="{{b.isMetaphor}}">
-              <div style="border-top:2px solid var(--acc,#2f6db3);border-bottom:1px solid #ddd7c8;padding:20px 0 22px;margin:32px 0">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc,#2f6db3);font-weight:500">✦ La metáfora clave</div>
-                <p style="font-size:19.5px;line-height:1.55;color:#2a2820;margin:13px 0 0;font-style:italic">{{b.text}}</p>
-              </div>
-            </sc-if>
-
-            <sc-if value="{{b.isTable}}">
-              <div style="margin:28px 0">
-                <div style="overflow:auto;border:1px solid #d3cdbd">
-                  <div style="display:grid;grid-template-columns:{{b.gridCols}};min-width:520px">
-                    <sc-for list="{{b.headers}}" as="h" hint-placeholder-count="3">
-                      <div style="background:#1b1a17;color:#f4f1ea;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:12px 15px;font-weight:500">{{h}}</div>
-                    </sc-for>
-                    <sc-for list="{{b.cells}}" as="c" hint-placeholder-count="9">
-                      <div style="{{c.style}}">{{c.text}}</div>
-                    </sc-for>
-                  </div>
+              <div style="margin-top:56px;display:flex;flex-direction:column;gap:0;border-top:1px solid #d3cdbd">
+                <div
+                  style="display:flex;gap:22px;padding:20px 4px;border-bottom:1px solid #d3cdbd;align-items:baseline">
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">I</span>
+                  <span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px">Conceptos
+                    de la nube</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8575">5 módulos ·
+                    25–30%</span>
                 </div>
-                <sc-if value="{{b.caption}}"><div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#a09a89;margin-top:8px;letter-spacing:.04em">{{b.caption}}</div></sc-if>
+                <div
+                  style="display:flex;gap:22px;padding:20px 4px;border-bottom:1px solid #d3cdbd;align-items:baseline">
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">II</span>
+                  <span
+                    style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px">Arquitectura y
+                    servicios de Azure</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8575">6 módulos ·
+                    35–40%</span>
+                </div>
+                <div
+                  style="display:flex;gap:22px;padding:20px 4px;border-bottom:1px solid #d3cdbd;align-items:baseline">
+                  <span
+                    style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">III</span>
+                  <span style="flex:1;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:20px">Gestión y
+                    gobernanza de Azure</span>
+                  <span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#8a8575">4 módulos ·
+                    30–35%</span>
+                </div>
               </div>
-            </sc-if>
 
-            <sc-if value="{{b.isQuiz}}">
-              <div style="border:1px solid #d3cdbd;background:#fbfaf6;padding:24px 26px 22px;margin:30px 0">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc,#2f6db3);font-weight:500">{{b.tag}}</div>
-                <p style="font-size:18px;font-weight:600;line-height:1.5;margin:13px 0 18px;color:#22201b;font-family:'Space Grotesk',sans-serif">{{b.q}}</p>
-                <div style="display:flex;flex-direction:column;gap:9px">
-                  <sc-for list="{{b.options}}" as="opt" hint-placeholder-count="4">
-                    <button onClick="{{opt.onClick}}" style="{{opt.style}}">
-                      <span style="{{opt.badgeStyle}}">{{opt.letter}}</span>
-                      <span style="flex:1">{{opt.text}}</span>
-                      <sc-if value="{{opt.showCheck}}"><span style="color:#2e8b57;font-weight:700;flex:none">✓</span></sc-if>
-                      <sc-if value="{{opt.showCross}}"><span style="color:#c0392b;font-weight:700;flex:none">✕</span></sc-if>
+              <button onClick="{{startOnClick}}"
+                style="margin-top:48px;align-self:flex-start;background:#1b1a17;color:#f4f1ea;border:0;padding:16px 30px;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;font-weight:500"
+                style-hover="background:var(--acc,#2f6db3)">Empezar a estudiar →</button>
+
+              <div
+                style="margin-top:auto;padding-top:64px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8a8575;line-height:1.9">
+                hello@bklnsoftware.tech · bklnsoftware.tech<br>+240 222 798 086 · Malabo · Guinea Ecuatorial · ed. 01 ·
+                2026
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{isToc}}">
+            <div style="max-width:780px;margin:0 auto;padding:60px 48px 100px">
+              <div
+                style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,#2f6db3)">
+                // Contenido</div>
+              <h1
+                style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:44px;letter-spacing:-.02em;margin:14px 0 40px">
+                El plan completo.</h1>
+              <sc-for list="{{tocGroups}}" as="g" hint-placeholder-count="3">
+                <div style="margin-bottom:36px">
+                  <div
+                    style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#8a8575;border-bottom:2px solid #1b1a17;padding-bottom:8px;margin-bottom:4px">
+                    {{g.title}}</div>
+                  <sc-for list="{{g.items}}" as="it" hint-placeholder-count="5">
+                    <button onClick="{{it.onClick}}"
+                      style="display:flex;gap:20px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #e0dacb;padding:15px 4px;cursor:pointer;font-family:inherit"
+                      style-hover="background:#efeade">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:34px;font-weight:500">{{it.num}}</span>
+                      <span style="flex:1;font-size:18px;color:#2a2820">{{it.title}}</span>
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#a09a89">{{it.time}}</span>
                     </button>
                   </sc-for>
                 </div>
-                <sc-if value="{{b.revealed}}">
-                  <div style="margin-top:16px;padding-top:15px;border-top:1px dashed #ccc5b4;font-size:15.5px;line-height:1.62;color:#4a4639">
-                    <span style="font-family:'JetBrains Mono',monospace;color:var(--acc,#2f6db3);font-weight:500;font-size:13px">Respuesta — {{b.answerLetter}}.</span> {{b.exp}}
+              </sc-for>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{hasBlocks}}">
+            <article style="max-width:760px;margin:0 auto;padding:52px 48px 40px">
+              <sc-for list="{{blocks}}" as="b" hint-placeholder-count="7">
+
+                <sc-if value="{{b.isParthead}}">
+                  <div style="padding:70px 0 4px">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--acc,#2f6db3)">
+                      {{b.label}}</div>
+                    <h1
+                      style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:60px;line-height:1;letter-spacing:-.03em;margin:18px 0 0">
+                      {{b.title}}</h1>
+                    <p
+                      style="font-size:21px;line-height:1.45;color:#4a463b;margin:20px 0 0;max-width:560px;font-style:italic">
+                      {{b.sub}}</p>
+                    <div style="height:2px;background:#1b1a17;margin:34px 0 0"></div>
                   </div>
                 </sc-if>
-              </div>
-            </sc-if>
 
-            <sc-if value="{{b.isNote}}">
-              <div style="{{b.noteStyle}}">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:{{b.noteAcc}}">{{b.noteLabel}}</div>
-                <p style="font-size:16.5px;line-height:1.62;color:#33302a;margin:9px 0 0">{{b.text}}</p>
-              </div>
-            </sc-if>
-
-            <sc-if value="{{b.isCode}}">
-              <div style="margin:26px 0;overflow:hidden;background:#17161f">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#8b86a0;padding:11px 20px;border-bottom:1px solid #2a2836">{{b.label}}</div>
-                <pre style="margin:0;padding:16px 20px;overflow:auto;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.75;color:#e6e3f0"><sc-for list="{{b.lines}}" as="ln" hint-placeholder-count="4"><div>{{ln}}</div></sc-for></pre>
-              </div>
-            </sc-if>
-
-            <sc-if value="{{b.isDiagram}}">
-              <figure style="margin:28px 0">
-                <div style="height:200px;border:1px solid #d3cdbd;background:repeating-linear-gradient(45deg,#efeade,#efeade 11px,#e6e0d1 11px,#e6e0d1 22px);display:flex;align-items:center;justify-content:center">
-                  <span style="font-family:'JetBrains Mono',monospace;background:#f4f1ea;padding:9px 16px;border:1px solid #d3cdbd;color:#6b675e;font-size:12.5px;letter-spacing:.04em">{{b.caption}}</span>
-                </div>
-                <figcaption style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#a09a89;margin-top:8px;letter-spacing:.03em">{{b.note}}</figcaption>
-              </figure>
-            </sc-if>
-
-            <sc-if value="{{b.isUsecase}}">
-              <div style="background:#efeade;padding:22px 24px;margin:26px 0">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8575;font-weight:500">Caso de uso · {{b.title}}</div>
-                <p style="font-size:16.5px;line-height:1.62;color:#33302a;margin:10px 0 0">{{b.text}}</p>
-              </div>
-            </sc-if>
-
-            <sc-if value="{{b.isList}}">
-              <div style="margin:26px 0">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8575;font-weight:500;margin-bottom:12px">{{b.title}}</div>
-                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px">
-                  <sc-for list="{{b.items}}" as="it" hint-placeholder-count="4">
-                    <li style="display:flex;gap:12px;font-size:16.5px;line-height:1.55;color:#33302a"><span style="color:var(--acc,#2f6db3)">→</span><span>{{it}}</span></li>
-                  </sc-for>
-                </ul>
-              </div>
-            </sc-if>
-
-            <sc-if value="{{b.isDeflist}}">
-              <dl style="margin:24px 0;display:flex;flex-direction:column;gap:0">
-                <sc-for list="{{b.items}}" as="d" hint-placeholder-count="4">
-                  <div style="display:grid;grid-template-columns:210px 1fr;gap:22px;padding:15px 0;border-bottom:1px solid #e2dccd">
-                    <dt style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#1b1a17;font-size:16px">{{d.term}}</dt>
-                    <dd style="margin:0;font-size:16px;line-height:1.6;color:#423f37">{{d.def}}</dd>
+                <sc-if value="{{b.isPartindex}}">
+                  <div style="display:flex;flex-direction:column;margin-top:2px">
+                    <sc-for list="{{b.items}}" as="it" hint-placeholder-count="5">
+                      <button onClick="{{it.onClick}}"
+                        style="display:flex;gap:20px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid #e0dacb;padding:17px 4px;cursor:pointer;font-family:inherit"
+                        style-hover="background:#efeade">
+                        <span
+                          style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--acc,#2f6db3);width:36px;font-weight:500">{{it.num}}</span>
+                        <span
+                          style="flex:1;font-size:19px;color:#2a2820;font-family:'Space Grotesk',sans-serif;font-weight:500">{{it.title}}</span>
+                        <span
+                          style="font-family:'JetBrains Mono',monospace;font-size:12px;color:#a09a89">{{it.time}}</span>
+                      </button>
+                    </sc-for>
                   </div>
-                </sc-for>
-              </dl>
-            </sc-if>
+                </sc-if>
 
-            <sc-if value="{{b.isSummary}}">
-              <div style="border-top:2px solid #1b1a17;margin:38px 0 0;padding-top:22px">
-                <div style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#1b1a17;font-weight:500">{{b.title}}</div>
-                <ul style="list-style:none;margin:15px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
-                  <sc-for list="{{b.items}}" as="it" hint-placeholder-count="4">
-                    <li style="display:flex;gap:13px;font-size:16.5px;line-height:1.55;color:#33302a"><span style="color:var(--acc,#2f6db3);font-weight:600">—</span><span>{{it}}</span></li>
-                  </sc-for>
-                </ul>
-              </div>
-            </sc-if>
+                <sc-if value="{{b.isHead}}">
+                  <header style="margin:0 0 32px">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.17em;text-transform:uppercase;color:var(--acc,#2f6db3);margin-bottom:16px;font-weight:500">
+                      {{b.label}}</div>
+                    <h1
+                      style="font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:42px;line-height:1.07;letter-spacing:-.025em;margin:0 0 14px">
+                      {{b.title}}</h1>
+                    <p style="font-size:19px;line-height:1.5;color:#5c574c;margin:0;font-style:italic;font-weight:500">
+                      {{b.sub}}</p>
+                  </header>
+                </sc-if>
 
-          </sc-for>
-        </article>
-      </sc-if>
+                <sc-if value="{{b.isLead}}">
+                  <p style="font-size:21px;line-height:1.55;color:#25231d;margin:0 0 26px;font-weight:500">{{b.text}}
+                  </p>
+                </sc-if>
+                <sc-if value="{{b.isP}}">
+                  <p style="font-size:17.5px;line-height:1.72;color:#33302a;margin:0 0 20px">{{b.text}}</p>
+                </sc-if>
 
-      <div style="max-width:760px;margin:0 auto;padding:0 48px 90px;display:flex;gap:14px;justify-content:space-between;border-top:1px solid #e0dacb;margin-top:20px;padding-top:32px">
-        <button onClick="{{prevOnClick}}" style="{{prevStyle}}">← {{prevLabel}}</button>
-        <button onClick="{{nextOnClick}}" style="{{nextStyle}}">{{nextLabel}} →</button>
-      </div>
-      <div style="max-width:760px;margin:0 auto;padding:0 48px 60px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:#a09a89;line-height:1.9;border-top:1px solid #e0dacb;padding-top:20px">
-        // Azure Fundamentals AZ-900 · BKLN Software &amp; Systems · bklnsoftware.tech · hello@bklnsoftware.com · +240 222 798 086
-      </div>
+                <sc-if value="{{b.isMetaphor}}">
+                  <div
+                    style="border-top:2px solid var(--acc,#2f6db3);border-bottom:1px solid #ddd7c8;padding:20px 0 22px;margin:32px 0">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc,#2f6db3);font-weight:500">
+                      ✦ La metáfora clave</div>
+                    <p style="font-size:19.5px;line-height:1.55;color:#2a2820;margin:13px 0 0;font-style:italic">
+                      {{b.text}}</p>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isTable}}">
+                  <div style="margin:28px 0">
+                    <div style="overflow:auto;border:1px solid #d3cdbd">
+                      <div style="display:grid;grid-template-columns:{{b.gridCols}};min-width:520px">
+                        <sc-for list="{{b.headers}}" as="h" hint-placeholder-count="3">
+                          <div
+                            style="background:#1b1a17;color:#f4f1ea;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:12px 15px;font-weight:500">
+                            {{h}}</div>
+                        </sc-for>
+                        <sc-for list="{{b.cells}}" as="c" hint-placeholder-count="9">
+                          <div style="{{c.style}}">{{c.text}}</div>
+                        </sc-for>
+                      </div>
+                    </div>
+                    <sc-if value="{{b.caption}}">
+                      <div
+                        style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#a09a89;margin-top:8px;letter-spacing:.04em">
+                        {{b.caption}}</div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isQuiz}}">
+                  <div style="border:1px solid #d3cdbd;background:#fbfaf6;padding:24px 26px 22px;margin:30px 0">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc,#2f6db3);font-weight:500">
+                      {{b.tag}}</div>
+                    <p
+                      style="font-size:18px;font-weight:600;line-height:1.5;margin:13px 0 18px;color:#22201b;font-family:'Space Grotesk',sans-serif">
+                      {{b.q}}</p>
+                    <div style="display:flex;flex-direction:column;gap:9px">
+                      <sc-for list="{{b.options}}" as="opt" hint-placeholder-count="4">
+                        <button onClick="{{opt.onClick}}" style="{{opt.style}}">
+                          <span style="{{opt.badgeStyle}}">{{opt.letter}}</span>
+                          <span style="flex:1">{{opt.text}}</span>
+                          <sc-if value="{{opt.showCheck}}"><span
+                              style="color:#2e8b57;font-weight:700;flex:none">✓</span></sc-if>
+                          <sc-if value="{{opt.showCross}}"><span
+                              style="color:#c0392b;font-weight:700;flex:none">✕</span></sc-if>
+                        </button>
+                      </sc-for>
+                    </div>
+                    <sc-if value="{{b.revealed}}">
+                      <div
+                        style="margin-top:16px;padding-top:15px;border-top:1px dashed #ccc5b4;font-size:15.5px;line-height:1.62;color:#4a4639">
+                        <span
+                          style="font-family:'JetBrains Mono',monospace;color:var(--acc,#2f6db3);font-weight:500;font-size:13px">Respuesta
+                          — {{b.answerLetter}}.</span> {{b.exp}}
+                      </div>
+                    </sc-if>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isNote}}">
+                  <div style="{{b.noteStyle}}">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:{{b.noteAcc}}">
+                      {{b.noteLabel}}</div>
+                    <p style="font-size:16.5px;line-height:1.62;color:#33302a;margin:9px 0 0">{{b.text}}</p>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isCode}}">
+                  <div style="margin:26px 0;overflow:hidden;background:#17161f">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:#8b86a0;padding:11px 20px;border-bottom:1px solid #2a2836">
+                      {{b.label}}</div>
+                    <pre
+                      style="margin:0;padding:16px 20px;overflow:auto;font-family:'JetBrains Mono',monospace;font-size:13.5px;line-height:1.75;color:#e6e3f0"><sc-for list="{{b.lines}}" as="ln" hint-placeholder-count="4"><div>{{ln}}</div></sc-for></pre>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isDiagram}}">
+                  <figure style="margin:28px 0">
+                    <div
+                      style="height:200px;border:1px solid #d3cdbd;background:repeating-linear-gradient(45deg,#efeade,#efeade 11px,#e6e0d1 11px,#e6e0d1 22px);display:flex;align-items:center;justify-content:center">
+                      <span
+                        style="font-family:'JetBrains Mono',monospace;background:#f4f1ea;padding:9px 16px;border:1px solid #d3cdbd;color:#6b675e;font-size:12.5px;letter-spacing:.04em">{{b.caption}}</span>
+                    </div>
+                    <figcaption
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#a09a89;margin-top:8px;letter-spacing:.03em">
+                      {{b.note}}</figcaption>
+                  </figure>
+                </sc-if>
+
+                <sc-if value="{{b.isUsecase}}">
+                  <div style="background:#efeade;padding:22px 24px;margin:26px 0">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8575;font-weight:500">
+                      Caso de uso · {{b.title}}</div>
+                    <p style="font-size:16.5px;line-height:1.62;color:#33302a;margin:10px 0 0">{{b.text}}</p>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isList}}">
+                  <div style="margin:26px 0">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#8a8575;font-weight:500;margin-bottom:12px">
+                      {{b.title}}</div>
+                    <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px">
+                      <sc-for list="{{b.items}}" as="it" hint-placeholder-count="4">
+                        <li style="display:flex;gap:12px;font-size:16.5px;line-height:1.55;color:#33302a"><span
+                            style="color:var(--acc,#2f6db3)">→</span><span>{{it}}</span></li>
+                      </sc-for>
+                    </ul>
+                  </div>
+                </sc-if>
+
+                <sc-if value="{{b.isDeflist}}">
+                  <dl style="margin:24px 0;display:flex;flex-direction:column;gap:0">
+                    <sc-for list="{{b.items}}" as="d" hint-placeholder-count="4">
+                      <div
+                        style="display:grid;grid-template-columns:210px 1fr;gap:22px;padding:15px 0;border-bottom:1px solid #e2dccd">
+                        <dt style="font-family:'Space Grotesk',sans-serif;font-weight:600;color:#1b1a17;font-size:16px">
+                          {{d.term}}</dt>
+                        <dd style="margin:0;font-size:16px;line-height:1.6;color:#423f37">{{d.def}}</dd>
+                      </div>
+                    </sc-for>
+                  </dl>
+                </sc-if>
+
+                <sc-if value="{{b.isSummary}}">
+                  <div style="border-top:2px solid #1b1a17;margin:38px 0 0;padding-top:22px">
+                    <div
+                      style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#1b1a17;font-weight:500">
+                      {{b.title}}</div>
+                    <ul style="list-style:none;margin:15px 0 0;padding:0;display:flex;flex-direction:column;gap:11px">
+                      <sc-for list="{{b.items}}" as="it" hint-placeholder-count="4">
+                        <li style="display:flex;gap:13px;font-size:16.5px;line-height:1.55;color:#33302a"><span
+                            style="color:var(--acc,#2f6db3);font-weight:600">—</span><span>{{it}}</span></li>
+                      </sc-for>
+                    </ul>
+                  </div>
+                </sc-if>
+
+              </sc-for>
+            </article>
+          </sc-if>
+
+          <div
+            style="max-width:760px;margin:0 auto;padding:0 48px 90px;display:flex;gap:14px;justify-content:space-between;border-top:1px solid #e0dacb;margin-top:20px;padding-top:32px">
+            <button onClick="{{prevOnClick}}" style="{{prevStyle}}">← {{prevLabel}}</button>
+            <button onClick="{{nextOnClick}}" style="{{nextStyle}}">{{nextLabel}} →</button>
+          </div>
+          <div
+            style="max-width:760px;margin:0 auto;padding:0 48px 60px;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:.06em;color:#a09a89;line-height:1.9;border-top:1px solid #e0dacb;padding-top:20px">
+            // Azure Fundamentals AZ-900 · BKLN Software &amp; Systems · bklnsoftware.tech · hello@bklnsoftware.tech ·
+            +240 222 798 086
+          </div>
+        </div>
+      </main>
     </div>
-  </main>
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2f6db3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#2f6db3&quot;,&quot;#2a7d78&quot;,&quot;#3b4b9e&quot;,&quot;#8a5a2b&quot;],&quot;section&quot;:&quot;Estilo&quot;},&quot;serifBody&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;showTime&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
+  </x-dc>
+  <script type="text/x-dc" data-dc-script
+    data-props="{&quot;accentColor&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#2f6db3&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#2f6db3&quot;,&quot;#2a7d78&quot;,&quot;#3b4b9e&quot;,&quot;#8a5a2b&quot;],&quot;section&quot;:&quot;Estilo&quot;},&quot;serifBody&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estilo&quot;},&quot;showTime&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Contenido&quot;}}">
 class Component extends DCLogic {
   constructor(props){
     super(props);
@@ -903,4 +1051,5 @@ class Component extends DCLogic {
 }
 </script>
 </body>
+
 </html>

@@ -1,5 +1,4 @@
-﻿import Link from 'next/link'
-import { ArrowRight, CheckCircle } from 'lucide-react'
+﻿import { ArrowRight, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/sections/ServiceCard'
@@ -9,29 +8,29 @@ import { services } from '@/data/content'
 export const metadata: Metadata = {
   title: 'Servicios',
   description:
-    'Servicios de desarrollo de software: Android, Web, Desktop, Python, APIs, IA y consultoría técnica.',
+    'Desarrollo de apps, plataformas web, automatización, APIs e inteligencia artificial para convertir necesidades reales en software útil.',
 }
 
 const processSteps = [
   {
     number: '01',
-    title: 'Consulta inicial',
-    description: 'Conversamos sobre tu proyecto, objetivos y requerimientos técnicos.',
+    title: 'Entendemos el problema',
+    description: 'Aterrizamos tus objetivos, usuarios, restricciones y lo que debe resolver el producto.',
   },
   {
     number: '02',
-    title: 'Propuesta detallada',
-    description: 'Preparamos un plan técnico con alcance, plazos y presupuesto.',
+    title: 'Definimos el camino',
+    description: 'Proponemos alcance, arquitectura, prioridades, plazos y presupuesto sin letra pequeña.',
   },
   {
     number: '03',
-    title: 'Desarrollo ágil',
-    description: 'Desarrollamos con sprints cortos, mostrándote el progreso continuamente.',
+    title: 'Construimos por etapas',
+    description: 'Desarrollamos, enseñamos avances y validamos cada parte importante contigo.',
   },
   {
     number: '04',
-    title: 'Entrega y soporte',
-    description: 'Entregamos el producto final con documentación y soporte post-lanzamiento.',
+    title: 'Entregamos y acompañamos',
+    description: 'Ponemos el producto en marcha, documentamos lo necesario y seguimos disponibles después.',
   },
 ]
 
@@ -42,12 +41,19 @@ export default function ServiciosPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            Servicios de <span className="text-accent-green">Software</span>
+            Del problema al <span className="text-accent-green">producto</span>
           </h1>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
-            Desarrollamos soluciones digitales a medida — desde apps móviles hasta sistemas con
-            inteligencia artificial. Código limpio, entregas puntuales.
+            Diseñamos y construimos software a medida para que una idea, un proceso manual o una
+            oportunidad de negocio se convierta en una solución digital que puedas usar y hacer crecer.
           </p>
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm text-text-secondary">
+            <span>Apps y plataformas</span>
+            <span className="text-accent-green">•</span>
+            <span>Automatización y datos</span>
+            <span className="text-accent-green">•</span>
+            <span>IA aplicada</span>
+          </div>
         </div>
       </section>
 
@@ -67,7 +73,7 @@ export default function ServiciosPage() {
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Nuestro proceso"
-            subtitle="Un flujo de trabajo transparente y orientado a resultados."
+            subtitle="Un proceso claro para tomar buenas decisiones antes, durante y después del desarrollo."
             centered
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -116,8 +122,8 @@ export default function ServiciosPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-2xl mx-auto">
           <SectionHeader
-            title="¿Listo para empezar?"
-            subtitle="Cuéntanos sobre tu proyecto y te enviaremos una propuesta en 24h."
+            title="¿Qué necesitas construir?"
+            subtitle="Cuéntanos el reto. Te responderemos con una primera orientación sobre alcance, tecnología y presupuesto en 24h hábiles."
             centered
           />
           <ContactForm />

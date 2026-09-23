@@ -41,10 +41,10 @@ export default function ContactoPage() {
                   <h3 className="text-text-primary font-semibold text-sm">Email directo</h3>
                 </div>
                 <a
-                  href="mailto:hello@bklnsoftware.com"
+                  href="mailto:hello@bklnsoftware.tech"
                   className="text-accent-green hover:underline text-sm"
                 >
-                  hello@bklnsoftware.com
+                  hello@bklnsoftware.tech
                 </a>
               </div>
 

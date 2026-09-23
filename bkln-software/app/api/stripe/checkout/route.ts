@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://bklnsoftware.com'
+  const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.bklnsoftware.tech'
 
   try {
     const session = await getStripe().checkout.sessions.create({

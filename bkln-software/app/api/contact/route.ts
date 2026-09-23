@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     if (!resendKey) {
       console.error('RESEND_API_KEY no configurada — solicitud de contacto perdida:', { name, email, projectType })
       return NextResponse.json(
-        { error: 'El formulario no está activado todavía. Escríbenos directamente a hello@bklnsoftware.com.' },
+        { error: 'El formulario no está activado todavía. Escríbenos directamente a hello@bklnsoftware.tech.' },
         { status: 503 }
       )
     }
@@ -39,7 +39,7 @@ ${description}
       },
       body: JSON.stringify({
         from: process.env.EMAIL_FROM || 'onboarding@resend.dev',
-        to: 'hello@bklnsoftware.com',
+        to: 'hello@bklnsoftware.tech',
         subject: `Nueva solicitud de ${name} — ${projectType}`,
         text: emailBody,
       }),
@@ -49,7 +49,7 @@ ${description}
       const errBody = await resendRes.text()
       console.error('Resend rechazó el envío:', resendRes.status, errBody)
       return NextResponse.json(
-        { error: 'No pudimos enviar tu solicitud. Escríbenos directamente a hello@bklnsoftware.com.' },
+        { error: 'No pudimos enviar tu solicitud. Escríbenos directamente a hello@bklnsoftware.tech.' },
         { status: 502 }
       )
     }

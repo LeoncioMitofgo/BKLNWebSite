@@ -38,7 +38,7 @@ const socialLinks = [
     ),
   },
   {
-    href: 'mailto:hello@bklnsoftware.com',
+    href: 'mailto:hello@bklnsoftware.tech',
     label: 'Email',
     svg: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">

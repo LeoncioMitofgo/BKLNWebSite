@@ -17,14 +17,14 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const ROOT      = path.join(__dirname, '..');
-const OUT_PATH  = path.join(ROOT, 'libro-ia-completo.pdf');
+const ROOT = path.join(__dirname, '..');
+const OUT_PATH = path.join(ROOT, 'libro-ia-completo.pdf');
 const PRINT_URL = 'http://localhost:3000/libro-ia/print.html';
 
 // Tiempos de espera
-const TIMEOUT_NAV   = 30_000;   // 30s para cargar la página
+const TIMEOUT_NAV = 30_000;   // 30s para cargar la página
 const TIMEOUT_READY = 60_000;   // 60s para que React renderice todo
-const SETTLE_MS     = 2_000;    // 2s extra para fuentes y estilos
+const SETTLE_MS = 2_000;    // 2s extra para fuentes y estilos
 
 async function run() {
   console.log('');
@@ -78,10 +78,10 @@ async function run() {
       format: 'A4',
       printBackground: true,
       margin: {
-        top:    '18mm',
-        right:  '20mm',
+        top: '18mm',
+        right: '20mm',
         bottom: '18mm',
-        left:   '22mm',
+        left: '22mm',
       },
       displayHeaderFooter: true,
       headerTemplate: `
@@ -99,7 +99,7 @@ async function run() {
           font-family: 'JetBrains Mono', monospace; font-size: 7px;
           color: #9a8f80; display: flex; justify-content: space-between;
         ">
-          <span>hello@bklnsoftware.com · +240 222 798 086</span>
+          <span>hello@bklnsoftware.tech · +240 222 798 086</span>
           <span class="pageNumber"></span>
         </div>`,
     });
