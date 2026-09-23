@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import ChatWidget from '@/components/sections/ChatWidget'
 import './globals.css'
 
 const inter = Inter({
@@ -67,7 +68,7 @@ const structuredData = {
   logo: `${siteUrl}/brand-logo.png`,
   image: `${siteUrl}/brand-logo.png`,
   description: homeDescription,
-  email: 'hello@bklnsoftware.com',
+  email: 'hello@bklnsoftware.tech',
   telephone: '+240222798086',
   address: {
     '@type': 'PostalAddress',
@@ -101,19 +102,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-bg-dark text-text-primary font-primary antialiased">
         {children}
-        {/* BKLN Support Bot Widget — configurado vía variables de entorno, ver .env.local.example */}
-        {process.env.NEXT_PUBLIC_CHATBOT_TENANT_ID && process.env.NEXT_PUBLIC_CHATBOT_TENANT_KEY && (
-          <script
-            src={process.env.NEXT_PUBLIC_CHATBOT_API_URL ? `${process.env.NEXT_PUBLIC_CHATBOT_API_URL}/widget.js` : undefined}
-            data-tenant-id={process.env.NEXT_PUBLIC_CHATBOT_TENANT_ID}
-            data-tenant-key={process.env.NEXT_PUBLIC_CHATBOT_TENANT_KEY}
-            data-api-url={process.env.NEXT_PUBLIC_CHATBOT_API_URL}
-            data-bot-name="Asistente BKLN"
-            data-welcome="¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?"
-            data-primary-color="#00a85a"
-            async
-          />
-        )}
+        <ChatWidget />
       </body>
     </html>
   )
