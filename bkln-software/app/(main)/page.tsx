@@ -90,13 +90,13 @@ export default function HomePage() {
             <p className="text-text-secondary text-sm">Malabo, Guinea Ecuatorial · Disponibles para nuevos proyectos</p>
           </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-text-primary mb-6 leading-tight">
-            Custom Software Development in Malabo, Equatorial Guinea
+            Desarrollo de software a medida en Malabo, Guinea Ecuatorial
           </h1>
           <p className="text-text-primary text-xl sm:text-2xl max-w-3xl mx-auto mb-4 leading-relaxed font-semibold">
-            We create mobile applications, web platforms, management systems, marketplaces, and artificial intelligence solutions for businesses, institutions, and entrepreneurs.
+            Creamos aplicaciones móviles, plataformas web, sistemas de gestión, marketplaces y soluciones con inteligencia artificial para negocios, instituciones y emprendedores.
           </p>
           <p className="text-text-secondary text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-            BKLN designs and develops custom digital products from Malabo for businesses in Equatorial Guinea, Central Africa, and international markets.
+            BKLN diseña y desarrolla productos digitales a medida desde Malabo para empresas de Guinea Ecuatorial, África Central y mercados internacionales.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link href="/contacto">
@@ -136,13 +136,13 @@ export default function HomePage() {
                 Quiénes somos
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-text-primary mb-6 leading-tight">
-                Software Solutions for Businesses in Equatorial Guinea
+                Soluciones de software para negocios en Guinea Ecuatorial
               </h2>
               <p className="text-text-secondary leading-relaxed mb-4">
-                BKLN Software & Systems develops digital solutions with the needs of businesses and institutions in Equatorial Guinea and Central Africa in mind. We design custom software for operations, business management, education, commerce, and digital services, with local and remote support from Malabo.
+                BKLN Software & Systems desarrolla soluciones digitales pensadas para las necesidades de empresas e instituciones en Guinea Ecuatorial y África Central. Diseñamos software a medida para operaciones, gestión empresarial, educación, comercio y servicios digitales, con soporte local y remoto desde Malabo.
               </p>
               <p className="text-text-secondary leading-relaxed mb-8">
-                From custom web platforms and mobile applications to management systems, marketplaces, and AI-powered assistants, we build products that are useful in real operational contexts and can evolve with the client over time.
+                Desde plataformas web y aplicaciones móviles hasta sistemas de gestión, marketplaces y asistentes con IA, construimos productos que resuelven problemas reales y pueden crecer junto al cliente.
               </p>
               <Link href="/portfolio">
                 <Button variant="outline">
@@ -172,8 +172,8 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            title="Software, App & Digital Platform Development"
-            subtitle="Custom software, web platforms, mobile applications, business systems, marketplaces, and AI solutions for businesses, institutions, and entrepreneurs."
+            title="Desarrollo de software, apps y plataformas digitales"
+            subtitle="Software a medida, plataformas web, aplicaciones móviles, sistemas de gestión, marketplaces y soluciones con IA para negocios, instituciones y emprendedores."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredServices.map((service) => (
@@ -194,8 +194,8 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            title="How We Develop Your Software Project"
-            subtitle="A structured process for discovery, design, development, validation, launch, and long-term support."
+            title="Cómo desarrollamos tu proyecto de software"
+            subtitle="Un proceso claro para descubrir, diseñar, construir, validar, lanzar y acompañar tu producto a largo plazo."
             centered
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -231,8 +231,8 @@ export default function HomePage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            title="Digital Products by BKLN"
-            subtitle="Platforms and products designed to solve concrete business problems, support local operations, and grow with the client."
+            title="Productos digitales de BKLN"
+            subtitle="Plataformas y productos diseñados para resolver problemas concretos, apoyar la operación local y crecer junto al cliente."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredProducts.map((product) => (
@@ -395,10 +395,10 @@ export default function HomePage() {
             <MessageSquare size={24} className="text-accent-green" />
           </div>
           <h2 className="text-3xl font-bold text-text-primary mb-4">
-            Contact BKLN Software & Systems
+            Contacta con BKLN Software & Systems
           </h2>
           <p className="text-text-secondary text-lg mb-8 leading-relaxed">
-            Tell us what you want to build, what process needs improving, or where your business is stuck. We analyze the challenge, recommend the next step, and provide clear guidance on scope, technology, and budget. We work in Spanish, English, and French.
+            Cuéntanos qué quieres construir, qué proceso necesitas mejorar o dónde se está atascando tu negocio. Analizamos el reto, proponemos el siguiente paso y te damos una orientación clara sobre alcance, tecnología y presupuesto. Trabajamos en español, inglés y francés.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contacto">

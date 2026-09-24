@@ -18,7 +18,7 @@ const jetbrainsMono = JetBrains_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.bklnsoftware.tech'
 
 const homeDescription =
-  'BKLN Software & Systems develops custom software, web platforms, mobile apps, business systems, marketplaces, and AI solutions from Malabo, Equatorial Guinea.'
+  'BKLN Software & Systems desarrolla software a medida, plataformas web, apps móviles, sistemas de gestión, marketplaces y soluciones con IA desde Malabo, Guinea Ecuatorial.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     canonical: siteUrl,
   },
   title: {
-    default: 'BKLN Software & Systems | Custom Software Development in Malabo, Equatorial Guinea',
+    default: 'BKLN Software & Systems | Desarrollo de software a medida en Malabo, Guinea Ecuatorial',
     template: '%s | BKLN Software & Systems',
   },
   icons: {
@@ -35,10 +35,10 @@ export const metadata: Metadata = {
   },
   description: homeDescription,
   keywords: [
-    'custom software development Malabo', 'software development Equatorial Guinea', 'web development Malabo',
-    'mobile app development Equatorial Guinea', 'business management systems', 'marketplaces',
-    'artificial intelligence solutions', 'BKLN Software & Systems', 'Malabo', 'Guinea Ecuatorial',
-    'Central Africa', 'software studio', 'digital platforms', 'custom software', 'web platforms',
+    'desarrollo de software Malabo', 'software Guinea Ecuatorial', 'desarrollo web Malabo',
+    'aplicaciones móviles Guinea Ecuatorial', 'sistemas de gestión', 'marketplaces',
+    'soluciones con IA', 'BKLN Software & Systems', 'Malabo', 'Guinea Ecuatorial',
+    'África Central', 'estudio de software', 'plataformas digitales', 'software a medida', 'plataformas web',
   ],
   authors: [{ name: 'BKLN Software & Systems', url: siteUrl }],
   openGraph: {
@@ -46,13 +46,13 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: siteUrl,
     siteName: 'BKLN Software & Systems',
-    title: 'BKLN Software & Systems | Custom Software Development in Malabo, Equatorial Guinea',
+    title: 'BKLN Software & Systems | Desarrollo de software a medida en Malabo, Guinea Ecuatorial',
     description: homeDescription,
     images: [{ url: '/brand-logo.png', alt: 'BKLN Software & Systems' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BKLN Software & Systems | Custom Software Development in Malabo, Equatorial Guinea',
+    title: 'BKLN Software & Systems | Desarrollo de software a medida en Malabo, Guinea Ecuatorial',
     description: homeDescription,
     images: ['/brand-logo.png'],
   },
