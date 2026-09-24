@@ -83,7 +83,7 @@ export function ProductCard({ product, showPrice = true }: ProductCardProps) {
               variant={product.isFree ? 'outline' : 'primary'}
               className={!showPrice ? 'ml-auto' : undefined}
             >
-              {!showPrice ? 'Ver producto' : product.priceOnRequest ? 'Ver detalle' : product.isFree ? 'Descargar' : 'Comprar'}
+              {!showPrice ? 'Ver producto' : product.priceOnRequest ? 'Ver solución' : product.isFree ? 'Descargar' : 'Comprar'}
             </Button>
           </Link>
         </div>

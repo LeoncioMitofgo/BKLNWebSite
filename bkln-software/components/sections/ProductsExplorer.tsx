@@ -8,9 +8,10 @@ import type { Product } from '@/types'
 const categories: { value: Product['category'] | 'todos'; label: string }[] = [
   { value: 'todos', label: 'Todos' },
   { value: 'android', label: 'Apps Android' },
-  { value: 'desktop', label: 'Software Desktop' },
+  { value: 'web', label: 'Web' },
+  { value: 'ia', label: 'IA & Chatbots' },
+  { value: 'desktop', label: 'Desktop' },
   { value: 'scripts', label: 'Scripts & Tools' },
-  { value: 'free', label: 'Gratis' },
 ]
 
 export function ProductsExplorer({ products }: { products: Product[] }) {
