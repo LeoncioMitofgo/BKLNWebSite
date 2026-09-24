@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
 
 type Message = {
     id: string
@@ -161,7 +162,24 @@ export default function ChatWidget() {
                                             : 'bg-slate-800 text-slate-100'
                                             }`}
                                     >
-                                        <p className="whitespace-pre-wrap">{message.text}</p>
+                                        <div className="markdown-content whitespace-pre-wrap text-sm leading-relaxed text-slate-100">
+                                            <ReactMarkdown
+                                                components={{
+                                                    a: ({ node, ...props }) => (
+                                                        <a {...props} target="_blank" rel="noreferrer" className="font-medium text-green-300 underline decoration-green-400/70 underline-offset-2 hover:text-green-200" />
+                                                    ),
+                                                    p: ({ node, ...props }) => <p {...props} className="mb-2 last:mb-0" />,
+                                                    ul: ({ node, ...props }) => <ul {...props} className="mb-2 list-disc space-y-1 pl-5" />,
+                                                    ol: ({ node, ...props }) => <ol {...props} className="mb-2 list-decimal space-y-1 pl-5" />,
+                                                    li: ({ node, ...props }) => <li {...props} className="pl-1" />,
+                                                    strong: ({ node, ...props }) => <strong {...props} className="font-semibold text-white" />,
+                                                    em: ({ node, ...props }) => <em {...props} className="italic text-slate-200" />,
+                                                    code: ({ node, ...props }) => <code {...props} className="rounded bg-slate-700/80 px-1 py-0.5 text-[0.8em] text-green-200" />,
+                                                }}
+                                            >
+                                                {message.text}
+                                            </ReactMarkdown>
+                                        </div>
 
                                         {message.sources && message.sources.length > 0 && (
                                             <div className="mt-2 border-t border-white/10 pt-2">
@@ -169,7 +187,7 @@ export default function ChatWidget() {
                                                     Fuentes:
                                                 </p>
                                                 <ul className="space-y-1 text-xs text-slate-200">
-                                                    {message.sources.map((source, index) => (
+                                                    {[...new Set(message.sources)].map((source, index) => (
                                                         <li key={`${source}-${index}`}>
                                                             {source.startsWith('http://') || source.startsWith('https://') ? (
                                                                 <a href={source} target="_blank" rel="noreferrer" className="underline decoration-dotted underline-offset-2 hover:text-white">
