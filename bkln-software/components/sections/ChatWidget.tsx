@@ -23,6 +23,11 @@ export default function ChatWidget() {
             text: '¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?',
             sender: 'assistant',
         },
+        {
+            id: 'notice',
+            text: 'El asistente puede tardar unos segundos en responder.',
+            sender: 'assistant',
+        },
     ])
     const messagesEndRef = useRef<HTMLDivElement | null>(null)
 
@@ -68,7 +73,7 @@ export default function ChatWidget() {
         setLoading(true)
 
         try {
-            const response = await fetch('/api/chat', {
+            const response = await fetch('https://ai.bklnsoftware.tech/chat', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
