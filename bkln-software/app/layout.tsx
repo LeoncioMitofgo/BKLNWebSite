@@ -18,12 +18,15 @@ const jetbrainsMono = JetBrains_Mono({
 const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.bklnsoftware.tech'
 
 const homeDescription =
-  'Estudio de software y academia de programación en Malabo, Guinea Ecuatorial — cursos de Python, IA y certificaciones cloud, además de desarrollo Android, Web, automatización e IA para negocios de aquí y del mundo.'
+  'BKLN Software & Systems develops custom software, web platforms, mobile apps, business systems, marketplaces, and AI solutions from Malabo, Equatorial Guinea.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl,
+  },
   title: {
-    default: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
+    default: 'BKLN Software & Systems | Custom Software Development in Malabo, Equatorial Guinea',
     template: '%s | BKLN Software & Systems',
   },
   icons: {
@@ -32,10 +35,10 @@ export const metadata: Metadata = {
   },
   description: homeDescription,
   keywords: [
-    'software', 'desarrollo web', 'android', 'python', 'IA', 'inteligencia artificial',
-    'BKLN', 'Malabo', 'Guinea Ecuatorial', 'aplicaciones móviles', 'automatización',
-    'cursos de programación', 'aprender a programar', 'academia de programación Guinea Ecuatorial',
-    'curso de Python en español', 'certificación AZ-900', 'clases de programación Malabo',
+    'custom software development Malabo', 'software development Equatorial Guinea', 'web development Malabo',
+    'mobile app development Equatorial Guinea', 'business management systems', 'marketplaces',
+    'artificial intelligence solutions', 'BKLN Software & Systems', 'Malabo', 'Guinea Ecuatorial',
+    'Central Africa', 'software studio', 'digital platforms', 'custom software', 'web platforms',
   ],
   authors: [{ name: 'BKLN Software & Systems', url: siteUrl }],
   openGraph: {
@@ -43,13 +46,13 @@ export const metadata: Metadata = {
     locale: 'es_ES',
     url: siteUrl,
     siteName: 'BKLN Software & Systems',
-    title: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
+    title: 'BKLN Software & Systems | Custom Software Development in Malabo, Equatorial Guinea',
     description: homeDescription,
     images: [{ url: '/brand-logo.png', alt: 'BKLN Software & Systems' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BKLN Software & Systems — Cursos de Programación y Desarrollo de Software',
+    title: 'BKLN Software & Systems | Custom Software Development in Malabo, Equatorial Guinea',
     description: homeDescription,
     images: ['/brand-logo.png'],
   },
