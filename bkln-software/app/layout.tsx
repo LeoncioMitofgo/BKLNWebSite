@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import ChatWidget from '@/components/sections/ChatWidget'
 import './globals.css'
 
@@ -106,6 +107,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-bg-dark text-text-primary font-primary antialiased">
         {children}
         <ChatWidget />
+        <Analytics />
       </body>
     </html>
   )
