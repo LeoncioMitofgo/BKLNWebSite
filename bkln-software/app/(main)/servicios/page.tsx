@@ -1,39 +1,29 @@
-﻿import { ArrowRight, CheckCircle } from 'lucide-react'
+import { ArrowRight, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { Button } from '@/components/ui/Button'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { ServiceCard } from '@/components/sections/ServiceCard'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { services } from '@/data/content'
+import { processSteps } from '@/data/process'
+import { waLink } from '@/data/contact'
 
 export const metadata: Metadata = pageMetadata({
   title: 'Servicios',
   description:
-    'Desarrollo de apps, plataformas web, automatización, APIs e inteligencia artificial para convertir necesidades reales en software útil.',
+    'Webs y tiendas online, apps móviles, sistemas de gestión, asistentes con IA, plataformas para medios, mantenimiento y consultoría para negocios e instituciones de Guinea Ecuatorial.',
   path: '/servicios',
 })
 
-const processSteps = [
-  {
-    number: '01',
-    title: 'Entendemos el problema',
-    description: 'Aterrizamos tus objetivos, usuarios, restricciones y lo que debe resolver el producto.',
-  },
-  {
-    number: '02',
-    title: 'Definimos el camino',
-    description: 'Proponemos alcance, arquitectura, prioridades, plazos y presupuesto sin letra pequeña.',
-  },
-  {
-    number: '03',
-    title: 'Construimos por etapas',
-    description: 'Desarrollamos, enseñamos avances y validamos cada parte importante contigo.',
-  },
-  {
-    number: '04',
-    title: 'Entregamos y acompañamos',
-    description: 'Ponemos el producto en marcha, documentamos lo necesario y seguimos disponibles después.',
-  },
+const commitments = [
+  'Presupuesto y alcance por escrito antes de empezar',
+  'Trabajo por fases, con entregas que puedes probar',
+  'El código a medida y tus datos son tuyos al completar el pago',
+  'Formación para las personas que van a usarlo',
+  '30 días de soporte después del lanzamiento',
+  'Respuesta en menos de 24 horas hábiles',
 ]
 
 export default function ServiciosPage() {
@@ -47,21 +37,34 @@ export default function ServiciosPage() {
           </h1>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto leading-relaxed">
             Diseñamos y construimos software a medida para que una idea, un proceso manual o una
-            oportunidad de negocio se convierta en una solución digital que puedas usar y hacer crecer.
+            oportunidad de negocio se convierta en una herramienta que puedas usar y hacer crecer.
           </p>
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6 text-sm text-text-secondary">
-            <span>Apps y plataformas</span>
-            <span className="text-accent-green">•</span>
-            <span>Automatización y datos</span>
-            <span className="text-accent-green">•</span>
-            <span>IA aplicada</span>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-8">
+            <a href="#presupuesto">
+              <Button>
+                Contar mi proyecto <ArrowRight size={16} />
+              </Button>
+            </a>
+            <a
+              href={waLink('Hola, vengo de la web de BKLN y quiero contaros un proyecto.')}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button variant="outline">
+                <WhatsAppIcon /> Escribir por WhatsApp
+              </Button>
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Grid de servicios */}
+      {/* Servicios */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+          <SectionHeader
+            title="¿Qué necesitas?"
+            subtitle="Elige lo que más se parece a tu caso. Si no lo tienes claro, cuéntanoslo y te orientamos."
+          />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <ServiceCard key={service.id} service={service} />
@@ -74,16 +77,16 @@ export default function ServiciosPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            title="Nuestro proceso"
+            title="Cómo trabajamos"
             subtitle="Un proceso claro para tomar buenas decisiones antes, durante y después del desarrollo."
             centered
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {processSteps.map((step, i) => (
-              <div key={step.number} className="relative">
+              <div key={step.step} className="relative">
                 <div className="bg-bg-dark border border-white/5 rounded-lg p-6 text-center h-full">
                   <div className="w-12 h-12 bg-brand-green/15 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-accent-green font-bold">{step.number}</span>
+                    <span className="text-accent-green font-bold">{step.step}</span>
                   </div>
                   <h3 className="text-text-primary font-semibold mb-2">{step.title}</h3>
                   <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
@@ -99,18 +102,12 @@ export default function ServiciosPage() {
         </div>
       </section>
 
-      {/* Garantías */}
+      {/* Compromisos */}
       <section className="py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+          <SectionHeader title="Lo que te garantizamos" centered />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              'Código limpio y bien documentado',
-              'Entregas dentro del plazo acordado',
-              'Soporte post-lanzamiento incluido',
-              'Comunicación transparente en todo momento',
-              'Testing y QA antes de entregar',
-              'Posibilidad de mantenimiento continuo',
-            ].map((item) => (
+            {commitments.map((item) => (
               <div key={item} className="flex items-start gap-3">
                 <CheckCircle size={18} className="text-success mt-0.5 shrink-0" />
                 <span className="text-text-secondary text-sm">{item}</span>
@@ -120,15 +117,15 @@ export default function ServiciosPage() {
         </div>
       </section>
 
-      {/* CTA: Formulario */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
+      {/* Formulario */}
+      <section id="presupuesto" className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30 scroll-mt-16">
         <div className="max-w-2xl mx-auto">
           <SectionHeader
             title="¿Qué necesitas construir?"
             subtitle="Cuéntanos el reto. Te responderemos con una primera orientación sobre alcance, tecnología y presupuesto en 24h hábiles."
             centered
           />
-          <ContactForm />
+          <ContactForm services={services.map(({ slug, title }) => ({ slug, title }))} />
         </div>
       </section>
     </div>

@@ -1,5 +1,5 @@
 ﻿import { MetadataRoute } from 'next'
-import { projects, products, publishedCourses, visiblePosts } from '@/data/content'
+import { services, projects, products, publishedCourses, visiblePosts } from '@/data/content'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.bklnsoftware.tech'
@@ -13,6 +13,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
     { url: `${baseUrl}/contacto`, lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.9 },
   ]
+
+  const serviceRoutes = services.map((s) => ({
+    url: `${baseUrl}/servicios/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }))
 
   const projectRoutes = projects.map((p) => ({
     url: `${baseUrl}/portfolio/${p.slug}`,
@@ -42,5 +49,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  return [...staticRoutes, ...projectRoutes, ...productRoutes, ...courseRoutes, ...blogRoutes]
+  return [...staticRoutes, ...serviceRoutes, ...projectRoutes, ...productRoutes, ...courseRoutes, ...blogRoutes]
 }

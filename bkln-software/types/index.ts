@@ -5,10 +5,17 @@ export interface Service {
   description: string
   longDescription: string
   icon: string
-  technologies: string[]
-  pricingFactors: string[]
+  /** "Es para ti si…": problemas del cliente, en su lenguaje */
+  forWho: string[]
+  examples: { title: string; description: string }[]
   deliverables: string[]
+  pricingFactors: string[]
   timeline: string
+  faqs: { question: string; answer: string }[]
+  /** Slugs elegidos a mano (no por categoría) */
+  relatedProjects: string[]
+  relatedProducts: string[]
+  technologies: string[]
   featured: boolean
 }
 

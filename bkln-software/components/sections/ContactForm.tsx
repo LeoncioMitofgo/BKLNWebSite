@@ -7,18 +7,6 @@ import { Button } from '@/components/ui/Button'
 import type { ContactFormData } from '@/types'
 import { waLink } from '@/data/contact'
 
-// Los values coinciden con los slugs de servicio para que ?servicio=<slug> pre-rellene el campo.
-const projectTypes = [
-  { value: 'apps-android', label: 'App Android' },
-  { value: 'desarrollo-web', label: 'Desarrollo Web / Marketplace' },
-  { value: 'desktop-electron', label: 'App Desktop' },
-  { value: 'python-automatizacion', label: 'Python & Automatización' },
-  { value: 'databases-apis', label: 'Databases & APIs' },
-  { value: 'ia-machine-learning', label: 'IA / Machine Learning' },
-  { value: 'consultoria-tech', label: 'Consultoría Tech' },
-  { value: 'otro', label: 'Otro' },
-]
-
 const budgetRanges = [
   { value: 'menos-150k', label: 'Menos de 150,000 XAF' },
   { value: '150k-500k', label: '150,000 – 500,000 XAF' },
@@ -32,13 +20,22 @@ const inputClass =
 
 const labelClass = 'block text-text-secondary text-sm mb-1.5 font-medium'
 
-interface ContactFormProps {
-  products?: { slug: string; title: string }[]
+interface Option {
+  slug: string
+  title: string
 }
 
-function ContactFormInner({ products = [] }: ContactFormProps) {
+interface ContactFormProps {
+  /** Opciones de "Tipo de proyecto": los slugs coinciden con ?servicio=<slug>. */
+  services: Option[]
+  products?: Option[]
+  /** Servicio preseleccionado (p. ej. en la página de ese servicio). */
+  defaultService?: string
+}
+
+function ContactFormInner({ services, products = [], defaultService = '' }: ContactFormProps) {
   const searchParams = useSearchParams()
-  const servicioParam = searchParams.get('servicio') ?? ''
+  const servicioParam = searchParams.get('servicio') ?? defaultService
   const productoParam = searchParams.get('producto') ?? ''
   const productTitle = products.find((p) => p.slug === productoParam)?.title ?? ''
 
@@ -46,16 +43,19 @@ function ContactFormInner({ products = [] }: ContactFormProps) {
   return (
     <ContactFormFields
       key={`${servicioParam}|${productTitle}`}
-      initialProjectType={servicioParam}
+      services={services}
+      initialProjectType={services.some((s) => s.slug === servicioParam) ? servicioParam : ''}
       initialProduct={productTitle}
     />
   )
 }
 
 function ContactFormFields({
+  services,
   initialProjectType,
   initialProduct,
 }: {
+  services: Option[]
   initialProjectType: string
   initialProduct: string
 }) {
@@ -201,9 +201,10 @@ function ContactFormFields({
             onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
           >
             <option value="">Seleccionar...</option>
-            {projectTypes.map((t) => (
-              <option key={t.value} value={t.value}>{t.label}</option>
+            {services.map((s) => (
+              <option key={s.slug} value={s.slug}>{s.title}</option>
             ))}
+            <option value="otro">Otro</option>
           </select>
         </div>
         <div>
@@ -257,10 +258,10 @@ function ContactFormFields({
   )
 }
 
-export function ContactForm({ products }: ContactFormProps) {
+export function ContactForm(props: ContactFormProps) {
   return (
     <Suspense fallback={<div className="bg-bg-surface border border-white/5 rounded-lg p-6 h-96 animate-pulse" />}>
-      <ContactFormInner products={products} />
+      <ContactFormInner {...props} />
     </Suspense>
   )
 }

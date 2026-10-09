@@ -2,7 +2,7 @@
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { products } from '@/data/content'
+import { products, services } from '@/data/content'
 import { contactEmail, waLink } from '@/data/contact'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 
@@ -41,7 +41,10 @@ export default function ContactoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Formulario */}
             <div className="lg:col-span-2">
-              <ContactForm products={products.map(({ slug, title }) => ({ slug, title }))} />
+              <ContactForm
+                services={services.map(({ slug, title }) => ({ slug, title }))}
+                products={products.map(({ slug, title }) => ({ slug, title }))}
+              />
             </div>
 
             {/* Info de contacto */}

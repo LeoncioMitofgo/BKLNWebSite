@@ -13,6 +13,7 @@ import { BlogCard } from '@/components/sections/BlogCard'
 import { TechStack } from '@/components/sections/TechStack'
 import { AnnouncementBanner } from '@/components/sections/AnnouncementBanner'
 import { services, publishedCourses, products, visiblePosts } from '@/data/content'
+import { processSteps } from '@/data/process'
 
 const stats = [
   { value: 'Malabo', label: 'Sede central' },
@@ -21,32 +22,7 @@ const stats = [
   { value: '24h', label: 'Tiempo de respuesta' },
 ]
 
-const processSteps = [
-  {
-    icon: <Search size={22} />,
-    step: '01',
-    title: 'Entendemos el reto',
-    description: 'Aterrizamos tu idea, tus objetivos y las restricciones reales del negocio antes de escribir código.',
-  },
-  {
-    icon: <Code2 size={22} />,
-    step: '02',
-    title: 'Diseñamos la solución',
-    description: 'Definimos alcance, arquitectura, prioridades y un plan de trabajo que puedas entender y validar.',
-  },
-  {
-    icon: <CheckCircle size={22} />,
-    step: '03',
-    title: 'Construimos y validamos',
-    description: 'Desarrollamos por etapas, enseñamos avances y probamos cada flujo antes de darlo por terminado.',
-  },
-  {
-    icon: <Rocket size={22} />,
-    step: '04',
-    title: 'Lanzamos contigo',
-    description: 'Entregamos el producto, la documentación y el soporte necesario para que puedas operarlo con confianza.',
-  },
-]
+const processIcons = [<Search key="search" size={22} />, <Code2 key="code" size={22} />, <CheckCircle key="check" size={22} />, <Rocket key="rocket" size={22} />]
 
 const whyUs = [
   { title: 'Entendemos el contexto', description: 'Diseñamos para conectividad variable, moneda local, dispositivos reales y las necesidades concretas de cada mercado.' },
@@ -222,7 +198,7 @@ export default function HomePage() {
                 <div className="bg-bg-surface border border-white/5 rounded-lg p-6 relative z-10 hover:border-brand-green/30 transition-colors">
                   <div className="flex items-center justify-between mb-4">
                     <div className="w-10 h-10 rounded-md bg-brand-green/20 flex items-center justify-center text-accent-green">
-                      {step.icon}
+                      {processIcons[i]}
                     </div>
                     <span className="text-brand-green/40 font-bold text-2xl">{step.step}</span>
                   </div>
