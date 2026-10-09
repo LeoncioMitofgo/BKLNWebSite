@@ -48,7 +48,7 @@ export default async function ProductPage({ params }: PageProps) {
         {/* Header */}
         <div className="flex flex-col sm:flex-row gap-6 mb-8">
           <div className="relative w-full sm:w-48 h-40 rounded-lg overflow-hidden border border-white/5 bg-bg-surface shrink-0">
-            <Image src={product.image} alt={product.title} fill className="object-cover" unoptimized />
+            <Image src={product.image} alt={product.title} fill className="object-cover" sizes="(min-width: 640px) 192px, 100vw" />
           </div>
           <div className="flex-1">
             <div className="flex flex-wrap items-center gap-2 mb-2">
@@ -93,7 +93,7 @@ export default async function ProductPage({ params }: PageProps) {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
             {product.screenshots.map((src, i) => (
               <div key={i} className="relative h-40 rounded-lg overflow-hidden border border-white/5">
-                <Image src={src} alt={`Screenshot ${i + 1}`} fill className="object-cover" unoptimized />
+                <Image src={src} alt={`Screenshot ${i + 1}`} fill className="object-cover" sizes="(min-width: 640px) 300px, 50vw" />
               </div>
             ))}
           </div>

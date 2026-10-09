@@ -465,11 +465,11 @@ export const products: Product[] = [
     title: 'BrookAI',
     description: 'Bot de atención al cliente con IA que aprende de tus documentos y responde en tu web y WhatsApp. Multi-tenant y revendible — un sistema, múltiples clientes, cada uno con su propia identidad.',
     longDescription:
-      'BrookAI es un sistema SaaS de chatbot con inteligencia artificial construido para funcionar en producción desde el primer día. Se integra en cualquier web con un fragmento de código y en WhatsApp Business API — el mismo bot, en todos los canales donde están tus clientes.\n\nEl bot responde usando exclusivamente los documentos que tú subes: catálogos, manuales, preguntas frecuentes, listas de precios, políticas. No inventa — busca en tu propio contenido usando RAG (pgvector + LangChain) y responde con tus propias palabras. Si no sabe responder después de varios intentos, deriva la conversación automáticamente a un agente humano.\n\nCada cliente tiene su propio espacio aislado (multi-tenant): sus documentos, su configuración, su historial de conversaciones y sus métricas. Desde el panel de administración puede gestionar todo sin tocar código — subir documentos, personalizar el nombre y tono del bot, ver el historial y revisar qué preguntas no supo responder.\n\nSi eres agencia o consultor, BrookAI es revendible: puedes ofrecer el servicio a tus propios clientes bajo tu marca, con cada uno en su propio tenant y configuración independiente.\n\nStack: FastAPI (Python) · Claude API (Anthropic) · LangChain + pgvector · Supabase · Widget Vanilla JS · React + Vite · WhatsApp Business API. En producción en bklnsoftware.tech.',
+      'BrookAI es un sistema SaaS de chatbot con inteligencia artificial construido para funcionar en producción desde el primer día. Se integra en cualquier web con un fragmento de código y en WhatsApp Business API — el mismo bot, en todos los canales donde están tus clientes.\n\nEl bot responde usando exclusivamente los documentos que tú subes: catálogos, manuales, preguntas frecuentes, listas de precios, políticas. No inventa — busca en tu propio contenido usando RAG (pgvector + LangChain) y responde con tus propias palabras. Si no sabe responder después de varios intentos, deriva la conversación automáticamente a un agente humano.\n\nCada cliente tiene su propio espacio aislado (multi-tenant): sus documentos, su configuración, su historial de conversaciones y sus métricas. Desde el panel de administración puede gestionar todo sin tocar código — subir documentos, personalizar el nombre y tono del bot, ver el historial y revisar qué preguntas no supo responder.\n\nSi eres agencia o consultor, BrookAI es revendible: puedes ofrecer el servicio a tus propios clientes bajo tu marca, con cada uno en su propio tenant y configuración independiente.\n\nStack: FastAPI (Python) · Claude API (Anthropic) · LangChain + pgvector · Supabase · Widget Vanilla JS · React + Vite · WhatsApp Business API.',
     category: 'ia',
     pricingNote: 'Planes según volumen de consultas.',
-    image: '/brookai-cover.png',
-    screenshots: ['/brookai-cover.png', '/brookai-logo.png'],
+    image: '/brookai-cover.jpg',
+    screenshots: ['/brookai-cover.jpg', '/brookai-logo.webp'],
     deliveryType: 'source-code',
     includes: [
       'Bot entrenado con tus documentos (PDF, TXT, URLs) — RAG con pgvector',
@@ -923,6 +923,7 @@ export const projects: Project[] = [
     longDescription:
       'Organizar un evento en Malabo significaba listas en papel, entradas fotocopiadas y control de acceso manual. Con Zentry, el organizador crea el evento en minutos, añade los invitados desde el móvil y comparte el QR de cada uno directamente por WhatsApp — con un solo toque.\n\nEn la puerta, el staff escanea los códigos con la cámara del dispositivo. El sistema responde en menos de un segundo: entrada válida, ya escaneado, aforo completo o código inválido — cada caso con audio y vibración distintos para que el staff no tenga que mirar la pantalla en un entorno ruidoso. Las entradas duplicadas son imposibles.\n\nEl dashboard muestra en tiempo real cuántas personas han entrado, cuántas están pendientes y el progreso de capacidad del evento. Todo sincronizado al instante entre todos los dispositivos del equipo.\n\nZentry funciona en Android, iOS, Web, Windows, macOS y Linux desde una única aplicación — lo que significa que el organizador gestiona desde su portátil y el staff controla desde su móvil, sin instalar apps distintas.',
     category: 'android',
+    sector: 'Eventos',
     technologies: ['Flutter', 'Dart', 'Supabase', 'PostgreSQL', 'QR Flutter', 'Mobile Scanner'],
     image: '/zentry-ss1.jpg',
     gallery: ['/zentry-ss1.jpg', '/zentry-ss2.jpg'],
@@ -944,15 +945,15 @@ export const projects: Project[] = [
     id: '10',
     slug: 'brookai',
     title: 'BrookAI',
-    description: 'SaaS de chatbot con IA multi-tenant: bot de atención al cliente que aprende de documentos propios, se integra en cualquier web y WhatsApp, y escala a agente humano. En producción en bklnsoftware.tech.',
+    description: 'SaaS de chatbot con IA multi-tenant: bot de atención al cliente que aprende de documentos propios, se integra en cualquier web y WhatsApp, y escala a agente humano.',
     longDescription:
-      'BrookAI nació de una necesidad concreta: empresas que querían atender a sus clientes fuera del horario laboral sin contratar más personal. El bot responde usando exclusivamente los documentos del negocio (RAG con pgvector y LangChain), no inventa ni alucina — si no sabe, lo dice y deriva a un humano.\n\nLa arquitectura es multi-tenant desde el diseño: cada cliente tiene su propio espacio aislado con sus documentos, su historial y su configuración. El mismo sistema en producción sirve a múltiples empresas sin que ninguna vea los datos de las demás.\n\nLa integración en la web del cliente es un único snippet de JavaScript — nada de instalar dependencias ni modificar el backend existente. El widget se inicializa con la API key del tenant y empieza a responder al instante. La integración con WhatsApp Business API lleva el mismo bot al canal de mensajería más usado en el mercado.\n\nEl panel de administración (React + Vite) permite gestionar documentos, ver el historial de conversaciones completo, revisar qué preguntas no supo responder (señal directa de qué documentación falta), y configurar el tono y nombre del bot — todo sin tocar código.\n\nStack: FastAPI · Python · Claude API (Anthropic) · LangChain · pgvector · Supabase · Vanilla JS widget · React + Vite · WhatsApp Business API. Dockerizado, con CI/CD y desplegado en Hostinger VPS (bklnsoftware.tech).',
+      'BrookAI nació de una necesidad concreta: empresas que querían atender a sus clientes fuera del horario laboral sin contratar más personal. El bot responde usando exclusivamente los documentos del negocio (RAG con pgvector y LangChain), no inventa ni alucina — si no sabe, lo dice y deriva a un humano.\n\nLa arquitectura es multi-tenant desde el diseño: cada cliente tiene su propio espacio aislado con sus documentos, su historial y su configuración. El mismo sistema en producción sirve a múltiples empresas sin que ninguna vea los datos de las demás.\n\nLa integración en la web del cliente es un único snippet de JavaScript — nada de instalar dependencias ni modificar el backend existente. El widget se inicializa con la API key del tenant y empieza a responder al instante. La integración con WhatsApp Business API lleva el mismo bot al canal de mensajería más usado en el mercado.\n\nEl panel de administración (React + Vite) permite gestionar documentos, ver el historial de conversaciones completo, revisar qué preguntas no supo responder (señal directa de qué documentación falta), y configurar el tono y nombre del bot — todo sin tocar código.\n\nStack: FastAPI · Python · Claude API (Anthropic) · LangChain · pgvector · Supabase · Vanilla JS widget · React + Vite · WhatsApp Business API. Dockerizado, con CI/CD y desplegado en un servidor propio.',
     category: 'ia',
+    sector: 'Atención al cliente',
     technologies: ['Python', 'FastAPI', 'Claude API', 'LangChain', 'pgvector', 'Supabase', 'JavaScript', 'React', 'Vite', 'Docker', 'WhatsApp Business API'],
-    image: '/brookai-cover.png',
-    gallery: ['/brookai-cover.png', '/brookai-logo.png'],
+    image: '/brookai-cover.jpg',
+    gallery: ['/brookai-cover.jpg', '/brookai-logo.webp'],
     year: 2026,
-    liveUrl: 'https://bklnsoftware.tech',
     challenges: [
       'RAG fiable: el bot debe responder solo con información real del cliente, sin alucinar ni mezclar datos de otros tenants',
       'Aislamiento total entre tenants — documentos, vectores y conversaciones deben ser invisibles entre clientes',
@@ -974,6 +975,7 @@ export const projects: Project[] = [
     longDescription:
       'La mayoría de los colegios de Guinea Ecuatorial gestionan sus alumnos en Excel, sus pagos en cuadernos y sus boletines de notas a mano. GestEscolar digitaliza todo ese flujo en un sistema que cualquier secretaria puede aprender a usar en un día.\n\nDesde el primer día, el colegio puede registrar alumnos con ficha completa (datos médicos, tutor, documentos), gestionar matrículas con seguimiento de pagos, introducir calificaciones por trimestre y generar boletines listos para imprimir. Los carnets de estudiante se producen automáticamente. Las listas de aula también. Todo desde el navegador, sin instalar nada en cada equipo.\n\nEl sistema funciona completamente sin internet — corre en la red local del colegio. Si el servidor se apaga, nadie pierde datos: todo está en la base de datos local. Si se necesita acceder desde otro equipo del colegio, basta con abrir el navegador y escribir la IP del servidor.\n\nLa instalación completa tarda menos de 5 minutos: un archivo .bat configura el entorno Python, crea la base de datos y arranca el servidor. No hace falta saber de informática para instalarlo ni para mantenerlo.',
     category: 'desktop',
+    sector: 'Educación',
     technologies: ['Python', 'FastAPI', 'SQLite', 'JWT', 'Jinja2', 'HTML5', 'CSS3', 'JavaScript'],
     image: '/Screenshot2.png',
     gallery: ['/Screenshot2.png', '/gest1.png', '/gest2.png', '/gest3.png', '/gest4.png', '/gest5.png'],
@@ -999,6 +1001,7 @@ export const projects: Project[] = [
     longDescription:
       'Desarrollamos un sistema de punto de venta Android y un panel móvil de operaciones para gestionar productos, operadores, terminales, ventas e ingresos desde un mismo backend.\n\nEn el terminal, el operador inicia sesión con un PIN validado en servidor, crea la venta, imprime el recibo y puede trabajar con caché local cuando la conexión es inestable. El panel permite supervisar ventas, productos y terminales sin interrumpir el flujo del mostrador.\n\nLa integración con hardware incluye impresión y lectura contactless con el SDK del dispositivo. El flujo EMV se dejó preparado y probado en hardware de desarrollo; la autorización bancaria real requiere todavía adquirente, claves de producción y certificación específica.\n\nStack: Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
     category: 'android',
+    sector: 'Comercio y restauración',
     technologies: ['Kotlin', 'Jetpack Compose', 'Hilt', 'Room', 'Retrofit', 'WorkManager', 'Supabase', 'PostgreSQL'],
     image: '/course-android.jpg',
     gallery: ['/course-android.jpg'],
@@ -1024,6 +1027,8 @@ export const projects: Project[] = [
     longDescription:
       'Diseñamos una plataforma de logística bajo demanda con aplicaciones separadas para clientes y repartidores, además de paneles para la operación. El sistema contempla comida, supermercado, farmacia y paquetería desde una arquitectura común.\n\nEl flujo principal cubre catálogo, carrito, checkout, creación de pedidos, asignación temporal de repartidores, estados de entrega, ganancias y seguimiento en tiempo real. La lógica sensible se ejecuta en funciones server-side y las aplicaciones comparten tipos, reglas y componentes de dominio.\n\nEl proyecto fue construido con especial atención al contexto local: importes enteros en XAF, conectividad variable, reglas explícitas de cancelación y permisos reforzados en la base de datos.',
     category: 'android',
+    sector: 'Logística y reparto',
+    status: 'En desarrollo',
     technologies: ['Flutter', 'Dart', 'Riverpod', 'Next.js', 'TypeScript', 'Supabase', 'Realtime', 'Edge Functions'],
     image: '/course-android.jpg',
     gallery: ['/course-android.jpg'],
@@ -1039,6 +1044,7 @@ export const projects: Project[] = [
     longDescription:
       'Creamos la base de una plataforma de herramientas digitales rápidas y accesibles, pensada para resolver tareas concretas sin obligar al usuario a crear una cuenta. La prioridad técnica es que cada herramienta cargue rápido y procese los datos en el navegador siempre que sea posible, reduciendo infraestructura y exposición de información sensible.',
     category: 'web',
+    sector: 'Herramientas digitales',
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'PostgreSQL', 'Vercel', 'Cloudflare'],
     image: '/course-web.jpg',
     gallery: ['/course-web.jpg'],

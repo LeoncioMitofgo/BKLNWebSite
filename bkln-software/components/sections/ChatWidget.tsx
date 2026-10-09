@@ -15,11 +15,24 @@ const STORAGE_KEY = 'bkln_chat_session_id'
 const HISTORY_LIMIT = 8
 const LOCAL_MESSAGE_IDS = new Set(['welcome', 'notice'])
 
+// Un id por pestaña, creado al enviar el primer mensaje (sessionStorage puede fallar en modo privado).
+function getSessionId(): string {
+    const generate = () => `bkln-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
+    try {
+        const existing = window.sessionStorage.getItem(STORAGE_KEY)
+        if (existing) return existing
+        const created = generate()
+        window.sessionStorage.setItem(STORAGE_KEY, created)
+        return created
+    } catch {
+        return generate()
+    }
+}
+
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false)
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
-    const [sessionId, setSessionId] = useState<string>('')
     const [messages, setMessages] = useState<Message[]>([
         {
             id: 'welcome',
@@ -33,18 +46,6 @@ export default function ChatWidget() {
         },
     ])
     const messagesEndRef = useRef<HTMLDivElement | null>(null)
-
-    useEffect(() => {
-        const existing = window.sessionStorage.getItem(STORAGE_KEY)
-        if (existing) {
-            setSessionId(existing)
-            return
-        }
-
-        const generated = `bkln-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`
-        window.sessionStorage.setItem(STORAGE_KEY, generated)
-        setSessionId(generated)
-    }, [])
 
     useEffect(() => {
         const onKeyDown = (event: KeyboardEvent) => {
@@ -63,7 +64,7 @@ export default function ChatWidget() {
 
     const sendMessage = async () => {
         const trimmed = input.trim()
-        if (!trimmed || loading || !sessionId) return
+        if (!trimmed || loading) return
 
         const userMessage: Message = {
             id: `user-${Date.now()}`,
@@ -87,7 +88,7 @@ export default function ChatWidget() {
                 },
                 body: JSON.stringify({
                     question: trimmed,
-                    session_id: sessionId,
+                    session_id: getSessionId(),
                     history,
                 }),
             })
@@ -242,13 +243,13 @@ export default function ChatWidget() {
                                     }}
                                     placeholder="Escribe tu pregunta..."
                                     className="flex-1 rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/40"
-                                    disabled={loading || !sessionId}
+                                    disabled={loading}
                                 />
                                 <button
                                     type="button"
                                     aria-label="Enviar pregunta"
                                     onClick={() => void sendMessage()}
-                                    disabled={loading || !sessionId || !input.trim()}
+                                    disabled={loading || !input.trim()}
                                     className="rounded-xl bg-green-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-green-500 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
                                 >
                                     Enviar

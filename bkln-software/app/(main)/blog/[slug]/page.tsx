@@ -84,7 +84,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             alt={post.title}
             fill
             className="object-cover"
-            unoptimized
+            sizes="(min-width: 896px) 896px, 100vw"
           />
           <div className="absolute inset-0 bg-bg-dark/50" />
         </div>

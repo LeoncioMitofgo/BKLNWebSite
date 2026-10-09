@@ -34,7 +34,7 @@ export function ProductCard({ product }: ProductCardProps) {
           alt={product.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-500"
-          unoptimized
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
         />
         <div className="absolute inset-0 bg-bg-dark/50" />
         <div className="absolute top-2 left-2">

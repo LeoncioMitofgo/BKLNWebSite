@@ -36,7 +36,7 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
             alt={post.title}
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
-            unoptimized
+            sizes={featured ? '(min-width: 768px) 320px, 100vw' : '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw'}
           />
           <div className="absolute inset-0 bg-bg-dark/40" />
         </div>

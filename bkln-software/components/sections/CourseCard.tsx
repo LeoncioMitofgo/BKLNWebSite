@@ -35,7 +35,7 @@ export function CourseCard({ course }: CourseCardProps) {
           alt={course.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-105"
-          unoptimized
+          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
         />
         <div className="absolute inset-0 bg-bg-dark/50" />
         <div className="absolute top-3 right-3">

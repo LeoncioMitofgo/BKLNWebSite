@@ -20,10 +20,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  useEffect(() => {
-    setIsOpen(false)
-  }, [pathname])
-
   return (
     <header
       className={cn(
@@ -39,7 +35,7 @@ export function Navbar() {
           <Logo size="sm" className="mt-4 -ml-4 origin-left scale-[0.8]" />
 
           {/* Nav links desktop */}
-          <nav className="hidden md:flex items-center gap-5">
+          <nav className="hidden lg:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
@@ -58,11 +54,11 @@ export function Navbar() {
 
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
-            <Link href="/contacto" className="hidden md:block">
+            <Link href="/contacto" className="hidden lg:block">
               <Button size="sm">Solicitar propuesta</Button>
             </Link>
             <button
-              className="md:hidden p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-white/5"
+              className="lg:hidden p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-white/5"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
             >
@@ -74,12 +70,13 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-bg-dark/98 backdrop-blur-md border-b border-white/5">
+        <div className="lg:hidden bg-bg-dark/98 backdrop-blur-md border-b border-white/5">
           <div className="px-4 pt-2 pb-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={() => setIsOpen(false)}
                 className={cn(
                   'block px-3 py-2.5 rounded-md text-sm font-semibold transition-colors',
                   pathname === link.href
@@ -91,7 +88,7 @@ export function Navbar() {
               </Link>
             ))}
             <div className="pt-2">
-              <Link href="/contacto" className="block">
+              <Link href="/contacto" className="block" onClick={() => setIsOpen(false)}>
                 <Button className="w-full" size="sm">
                   Solicitar propuesta
                 </Button>

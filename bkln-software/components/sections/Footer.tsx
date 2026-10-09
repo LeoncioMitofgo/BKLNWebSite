@@ -3,9 +3,8 @@ import { Logo } from '@/components/ui/Logo'
 import { footerLinks } from '@/data/nav'
 import { contactEmail } from '@/data/contact'
 
-const resourceLinks = [
-  { label: 'Cursos', href: '/cursos' },
-  { label: 'Guías', href: '/blog' },
+const infoLinks = [
+  { label: 'Contacto', href: '/contacto' },
   { label: 'Privacidad', href: '/privacidad' },
   { label: 'Términos', href: '/terminos' },
 ]
@@ -88,10 +87,10 @@ export function Footer() {
           {/* Recursos */}
           <div>
             <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              Recursos
+              Información
             </h3>
             <ul className="space-y-2.5">
-              {resourceLinks.map((link) => (
+              {infoLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

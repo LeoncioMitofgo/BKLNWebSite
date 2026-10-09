@@ -44,7 +44,7 @@ export default async function CoursePage({ params }: PageProps) {
 
         {/* Hero */}
         <div className="relative h-56 rounded-lg overflow-hidden mb-8 border border-white/5">
-          <Image src={course.thumbnail} alt={course.title} fill className="object-cover" unoptimized />
+          <Image src={course.thumbnail} alt={course.title} fill className="object-cover" sizes="(min-width: 896px) 896px, 100vw" />
           <div className="absolute inset-0 bg-bg-dark/60" />
         </div>
 
