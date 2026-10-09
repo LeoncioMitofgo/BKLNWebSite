@@ -1,5 +1,5 @@
 ﻿import { MetadataRoute } from 'next'
-import { projects, products, courses, blogPosts } from '@/data/content'
+import { projects, products, publishedCourses, blogPosts } from '@/data/content'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.bklnsoftware.tech'
@@ -28,7 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  const courseRoutes = courses.map((c) => ({
+  const courseRoutes = publishedCourses.map((c) => ({
     url: `${baseUrl}/cursos/${c.slug}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,

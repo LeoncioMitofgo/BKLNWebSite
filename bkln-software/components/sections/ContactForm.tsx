@@ -1,15 +1,17 @@
 ﻿'use client'
 
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useId, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { Send, CheckCircle } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import type { ContactFormData } from '@/types'
+import { waLink } from '@/data/contact'
 
+// Los values coinciden con los slugs de servicio para que ?servicio=<slug> pre-rellene el campo.
 const projectTypes = [
-  { value: 'android', label: 'App Android' },
-  { value: 'web', label: 'Desarrollo Web / Marketplace' },
-  { value: 'desktop', label: 'App Desktop' },
+  { value: 'apps-android', label: 'App Android' },
+  { value: 'desarrollo-web', label: 'Desarrollo Web / Marketplace' },
+  { value: 'desktop-electron', label: 'App Desktop' },
   { value: 'python-automatizacion', label: 'Python & Automatización' },
   { value: 'databases-apis', label: 'Databases & APIs' },
   { value: 'ia-machine-learning', label: 'IA / Machine Learning' },
@@ -30,27 +32,49 @@ const inputClass =
 
 const labelClass = 'block text-text-secondary text-sm mb-1.5 font-medium'
 
-function ContactFormInner() {
+interface ContactFormProps {
+  products?: { slug: string; title: string }[]
+}
+
+function ContactFormInner({ products = [] }: ContactFormProps) {
   const searchParams = useSearchParams()
   const servicioParam = searchParams.get('servicio') ?? ''
+  const productoParam = searchParams.get('producto') ?? ''
+  const productTitle = products.find((p) => p.slug === productoParam)?.title ?? ''
 
+  // La key reinicia el formulario si cambian los parámetros sin desmontar la página.
+  return (
+    <ContactFormFields
+      key={`${servicioParam}|${productTitle}`}
+      initialProjectType={servicioParam}
+      initialProduct={productTitle}
+    />
+  )
+}
+
+function ContactFormFields({
+  initialProjectType,
+  initialProduct,
+}: {
+  initialProjectType: string
+  initialProduct: string
+}) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: '',
     email: '',
+    whatsapp: '',
     company: '',
-    projectType: servicioParam,
+    projectType: initialProjectType,
+    product: initialProduct,
     budget: '',
     description: '',
   })
   const [submitting, setSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [error, setError] = useState('')
-
-  useEffect(() => {
-    if (servicioParam) {
-      setFormData((prev) => ({ ...prev, projectType: servicioParam }))
-    }
-  }, [servicioParam])
+  // Campo trampa anti-spam: invisible para personas, los bots suelen rellenarlo.
+  const [website, setWebsite] = useState('')
+  const id = useId()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -61,7 +85,11 @@ function ContactFormInner() {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          website,
+          sourcePath: window.location.pathname + window.location.search,
+        }),
       })
       const data = await res.json().catch(() => ({}))
       if (!res.ok) throw new Error(data.error)
@@ -91,10 +119,17 @@ function ContactFormInner() {
 
   return (
     <form onSubmit={handleSubmit} className="bg-bg-surface border border-white/5 rounded-lg p-6 space-y-5">
+      {formData.product && (
+        <p className="text-sm text-text-secondary bg-brand-green/10 border border-brand-green/20 rounded-md px-4 py-2.5">
+          Consulta sobre: <span className="text-text-primary font-semibold">{formData.product}</span>
+        </p>
+      )}
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Nombre completo *</label>
+          <label htmlFor={`${id}-name`} className={labelClass}>Nombre completo *</label>
           <input
+            id={`${id}-name`}
             type="text"
             required
             className={inputClass}
@@ -104,8 +139,9 @@ function ContactFormInner() {
           />
         </div>
         <div>
-          <label className={labelClass}>Email *</label>
+          <label htmlFor={`${id}-email`} className={labelClass}>Email *</label>
           <input
+            id={`${id}-email`}
             type="email"
             required
             className={inputClass}
@@ -116,22 +152,50 @@ function ContactFormInner() {
         </div>
       </div>
 
-      <div>
-        <label className={labelClass}>Empresa (opcional)</label>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor={`${id}-whatsapp`} className={labelClass}>WhatsApp (opcional)</label>
+          <input
+            id={`${id}-whatsapp`}
+            type="tel"
+            autoComplete="tel"
+            className={inputClass}
+            placeholder="+240 ..."
+            value={formData.whatsapp}
+            onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
+          />
+        </div>
+        <div>
+          <label htmlFor={`${id}-company`} className={labelClass}>Empresa (opcional)</label>
+          <input
+            id={`${id}-company`}
+            type="text"
+            className={inputClass}
+            placeholder="Nombre de tu empresa"
+            value={formData.company}
+            onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+          />
+        </div>
+      </div>
+
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label htmlFor={`${id}-website`}>No rellenar este campo</label>
         <input
+          id={`${id}-website`}
           type="text"
-          className={inputClass}
-          placeholder="Nombre de tu empresa"
-          value={formData.company}
-          onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+          tabIndex={-1}
+          autoComplete="off"
+          value={website}
+          onChange={(e) => setWebsite(e.target.value)}
         />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <div>
-          <label className={labelClass}>Tipo de proyecto *</label>
+          <label htmlFor={`${id}-type`} className={labelClass}>Tipo de proyecto{formData.product ? '' : ' *'}</label>
           <select
-            required
+            id={`${id}-type`}
+            required={!formData.product}
             className={inputClass}
             value={formData.projectType}
             onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
@@ -143,8 +207,9 @@ function ContactFormInner() {
           </select>
         </div>
         <div>
-          <label className={labelClass}>Presupuesto estimado *</label>
+          <label htmlFor={`${id}-budget`} className={labelClass}>Presupuesto estimado *</label>
           <select
+            id={`${id}-budget`}
             required
             className={inputClass}
             value={formData.budget}
@@ -159,8 +224,9 @@ function ContactFormInner() {
       </div>
 
       <div>
-        <label className={labelClass}>Descripción del proyecto *</label>
+        <label htmlFor={`${id}-description`} className={labelClass}>Descripción del proyecto *</label>
         <textarea
+          id={`${id}-description`}
           required
           rows={5}
           className={inputClass}
@@ -172,7 +238,15 @@ function ContactFormInner() {
 
       {error && (
         <p className="text-error text-sm bg-error/10 border border-error/20 rounded-md px-4 py-2.5">
-          {error}
+          {error}{' '}
+          <a
+            href={waLink('Hola, quería contactar con BKLN pero el formulario me dio un error.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline font-semibold"
+          >
+            Escribir por WhatsApp
+          </a>
         </p>
       )}
 
@@ -183,10 +257,10 @@ function ContactFormInner() {
   )
 }
 
-export function ContactForm() {
+export function ContactForm({ products }: ContactFormProps) {
   return (
     <Suspense fallback={<div className="bg-bg-surface border border-white/5 rounded-lg p-6 h-96 animate-pulse" />}>
-      <ContactFormInner />
+      <ContactFormInner products={products} />
     </Suspense>
   )
 }

@@ -29,9 +29,7 @@ interface BlogCardProps {
 }
 
 export function BlogCard({ post, featured = false }: BlogCardProps) {
-  const imageUrl = post.coverImage.startsWith('http')
-    ? post.coverImage
-    : categoryImages[post.category]
+  const imageUrl = post.coverImage || categoryImages[post.category]
 
   return (
     <Link href={`/blog/${post.slug}`} className="group block">

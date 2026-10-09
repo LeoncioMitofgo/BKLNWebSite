@@ -26,9 +26,7 @@ interface ProjectCardProps {
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const imageUrl = project.image.startsWith('http')
-    ? project.image
-    : categoryImages[project.category]
+  const imageUrl = project.image || categoryImages[project.category]
 
   return (
     <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">

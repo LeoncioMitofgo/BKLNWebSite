@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import ChatWidget from '@/components/sections/ChatWidget'
+import { contactEmail, whatsappNumber } from '@/data/contact'
 import './globals.css'
 
 const inter = Inter({
@@ -72,8 +73,8 @@ const structuredData = {
   logo: `${siteUrl}/brand-logo.png`,
   image: `${siteUrl}/brand-logo.png`,
   description: homeDescription,
-  email: 'hello@bklnsoftware.tech',
-  telephone: '+240222798086',
+  email: contactEmail,
+  telephone: `+${whatsappNumber}`,
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Malabo',

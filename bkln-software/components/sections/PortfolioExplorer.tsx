@@ -16,6 +16,9 @@ const categories: { value: Project['category'] | 'todos'; label: string }[] = [
 
 export function PortfolioExplorer({ projects }: { projects: Project[] }) {
   const [activeCategory, setActiveCategory] = useState<Project['category'] | 'todos'>('todos')
+  const visibleCategories = categories.filter(
+    (c) => c.value === 'todos' || projects.some((p) => p.category === c.value)
+  )
 
   const filtered =
     activeCategory === 'todos'
@@ -27,7 +30,7 @@ export function PortfolioExplorer({ projects }: { projects: Project[] }) {
       {/* Filtros */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <CategoryFilter categories={categories} active={activeCategory} onChange={setActiveCategory} />
+          <CategoryFilter categories={visibleCategories} active={activeCategory} onChange={setActiveCategory} />
         </div>
       </section>
 

@@ -1,16 +1,13 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import Image from 'next/image'
-import { Star, Download } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { formatPrice } from '@/lib/utils'
 import type { Product } from '@/types'
 
 const categoryLabels: Record<Product['category'], string> = {
   android: 'Android',
   desktop: 'Desktop',
-  scripts: 'Scripts & Tools',
-  free: 'Gratis',
   web: 'Web App',
   ia: 'IA',
 }
@@ -18,24 +15,19 @@ const categoryLabels: Record<Product['category'], string> = {
 const categoryImages: Record<Product['category'], string> = {
   android: '/course-android.jpg',
   desktop: '/service-desktop.jpg',
-  scripts: '/product-scripts.jpg',
-  free: '/project-desktop.jpg',
   web: '/product-web.jpg',
   ia: '/product-ia.jpg',
 }
 
 interface ProductCardProps {
   product: Product
-  showPrice?: boolean
 }
 
-export function ProductCard({ product, showPrice = true }: ProductCardProps) {
-  const imageUrl = product.image?.startsWith('http')
-    ? product.image
-    : (product.image || categoryImages[product.category])
+export function ProductCard({ product }: ProductCardProps) {
+  const imageUrl = product.image || categoryImages[product.category]
 
   return (
-    <div className="group bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
+    <div className="group flex flex-col bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       <div className="h-40 relative overflow-hidden">
         <Image
           src={imageUrl}
@@ -46,47 +38,19 @@ export function ProductCard({ product, showPrice = true }: ProductCardProps) {
         />
         <div className="absolute inset-0 bg-bg-dark/50" />
         <div className="absolute top-2 left-2">
-          <Badge variant={product.isFree ? 'success' : 'blue'}>
-            {categoryLabels[product.category]}
-          </Badge>
-        </div>
-        <div className="absolute top-2 right-2">
-          <span className="text-white text-xs bg-black/50 backdrop-blur-sm px-1.5 py-0.5 rounded">
-            v{product.version}
-          </span>
+          <Badge variant="blue">{categoryLabels[product.category]}</Badge>
         </div>
       </div>
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         <h3 className="text-text-primary font-semibold mb-1.5">{product.title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+        <p className="text-text-secondary text-sm leading-relaxed mb-5 line-clamp-3">
           {product.description}
         </p>
-        <div className="flex items-center gap-3 mb-4 text-xs text-text-secondary">
-          <span className="flex items-center gap-1">
-            <Star size={12} className="text-warning fill-warning" />
-            {product.rating}
-          </span>
-          <span className="flex items-center gap-1">
-            <Download size={12} />
-            {product.downloads.toLocaleString()}
-          </span>
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          {showPrice && (
-            <span className="text-text-primary font-bold text-lg">
-              {product.priceOnRequest ? 'Bajo pedido' : formatPrice(product.price)}
-            </span>
-          )}
-          <Link href={`/productos/${product.slug}`}>
-            <Button
-              size="sm"
-              variant={product.isFree ? 'outline' : 'primary'}
-              className={!showPrice ? 'ml-auto' : undefined}
-            >
-              {!showPrice ? 'Ver producto' : product.priceOnRequest ? 'Ver solución' : product.isFree ? 'Descargar' : 'Comprar'}
-            </Button>
-          </Link>
-        </div>
+        <Link href={`/productos/${product.slug}`} className="mt-auto">
+          <Button size="sm" variant="outline" className="w-full">
+            Ver producto <ArrowRight size={14} />
+          </Button>
+        </Link>
       </div>
     </div>
   )

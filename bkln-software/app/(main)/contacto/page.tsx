@@ -1,6 +1,8 @@
 ﻿import { Mail, MessageCircle, Clock, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { ContactForm } from '@/components/sections/ContactForm'
+import { products } from '@/data/content'
+import { contactEmail, waLink } from '@/data/contact'
 
 export const metadata: Metadata = {
   title: 'Contacto',
@@ -28,7 +30,7 @@ export default function ContactoPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
             {/* Formulario */}
             <div className="lg:col-span-2">
-              <ContactForm />
+              <ContactForm products={products.map(({ slug, title }) => ({ slug, title }))} />
             </div>
 
             {/* Info de contacto */}
@@ -41,10 +43,10 @@ export default function ContactoPage() {
                   <h3 className="text-text-primary font-semibold text-sm">Email directo</h3>
                 </div>
                 <a
-                  href="mailto:hello@bklnsoftware.tech"
+                  href={`mailto:${contactEmail}`}
                   className="text-accent-green hover:underline text-sm"
                 >
-                  hello@bklnsoftware.tech
+                  {contactEmail}
                 </a>
               </div>
 
@@ -56,7 +58,7 @@ export default function ContactoPage() {
                   <h3 className="text-text-primary font-semibold text-sm">WhatsApp</h3>
                 </div>
                 <a
-                  href="https://wa.me/240222798086"
+                  href={waLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent-green hover:underline text-sm"

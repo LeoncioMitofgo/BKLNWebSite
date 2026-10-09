@@ -1,9 +1,8 @@
-﻿import Link from 'next/link'
+import Link from 'next/link'
 import Image from 'next/image'
-import { Clock, BookOpen } from 'lucide-react'
+import { Clock, ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { formatPrice } from '@/lib/utils'
 import type { Course } from '@/types'
 
 const categoryLabels: Record<Course['category'], string> = {
@@ -27,36 +26,25 @@ interface CourseCardProps {
 }
 
 export function CourseCard({ course }: CourseCardProps) {
-  const isComingSoon = course.status === 'coming-soon'
-
   return (
-    <div className={`group bg-bg-surface border rounded-lg overflow-hidden transition-all duration-300 ${
-      isComingSoon
-        ? 'border-white/5 opacity-60'
-        : 'border-white/5 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10'
-    }`}>
+    <div className="group flex flex-col bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       {/* Image */}
       <div className="h-44 relative overflow-hidden">
         <Image
           src={course.thumbnail}
           alt={course.title}
           fill
-          className={`object-cover transition-transform duration-500 ${!isComingSoon && 'group-hover:scale-105'}`}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
           unoptimized
         />
         <div className="absolute inset-0 bg-bg-dark/50" />
-        <div className="absolute top-3 right-3 flex gap-1.5">
-          {isComingSoon && (
-            <span className="bg-bg-dark/80 text-text-secondary text-xs font-medium px-2.5 py-1 rounded-full border border-white/10">
-              Próximamente
-            </span>
-          )}
+        <div className="absolute top-3 right-3">
           <Badge variant="blue">{categoryLabels[course.category]}</Badge>
         </div>
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-2">
           <Badge>{levelLabels[course.level]}</Badge>
           <span className="text-text-secondary text-xs flex items-center gap-1">
@@ -66,24 +54,15 @@ export function CourseCard({ course }: CourseCardProps) {
         </div>
 
         <h3 className="text-text-primary font-semibold mb-1.5 line-clamp-2">{course.title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed mb-4 line-clamp-2">
+        <p className="text-text-secondary text-sm leading-relaxed mb-5 line-clamp-2">
           {course.description}
         </p>
 
-        <div className="flex items-center justify-between">
-          <span className="text-text-primary font-bold text-xl">
-            {isComingSoon ? '—' : course.price === 0 ? (
-              <span className="text-success text-base font-semibold">Gratis</span>
-            ) : formatPrice(course.price)}
-          </span>
-          {isComingSoon ? (
-            <Button size="sm" variant="outline" disabled>Próximamente</Button>
-          ) : (
-            <Link href={`/cursos/${course.slug}`}>
-              <Button size="sm">Ver curso</Button>
-            </Link>
-          )}
-        </div>
+        <Link href={`/cursos/${course.slug}`} className="mt-auto">
+          <Button size="sm" variant="outline" className="w-full">
+            Ver curso <ArrowRight size={14} />
+          </Button>
+        </Link>
       </div>
     </div>
   )

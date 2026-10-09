@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import { CourseCard } from '@/components/sections/CourseCard'
-import { courses } from '@/data/content'
+import { publishedCourses } from '@/data/content'
 
 export const metadata: Metadata = {
   title: 'Cursos',
@@ -26,7 +26,7 @@ export default function CursosPage() {
       <section className="py-14 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {courses.map((course) => (
+            {publishedCourses.map((course) => (
               <CourseCard key={course.id} course={course} />
             ))}
           </div>

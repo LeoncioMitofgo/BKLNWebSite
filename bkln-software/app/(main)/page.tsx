@@ -1,6 +1,6 @@
 ﻿import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Globe, CheckCircle, MessageSquare, Rocket, Search, Code2 } from 'lucide-react'
+import { ArrowRight, CheckCircle, MessageSquare, Rocket, Search, Code2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/sections/ServiceCard'
@@ -9,13 +9,13 @@ import { ProductCard } from '@/components/sections/ProductCard'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { TechStack } from '@/components/sections/TechStack'
 import { AnnouncementBanner } from '@/components/sections/AnnouncementBanner'
-import { services, courses, products, blogPosts } from '@/data/content'
+import { services, publishedCourses, products, blogPosts } from '@/data/content'
 
 const stats = [
   { value: 'Malabo', label: 'Sede central' },
   { value: '35+', label: 'Proyectos entregados' },
   { value: 'ES · EN · FR', label: 'Idiomas' },
-  { value: '24/7', label: 'Soporte' },
+  { value: '24h', label: 'Tiempo de respuesta' },
 ]
 
 const processSteps = [
@@ -62,11 +62,11 @@ export default function HomePage() {
   const featuredCourseSlugs = [
     'python-desde-cero',
     'ia-machine-learning-python',
-    'flutter-supabase-aplicaciones-reales',
+    'az-900-azure-fundamentals',
   ]
   const featuredCourses = featuredCourseSlugs
-    .map((slug) => courses.find((course) => course.slug === slug))
-    .filter((course): course is (typeof courses)[number] => Boolean(course))
+    .map((slug) => publishedCourses.find((course) => course.slug === slug))
+    .filter((course): course is (typeof publishedCourses)[number] => Boolean(course))
 
   return (
     <div className="min-h-screen">
@@ -236,7 +236,7 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} showPrice={false} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
           <div className="mt-8 text-center">
@@ -249,91 +249,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Marketplace spotlight */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-brand-green/20 to-bg-surface border border-brand-green/20 rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-brand-green/20 text-accent-green text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
-                <Globe size={12} />
-                Producto propio · Próximo lanzamiento
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">
-                BKLN Marketplace
-              </h2>
-              <p className="text-text-secondary mb-6 max-w-lg leading-relaxed">
-                Marketplace local para comprar, vender y conectar sin complicaciones. Incluye publicaciones
-                con fotos, categorías, chat directo, perfiles de vendedores y planes de visibilidad para
-                quienes quieren hacer crecer su negocio. La plataforma está lista para su lanzamiento oficial.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a href="https://bklnmarketplace.com" target="_blank" rel="noopener noreferrer">
-                  <Button>
-                    Explorar plataforma <ArrowRight size={16} />
-                  </Button>
-                </a>
-                <Link href="/portfolio/bkln-marketplace">
-                  <Button variant="outline">Ver caso de estudio</Button>
-                </Link>
-              </div>
-            </div>
-            <div className="w-44 h-44 shrink-0 flex items-center justify-center">
-              <Image
-                src="/mktlogo.png"
-                alt="BKLN Marketplace"
-                width={176}
-                height={176}
-                className="object-contain"
-                style={{ height: 'auto' }}
-                unoptimized
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MiEmpleo spotlight */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="bg-gradient-to-r from-brand-blue/20 to-bg-surface border border-brand-blue/20 rounded-lg p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-8">
-            <div className="w-48 h-24 shrink-0 flex items-center justify-center">
-              {/* eslint-disable-next-line @next/next/no-img-element -- next/image + fill no renderiza este logo de forma fiable, ver revisión */}
-              <img
-                src="/miempleo-logo.png"
-                alt="MiEmpleo GE"
-                className="rounded-lg bg-transparent px-3 py-2 object-contain w-full h-full"
-              />
-            </div>
-            <div className="flex-1">
-              <div className="inline-flex items-center gap-2 bg-brand-blue/20 text-accent-blue text-xs px-3 py-1.5 rounded-full mb-4 font-medium">
-                <Globe size={12} />
-                Producto propio · Próximo lanzamiento
-              </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-text-primary mb-3">
-                MiEmpleo GE
-              </h2>
-              <p className="text-text-secondary mb-6 max-w-lg leading-relaxed">
-                Plataforma profesional para encontrar empleo, publicar vacantes y conectar talento en Guinea
-                Ecuatorial. Reúne ofertas por sectores, perfiles profesionales, oportunidades formales e
-                informales y espacios diferenciados para empresas y candidatos. Lista para su lanzamiento oficial.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a href="https://miempleo.vercel.app" target="_blank" rel="noopener noreferrer">
-                  <Button>
-                    Explorar plataforma <ArrowRight size={16} />
-                  </Button>
-                </a>
-                <Link href="/portfolio/marketplace-empleo-servicios">
-                  <Button variant="outline">Ver caso de estudio</Button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Cursos */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Cursos"
@@ -355,7 +272,7 @@ export default function HomePage() {
       </section>
 
       {/* Stack tecnológico */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Stack tecnológico"
@@ -367,7 +284,7 @@ export default function HomePage() {
       </section>
 
       {/* Blog */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
             title="Blog técnico"

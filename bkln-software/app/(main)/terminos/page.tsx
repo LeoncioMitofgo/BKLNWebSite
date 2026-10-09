@@ -100,7 +100,7 @@ export default function TerminosPage() {
                 no puede reproducirse ni redistribuirse sin autorización.
               </li>
               <li>
-                Los cursos marcados como "gratuitos" son accesibles sin pago y sin registro.
+                Los cursos publicados en este sitio son de acceso abierto y no requieren registro.
                 Nos reservamos el derecho de cambiar esta condición en el futuro, preservando
                 el acceso para quienes ya los estén usando.
               </li>

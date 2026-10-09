@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Button } from '@/components/ui/Button'
-import { ProductsExplorer } from '@/components/sections/ProductsExplorer'
+import { ProductCard } from '@/components/sections/ProductCard'
 import { products } from '@/data/content'
 
 export const metadata: Metadata = {
   title: 'Productos y soluciones',
   description:
-    'Productos y soluciones de BKLN: apps, plataformas y sistemas usados por negocios reales, disponibles para descargar, comprar o adaptar a medida.',
+    'Productos y soluciones de BKLN: apps, plataformas y sistemas usados por negocios reales, listos para implantar o adaptar a tu caso.',
 }
 
 export default function ProductosPage() {
@@ -20,13 +20,19 @@ export default function ProductosPage() {
             Productos y <span className="text-accent-green">soluciones</span>
           </h1>
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-            Herramientas, plataformas y sistemas que ya usan negocios reales. Algunos disponibles
-            para descargar o comprar, otros como solución a medida para tu caso.
+            Herramientas, plataformas y sistemas que ya usan negocios reales. Te los instalamos,
+            te formamos y los adaptamos a tu caso.
           </p>
         </div>
       </section>
 
-      <ProductsExplorer products={products} />
+      <section className="py-14 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      </section>
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center">

@@ -129,7 +129,7 @@ export default async function ProjectPage({ params }: PageProps) {
           )}
           {relatedProduct && (
             <Link href={`/productos/${relatedProduct.slug}`}>
-              <Button variant="outline">Comprar este proyecto</Button>
+              <Button variant="outline">Ver producto</Button>
             </Link>
           )}
           <Link href="/contacto">

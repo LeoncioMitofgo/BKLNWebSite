@@ -1,12 +1,9 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, CheckCircle, Star, ShieldCheck, RefreshCw } from 'lucide-react'
+import { ArrowLeft, CheckCircle, ShieldCheck } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Button } from '@/components/ui/Button'
-import { DownloadButton } from '@/components/ui/DownloadButton'
-import { BuyButton } from '@/components/ui/BuyButton'
-import { formatPrice } from '@/lib/utils'
 import { products, projects } from '@/data/content'
 
 interface PageProps {
@@ -25,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 }
 
 const categoryLabels: Record<string, string> = {
-  android: 'Android', desktop: 'Desktop', scripts: 'Scripts & Tools', free: 'Gratis', web: 'Web App', ia: 'IA & Chatbots',
+  android: 'Android', desktop: 'Desktop', web: 'Web App', ia: 'IA & Chatbots',
 }
 
 export default async function ProductPage({ params }: PageProps) {
@@ -55,31 +52,19 @@ export default async function ProductPage({ params }: PageProps) {
               <span className="text-xs uppercase tracking-wider text-accent-green bg-brand-green/10 border border-brand-green/20 px-3 py-1 rounded-full">
                 {categoryLabels[product.category]}
               </span>
-              <span className="text-text-secondary text-xs">v{product.version}</span>
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold text-text-primary mb-2">{product.title}</h1>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">{product.description}</p>
-            {product.rating > 0 && (
-              <div className="flex items-center gap-1.5 mb-4">
-                {[1, 2, 3, 4, 5].map((s) => (
-                  <Star key={s} size={14} className={s <= Math.round(product.rating) ? 'text-warning fill-warning' : 'text-text-secondary'} />
-                ))}
-                <span className="text-text-secondary text-xs ml-1">{product.rating} · {product.downloads} descargas</span>
-              </div>
-            )}
-            <div className="flex items-center gap-4">
-              <span className="text-2xl font-bold text-accent-green">
-                {product.priceOnRequest ? 'Bajo pedido' : formatPrice(product.price)}
-              </span>
-              {product.isFree ? (
-                <DownloadButton product={{
-                  slug: product.slug,
-                  fileUrl:product.fileUrl
-                }} />
-              ) : product.priceOnRequest ? (
-                <Link href={`/contacto?producto=${product.slug}`}><Button>Solicitar presupuesto</Button></Link>
-              ) : (
-                <BuyButton productId={product.id} />
+            <div className="flex items-center gap-4 flex-wrap">
+              <Link href={`/contacto?producto=${product.slug}`}>
+                <Button>
+                  {product.requiresMeeting ? 'Solicitar reunión' : 'Solicitar información'}
+                </Button>
+              </Link>
+              {product.pricingNote && (
+                <span className="text-text-secondary text-sm leading-snug max-w-xs">
+                  {product.pricingNote}
+                </span>
               )}
             </div>
             {relatedProject && (
@@ -145,7 +130,7 @@ export default async function ProductPage({ params }: PageProps) {
             {product.supportPlan && (
               <div className="bg-brand-green/5 border border-brand-green/15 rounded-lg p-4">
                 <p className="text-text-primary font-semibold text-sm mb-1">
-                  Plan de soporte — {formatPrice(product.supportPlan.price)}/{product.supportPlan.period}
+                  Plan de soporte opcional · renovación por {product.supportPlan.period}
                 </p>
                 <ul className="space-y-1">
                   {product.supportPlan.includes.map((item) => (
@@ -157,38 +142,11 @@ export default async function ProductPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* Historial de versiones */}
-        {product.changelog.length > 0 && (
-          <div className="mb-10">
-            <div className="flex items-center gap-2 mb-4">
-              <RefreshCw size={18} className="text-accent-green" />
-              <h2 className="text-text-primary font-bold">Historial de versiones</h2>
-            </div>
-            <div className="space-y-3">
-              {product.changelog.map((entry) => (
-                <div key={entry.version} className="bg-bg-surface border border-white/5 rounded-lg p-4">
-                  <div className="flex items-center gap-3 mb-2">
-                    <span className="text-accent-green font-mono text-sm font-semibold">v{entry.version}</span>
-                    <span className="text-text-secondary text-xs">{entry.date}</span>
-                  </div>
-                  <ul className="space-y-1">
-                    {entry.changes.map((change) => (
-                      <li key={change} className="text-sm text-text-secondary flex items-start gap-2">
-                        <span className="text-brand-green mt-1">—</span> {change}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
         {/* CTA final */}
         <div className="bg-brand-green/10 border border-brand-green/20 rounded-lg p-6 text-center">
           <p className="text-text-primary font-semibold mb-2">¿Necesitas algo personalizado?</p>
           <p className="text-text-secondary text-sm mb-4">Podemos adaptar este producto o construir algo desde cero para tu negocio.</p>
-          <Link href="/contacto">
+          <Link href={`/contacto?producto=${product.slug}`}>
             <Button>Contactar</Button>
           </Link>
         </div>

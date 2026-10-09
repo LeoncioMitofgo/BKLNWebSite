@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Cómo recogemos, usamos y protegemos tus datos en BKLN Software & Systems.',
 }
 
-const updated = '22 de mayo de 2026'
+const updated = '9 de octubre de 2026'
 
 export default function PrivacidadPage() {
   return (
@@ -41,16 +41,25 @@ export default function PrivacidadPage() {
             <ul className="list-disc list-inside space-y-1.5 ml-2">
               <li>
                 <strong className="text-text-primary">Formulario de contacto:</strong> nombre, email,
-                empresa (opcional), tipo de proyecto, presupuesto estimado y descripción del proyecto.
+                WhatsApp y empresa (opcionales), producto o tipo de proyecto, presupuesto estimado,
+                descripción del proyecto y la página desde la que nos escribes.
               </li>
               <li>
-                <strong className="text-text-primary">Compras de productos:</strong> los datos
-                necesarios para procesar el pedido y coordinar la entrega.
+                <strong className="text-text-primary">WhatsApp:</strong> si nos escribes por WhatsApp,
+                tu número y tus mensajes, únicamente para atender tu consulta.
               </li>
               <li>
-                <strong className="text-text-primary">Cookies técnicas:</strong> únicamente las
-                imprescindibles para el funcionamiento del sitio (sesión). No usamos cookies
-                de seguimiento ni publicidad.
+                <strong className="text-text-primary">Asistente virtual (chat):</strong> los mensajes que
+                escribes en el chat se envían a nuestro servidor y se procesan con un proveedor de
+                inteligencia artificial para generar la respuesta. No incluyas datos sensibles en el chat.
+              </li>
+              <li>
+                <strong className="text-text-primary">Estadísticas de visitas:</strong> usamos Vercel Web
+                Analytics, que mide las visitas de forma agregada y sin cookies.
+              </li>
+              <li>
+                <strong className="text-text-primary">Cookies:</strong> no usamos cookies de seguimiento
+                ni publicidad.
               </li>
             </ul>
           </section>
@@ -59,7 +68,7 @@ export default function PrivacidadPage() {
             <h2 className="text-text-primary font-semibold text-lg">3. Para qué usamos tus datos</h2>
             <ul className="list-disc list-inside space-y-1.5 ml-2">
               <li>Responder a tu consulta o solicitud de presupuesto.</li>
-              <li>Gestionar la entrega de productos o el acceso a cursos adquiridos.</li>
+              <li>Coordinar la implantación de los productos o servicios que contrates.</li>
               <li>Comunicarte actualizaciones relevantes sobre un proyecto en curso.</li>
             </ul>
             <p>
@@ -71,7 +80,8 @@ export default function PrivacidadPage() {
           <section className="space-y-3">
             <h2 className="text-text-primary font-semibold text-lg">4. Dónde se almacenan</h2>
             <p>
-              Los datos del formulario de contacto se almacenan en{' '}
+              Los datos del formulario de contacto se nos envían por email a través de{' '}
+              <strong className="text-text-primary">Resend</strong> y se almacenan en{' '}
               <strong className="text-text-primary">Supabase</strong>, un servicio de base de
               datos que cumple con estándares de seguridad internacionales y cifra los datos
               en reposo y en tránsito.

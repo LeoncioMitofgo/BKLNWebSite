@@ -2,16 +2,6 @@ export function cn(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(' ')
 }
 
-export function formatPrice(price: number): string {
-  if (price === 0) return 'Gratis'
-  return new Intl.NumberFormat('fr-FR', {
-    style: 'currency',
-    currency: 'XAF',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price)
-}
-
 export function slugify(text: string): string {
   return text
     .toLowerCase()

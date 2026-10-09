@@ -196,27 +196,22 @@ export const products: Product[] = [
     id: '5',
     slug: 'gestescolar',
     title: 'GestEscolar',
-    fileUrl: "",
-    description: 'Sistema de gestión escolar completo para Windows — instalación, formación y manual incluidos. Funciona offline en red local. Licencia perpetua.',
+    description: 'Sistema de gestión escolar completo para Windows — instalación, formación y manual incluidos. Funciona offline en red local.',
     longDescription:
       'GestEscolar es un sistema de gestión escolar integral listo para instalar en cualquier colegio con Windows. Cubre el ciclo académico completo: registro de alumnos con ficha médica y tutor, matrículas con seguimiento de pagos, calificaciones por trimestre, gestión de profesores y aulas, y circulares internas.\n\nFunciona completamente offline en la red local del centro — sin suscripciones a la nube, sin dependencias externas. Accesible desde cualquier equipo conectado a la red del colegio.\n\nIncluye generación de documentos listos para imprimir: carnets de estudiante, listas por aula, boletines de notas trimestrales e historial de pagos. Dos roles de usuario: Administrador y Secretaria.',
     category: 'desktop',
-    price: 550000,
-    isFree: false,
+    pricingNote: 'Compra de licencia o licencia anual. Requiere reunión previa para definir alcance.',
+    requiresMeeting: true,
     image: '/Screenshot2.png',
     screenshots: ['/gest1.png', '/gest2.png', '/gest3.png', '/gest4.png'],
-    rating: 5.0,
-    downloads: 12,
-    version: '1.0.0',
     deliveryType: 'install',
     includes: [
       'Instalación remota o presencial incluida',
       'Manual de funcionamiento completo',
       '2 días de formación del personal',
-      'Licencia perpetua — pago único, sin renovaciones',
+      'Licencia de compra o anual, según lo que mejor encaje con el centro',
     ],
     supportPlan: {
-      price: 120000,
       period: 'año',
       includes: [
         'Asistencia remota y presencial prioritaria',
@@ -225,170 +220,43 @@ export const products: Product[] = [
       ],
     },
     requirements: ['Windows 10 / 11', 'Python 3.10+ (instalación automática)', 'Red local para acceso multiequipo'],
-    changelog: [
-      { version: '1.0.0', date: '2024-04-23', changes: ['Lanzamiento oficial'] },
-    ],
-    stripeProductId: 'prod_gestescolar',
-    stripePriceId: 'price_gestescolar',
   },
   {
     id: '6',
     slug: 'zentry',
     title: 'Zentry',
-    fileUrl: "",
-    description: 'Licencia de uso vitalicia — un acceso desde el que gestionar todos tus eventos con QR. Backend incluido y gestionado por BKLN. Eventos y invitados ilimitados.',
+    description: 'Gestiona tus eventos y el control de acceso con QR desde cualquier dispositivo. Backend incluido y gestionado por BKLN. Invitados ilimitados.',
     longDescription:
-      'Zentry es una plataforma de gestión de eventos y control de acceso por QR. Con una sola licencia obtienes un acceso único desde el que puedes crear todos los eventos que necesites, añadir invitados ilimitados con tickets VIP, Normal o Staff, y gestionar el control de acceso en tiempo real.\n\nNo necesitas configurar nada — el backend está incluido y es gestionado íntegramente por BKLN. Tú solo accedes con tu login y empiezas a crear eventos desde cualquier dispositivo: Android, iOS, Web, Windows, macOS o Linux.\n\nEl scanner valida QR en tiempo real: detecta entradas duplicadas, bloquea cuando se alcanza el aforo y responde con audio y vibración diferenciados. Los QR de cada invitado se comparten directamente por WhatsApp con un toque.',
+      'Zentry es una plataforma de gestión de eventos y control de acceso por QR. Con tu acceso creas tus eventos, añades invitados ilimitados con tickets VIP, Normal o Staff, y gestionas el control de acceso en tiempo real.\n\nNo necesitas configurar nada — el backend está incluido y es gestionado íntegramente por BKLN. Tú solo accedes con tu login y empiezas a crear eventos desde cualquier dispositivo: Android, iOS, Web, Windows, macOS o Linux.\n\nEl scanner valida QR en tiempo real: detecta entradas duplicadas, bloquea cuando se alcanza el aforo y responde con audio y vibración diferenciados. Los QR de cada invitado se comparten directamente por WhatsApp con un toque.',
     category: 'android',
-    price: 198200,
-    isFree: false,
+    pricingNote: 'Pago por evento o licencia anual.',
     image: '/logo8.png',
     screenshots: [
       '/zentry-ss1.jpg',
       '/zentry-ss2.jpg',
     ],
-    rating: 4.9,
-    downloads: 34,
-    version: '1.0.0',
     deliveryType: 'license',
     includes: [
-      'Licencia de uso vitalicia — pago único',
+      'Pago por evento o licencia anual',
       '1 cuenta de acceso (login único)',
-      'Eventos ilimitados',
+      'Eventos ilimitados con la licencia anual',
       'Invitados ilimitados por evento',
       'Backend gestionado por BKLN — sin configuración',
       'Disponible en Android, iOS, Web, Windows, macOS y Linux',
     ],
     requirements: ['Android 8.0+ / iOS 13+ / Web / Windows 10+', 'Conexión a internet', 'Cámara (para el scanner QR)'],
-    changelog: [
-      { version: '1.0.0', date: '2025-01-15', changes: ['Lanzamiento oficial'] },
-    ],
-    stripeProductId: 'prod_zentry',
-    stripePriceId: 'price_zentry',
-  },
-  {
-    id: '7',
-    slug: 'match-date',
-    title: 'Match&Date',
-    fileUrl: "",
-    description: 'Plataforma de citas y eventos completa — swipe, matching mutuo, chat en tiempo real, perfiles detallados e integración con eventos en vivo. Lista para producción.',
-    longDescription:
-      'Match&Date es una plataforma de citas digital completa orientada al mercado hispanohablante. Combina la mecánica de swipe tipo Tinder con perfiles de alta profundidad (zodíaco, estilo de vida, hábitos, preferencias) y un sistema de eventos presenciales integrado.\n\nEl sistema de matching es mutuo y en tiempo real: cuando dos usuarios se dan like simultáneamente aparece una notificación animada. El chat incluye indicador de escritura en vivo, emojis, read receipts y actualizaciones instantáneas vía Supabase Realtime. El onboarding guía al usuario en 4 pasos con subida de avatar, selección de intereses y configuración de preferencias.\n\nConstructa íntegramente en JavaScript puro con Supabase como backend — autenticación, base de datos PostgreSQL, Row Level Security, funciones RPC para el algoritmo de matching y Storage para avatares. Sin frameworks, sin dependencias de build.',
-    category: 'web',
-    price: 850000,
-    isFree: false,
-    image: '/matchdate.png',
-    screenshots: ['/match1.png', '/match2.png', '/match3.png', '/match4.png'],
-    rating: 5.0,
-    downloads: 8,
-    version: '1.0.0',
-    deliveryType: 'source-code',
-    includes: [
-      'Código fuente completo — tuyo para siempre',
-      '7 páginas funcionales (landing, onboarding, swipe, chat, perfil y más)',
-      'Backend Supabase preconfigurado (esquema SQL, RLS y funciones RPC incluidas)',
-      'Documentación técnica de instalación y despliegue',
-      'Licencia comercial — puedes usarlo en tu propio negocio',
-    ],
-    requirements: ['Cuenta Supabase (plan gratuito válido)', 'Hosting estático — Vercel, Netlify o similar', 'Navegador moderno'],
-    changelog: [
-      { version: '1.0.0', date: '2025-05-01', changes: ['Lanzamiento oficial'] },
-    ],
-    stripeProductId: 'prod_matchdate',
-    stripePriceId: 'price_matchdate',
-  },
-  {
-    id: '8',
-    slug: 'ventasclaro',
-    title: 'VentasClaro',
-    fileUrl: "",
-    description: 'Sube tu Excel o CSV de ventas y obtén un informe visual al instante — gráficas, KPIs y exportación a PDF. Sin configuración, sin fórmulas.',
-    longDescription:
-      'VentasClaro es una herramienta web que convierte cualquier archivo de ventas en Excel o CSV en un informe visual completo en segundos. No hace falta saber de tecnología ni tocar una sola fórmula.\n\nArrastras tu archivo, la aplicación detecta automáticamente las columnas de fecha, producto, cantidad y precio, y genera: ingresos totales en XAF, unidades vendidas, ticket medio, ranking de los 8 productos más vendidos y evolución de ventas en el tiempo. Todo con gráficas interactivas.\n\nEl informe se puede exportar a PDF con un clic usando la impresión del navegador. Los archivos nunca se almacenan en el servidor — se procesan en memoria y se descartan inmediatamente.\n\nIncluye código fuente completo (Python + FastAPI + HTML/CSS/JS) listo para instalar en tu propio servidor o equipo local. Sin suscripciones, sin nube obligatoria.',
-    category: 'scripts',
-    price: 0,
-    isFree: true,
-    image: '/ventasclaro-cover.jpg',
-    screenshots: [
-      '/ventasclaro-ss1.jpg',
-      '/ventasclaro-ss2.jpg',
-      '/ventasclaro-ss3.jpg',
-    ],
-    rating: 0,
-    downloads: 0,
-    version: '1.0.0',
-    deliveryType: 'source-code',
-    includes: [
-      'Código fuente completo (Python + FastAPI + HTML/CSS/JS)',
-      'Detección automática de columnas (fecha, producto, cantidad, precio)',
-      'Gráfica de top productos y evolución temporal',
-      'Exportación a PDF con un clic',
-      'Compatible con .xlsx, .xls y .csv',
-      'Instalación en local o servidor propio',
-      'Soporte 30 días por email',
-    ],
-    requirements: ['Python 3.9+', 'Windows / macOS / Linux', 'Navegador moderno'],
-    changelog: [
-      { version: '1.0.0', date: '2026-05-22', changes: ['Lanzamiento inicial'] },
-    ],
-    fileKey: 'ventasclaro.zip',
-    stripeProductId: 'prod_ventasclaro',
-    stripePriceId: 'price_ventasclaro',
-  },
-  {
-    id: '10',
-    slug: 'miempleo',
-    title: 'MiEmpleo GE',
-    fileUrl: "",
-    description: 'Portal de empleo llave en mano para Guinea Ecuatorial — vacantes, perfiles profesionales, mensajería en tiempo real, panel de empresa y suscripciones. White-label disponible.',
-    longDescription:
-      'MiEmpleo GE es la plataforma de empleo digital pensada para el mercado de Guinea Ecuatorial. Conecta empresas que buscan talento con profesionales que buscan oportunidades — todo en español, con la realidad local como punto de partida.\n\nLas empresas publican vacantes, gestionan candidaturas por estado (recibida, en revisión, entrevista, contratada) y acceden a un directorio de profesionales verificados. Los profesionales completan su perfil, suben su CV, se postulan con un clic y hacen seguimiento de todo desde su dashboard.\n\nMensajería interna en tiempo real, sistema de notificaciones instantáneas, tres roles diferenciados (empresa, profesional, particular) y un panel de administración completo. Modelo de monetización por planes de suscripción (free y premium) con activación manual desde el admin — sin depender de pasarelas de pago externas.\n\nDisponible como licencia white-label: BKLN instala, configura y entrega el sistema bajo tu marca y dominio. Incluye formación del equipo y soporte durante el lanzamiento.',
-    category: 'web',
-    price: 0,
-    priceOnRequest: true,
-    isFree: false,
-    image: '/miempleo-logo.png',
-    screenshots: ['/miempleo-logo.png', '/miempleo-icon.png'],
-    rating: 0,
-    downloads: 0,
-    version: '1.0.0',
-    deliveryType: 'source-code',
-    includes: [
-      'Plataforma completa instalada bajo tu dominio y marca',
-      'Tres roles: empresa, profesional y particular',
-      'Panel de administración con moderación de vacantes y usuarios',
-      'Mensajería interna en tiempo real (Supabase Realtime)',
-      'Sistema de notificaciones instantáneas',
-      'Planes de suscripción con activación desde el admin',
-      'Formación del equipo y soporte durante el lanzamiento',
-      'Código fuente completo — tuyo para siempre',
-    ],
-    requirements: [
-      'Dominio propio',
-      'Cuenta Supabase (plan Pro recomendado)',
-      'Hosting en Vercel u otro proveedor compatible con Next.js',
-    ],
-    changelog: [
-      { version: '1.0.0', date: '2025-06-01', changes: ['Lanzamiento oficial'] },
-    ],
   },
   {
     id: '9',
     slug: 'brookai',
     title: 'BrookAI',
-    fileUrl: "",
     description: 'Bot de atención al cliente con IA que aprende de tus documentos y responde en tu web y WhatsApp. Multi-tenant y revendible — un sistema, múltiples clientes, cada uno con su propia identidad.',
     longDescription:
       'BrookAI es un sistema SaaS de chatbot con inteligencia artificial construido para funcionar en producción desde el primer día. Se integra en cualquier web con un fragmento de código y en WhatsApp Business API — el mismo bot, en todos los canales donde están tus clientes.\n\nEl bot responde usando exclusivamente los documentos que tú subes: catálogos, manuales, preguntas frecuentes, listas de precios, políticas. No inventa — busca en tu propio contenido usando RAG (pgvector + LangChain) y responde con tus propias palabras. Si no sabe responder después de varios intentos, deriva la conversación automáticamente a un agente humano.\n\nCada cliente tiene su propio espacio aislado (multi-tenant): sus documentos, su configuración, su historial de conversaciones y sus métricas. Desde el panel de administración puede gestionar todo sin tocar código — subir documentos, personalizar el nombre y tono del bot, ver el historial y revisar qué preguntas no supo responder.\n\nSi eres agencia o consultor, BrookAI es revendible: puedes ofrecer el servicio a tus propios clientes bajo tu marca, con cada uno en su propio tenant y configuración independiente.\n\nStack: FastAPI (Python) · Claude API (Anthropic) · LangChain + pgvector · Supabase · Widget Vanilla JS · React + Vite · WhatsApp Business API. En producción en bklnsoftware.tech.',
     category: 'ia',
-    price: 0,
-    priceOnRequest: true,
-    isFree: false,
+    pricingNote: 'Planes según volumen de consultas.',
     image: '/brookai-cover.png',
     screenshots: ['/brookai-cover.png', '/brookai-logo.png'],
-    rating: 0,
-    downloads: 0,
-    version: '1.0.0',
     deliveryType: 'source-code',
     includes: [
       'Bot entrenado con tus documentos (PDF, TXT, URLs) — RAG con pgvector',
@@ -405,9 +273,6 @@ export const products: Product[] = [
       'Documentos del negocio en PDF o texto plano',
       'Conexión a internet',
     ],
-    changelog: [
-      { version: '1.0.0', date: '2026-05-25', changes: ['Lanzamiento oficial'] },
-    ],
   },
 ]
 
@@ -418,9 +283,8 @@ export const courses: Course[] = [
     title: 'Python desde cero · Serie completa',
     description: 'Aprende Python de cero hasta proyectos reales: web, bases de datos, APIs, análisis de datos, testing y Python profesional. Serie completa en tres libros interactivos.',
     longDescription:
-      'Un curso completo de Python en español pensado para quien nunca ha programado. Nada de ejemplos de juguete — cada concepto se explica con situaciones reales y se practica con ejercicios ejecutables directamente en el navegador.\n\nLa serie se divide en tres libros: Libro 1 cubre los fundamentos (variables, funciones, listas, cadenas de texto y un proyecto final); Libro 2 profundiza en estructura y organización (POO, manejo de errores, archivos, módulos, comprensiones y un proyecto real); Libro 3 lleva el código al mundo real (web y scraping, SQLite, APIs REST, análisis de datos con Pandas, automatización, testing con unittest y Python profesional con dataclasses, ABCs y logging).\n\nLos 24 módulos están disponibles ahora mismo, sin registro ni pago. Cada módulo incluye explicaciones en español, ejemplos de código comentados, quizzes de comprensión y ejercicios con intérprete de Python integrado en el navegador.',
+      'Un curso completo de Python en español pensado para quien nunca ha programado. Nada de ejemplos de juguete — cada concepto se explica con situaciones reales y se practica con ejercicios ejecutables directamente en el navegador.\n\nLa serie se divide en tres libros: Libro 1 cubre los fundamentos (variables, funciones, listas, cadenas de texto y un proyecto final); Libro 2 profundiza en estructura y organización (POO, manejo de errores, archivos, módulos, comprensiones y un proyecto real); Libro 3 lleva el código al mundo real (web y scraping, SQLite, APIs REST, análisis de datos con Pandas, automatización, testing con unittest y Python profesional con dataclasses, ABCs y logging).\n\nLos 24 módulos están disponibles ahora mismo, sin necesidad de registro. Cada módulo incluye explicaciones en español, ejemplos de código comentados, quizzes de comprensión y ejercicios con intérprete de Python integrado en el navegador.',
     category: 'python',
-    price: 0,
     thumbnail: '/course-python.jpg',
     duration: '3 libros · serie completa',
     level: 'principiante',
@@ -499,7 +363,7 @@ export const courses: Course[] = [
       'Intérprete de Python integrado en el navegador',
       'Quizzes de comprensión por capítulo',
       'Modo oscuro, ajuste de fuente y densidad',
-      'Sin registro, sin pago — acceso de por vida',
+      'Sin registro — acceso de por vida',
     ],
   },
   {
@@ -510,7 +374,6 @@ export const courses: Course[] = [
     longDescription:
       'Aprende a construir aplicaciones web modernas con el stack más demandado: Next.js, React, TypeScript, Tailwind CSS y Supabase. Crearás proyectos reales con autenticación, base de datos y despliegue incluidos.',
     category: 'web',
-    price: 0,
     thumbnail: '/course-web.jpg',
     duration: 'próximamente',
     level: 'intermedio',
@@ -533,7 +396,6 @@ export const courses: Course[] = [
     longDescription:
       'Un curso práctico en tres libros: fundamentos del ecosistema científico de Python, algoritmos de ML clásicos y deep learning. Todo el código se ejecuta en el navegador — sin instalar nada.',
     category: 'ia-ml',
-    price: 0,
     thumbnail: '/course-ia.jpg',
     duration: '3 libros · 24 módulos',
     level: 'intermedio',
@@ -610,7 +472,6 @@ export const courses: Course[] = [
     longDescription:
       'Aprende a desarrollar aplicaciones Android profesionales con Kotlin y Jetpack Compose. Desde la primera pantalla hasta la publicación en Google Play — con arquitectura limpia, base de datos local, consumo de APIs y autenticación.',
     category: 'android',
-    price: 0,
     thumbnail: '/course-android.jpg',
     duration: 'próximamente',
     level: 'principiante',
@@ -633,7 +494,6 @@ export const courses: Course[] = [
     longDescription:
       'Un curso práctico de SQL y diseño de bases de datos para desarrolladores. Aprenderás desde SELECT hasta procedimientos almacenados, índices, transacciones y cómo estructurar datos para aplicaciones reales con PostgreSQL.',
     category: 'databases',
-    price: 0,
     thumbnail: '/course-sql.jpg',
     duration: 'próximamente',
     level: 'principiante',
@@ -654,9 +514,8 @@ export const courses: Course[] = [
     title: 'AZ-900: Microsoft Azure Fundamentals',
     description: 'Prepárate para la certificación AZ-900 con un libro interactivo: conceptos de la nube, arquitectura y servicios de Azure, gestión y gobernanza — con quizzes y un simulacro de examen completo.',
     longDescription:
-      'El AZ-900 (Microsoft Certified: Azure Fundamentals) es la certificación de entrada al ecosistema Azure. No requiere experiencia previa ni conocimientos técnicos profundos: mide que comprendas los conceptos de la nube, los servicios principales de Azure y cómo se gestiona y gobierna la plataforma.\n\nEl libro se organiza en tres partes: Parte I cubre los conceptos fundamentales de la nube (qué es, modelos de servicio IaaS/PaaS/SaaS, modelos de despliegue, beneficios y el modelo de responsabilidad compartida); Parte II entra en la arquitectura y los servicios core de Azure (regiones y zonas, jerarquía de recursos, cómputo, redes, almacenamiento e identidad con Entra ID); Parte III se centra en gestión y gobernanza (costes, cumplimiento, herramientas de gestión y supervisión).\n\nLos 15 módulos están disponibles ahora mismo, sin registro ni pago. Cada uno incluye quizzes interactivos que revelan la respuesta correcta con su explicación, y tu progreso se guarda automáticamente en el navegador. El libro cierra con un simulacro de examen completo, un glosario de términos y consejos para el día del examen.',
+      'El AZ-900 (Microsoft Certified: Azure Fundamentals) es la certificación de entrada al ecosistema Azure. No requiere experiencia previa ni conocimientos técnicos profundos: mide que comprendas los conceptos de la nube, los servicios principales de Azure y cómo se gestiona y gobierna la plataforma.\n\nEl libro se organiza en tres partes: Parte I cubre los conceptos fundamentales de la nube (qué es, modelos de servicio IaaS/PaaS/SaaS, modelos de despliegue, beneficios y el modelo de responsabilidad compartida); Parte II entra en la arquitectura y los servicios core de Azure (regiones y zonas, jerarquía de recursos, cómputo, redes, almacenamiento e identidad con Entra ID); Parte III se centra en gestión y gobernanza (costes, cumplimiento, herramientas de gestión y supervisión).\n\nLos 15 módulos están disponibles ahora mismo, sin necesidad de registro. Cada uno incluye quizzes interactivos que revelan la respuesta correcta con su explicación, y tu progreso se guarda automáticamente en el navegador. El libro cierra con un simulacro de examen completo, un glosario de términos y consejos para el día del examen.',
     category: 'cloud',
-    price: 0,
     thumbnail: '/course-az900.webp',
     duration: '15 módulos + simulacro',
     level: 'principiante',
@@ -722,7 +581,7 @@ export const courses: Course[] = [
       'Quizzes interactivos con explicación de cada respuesta',
       'Glosario de términos y consejos para el día del examen',
       'Seguimiento de progreso guardado automáticamente en el navegador',
-      'Sin registro, sin pago — acceso de por vida',
+      'Sin registro — acceso de por vida',
     ],
   },
   {
@@ -733,13 +592,12 @@ export const courses: Course[] = [
     longDescription:
       'Formación práctica basada en los problemas que aparecen al construir productos móviles de verdad: varios tipos de usuario, datos compartidos, permisos, sincronización y conectividad irregular.\n\nAprenderás a organizar una aplicación Flutter con Riverpod, conectar Supabase de forma segura y diseñar flujos donde la lógica crítica vive en el servidor. El recorrido incluye autenticación, PostgreSQL, Row Level Security, Storage, Realtime y Edge Functions.\n\nEl objetivo no es completar pantallas aisladas, sino entender cómo construir un producto mantenible que pueda crecer desde un prototipo hasta una operación real.',
     category: 'android',
-    price: 0,
     thumbnail: '/course-android.jpg',
     duration: 'Taller práctico · 8 módulos',
     level: 'intermedio',
     rating: 0,
     students: 0,
-    status: 'available',
+    status: 'coming-soon',
     instructor: {
       name: 'BKLN Software',
       bio: 'Formación creada desde proyectos reales de aplicaciones móviles, plataformas multi-rol y backends con Supabase.',
@@ -780,7 +638,6 @@ export const courses: Course[] = [
       '8 módulos con ejemplos de arquitectura',
       'Supabase Auth, PostgreSQL, RLS, Storage y Realtime',
       'Ejercicios sobre flujos multi-rol y conectividad variable',
-      'Acceso gratuito al material disponible',
     ],
   },
   {
@@ -791,13 +648,12 @@ export const courses: Course[] = [
     longDescription:
       'Una formación orientada a quienes necesitan que una aplicación Android siga siendo útil fuera de una conexión perfecta y pueda comunicarse con dispositivos físicos.\n\nTrabajaremos con Kotlin, Jetpack Compose, Room, Retrofit y WorkManager para construir flujos offline-first, colas de sincronización y estados de operación claros. También revisaremos cómo integrar SDKs de hardware, manejar errores y separar la detección de un dispositivo de la confirmación real de una operación.\n\nEl curso pone el foco en decisiones de ingeniería: qué debe validarse en servidor, cómo evitar duplicados y cómo probar una integración física sin confundir una lectura con una transacción confirmada.',
     category: 'android',
-    price: 0,
     thumbnail: '/course-android.jpg',
     duration: 'Taller práctico · 8 módulos',
     level: 'avanzado',
     rating: 0,
     students: 0,
-    status: 'available',
+    status: 'coming-soon',
     instructor: {
       name: 'BKLN Software',
       bio: 'Contenido basado en integraciones Android verificadas con terminales, impresoras, NFC y backends remotos.',
@@ -838,63 +694,14 @@ export const courses: Course[] = [
       '8 módulos sobre Android offline-first',
       'Room, Retrofit, WorkManager y Jetpack Compose',
       'Integración responsable con impresión y NFC',
-      'Acceso gratuito al material disponible',
     ],
   },
 ]
 
+// Solo se muestran los cursos con libro publicado; el resto se queda aquí hasta que tenga contenido.
+export const publishedCourses = courses.filter((c) => c.status === 'available' && c.bookUrl)
+
 export const projects: Project[] = [
-  {
-    id: '1',
-    slug: 'bkln-marketplace',
-    title: 'BKLN Marketplace',
-    description: 'Plataforma C2C completa para África Central: compra-venta, mensajería en tiempo real, suscripciones y panel de administración — operativa en bklnmarketplace.com.',
-    longDescription:
-      'En Guinea Ecuatorial y la región no existía una plataforma de compra-venta online adaptada a la realidad local: precios en XAF, usuarios que acceden principalmente desde móvil y sin tarjeta bancaria universal. BKLN Marketplace nació para cubrir ese hueco.\n\nCualquier usuario puede publicar productos con hasta 10 fotos, gestionar su catálogo, activar ofertas con cuenta atrás y contactar a compradores directamente desde la plataforma. El chat funciona en tiempo real — los mensajes llegan al instante, sin necesidad de recargar. Los perfiles incluyen integración con WhatsApp, Instagram y TikTok para que vendedores con presencia en redes puedan conectar todo desde un solo lugar.\n\nEl modelo de activación de planes evita depender de pasarelas de pago externas: el cliente solicita el plan Premium, paga por el canal que prefiera (transferencia, efectivo, mobile money) y recibe un código de activación desde el panel de administración. Un sistema pensado para la realidad del mercado.\n\nLa plataforma está construida íntegramente en JavaScript puro sin frameworks — una decisión deliberada para garantizar la máxima velocidad en dispositivos modestos y conexiones variables, que es exactamente el perfil del usuario objetivo.',
-    category: 'web',
-    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Supabase', 'Supabase Realtime', 'Google OAuth'],
-    image: '/Screenshot.png',
-    gallery: ['/Screenshot.png', '/mktlogo.png'],
-    year: 2025,
-    liveUrl: 'https://bklnmarketplace.com',
-    challenges: [
-      'Sin pasarelas de pago convencionales: había que diseñar un modelo de activación por código adaptado al mercado local',
-      'Usuarios en dispositivos modestos con conexión variable: cada KB del bundle cuenta',
-      'Chat en tiempo real sin frameworks de estado — todo la reactividad implementada a mano',
-      'Autenticación por email, SMS OTP y Google OAuth en un solo flujo coherente',
-    ],
-    solutions: [
-      'Panel de admin con generación de códigos de activación — el cliente paga como prefiera, nosotros activamos',
-      'Vanilla JS sin bundler: cero overhead de framework, primera interacción en milisegundos',
-      'Supabase Realtime Channels con cleanup automático al salir de la vista de chat',
-      'Interfaz de tabs animados con manejo de errores específico por método de login',
-    ],
-  },
-  {
-    id: '2',
-    slug: 'match-date',
-    title: 'Match&Date',
-    description: 'Plataforma de citas y eventos en español — swipe, matching mutuo en tiempo real, chat con indicador de escritura en vivo y perfiles de alta profundidad. Lista para producción.',
-    longDescription:
-      'Match&Date es una plataforma de citas digital completa orientada al mercado hispanohablante, vendida como código fuente listo para producción. El comprador recibe todo el sistema — frontend, backend preconfigurado en Supabase y documentación de despliegue — y puede lanzar su propio servicio de citas sin partir de cero.\n\nLa experiencia está diseñada para enganchar desde el primer segundo: el onboarding guía al usuario en 4 pasos (perfil básico, foto, intereses y estilo de vida), y la mecánica de swipe responde con animaciones fluidas y feedback táctil. El matching es siempre mutuo — nadie puede escribir a alguien que no le haya dado like también.\n\nEl chat funciona en tiempo real con indicador de escritura en vivo, confirmación de lectura y actualización instantánea de conversaciones. Todo con Supabase Realtime, sin ninguna librería de estado adicional. La privacidad está garantizada a nivel de base de datos mediante Row Level Security — ningún usuario puede acceder a datos de otro, ni aunque intente manipular las peticiones.\n\nDiseño mobile-first en dark theme con glassmorphism y animaciones CSS propias. Funciona en cualquier navegador moderno sin instalación.',
-    category: 'web',
-    technologies: ['JavaScript', 'HTML5', 'CSS3', 'Supabase', 'Supabase Realtime', 'PostgreSQL', 'Supabase Storage'],
-    image: '/matchdate.png',
-    gallery: ['/matchdate.png', '/match1.png', '/match2.png', '/match3.png', '/match4.png'],
-    year: 2025,
-    challenges: [
-      'Matching mutuo sin mostrar perfiles ya vistos ni crear conexiones duplicadas',
-      'Chat en tiempo real con typing indicators — sin Redux, sin Zustand, sin nada',
-      'Swipe con gestos táctiles naturales: arrastrar, rotar y animar la salida de la tarjeta',
-      'Privacidad real: que ningún usuario pueda leer datos de otro aunque lo intente',
-    ],
-    solutions: [
-      'Función RPC en PostgreSQL que verifica el like mutuo y crea el match en una sola operación atómica',
-      'Supabase Realtime con broadcast para typing y postgres_changes para mensajes nuevos',
-      'Detector de gestos custom: umbral de distancia, rotación proporcional al desplazamiento y animación de salida',
-      'Row Level Security en todas las tablas — perfiles, matches y mensajes solo accesibles por su propietario',
-    ],
-  },
   {
     id: '8',
     slug: 'zentry',
@@ -904,7 +711,7 @@ export const projects: Project[] = [
       'Organizar un evento en Malabo significaba listas en papel, entradas fotocopiadas y control de acceso manual. Con Zentry, el organizador crea el evento en minutos, añade los invitados desde el móvil y comparte el QR de cada uno directamente por WhatsApp — con un solo toque.\n\nEn la puerta, el staff escanea los códigos con la cámara del dispositivo. El sistema responde en menos de un segundo: entrada válida, ya escaneado, aforo completo o código inválido — cada caso con audio y vibración distintos para que el staff no tenga que mirar la pantalla en un entorno ruidoso. Las entradas duplicadas son imposibles.\n\nEl dashboard muestra en tiempo real cuántas personas han entrado, cuántas están pendientes y el progreso de capacidad del evento. Todo sincronizado al instante entre todos los dispositivos del equipo.\n\nZentry funciona en Android, iOS, Web, Windows, macOS y Linux desde una única aplicación — lo que significa que el organizador gestiona desde su portátil y el staff controla desde su móvil, sin instalar apps distintas.',
     category: 'android',
     technologies: ['Flutter', 'Dart', 'Supabase', 'PostgreSQL', 'QR Flutter', 'Mobile Scanner'],
-    image: '/zentry-logo.png',
+    image: '/zentry-ss1.jpg',
     gallery: ['/zentry-ss1.jpg', '/zentry-ss2.jpg'],
     year: 2025,
     challenges: [
@@ -944,31 +751,6 @@ export const projects: Project[] = [
       'Row Level Security en Supabase + API keys hasheadas por tenant — imposible acceder a datos ajenos aunque se manipule la request',
       'Shadow DOM para el widget: estilos y scripts completamente encapsulados, cero conflictos con el host',
       'Endpoint de webhook con validación X-Hub-Signature-256 y sesiones de conversación indexadas por número de teléfono',
-    ],
-  },
-  {
-    id: '9',
-    slug: 'marketplace-empleo-servicios',
-    title: 'Marketplace de empleo y servicios',
-    description: 'Plataforma de oportunidades profesionales con ofertas, perfiles, candidaturas, mensajería en tiempo real y paneles diferenciados.',
-    longDescription:
-      'Construimos una plataforma digital que conecta empresas, profesionales y personas que buscan oportunidades, con una experiencia adaptada al contexto local y al acceso desde móvil.\n\nLas empresas publican vacantes, gestionan candidaturas por estado y consultan perfiles profesionales. Los candidatos completan su perfil, adjuntan su CV, se postulan y hacen seguimiento de sus solicitudes desde un dashboard propio.\n\nEl sistema incorpora roles y permisos diferenciados, mensajería interna, notificaciones, moderación de contenido y almacenamiento privado para documentos de candidatura. El proyecto se planteó con arquitectura preparada para evolucionar hacia aplicaciones web y móviles.',
-    category: 'web',
-    technologies: ['Next.js', 'TypeScript', 'Supabase', 'Supabase Realtime', 'Tailwind CSS', 'Vercel', 'PostgreSQL', 'RLS'],
-    image: '/course-web.jpg',
-    gallery: ['/course-web.jpg'],
-    year: 2026,
-    challenges: [
-      'Tres roles de usuario con dashboards, flujos y permisos completamente distintos en una sola app',
-      'Mensajería en tiempo real con notificaciones instantáneas — sin polling, con Supabase Realtime',
-      'Documentos privados de candidatura y datos de contacto protegidos por permisos de servidor',
-      'Moderación de contenido: vacantes y perfiles deben poder ser revisados y bloqueados desde el panel',
-    ],
-    solutions: [
-      'Route groups de Next.js por rol con layouts y middleware de auth independientes',
-      'Supabase Realtime Channels con RLS — cada usuario solo recibe sus propias notificaciones y mensajes',
-      'Storage privado con URLs firmadas y validación de autorización antes de servir documentos',
-      'Sistema de flags en la base de datos + acciones de servidor para aprobar, rechazar o bloquear contenido',
     ],
   },
   {
@@ -1051,107 +833,9 @@ export const projects: Project[] = [
     challenges: ['Diseñar muchas utilidades independientes sin perder una experiencia coherente', 'Procesar archivos y texto respetando privacidad y rendimiento', 'Crear páginas útiles para buscadores sin sacrificar accesibilidad', 'Escalar el catálogo solo cuando cada herramienta aporte valor real'],
     solutions: ['Componentes y patrones compartidos para acelerar nuevas herramientas', 'Procesamiento local en el cliente cuando la operación no necesita backend', 'Estructura SEO-first con rutas claras, metadatos y contenido especializado', 'Linting, typechecking y tests integrados desde el inicio'],
   },
-  {
-    id: '14',
-    slug: 'plataforma-oportunidades-profesionales',
-    title: 'Ecosistema web y móvil para talento local',
-    description: 'Marketplace de empleo y servicios profesionales con perfiles, candidaturas, búsqueda y áreas privadas para cada rol.',
-    longDescription:
-      'Construimos una plataforma orientada a conectar talento y oportunidades profesionales en un mercado local. La versión web incluye búsqueda de ofertas, perfiles, autenticación, candidaturas y áreas privadas diferenciadas. También se preparó una aplicación Android con los flujos esenciales de inicio, búsqueda, detalle de oferta y autenticación.\n\nLa privacidad fue parte central del diseño: documentos de candidatura en almacenamiento privado, reglas de acceso por rol y separación clara entre información pública y datos de contacto.',
-    category: 'web',
-    technologies: ['Next.js', 'React', 'TypeScript', 'Supabase', 'PostgreSQL', 'Storage', 'RLS', 'Kotlin'],
-    image: '/course-web.jpg',
-    gallery: ['/course-web.jpg'],
-    year: 2026,
-    challenges: ['Ofrecer experiencias distintas a profesionales, empresas y administradores', 'Proteger CVs y documentos privados sin bloquear el flujo de candidatura', 'Mantener una experiencia consistente entre web y aplicación móvil', 'Preparar la arquitectura para mensajería, notificaciones y planes futuros'],
-    solutions: ['Autenticación, RLS y Storage privado de Supabase para aislar cada tipo de dato', 'Dashboards por rol y acciones de servidor para las operaciones sensibles', 'Diseño responsive y especificación Android alineados con los mismos flujos', 'Modelo de dominio preparado para ampliar capacidades sin mezclar permisos'],
-  },
 ]
 
 export const blogPosts: BlogPost[] = [
-  {
-    id: '1',
-    slug: 'marketplace-javascript-puro-sin-frameworks',
-    title: 'Cómo construimos un marketplace completo sin frameworks frontend',
-    excerpt: 'BKLN Marketplace: 18 páginas funcionales, mensajería en tiempo real y autenticación multi-método usando solo JavaScript, HTML y CSS. Lo que aprendimos y por qué lo repetiríamos.',
-    content: `## El punto de partida
-
-Cuando empezamos a construir BKLN Marketplace, teníamos una decisión por delante: ¿React, Vue, o vanilla JS? La respuesta no fue obvia al principio, pero terminó siendo la que más nos enseñó.
-
-El proyecto era ambicioso: una plataforma C2C orientada al mercado de África Central, con moneda XAF, autenticación múltiple, mensajería en tiempo real, sistema de suscripciones y panel de administración. Nada trivial.
-
-Elegimos JavaScript puro. Sin frameworks. Sin bundlers. Sin toolchain.
-
-## Por qué vanilla JS
-
-La razón principal no fue filosófica — fue práctica.
-
-El mercado objetivo usa dispositivos modestos con conexiones variables. Cada kilobyte cuenta. Un bundle de React con sus dependencias, hidratación y runtime ya pesa varios cientos de KB antes de escribir una sola línea de lógica de negocio.
-
-Con vanilla JS, el navegador ya trae el runtime. No hay nada que cargar, compilar ni hidratar. La primera interacción ocurre en milisegundos.
-
-La segunda razón: queríamos entender a fondo lo que estaba pasando. Con un framework, cuando algo falla en producción, a veces no sabes si el problema es tuyo o de la librería. Sin framework, el código es completamente tuyo.
-
-## Mensajería en tiempo real sin librerías de estado
-
-El mayor desafío técnico fue el chat entre compradores y vendedores. En un stack moderno lo típico es usar un hook de React con un store de Zustand o Redux. Nosotros no teníamos nada de eso.
-
-La solución fue **Supabase Realtime Channels**: suscripción directa a cambios en la tabla de mensajes con RLS (Row Level Security) garantizando que cada usuario solo recibe sus propios mensajes.
-
-\`\`\`javascript
-const channel = supabase
-  .channel(\`chat:\${conversationId}\`)
-  .on('postgres_changes', {
-    event: 'INSERT',
-    schema: 'public',
-    table: 'messages',
-    filter: \`conversation_id=eq.\${conversationId}\`
-  }, (payload) => {
-    appendMessage(payload.new)
-  })
-  .subscribe()
-\`\`\`
-
-El cleanup lo hacemos manualmente al salir de la vista. Sin useEffect, sin dependencias. Solo lógica.
-
-## Autenticación multi-método en un flujo unificado
-
-Soporte para tres métodos: email/contraseña, OTP por SMS y Google OAuth. El reto era presentar los tres en una sola pantalla sin que pareciera un formulario de gobierno.
-
-La solución fue una interfaz de tabs animados con un solo contenedor que cambia de estado. El error de cada método se muestra inline, no como un alert genérico. Si introduces un email ya registrado, el sistema te sugiere directamente hacer login en vez de darte un error críptico.
-
-## El sistema de planes sin pasarelas de pago
-
-Quisimos evitar depender de Stripe o cualquier otra pasarela de pago externa para la activación de planes premium. En mercados emergentes, las tasas de conversión caen drásticamente si obligas a usar tarjeta.
-
-El modelo que construimos: el cliente pide el plan, nosotros generamos un código de activación desde el panel de administración, el cliente paga por el canal que prefiera (transferencia, efectivo, móvil) y nosotros activamos el código.
-
-Un objeto \`PLAN_LIMITS\` centralizado controla qué puede hacer cada usuario según su plan activo. Un solo lugar donde tocar cuando cambian las reglas de negocio.
-
-## Lo que repetiríamos y lo que cambiaríamos
-
-**Repetiríamos:** la decisión de vanilla JS para este contexto específico. El rendimiento en dispositivos modestos es notablemente mejor. El código es predecible y fácil de depurar.
-
-**Cambiaríamos:** la gestión del estado global. Sin un sistema de reactividad, acabas con event emitters caseros y funciones de "re-render" manuales en algunos sitios. No es insostenible, pero escala peor que un sistema reactivo bien pensado.
-
-Para proyectos donde el rendimiento en dispositivos lentos no es crítico, un framework moderno sigue siendo la opción más productiva. El contexto manda.
-
-## Conclusión
-
-Construir BKLN Marketplace sin frameworks nos obligó a entender cada pieza que normalmente damos por sentada. La mensajería en tiempo real, la gestión de estado, el routing por hash, la reactividad — todo implementado a mano.
-
-¿Lo recomendamos para todos los proyectos? No. ¿Valió la pena para este? Absolutamente.`,
-    category: 'web',
-    coverImage: '/course-web.jpg',
-    author: {
-      name: 'BKLN Software',
-      avatar: '',
-      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
-    },
-    publishedAt: '2025-03-20',
-    readTime: 9,
-    tags: ['JavaScript', 'Supabase', 'Arquitectura', 'Marketplace'],
-  },
   {
     id: '2',
     slug: 'python-automatizacion-casos-reales',

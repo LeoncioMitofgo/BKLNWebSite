@@ -5,7 +5,7 @@ import { ArrowLeft, BookOpen, Clock, Users, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { courses } from '@/data/content'
+import { publishedCourses as courses } from '@/data/content'
 
 interface PageProps {
   params: Promise<{ slug: string }>
@@ -31,8 +31,6 @@ export default async function CoursePage({ params }: PageProps) {
   const course = courses.find((c) => c.slug === slug)
   if (!course) notFound()
 
-  const isComingSoon = course.status === 'coming-soon'
-
   return (
     <div className="min-h-screen pt-24">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -47,11 +45,6 @@ export default async function CoursePage({ params }: PageProps) {
         <div className="relative h-56 rounded-lg overflow-hidden mb-8 border border-white/5">
           <Image src={course.thumbnail} alt={course.title} fill className="object-cover" unoptimized />
           <div className="absolute inset-0 bg-bg-dark/60" />
-          {isComingSoon && (
-            <div className="absolute top-4 right-4">
-              <Badge>Próximamente</Badge>
-            </div>
-          )}
         </div>
 
         {/* Meta */}
@@ -135,30 +128,11 @@ export default async function CoursePage({ params }: PageProps) {
 
         {/* CTA */}
         <div className="bg-brand-green/10 border border-brand-green/20 rounded-lg p-6 text-center">
-          {isComingSoon ? (
-            <>
-              <p className="text-text-primary font-semibold mb-2">Este curso llega pronto</p>
-              <p className="text-text-secondary text-sm mb-4">Contáctanos para saber cuándo estará disponible.</p>
-              <Link href="/contacto">
-                <Button variant="outline">Avisarme cuando esté disponible</Button>
-              </Link>
-            </>
-          ) : course.bookUrl ? (
-            <>
-              <p className="text-text-primary font-semibold mb-2">Acceso gratuito — sin registro</p>
-              <p className="text-text-secondary text-sm mb-4">Empieza a leer ahora mismo, sin crear cuenta ni pagar nada.</p>
-              <a href={course.bookUrl} target="_blank" rel="noopener noreferrer">
-                <Button>Empezar a aprender <BookOpen size={15} /></Button>
-              </a>
-            </>
-          ) : (
-            <>
-              <p className="text-text-primary font-semibold mb-2">¿Listo para empezar?</p>
-              <Link href="/contacto">
-                <Button>Acceder al curso</Button>
-              </Link>
-            </>
-          )}
+          <p className="text-text-primary font-semibold mb-2">¿Listo para empezar?</p>
+          <p className="text-text-secondary text-sm mb-4">Abre el libro y empieza a leer ahora mismo, sin crear cuenta.</p>
+          <a href={course.bookUrl} target="_blank" rel="noopener noreferrer">
+            <Button>Empezar a leer <BookOpen size={15} /></Button>
+          </a>
         </div>
       </div>
     </div>

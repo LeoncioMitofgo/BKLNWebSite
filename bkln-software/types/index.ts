@@ -13,29 +13,20 @@ export interface Service {
 }
 
 export interface Product {
-  fileUrl: string
   id: string
   slug: string
   title: string
   description: string
   longDescription: string
-  category: 'android' | 'desktop' | 'scripts' | 'free' | 'web' | 'ia'
-  price: number
-  isFree: boolean
-  priceOnRequest?: boolean
+  category: 'android' | 'desktop' | 'web' | 'ia'
+  pricingNote?: string
+  requiresMeeting?: boolean
   image: string
   screenshots: string[]
-  rating: number
-  downloads: number
-  version: string
   requirements: string[]
-  changelog: { version: string; date: string; changes: string[] }[]
   includes?: string[]
   deliveryType?: 'source-code' | 'license' | 'install'
-  supportPlan?: { price: number; period: string; includes: string[] }
-  fileKey?: string
-  stripeProductId?: string
-  stripePriceId?: string
+  supportPlan?: { period: string; includes: string[] }
 }
 
 export interface Course {
@@ -45,7 +36,6 @@ export interface Course {
   description: string
   longDescription: string
   category: 'python' | 'web' | 'databases' | 'ia-ml' | 'android' | 'marketplaces' | 'cloud'
-  price: number
   thumbnail: string
   duration: string
   level: 'principiante' | 'intermedio' | 'avanzado'
@@ -56,8 +46,6 @@ export interface Course {
   includes: string[]
   status?: 'available' | 'coming-soon'
   bookUrl?: string
-  stripeProductId?: string
-  stripePriceId?: string
 }
 
 export interface Instructor {
@@ -131,8 +119,10 @@ export interface Testimonial {
 export interface ContactFormData {
   name: string
   email: string
+  whatsapp?: string
   company?: string
   projectType: string
+  product?: string
   budget: string
   description: string
 }
