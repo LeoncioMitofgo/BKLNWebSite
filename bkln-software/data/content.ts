@@ -837,6 +837,216 @@ export const projects: Project[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '7',
+    slug: 'sistema-caja-stock-farmacias-supermercados-restaurantes',
+    title: 'Caja, stock y control desde el móvil: guía para farmacias, supermercados y restaurantes',
+    excerpt: 'Qué debe tener un sistema de gestión para tu comercio: una caja que cuadra, el inventario al día, permisos para cada empleado y el negocio en tu móvil aunque no estés. Con lo específico de farmacias, supermercados, restaurantes y bares.',
+    content: `## El problema: no saber qué pasa cuando no estás
+
+Si tienes una farmacia, un supermercado o un restaurante, seguramente te suena: al cerrar, la caja no cuadra y nadie sabe por qué. Un producto se agota sin que nadie avise. Descubres que algo ha caducado cuando ya está en la basura. Y si no estás en el local, la única forma de saber cómo va el día es llamar por teléfono.
+
+Un sistema de gestión, también llamado punto de venta, resuelve buena parte de esto. No es solo una caja registradora moderna: es el registro de todo lo que entra, sale y se cobra en tu negocio, y lo puedes consultar desde el móvil.
+
+## Las cuatro piezas de un buen sistema
+
+### 1. La caja
+
+Es donde empieza todo. Cada venta queda registrada con sus productos, su importe, la hora y quién la hizo. Lo que debería tener:
+
+- **Apertura y cierre por turno.** El cajero abre con un fondo inicial y, al cerrar, el sistema calcula lo que debería haber. Si el dinero contado no coincide, el descuadre queda registrado con nombre y hora.
+- **Varias formas de pago.** Efectivo, transferencia, pago por móvil o tarjeta, y poder combinarlas en una misma venta.
+- **Ticket impreso o digital.** Con una impresora térmica pequeña es suficiente; también se puede enviar por WhatsApp.
+- **Anulaciones y descuentos bajo control.** Un cajero no debería poder borrar una venta ni aplicar un descuento grande sin la autorización de un encargado. Cada anulación queda registrada.
+
+### 2. El inventario
+
+- **Stock que se actualiza solo.** Si vendes una caja de paracetamol, el sistema descuenta una unidad. No hace falta contar a mano para saber qué queda.
+- **Entradas de mercancía.** Cuando llega un pedido del proveedor, se registra y el stock sube.
+- **Avisos de mínimo.** Defines un mínimo para cada producto y el sistema te avisa antes de que se agote.
+- **Recuentos periódicos.** Contar de vez en cuando lo que hay en la estantería y compararlo con lo que dice el sistema saca a la luz mermas, roturas y robos.
+
+### 3. Los usuarios y sus permisos
+
+Cada persona entra con su propio usuario o un PIN y solo puede hacer lo que su puesto requiere. Un reparto habitual:
+
+- **Propietario:** lo ve todo y desde cualquier sitio: informes, márgenes y todos los locales.
+- **Gerente o encargado:** gestiona productos y precios, autoriza anulaciones y descuentos, cierra la caja y revisa los informes de su local.
+- **Cajero:** vende y cobra. No cambia precios ni borra ventas.
+- **Camarero**, en restaurantes y bares: abre mesas y toma pedidos; el cobro se cierra en caja.
+- **Almacén:** registra entradas de mercancía y recuentos, sin acceso a la caja.
+
+Que cada acción quede firmada por quien la hizo no es desconfiar del equipo. Es lo que permite aclarar un descuadre en cinco minutos en lugar de discutirlo una semana.
+
+### 4. El negocio en tu móvil
+
+Aquí está el cambio de verdad. Desde el teléfono, estés donde estés, puedes ver:
+
+- Las ventas del día en tiempo real, por caja y por local.
+- Los productos más vendidos y las horas de más movimiento.
+- Las ventas de cada empleado.
+- Avisos de stock bajo, productos a punto de caducar, anulaciones o descuadres.
+- Un resumen al final del día que te llega sin tener que pedirlo.
+
+Si tienes más de un local, todos aparecen en el mismo panel.
+
+## Lo específico de cada negocio
+
+### Farmacias
+
+- **Lotes y fechas de caducidad.** Cada entrada se registra con su lote y su fecha, y el sistema avisa con tiempo de lo que va a caducar para venderlo antes o devolverlo al proveedor.
+- **Primero sale lo que caduca antes.** Al vender, el sistema indica qué lote dispensar.
+- **Búsqueda rápida** por nombre comercial o por principio activo, para ofrecer una alternativa cuando un medicamento se agota.
+- **Registro de los medicamentos que se venden con receta**, si necesitas llevar ese control.
+
+### Supermercados y tiendas
+
+- **Lector de códigos de barras.** Cobrar escaneando es más rápido y evita errores de precio.
+- **Productos al peso**, con báscula conectada o, al menos, con precio por kilo.
+- **Miles de productos** organizados por categorías y proveedores, con cambios de precio en bloque.
+- **Compras a proveedores:** qué pedir, cuánto y a quién, según lo que realmente se vende.
+- **Margen por producto**, para saber qué te deja dinero y qué solo ocupa estantería.
+
+### Restaurantes y bares
+
+- **Plano de mesas.** De un vistazo, qué mesas están libres, ocupadas o pendientes de cobro.
+- **Comandas a cocina y barra.** El camarero toma el pedido en el móvil o en una tablet y llega directamente a cocina, impreso o en pantalla. Se acabaron los papeles que se pierden.
+- **Dividir la cuenta** entre varias personas o cobrar cada parte por separado.
+- **Control de ingredientes.** Si una hamburguesa lleva 150 gramos de carne, cada venta descuenta esa cantidad del almacén. Así sabes cuánto debería quedar y detectas el desperdicio.
+- **Coste de cada plato** a partir de sus ingredientes, para poner precios con criterio.
+
+## Lo que hay que tener en cuenta aquí
+
+- **Que siga funcionando sin internet.** Si se cae la conexión, la caja tiene que seguir vendiendo y sincronizar cuando vuelva. Pregunta siempre qué pasa sin conexión antes de elegir un sistema.
+- **Los cortes de luz.** Un terminal con batería o un pequeño sistema de alimentación ininterrumpida (SAI) evita perder una venta a medias.
+- **Pagos sin tarjeta.** El sistema tiene que registrar bien el efectivo, las transferencias y los pagos por móvil, que en muchos negocios son la mayoría.
+- **Equipos sencillos.** Un terminal o una tablet Android, una impresora de tickets, un cajón portamonedas y, si vendes muchos productos, un lector de códigos. No hace falta un ordenador caro.
+- **Copias de seguridad.** Tus ventas y tu inventario son la memoria del negocio: comprueba que se guardan también fuera del local.
+
+## Cómo implantarlo sin parar el negocio
+
+1. **Carga el catálogo:** productos, precios y, si los tienes, códigos de barras. Si ya están en una hoja de Excel, pregunta si se pueden importar.
+2. **Haz un recuento inicial** para que el stock de partida sea real.
+3. **Crea los usuarios** con sus permisos.
+4. **Forma al equipo** con ventas de prueba antes de abrir.
+5. **Empieza con una sola caja o un solo turno** y amplía cuando todo funcione.
+6. **Revisa el primer cierre de caja** junto al encargado.
+
+## Cuánto cuesta
+
+Hay sistemas por suscripción mensual y sistemas con licencia propia, y a eso hay que sumar los equipos. Lo que más encarece suele ser lo específico de tu negocio: básculas, varios locales, comandas a cocina o informes a medida. Si quieres entender qué mueve el precio de un proyecto de software, lee [¿Cuánto cuesta una web o una app en Guinea Ecuatorial?](/blog/cuanto-cuesta-web-app-guinea-ecuatorial).
+
+## Cómo lo hacemos en BKLN
+
+Hemos desarrollado un [sistema de punto de venta para terminales Android](/portfolio/sistema-pos-android-comercios) con caja, cierre de turno validado en el servidor, impresión de tickets, acceso de cada operador con su PIN y un panel en el móvil desde el que el propietario sigue las ventas en tiempo real. Sigue vendiendo cuando la conexión falla y sincroniza en cuanto vuelve. Sobre esa base adaptamos lo que tu negocio necesita: lotes y caducidades para una farmacia, códigos de barras para un supermercado, o mesas y comandas para un restaurante.
+
+Cuéntanos cómo funciona hoy tu negocio y te proponemos cómo ordenarlo.`,
+    category: 'guias',
+    coverImage: '/course-android.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-10-09',
+    readTime: 6,
+    tags: ['Punto de venta', 'Gestión de negocios', 'Inventario', 'Restaurantes'],
+  },
+  {
+    id: '8',
+    slug: 'asistente-ia-whatsapp-web-negocio',
+    title: 'Un asistente con IA que atiende por ti en WhatsApp y en tu web',
+    excerpt: 'Responde a tus clientes a cualquier hora con la información que tú le das, toma pedidos y te manda informes. Cómo funciona de verdad, qué permisos darle y dónde están sus límites.',
+    content: `## Qué es, y qué no es
+
+Un asistente con inteligencia artificial es un programa que conversa por escrito con tus clientes, en WhatsApp o en el chat de tu web, y les responde como lo haría alguien de tu equipo. La diferencia con los bots de antes, los de "escriba 1 para precios", es que entiende preguntas escritas con naturalidad, aunque tengan faltas o estén mal planteadas, y contesta con frases normales.
+
+Lo que no es: no es un empleado con criterio propio ni sabe nada de tu negocio por arte de magia. Sabe lo que tú le das y hace lo que tú le permites.
+
+## Cómo sabe lo que sabe
+
+Aquí suele haber una confusión. El asistente no aprende solo leyendo tus conversaciones ni se entrena por su cuenta. Lo que hace es consultar una base de información que preparas tú:
+
+- Tu catálogo, con precios y disponibilidad.
+- Horarios, ubicación y formas de pago.
+- Las preguntas frecuentes y sus respuestas.
+- Condiciones de envío, devoluciones o reservas.
+- Si es para tu perfil profesional: tus servicios, tu experiencia, tus tarifas y tu forma de trabajar.
+
+Cuando un cliente pregunta, el asistente busca en esa información lo que corresponde y redacta la respuesta a partir de ahí. Si la respuesta no está, lo correcto es que lo diga y pase la conversación a una persona, no que se invente algo.
+
+Por eso, un asistente es tan bueno como la información que le das. Si cambias un precio y no lo actualizas, seguirá dando el precio antiguo.
+
+## Dónde puede atender
+
+- **WhatsApp.** Es donde están tus clientes. Para conectar un asistente hace falta la plataforma de WhatsApp Business de Meta (la API), no la aplicación normal del móvil. Ten en cuenta que normalmente se usa un número dedicado, que Meta puede pedirte verificar tu empresa y que cobra por algunos mensajes, sobre todo los que tu negocio envía sin que el cliente haya escrito antes. Además, si el cliente lleva más de 24 horas sin escribirte, solo puedes contactarle con plantillas de mensaje aprobadas por Meta.
+- **El chat de tu web.** Una ventana de conversación en tu página, como la que tienes abajo a la derecha en esta.
+- **El correo.** Puede leer lo que llega a una dirección, responder lo sencillo y dejarte el resto clasificado.
+- **Otros canales**, como Messenger o Instagram, se pueden añadir con algo más de trabajo de integración.
+
+Una ventaja: es el mismo asistente en todos los canales, con la misma información. Cambias un dato una vez y vale para todos.
+
+## Qué puede hacer por ti
+
+- **Responder a cualquier hora**, también de noche y en fin de semana.
+- **Tomar pedidos o reservas.** Recoge qué quiere el cliente, cuántas unidades, la dirección o la fecha, y lo deja registrado para que tú o tu equipo lo confirméis.
+- **Informar del estado de un pedido.** Si está conectado a tu sistema, puede consultar en qué punto está y responder al "¿cuándo llega lo mío?".
+- **Agendar citas**, si lo conectas a tu calendario.
+- **Pasar a una persona** cuando el cliente lo pide, cuando no sabe la respuesta o cuando detecta una queja.
+- **Hacer informes.** Un resumen diario o semanal: cuántas conversaciones hubo, qué se preguntó más, qué pedidos entraron y, muy útil, qué preguntas no supo contestar. Esa lista te dice exactamente qué información le falta.
+- **Atender en varios idiomas.** Español, francés o inglés, según escriba el cliente. Con las lenguas locales no esperes el mismo nivel.
+- **Entender notas de voz**, si se configura para transcribirlas. En WhatsApp mucha gente prefiere mandar audios, así que conviene pedirlo desde el principio.
+
+## Los permisos: tú decides hasta dónde llega
+
+Que el asistente pueda atender en tu lugar no significa que pueda hacerlo todo. Lo sensato es darle permisos por niveles:
+
+1. **Solo informar.** Responde con la información que le has dado. Es el punto de partida recomendable.
+2. **Recoger datos.** Toma pedidos, reservas o solicitudes, que quedan pendientes hasta que alguien las confirma.
+3. **Actuar dentro de unas reglas.** Confirma pedidos o citas por sí mismo, pero solo dentro de límites claros: horarios disponibles, productos con stock, importes máximos.
+4. **Pedir permiso para lo delicado.** Descuentos, devoluciones, cambios de precio o cualquier compromiso fuera de lo habitual: el asistente lo prepara y tú lo apruebas con un toque.
+
+Y hay cosas que no debería hacer nunca: inventarse precios o condiciones, compartir los datos de un cliente con otro o dar por bueno un pago que nadie ha comprobado.
+
+## También para tu perfil profesional
+
+No solo sirve para tiendas. Si eres consultor, abogado, formador o trabajas por tu cuenta, un asistente puede presentar tus servicios, resolver las dudas frecuentes, filtrar a quién te escribe y proponer una cita en tu agenda. Llegas a la reunión sabiendo ya qué necesita la otra persona.
+
+Un consejo: separa bien lo profesional de lo personal. Dale solo la información que estés dispuesto a que lea cualquiera, porque cualquiera puede preguntarle.
+
+## Los límites que conviene conocer
+
+- **Puede equivocarse.** Con buena información se equivoca poco, pero no es infalible. Revisa conversaciones de vez en cuando, sobre todo al principio.
+- **No sustituye las relaciones importantes.** Un cliente grande o una queja seria merecen que respondas tú.
+- **Di que es un asistente.** Tus clientes tienen que saber que hablan con un asistente automático y cómo llegar a una persona. Da más confianza que intentar disimularlo.
+- **Tiene un coste por uso.** Además de la puesta en marcha, cada conversación consume servicio de inteligencia artificial y, en WhatsApp, puede tener coste de Meta. Pregunta cómo se calcula antes de empezar.
+- **Hay que mantenerlo.** Cuando cambian tus precios, tu horario o tus productos, hay que actualizar su información.
+
+## Cómo empezar
+
+1. **Reúne la información:** catálogo, precios, horario, preguntas frecuentes y condiciones. Si ya la tienes en documentos o en tu web, sirve.
+2. **Empieza por el chat de la web**, que es más sencillo, y añade WhatsApp después.
+3. **Las primeras semanas, dale solo permiso para informar.**
+4. **Revisa cada semana las preguntas que no supo contestar** y completa su información.
+5. **Amplía los permisos** (pedidos, citas) cuando te fíes de cómo responde.
+
+## Cómo lo hacemos en BKLN
+
+BrookAI es nuestro asistente para negocios. Responde solo con los documentos que tú le subes (catálogos, manuales, preguntas frecuentes, listas de precios), funciona en tu web con un fragmento de código y en WhatsApp Business, y pasa la conversación a una persona cuando no sabe responder. Desde su panel subes documentos, ajustas su nombre y su tono, revisas el historial y ves qué preguntas no supo contestar. Las conexiones con tu correo, tu calendario o tu sistema de pedidos las desarrollamos a medida, según lo que necesites.
+
+Puedes probar ahora mismo un asistente de este tipo: el chat de esta web funciona así y solo responde con información de BKLN.`,
+    category: 'guias',
+    relatedProduct: 'brookai',
+    coverImage: '/project-ia.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-10-09',
+    readTime: 6,
+    tags: ['Inteligencia artificial', 'WhatsApp', 'Atención al cliente', 'Automatización'],
+  },
+  {
     id: '4',
     slug: 'cuanto-cuesta-web-app-guinea-ecuatorial',
     title: '¿Cuánto cuesta una web o una app en Guinea Ecuatorial?',
