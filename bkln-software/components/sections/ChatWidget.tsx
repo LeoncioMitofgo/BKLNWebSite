@@ -8,10 +8,12 @@ type Message = {
     text: string
     sender: 'user' | 'assistant'
     sources?: string[]
-    grounded?: boolean
 }
 
 const STORAGE_KEY = 'bkln_chat_session_id'
+// Mensajes previos que se envían con cada pregunta para que el asistente recuerde la conversación.
+const HISTORY_LIMIT = 8
+const LOCAL_MESSAGE_IDS = new Set(['welcome', 'notice'])
 
 export default function ChatWidget() {
     const [isOpen, setIsOpen] = useState(false)
@@ -21,7 +23,7 @@ export default function ChatWidget() {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: 'welcome',
-            text: '¡Hola! Soy el asistente virtual de BKLN Software & Systems. ¿En qué puedo ayudarte?',
+            text: '¡Hola! Soy el asistente de BKLN Software & Systems. Cuéntame qué necesita tu negocio o qué problema quieres resolver y te oriento.',
             sender: 'assistant',
         },
         {
@@ -68,6 +70,10 @@ export default function ChatWidget() {
             text: trimmed,
             sender: 'user',
         }
+        const history = messages
+            .filter((m) => !LOCAL_MESSAGE_IDS.has(m.id) && !m.id.startsWith('error-'))
+            .slice(-HISTORY_LIMIT)
+            .map((m) => ({ role: m.sender, content: m.text }))
 
         setMessages((current) => [...current, userMessage])
         setInput('')
@@ -82,6 +88,7 @@ export default function ChatWidget() {
                 body: JSON.stringify({
                     question: trimmed,
                     session_id: sessionId,
+                    history,
                 }),
             })
 
@@ -92,7 +99,6 @@ export default function ChatWidget() {
             const data = (await response.json()) as {
                 answer?: string
                 sources?: string[]
-                grounded?: boolean
             }
 
             const assistantMessage: Message = {
@@ -100,7 +106,6 @@ export default function ChatWidget() {
                 text: data.answer || 'No tengo una respuesta disponible en este momento.',
                 sender: 'assistant',
                 sources: Array.isArray(data.sources) ? data.sources : [],
-                grounded: typeof data.grounded === 'boolean' ? data.grounded : true,
             }
 
             setMessages((current) => [...current, assistantMessage])
@@ -200,10 +205,6 @@ export default function ChatWidget() {
                                                     ))}
                                                 </ul>
                                             </div>
-                                        )}
-
-                                        {typeof message.grounded === 'boolean' && !message.grounded && (
-                                            <p className="mt-2 text-[11px] text-slate-300">Sin información suficiente.</p>
                                         )}
                                     </div>
                                 </div>
