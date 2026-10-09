@@ -3,14 +3,10 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
+import type { Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { localizePath } from '@/i18n/routes'
 import type { Product } from '@/types'
-
-const categoryLabels: Record<Product['category'], string> = {
-  android: 'Android',
-  desktop: 'Desktop',
-  web: 'Web App',
-  ia: 'IA',
-}
 
 const categoryImages: Record<Product['category'], string> = {
   android: '/course-android.jpg',
@@ -21,9 +17,11 @@ const categoryImages: Record<Product['category'], string> = {
 
 interface ProductCardProps {
   product: Product
+  lang: Locale
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, lang }: ProductCardProps) {
+  const t = getDictionary(lang).products
   const imageUrl = product.image || categoryImages[product.category]
 
   return (
@@ -38,7 +36,7 @@ export function ProductCard({ product }: ProductCardProps) {
         />
         <div className="absolute inset-0 bg-bg-dark/50" />
         <div className="absolute top-2 left-2">
-          <Badge variant="blue">{categoryLabels[product.category]}</Badge>
+          <Badge variant="blue">{t.categories[product.category]}</Badge>
         </div>
       </div>
       <div className="p-5 flex flex-col flex-1">
@@ -46,9 +44,9 @@ export function ProductCard({ product }: ProductCardProps) {
         <p className="text-text-secondary text-sm leading-relaxed mb-5 line-clamp-3">
           {product.description}
         </p>
-        <Link href={`/productos/${product.slug}`} className="mt-auto">
+        <Link href={localizePath(lang, `/productos/${product.slug}`)} className="mt-auto">
           <Button size="sm" variant="outline" className="w-full">
-            Ver producto <ArrowRight size={14} />
+            {t.card.more} <ArrowRight size={14} />
           </Button>
         </Link>
       </div>

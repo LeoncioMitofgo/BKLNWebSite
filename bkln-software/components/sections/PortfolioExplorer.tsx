@@ -1,36 +1,33 @@
 'use client'
 
-import { useState } from 'react'
-import { ProjectCard } from '@/components/sections/ProjectCard'
+import { Fragment, useState, type ReactNode } from 'react'
 import { CategoryFilter } from '@/components/ui/CategoryFilter'
 import type { Project } from '@/types'
 
-const categories: { value: Project['category'] | 'todos'; label: string }[] = [
-  { value: 'todos', label: 'Todos' },
-  { value: 'android', label: 'Android' },
-  { value: 'web', label: 'Web' },
-  { value: 'desktop', label: 'Desktop' },
-  { value: 'python', label: 'Python' },
-  { value: 'ia', label: 'IA' },
-]
+type Category = Project['category'] | 'todos'
 
-export function PortfolioExplorer({ projects }: { projects: Project[] }) {
-  const [activeCategory, setActiveCategory] = useState<Project['category'] | 'todos'>('todos')
-  const visibleCategories = categories.filter(
-    (c) => c.value === 'todos' || projects.some((p) => p.category === c.value)
-  )
+interface PortfolioExplorerProps {
+  /** Tarjetas ya renderizadas en el servidor, con su categoría para filtrar. */
+  items: { key: string; category: Project['category']; card: ReactNode }[]
+  labels: Record<Category, string>
+  emptyText: string
+}
 
-  const filtered =
-    activeCategory === 'todos'
-      ? projects
-      : projects.filter((p) => p.category === activeCategory)
+const ORDER: Category[] = ['todos', 'android', 'web', 'desktop', 'python', 'ia']
+
+export function PortfolioExplorer({ items, labels, emptyText }: PortfolioExplorerProps) {
+  const [activeCategory, setActiveCategory] = useState<Category>('todos')
+  const categories = ORDER
+    .filter((c) => c === 'todos' || items.some((item) => item.category === c))
+    .map((value) => ({ value, label: labels[value] }))
+  const filtered = activeCategory === 'todos' ? items : items.filter((item) => item.category === activeCategory)
 
   return (
     <>
       {/* Filtros */}
       <section className="py-8 px-4 sm:px-6 lg:px-8 border-b border-white/5">
         <div className="max-w-7xl mx-auto">
-          <CategoryFilter categories={visibleCategories} active={activeCategory} onChange={setActiveCategory} />
+          <CategoryFilter categories={categories} active={activeCategory} onChange={setActiveCategory} />
         </div>
       </section>
 
@@ -39,14 +36,12 @@ export function PortfolioExplorer({ projects }: { projects: Project[] }) {
         <div className="max-w-7xl mx-auto">
           {filtered.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filtered.map((project) => (
-                <ProjectCard key={project.id} project={project} />
+              {filtered.map((item) => (
+                <Fragment key={item.key}>{item.card}</Fragment>
               ))}
             </div>
           ) : (
-            <div className="text-center py-16 text-text-secondary">
-              No hay proyectos en esta categoría aún.
-            </div>
+            <div className="text-center py-16 text-text-secondary">{emptyText}</div>
           )}
         </div>
       </section>

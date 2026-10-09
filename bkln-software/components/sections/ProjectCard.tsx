@@ -3,6 +3,9 @@ import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
+import type { Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { localizePath } from '@/i18n/routes'
 import type { Project } from '@/types'
 
 const categoryImages: Record<Project['category'], string> = {
@@ -15,9 +18,11 @@ const categoryImages: Record<Project['category'], string> = {
 
 interface ProjectCardProps {
   project: Project
+  lang: Locale
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, lang }: ProjectCardProps) {
+  const t = getDictionary(lang).portfolio.card
   const imageUrl = project.image || categoryImages[project.category]
 
   return (
@@ -46,9 +51,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-text-secondary text-sm leading-relaxed mb-5 line-clamp-3">
           {project.description}
         </p>
-        <Link href={`/portfolio/${project.slug}`} className="mt-auto">
+        <Link href={localizePath(lang, `/portfolio/${project.slug}`)} className="mt-auto">
           <Button variant="outline" size="sm" className="w-full gap-1.5">
-            Ver el caso <ArrowRight size={13} />
+            {t.more} <ArrowRight size={13} />
           </Button>
         </Link>
       </div>

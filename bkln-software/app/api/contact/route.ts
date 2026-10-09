@@ -34,6 +34,7 @@ export async function POST(req: NextRequest) {
     description: field(body.description, 5000),
     source_path: field(body.sourcePath, 300),
   }
+  const language = field(body.language, 5) || 'es'
 
   if (!lead.name || !lead.email || !(lead.project_type || lead.product) || !lead.budget || !lead.description) {
     return NextResponse.json({ error: 'Faltan campos requeridos' }, { status: 400 })
@@ -68,6 +69,7 @@ Empresa: ${lead.company || 'N/A'}
 Producto de interés: ${lead.product || 'N/A'}
 Tipo de proyecto: ${lead.project_type || 'N/A'}
 Presupuesto: ${lead.budget}
+Idioma de la web: ${language}
 Enviado desde: ${lead.source_path || 'N/A'}
 
 Descripción:

@@ -3,29 +3,18 @@ import Image from 'next/image'
 import { Clock, ArrowRight } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
+import type { Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { localizePath } from '@/i18n/routes'
 import type { Course } from '@/types'
-
-const categoryLabels: Record<Course['category'], string> = {
-  python: 'Python',
-  web: 'Web',
-  databases: 'Databases',
-  'ia-ml': 'IA & ML',
-  android: 'Android',
-  marketplaces: 'Marketplaces',
-  cloud: 'Cloud',
-}
-
-const levelLabels: Record<Course['level'], string> = {
-  principiante: 'Principiante',
-  intermedio: 'Intermedio',
-  avanzado: 'Avanzado',
-}
 
 interface CourseCardProps {
   course: Course
+  lang: Locale
 }
 
-export function CourseCard({ course }: CourseCardProps) {
+export function CourseCard({ course, lang }: CourseCardProps) {
+  const t = getDictionary(lang).courses
   return (
     <div className="group flex flex-col bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       {/* Image */}
@@ -39,14 +28,14 @@ export function CourseCard({ course }: CourseCardProps) {
         />
         <div className="absolute inset-0 bg-bg-dark/50" />
         <div className="absolute top-3 right-3">
-          <Badge variant="blue">{categoryLabels[course.category]}</Badge>
+          <Badge variant="blue">{t.categories[course.category]}</Badge>
         </div>
       </div>
 
       {/* Content */}
       <div className="p-5 flex flex-col flex-1">
         <div className="flex items-center gap-2 mb-2">
-          <Badge>{levelLabels[course.level]}</Badge>
+          <Badge>{t.levels[course.level]}</Badge>
           <span className="text-text-secondary text-xs flex items-center gap-1">
             <Clock size={11} />
             {course.duration}
@@ -58,9 +47,9 @@ export function CourseCard({ course }: CourseCardProps) {
           {course.description}
         </p>
 
-        <Link href={`/cursos/${course.slug}`} className="mt-auto">
+        <Link href={localizePath(lang, `/cursos/${course.slug}`)} className="mt-auto">
           <Button size="sm" variant="outline" className="w-full">
-            Ver curso <ArrowRight size={14} />
+            {t.card.more} <ArrowRight size={14} />
           </Button>
         </Link>
       </div>

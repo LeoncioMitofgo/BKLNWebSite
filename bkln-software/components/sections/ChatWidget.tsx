@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import type { Dictionary } from '@/i18n/dictionaries'
 
 type Message = {
     id: string
@@ -29,19 +30,19 @@ function getSessionId(): string {
     }
 }
 
-export default function ChatWidget() {
+export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
     const [isOpen, setIsOpen] = useState(false)
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState<Message[]>([
         {
             id: 'welcome',
-            text: '¡Hola! Soy el asistente de BKLN Software & Systems. Cuéntame qué necesita tu negocio o qué problema quieres resolver y te oriento.',
+            text: t.welcome,
             sender: 'assistant',
         },
         {
             id: 'notice',
-            text: 'El asistente puede tardar unos segundos en responder.',
+            text: t.notice,
             sender: 'assistant',
         },
     ])
@@ -104,7 +105,7 @@ export default function ChatWidget() {
 
             const assistantMessage: Message = {
                 id: `assistant-${Date.now()}`,
-                text: data.answer || 'No tengo una respuesta disponible en este momento.',
+                text: data.answer || t.noAnswer,
                 sender: 'assistant',
                 sources: Array.isArray(data.sources) ? data.sources : [],
             }
@@ -115,7 +116,7 @@ export default function ChatWidget() {
                 ...current,
                 {
                     id: `error-${Date.now()}`,
-                    text: 'No he podido responder ahora mismo. Inténtalo en unos segundos.',
+                    text: t.error,
                     sender: 'assistant',
                 },
             ])
@@ -128,7 +129,7 @@ export default function ChatWidget() {
         <>
             <button
                 type="button"
-                aria-label="Abrir asistente de BKLN"
+                aria-label={t.open}
                 onClick={() => setIsOpen((value) => !value)}
                 className="fixed bottom-4 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-600 text-white shadow-lg shadow-green-900/30 transition hover:bg-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1220]"
             >
@@ -141,11 +142,11 @@ export default function ChatWidget() {
                 <div className="fixed bottom-20 right-4 z-40 w-[calc(100vw-1.5rem)] max-w-[360px] rounded-2xl border border-white/10 bg-[#0f172a] text-slate-100 shadow-2xl shadow-black/40 sm:w-[360px]">
                     <div className="flex items-center justify-between border-b border-white/10 bg-green-600 px-4 py-3 text-white">
                         <div>
-                            <p className="text-sm font-semibold uppercase tracking-wide">Asistente BKLN</p>
+                            <p className="text-sm font-semibold uppercase tracking-wide">{t.title}</p>
                         </div>
                         <button
                             type="button"
-                            aria-label="Cerrar asistente"
+                            aria-label={t.close}
                             onClick={() => setIsOpen(false)}
                             className="rounded-full p-1 text-white/90 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
                         >
@@ -190,7 +191,7 @@ export default function ChatWidget() {
                                         {message.sources && message.sources.length > 0 && (
                                             <div className="mt-2 border-t border-white/10 pt-2">
                                                 <p className="mb-1 text-[11px] font-medium uppercase tracking-wide text-slate-300">
-                                                    Fuentes:
+                                                    {t.sources}
                                                 </p>
                                                 <ul className="space-y-1 text-xs text-slate-200">
                                                     {[...new Set(message.sources)].map((source, index) => (
@@ -215,7 +216,7 @@ export default function ChatWidget() {
                                 <div className="flex justify-start">
                                     <div className="rounded-2xl bg-slate-800 px-3 py-2 text-sm text-slate-100">
                                         <div className="flex items-center gap-2">
-                                            <span>Pensando</span>
+                                            <span>{t.thinking}</span>
                                             <span className="flex gap-1">
                                                 <span className="h-2 w-2 animate-bounce rounded-full bg-green-400 [animation-delay:-0.3s]" />
                                                 <span className="h-2 w-2 animate-bounce rounded-full bg-green-400 [animation-delay:-0.15s]" />
@@ -232,7 +233,7 @@ export default function ChatWidget() {
                         <div className="border-t border-white/10 bg-slate-900 p-3">
                             <div className="flex gap-2">
                                 <input
-                                    aria-label="Escribe tu pregunta"
+                                    aria-label={t.inputLabel}
                                     value={input}
                                     onChange={(event) => setInput(event.target.value)}
                                     onKeyDown={(event) => {
@@ -241,18 +242,18 @@ export default function ChatWidget() {
                                             void sendMessage()
                                         }
                                     }}
-                                    placeholder="Escribe tu pregunta..."
+                                    placeholder={t.placeholder}
                                     className="flex-1 rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/40"
                                     disabled={loading}
                                 />
                                 <button
                                     type="button"
-                                    aria-label="Enviar pregunta"
+                                    aria-label={t.sendLabel}
                                     onClick={() => void sendMessage()}
                                     disabled={loading || !input.trim()}
                                     className="rounded-xl bg-green-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-green-500 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
                                 >
-                                    Enviar
+                                    {t.send}
                                 </button>
                             </div>
                         </div>

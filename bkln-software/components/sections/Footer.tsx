@@ -1,13 +1,12 @@
 ﻿import Link from 'next/link'
 import { Logo } from '@/components/ui/Logo'
-import { footerLinks } from '@/data/nav'
 import { contactEmail } from '@/data/contact'
+import type { Locale } from '@/i18n/config'
+import type { Dictionary } from '@/i18n/dictionaries'
+import { localizePath } from '@/i18n/routes'
 
-const infoLinks = [
-  { label: 'Contacto', href: '/contacto' },
-  { label: 'Privacidad', href: '/privacidad' },
-  { label: 'Términos', href: '/terminos' },
-]
+const EXPLORE = ['servicios', 'portfolio', 'productos', 'blog', 'cursos', 'nosotros'] as const
+const INFO = ['contacto', 'privacidad', 'terminos'] as const
 
 const socialLinks = [
   {
@@ -49,7 +48,14 @@ const socialLinks = [
   },
 ]
 
-export function Footer() {
+interface FooterProps {
+  lang: Locale
+  nav: Dictionary['nav']
+  t: Dictionary['footer']
+}
+
+export function Footer({ lang, nav, t }: FooterProps) {
+  const link = (section: string) => localizePath(lang, `/${section}`)
   return (
     <footer className="bg-bg-surface border-t border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
@@ -57,10 +63,10 @@ export function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4">
-              <Logo size="sm" />
+              <Logo href={localizePath(lang, '/')} size="sm" />
             </div>
             <p className="text-text-secondary text-sm leading-relaxed max-w-xs mb-5">
-              Construimos software útil para negocios, equipos y emprendedores desde Malabo para el mundo.
+              {t.tagline}
             </p>
             <p className="text-accent-green text-xs font-medium">Code. Create. Educate.</p>
           </div>
@@ -68,16 +74,16 @@ export function Footer() {
           {/* Navegación */}
           <div>
             <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              Explorar
+              {t.explore}
             </h3>
             <ul className="space-y-2">
-              {footerLinks.slice(0, -1).map((link) => (
-                <li key={link.href}>
+              {EXPLORE.map((section) => (
+                <li key={section}>
                   <Link
-                    href={link.href}
+                    href={link(section)}
                     className="text-text-secondary hover:text-accent-green transition-colors text-sm"
                   >
-                    {link.label}
+                    {nav[section]}
                   </Link>
                 </li>
               ))}
@@ -87,16 +93,16 @@ export function Footer() {
           {/* Recursos */}
           <div>
             <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              Información
+              {t.info}
             </h3>
             <ul className="space-y-2.5">
-              {infoLinks.map((link) => (
-                <li key={link.href}>
+              {INFO.map((section) => (
+                <li key={section}>
                   <Link
-                    href={link.href}
+                    href={link(section)}
                     className="text-text-secondary hover:text-accent-green transition-colors text-sm"
                   >
-                    {link.label}
+                    {nav[section]}
                   </Link>
                 </li>
               ))}
@@ -106,15 +112,15 @@ export function Footer() {
           {/* Contacto + redes */}
           <div>
             <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              Hablemos
+              {t.talk}
             </h3>
-            <p className="text-text-secondary text-sm leading-relaxed mb-1">Malabo, Guinea Ecuatorial</p>
-            <p className="text-text-secondary text-sm mb-4">Respuesta en 24h hábiles · ES / EN / FR</p>
+            <p className="text-text-secondary text-sm leading-relaxed mb-1">{t.location}</p>
+            <p className="text-text-secondary text-sm mb-4">{t.response}</p>
             <Link
-              href="/contacto"
+              href={link('contacto')}
               className="inline-flex items-center text-accent-green hover:text-white text-sm font-semibold transition-colors mb-5"
             >
-              Solicitar propuesta <span aria-hidden="true" className="ml-1">→</span>
+              {t.cta} <span aria-hidden="true" className="ml-1">→</span>
             </Link>
             <div className="flex gap-3">
               {socialLinks.map(({ svg, href, label }) => (
@@ -135,14 +141,14 @@ export function Footer() {
 
         <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-text-secondary text-xs">
-            © {new Date().getFullYear()} BKLN Software & Systems. Todos los derechos reservados.
+            © {new Date().getFullYear()} BKLN Software & Systems. {t.rights}
           </p>
           <div className="flex gap-4 text-xs text-text-secondary">
-            <Link href="/privacidad" className="hover:text-accent-green transition-colors">
-              Privacidad
+            <Link href={link('privacidad')} className="hover:text-accent-green transition-colors">
+              {nav.privacidad}
             </Link>
-            <Link href="/terminos" className="hover:text-accent-green transition-colors">
-              Términos
+            <Link href={link('terminos')} className="hover:text-accent-green transition-colors">
+              {nav.terminos}
             </Link>
           </div>
         </div>

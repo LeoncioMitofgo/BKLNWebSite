@@ -1,6 +1,9 @@
+import type { Locale } from '@/i18n/config'
+
 export interface Announcement {
-  label: string
-  title: string
+  label: Record<Locale, string>
+  title: Record<Locale, string>
+  /** Ruta interna en español ('/cursos/python-desde-cero'); se traduce sola en /en y /fr. */
   href: string
   /** ISO date (YYYY-MM-DD). Si se pasa esta fecha, el banner deja de mostrarse solo. */
   expiresAt?: string

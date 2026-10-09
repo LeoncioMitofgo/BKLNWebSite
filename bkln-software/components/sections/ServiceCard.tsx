@@ -4,6 +4,9 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import type { Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { localizePath } from '@/i18n/routes'
 import type { Service } from '@/types'
 
 export const serviceIcons: Record<string, LucideIcon> = {
@@ -12,10 +15,12 @@ export const serviceIcons: Record<string, LucideIcon> = {
 
 interface ServiceCardProps {
   service: Service
+  lang: Locale
 }
 
-export function ServiceCard({ service }: ServiceCardProps) {
+export function ServiceCard({ service, lang }: ServiceCardProps) {
   const Icon = serviceIcons[service.icon] ?? Code2
+  const t = getDictionary(lang).services.card
 
   return (
     <div className="group flex flex-col bg-bg-surface border border-white/5 rounded-lg p-6 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
@@ -25,14 +30,14 @@ export function ServiceCard({ service }: ServiceCardProps) {
       <h3 className="text-text-primary font-semibold text-lg mb-2">{service.title}</h3>
       <p className="text-text-secondary text-sm leading-relaxed mb-5">{service.description}</p>
       <div className="flex gap-2 mt-auto">
-        <Link href={`/servicios/${service.slug}`} className="flex-1">
+        <Link href={localizePath(lang, `/servicios/${service.slug}`)} className="flex-1">
           <Button variant="outline" size="sm" className="w-full">
-            Ver servicio
+            {t.more}
           </Button>
         </Link>
-        <Link href={`/contacto?servicio=${service.slug}`} className="flex-1">
+        <Link href={localizePath(lang, `/contacto?servicio=${service.slug}`)} className="flex-1">
           <Button size="sm" className="w-full">
-            Presupuesto
+            {t.quote}
           </Button>
         </Link>
       </div>

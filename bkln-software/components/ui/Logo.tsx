@@ -5,11 +5,13 @@ import { cn } from '@/lib/utils'
 interface LogoProps {
   className?: string
   size?: 'sm' | 'md' | 'lg'
+  /** Portada del idioma actual */
+  href?: string
 }
 
-export function Logo({ className, size = 'md' }: LogoProps) {
+export function Logo({ className, size = 'md', href = '/' }: LogoProps) {
   return (
-    <Link href="/" className={cn('inline-flex items-center shrink-0', className)}>
+    <Link href={href} className={cn('inline-flex items-center shrink-0', className)}>
       <Image
         src="/brand-logo.png"
         alt="BKLN Software & Systems"

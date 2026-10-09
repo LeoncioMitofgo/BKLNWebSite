@@ -3,12 +3,10 @@ import Image from 'next/image'
 import { Clock, Calendar } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
 import { formatDate } from '@/lib/utils'
+import type { Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
+import { localizePath } from '@/i18n/routes'
 import type { BlogPost } from '@/types'
-
-export const categoryLabels: Record<BlogPost['category'], string> = {
-  guias: 'Guía',
-  taller: 'Desde el taller',
-}
 
 const categoryImages: Record<BlogPost['category'], string> = {
   guias: '/service-consulting.jpg',
@@ -17,14 +15,16 @@ const categoryImages: Record<BlogPost['category'], string> = {
 
 interface BlogCardProps {
   post: BlogPost
+  lang: Locale
   featured?: boolean
 }
 
-export function BlogCard({ post, featured = false }: BlogCardProps) {
+export function BlogCard({ post, lang, featured = false }: BlogCardProps) {
+  const t = getDictionary(lang)
   const imageUrl = post.coverImage || categoryImages[post.category]
 
   return (
-    <Link href={`/blog/${post.slug}`} className="group block">
+    <Link href={localizePath(lang, `/blog/${post.slug}`)} className="group block">
       <article
         className={`bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300 ${featured ? 'md:flex' : ''}`}
       >
@@ -42,8 +42,8 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
         <div className="p-5">
           <div className="flex items-center gap-2 mb-3">
-            <Badge variant="blue">{categoryLabels[post.category]}</Badge>
-            {post.draft && <Badge variant="warning">Borrador</Badge>}
+            <Badge variant="blue">{t.blog.categories[post.category]}</Badge>
+            {post.draft && <Badge variant="warning">{t.common.draft}</Badge>}
           </div>
           <h3
             className={`text-text-primary font-semibold mb-2 group-hover:text-accent-green transition-colors line-clamp-2 ${featured ? 'text-xl' : 'text-base'}`}
@@ -56,11 +56,11 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
           <div className="flex items-center gap-4 text-xs text-text-secondary">
             <span className="flex items-center gap-1">
               <Calendar size={11} />
-              {formatDate(post.publishedAt)}
+              {formatDate(post.publishedAt, lang)}
             </span>
             <span className="flex items-center gap-1">
               <Clock size={11} />
-              {post.readTime} min
+              {post.readTime} {t.common.readMin}
             </span>
           </div>
         </div>
