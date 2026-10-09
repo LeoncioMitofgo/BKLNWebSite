@@ -1,11 +1,13 @@
 ﻿import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { CourseCard } from '@/components/sections/CourseCard'
 import { publishedCourses } from '@/data/content'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Cursos',
   description: 'Aprende Python y desarrollo de software con cursos prácticos en español.',
-}
+  path: '/cursos',
+})
 
 export default function CursosPage() {
   return (

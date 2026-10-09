@@ -3,7 +3,10 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, CheckCircle, ShieldCheck } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { Button } from '@/components/ui/Button'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waLink } from '@/data/contact'
 import { products, projects } from '@/data/content'
 
 interface PageProps {
@@ -18,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const product = products.find((p) => p.slug === slug)
   if (!product) return {}
-  return { title: product.title, description: product.description }
+  return pageMetadata({ title: product.title, description: product.description, path: `/productos/${product.slug}`, image: product.image })
 }
 
 const categoryLabels: Record<string, string> = {
@@ -55,18 +58,25 @@ export default async function ProductPage({ params }: PageProps) {
             </div>
             <h1 className="text-2xl sm:text-3xl font-bold text-text-primary mb-2">{product.title}</h1>
             <p className="text-text-secondary text-sm leading-relaxed mb-4">{product.description}</p>
-            <div className="flex items-center gap-4 flex-wrap">
+            <div className="flex items-center gap-3 flex-wrap">
               <Link href={`/contacto?producto=${product.slug}`}>
                 <Button>
                   {product.requiresMeeting ? 'Solicitar reunión' : 'Solicitar información'}
                 </Button>
               </Link>
-              {product.pricingNote && (
-                <span className="text-text-secondary text-sm leading-snug max-w-xs">
-                  {product.pricingNote}
-                </span>
-              )}
+              <a
+                href={waLink(`Hola, me interesa ${product.title}. ¿Me pueden dar más información?`)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="outline">
+                  <WhatsAppIcon /> WhatsApp
+                </Button>
+              </a>
             </div>
+            {product.pricingNote && (
+              <p className="text-text-secondary text-sm leading-snug mt-3">{product.pricingNote}</p>
+            )}
             {relatedProject && (
               <Link
                 href={`/portfolio/${relatedProject.slug}`}

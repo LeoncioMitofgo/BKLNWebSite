@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { BlogExplorer } from '@/components/sections/BlogExplorer'
 import { blogPosts } from '@/data/content'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Blog',
   description: 'Artículos, tutoriales y guías sobre desarrollo de software, IA y tecnología.',
-}
+  path: '/blog',
+})
 
 export default function BlogPage() {
   return (

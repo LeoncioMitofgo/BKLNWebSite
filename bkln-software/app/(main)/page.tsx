@@ -1,7 +1,10 @@
-﻿import Link from 'next/link'
+﻿import type { Metadata } from 'next'
+import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, CheckCircle, MessageSquare, Rocket, Search, Code2 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waLink } from '@/data/contact'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/sections/ServiceCard'
 import { CourseCard } from '@/components/sections/CourseCard'
@@ -51,6 +54,10 @@ const whyUs = [
   { title: 'Experiencia demostrable', description: 'Más de 35 proyectos entre plataformas, apps, sistemas de gestión, automatización e inteligencia artificial.' },
   { title: 'Tu producto, tu código', description: 'Entregamos soluciones documentadas y mantenibles, sin encerrarte en dependencias innecesarias ni decisiones opacas.' },
 ]
+
+export const metadata: Metadata = {
+  alternates: { canonical: '/' },
+}
 
 export default function HomePage() {
   const featuredServices = services.filter((s) => s.featured)
@@ -110,6 +117,14 @@ export default function HomePage() {
               </Button>
             </Link>
           </div>
+          <a
+            href={waLink('Hola, vengo de la web de BKLN y quiero contaros un proyecto.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-6 text-sm text-text-secondary hover:text-accent-green transition-colors"
+          >
+            <WhatsAppIcon size={16} /> ¿Prefieres WhatsApp? Escríbenos directamente
+          </a>
         </div>
       </section>
 
@@ -323,11 +338,15 @@ export default function HomePage() {
                 Solicitar propuesta <ArrowRight size={18} />
               </Button>
             </Link>
-            <Link href="/portfolio">
+            <a
+              href={waLink('Hola, vengo de la web de BKLN y quiero contaros un proyecto.')}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <Button variant="outline" size="lg">
-                Ver proyectos
+                <WhatsAppIcon size={18} /> Escribir por WhatsApp
               </Button>
-            </Link>
+            </a>
           </div>
         </div>
       </section>

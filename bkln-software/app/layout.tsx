@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter, JetBrains_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import ChatWidget from '@/components/sections/ChatWidget'
+import { WhatsAppButton } from '@/components/sections/WhatsAppButton'
 import { contactEmail, whatsappNumber } from '@/data/contact'
 import './globals.css'
 
@@ -24,9 +25,6 @@ const homeDescription =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  alternates: {
-    canonical: siteUrl,
-  },
   title: {
     default: 'BKLN Software & Systems | Desarrollo de software a medida en Malabo, Guinea Ecuatorial',
     template: '%s | BKLN Software & Systems',
@@ -107,6 +105,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-bg-dark text-text-primary font-primary antialiased">
         {children}
+        <WhatsAppButton />
         <ChatWidget />
         <Analytics />
       </body>

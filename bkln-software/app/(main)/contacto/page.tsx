@@ -1,13 +1,16 @@
 ﻿import { Mail, MessageCircle, Clock, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { products } from '@/data/content'
 import { contactEmail, waLink } from '@/data/contact'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Contacto',
   description: 'Solicita un presupuesto o consulta gratuita para tu proyecto de software.',
-}
+  path: '/contacto',
+})
 
 export default function ContactoPage() {
   return (
@@ -21,6 +24,14 @@ export default function ContactoPage() {
           <p className="text-text-secondary text-lg max-w-2xl mx-auto">
             Cuéntanos qué necesitas y te enviamos una propuesta detallada sin compromiso.
           </p>
+          <a
+            href={waLink('Hola, vengo de la web de BKLN y quiero contaros un proyecto.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mt-6 rounded-md bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe5b]"
+          >
+            <WhatsAppIcon size={18} /> ¿Prefieres WhatsApp? Escríbenos
+          </a>
         </div>
       </section>
 

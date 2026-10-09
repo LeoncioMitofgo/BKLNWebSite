@@ -2,8 +2,11 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, CheckCircle, Clock } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { Badge } from '@/components/ui/Badge'
 import { ContactForm } from '@/components/sections/ContactForm'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waLink } from '@/data/contact'
 import { ProjectCard } from '@/components/sections/ProjectCard'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { services, projects } from '@/data/content'
@@ -29,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const service = services.find((s) => s.slug === slug)
   if (!service) return {}
-  return { title: service.title, description: service.description }
+  return pageMetadata({ title: service.title, description: service.description, path: `/servicios/${service.slug}` })
 }
 
 export default async function ServicePage({ params }: PageProps) {
@@ -124,7 +127,15 @@ export default async function ServicePage({ params }: PageProps) {
         {/* Formulario */}
         <div className="border-t border-white/5 pt-10">
           <h2 className="text-2xl font-bold text-text-primary mb-2">¿Te interesa este servicio?</h2>
-          <p className="text-text-secondary mb-8">Cuéntanos tu proyecto y te enviamos una propuesta en 24h.</p>
+          <p className="text-text-secondary mb-3">Cuéntanos tu proyecto y te enviamos una propuesta en 24h.</p>
+          <a
+            href={waLink(`Hola, me interesa el servicio de ${service.title}.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 mb-8 text-sm font-medium text-accent-green hover:underline"
+          >
+            <WhatsAppIcon /> ¿Prefieres WhatsApp? Escríbenos directamente
+          </a>
           <ContactForm />
         </div>
       </div>

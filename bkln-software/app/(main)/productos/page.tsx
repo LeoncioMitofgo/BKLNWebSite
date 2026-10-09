@@ -1,14 +1,16 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { Button } from '@/components/ui/Button'
 import { ProductCard } from '@/components/sections/ProductCard'
 import { products } from '@/data/content'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Productos y soluciones',
   description:
     'Productos y soluciones de BKLN: apps, plataformas y sistemas usados por negocios reales, listos para implantar o adaptar a tu caso.',
-}
+  path: '/productos',
+})
 
 export default function ProductosPage() {
   return (

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, BookOpen, Clock, Users, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { publishedCourses as courses } from '@/data/content'
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const course = courses.find((c) => c.slug === slug)
   if (!course) return {}
-  return { title: course.title, description: course.description }
+  return pageMetadata({ title: course.title, description: course.description, path: `/cursos/${course.slug}`, image: course.thumbnail })
 }
 
 const levelLabels: Record<string, string> = {

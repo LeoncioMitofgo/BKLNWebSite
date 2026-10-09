@@ -3,8 +3,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, ExternalLink, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waLink } from '@/data/contact'
 import { projects, products } from '@/data/content'
 
 interface PageProps {
@@ -19,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const project = projects.find((p) => p.slug === slug)
   if (!project) return {}
-  return { title: project.title, description: project.description }
+  return pageMetadata({ title: project.title, description: project.description, path: `/portfolio/${project.slug}`, image: project.image })
 }
 
 const categoryLabels: Record<string, string> = {
@@ -132,6 +135,15 @@ export default async function ProjectPage({ params }: PageProps) {
               <Button variant="outline">Ver producto</Button>
             </Link>
           )}
+          <a
+            href={waLink(`Hola, he visto el proyecto ${project.title} en su web y quiero algo parecido.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="outline">
+              <WhatsAppIcon /> Quiero algo así
+            </Button>
+          </a>
           <Link href="/contacto">
             <Button variant="outline">Iniciar proyecto similar</Button>
           </Link>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Clock, Calendar, User } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { MarkdownContent } from '@/components/ui/MarkdownContent'
 import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params
   const post = blogPosts.find((p) => p.slug === slug)
   if (!post) return {}
-  return { title: post.title, description: post.excerpt }
+  return pageMetadata({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}`, image: post.coverImage })
 }
 
 const categoryLabels: Record<string, string> = {

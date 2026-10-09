@@ -1,15 +1,17 @@
 ﻿import { ArrowRight, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { ServiceCard } from '@/components/sections/ServiceCard'
 import { ContactForm } from '@/components/sections/ContactForm'
 import { services } from '@/data/content'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Servicios',
   description:
     'Desarrollo de apps, plataformas web, automatización, APIs e inteligencia artificial para convertir necesidades reales en software útil.',
-}
+  path: '/servicios',
+})
 
 const processSteps = [
   {

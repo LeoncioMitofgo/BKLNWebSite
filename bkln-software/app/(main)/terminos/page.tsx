@@ -1,10 +1,12 @@
 ﻿import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import Link from 'next/link'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Términos de Servicio',
   description: 'Condiciones de uso y contratación de servicios, productos y cursos de BKLN Software & Systems.',
-}
+  path: '/terminos',
+})
 
 const updated = '22 de mayo de 2026'
 

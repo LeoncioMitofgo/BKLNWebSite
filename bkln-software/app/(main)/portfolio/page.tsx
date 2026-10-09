@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
+import { pageMetadata } from '@/lib/metadata'
 import { PortfolioExplorer } from '@/components/sections/PortfolioExplorer'
 import { projects } from '@/data/content'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: 'Portfolio',
   description: 'Proyectos reales que hemos construido — desde apps Android hasta sistemas de IA.',
-}
+  path: '/portfolio',
+})
 
 export default function PortfolioPage() {
   return (
