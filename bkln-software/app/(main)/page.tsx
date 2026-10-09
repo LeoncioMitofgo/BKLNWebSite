@@ -12,7 +12,7 @@ import { ProductCard } from '@/components/sections/ProductCard'
 import { BlogCard } from '@/components/sections/BlogCard'
 import { TechStack } from '@/components/sections/TechStack'
 import { AnnouncementBanner } from '@/components/sections/AnnouncementBanner'
-import { services, publishedCourses, products, blogPosts } from '@/data/content'
+import { services, publishedCourses, products, visiblePosts } from '@/data/content'
 
 const stats = [
   { value: 'Malabo', label: 'Sede central' },
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
 
 export default function HomePage() {
   const featuredServices = services.filter((s) => s.featured)
-  const latestPosts = blogPosts.slice(0, 3)
+  const latestPosts = visiblePosts.slice(0, 3)
   const featuredProductSlugs = ['brookai', 'zentry', 'gestescolar']
   const featuredProducts = featuredProductSlugs
     .map((slug) => products.find((product) => product.slug === slug))
@@ -298,12 +298,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Blog */}
+      {/* Guías */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <SectionHeader
-            title="Blog técnico"
-            subtitle="Decisiones, aprendizajes y soluciones que nacen de construir software real: desde automatización hasta datos, seguridad y productos digitales."
+            title="Guías y artículos"
+            subtitle="Lo que conviene saber antes de encargar software, y lo que aprendemos construyéndolo."
           />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {latestPosts.map((post) => (
@@ -313,7 +313,7 @@ export default function HomePage() {
           <div className="mt-8 text-center">
             <Link href="/blog">
               <Button variant="outline">
-                Explorar el blog técnico <ArrowRight size={16} />
+                Ver todas las guías <ArrowRight size={16} />
               </Button>
             </Link>
           </div>

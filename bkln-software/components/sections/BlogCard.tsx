@@ -5,22 +5,14 @@ import { Badge } from '@/components/ui/Badge'
 import { formatDate } from '@/lib/utils'
 import type { BlogPost } from '@/types'
 
-const categoryLabels: Record<BlogPost['category'], string> = {
-  python: 'Python',
-  android: 'Android',
-  'ia-ml': 'IA & ML',
-  web: 'Web',
-  databases: 'Databases',
-  tutoriales: 'Tutoriales',
+export const categoryLabels: Record<BlogPost['category'], string> = {
+  guias: 'Guía',
+  taller: 'Desde el taller',
 }
 
 const categoryImages: Record<BlogPost['category'], string> = {
-  python: '/course-python.jpg',
-  android: '/course-android.jpg',
-  'ia-ml': '/course-ia.jpg',
-  web: '/product-web.jpg',
-  databases: '/course-sql.jpg',
-  tutoriales: '/blog-tutorials.jpg',
+  guias: '/service-consulting.jpg',
+  taller: '/blog-tutorials.jpg',
 }
 
 interface BlogCardProps {
@@ -49,9 +41,10 @@ export function BlogCard({ post, featured = false }: BlogCardProps) {
           <div className="absolute inset-0 bg-bg-dark/40" />
         </div>
         <div className="p-5">
-          <Badge variant="blue" className="mb-3">
-            {categoryLabels[post.category]}
-          </Badge>
+          <div className="flex items-center gap-2 mb-3">
+            <Badge variant="blue">{categoryLabels[post.category]}</Badge>
+            {post.draft && <Badge variant="warning">Borrador</Badge>}
+          </div>
           <h3
             className={`text-text-primary font-semibold mb-2 group-hover:text-accent-green transition-colors line-clamp-2 ${featured ? 'text-xl' : 'text-base'}`}
           >

@@ -837,6 +837,257 @@ export const projects: Project[] = [
 
 export const blogPosts: BlogPost[] = [
   {
+    id: '4',
+    slug: 'cuanto-cuesta-web-app-guinea-ecuatorial',
+    title: '¿Cuánto cuesta una web o una app en Guinea Ecuatorial?',
+    excerpt: 'No hay una cifra única, pero sí factores claros que mueven el precio. Qué encarece un proyecto, qué costes aparecen después y cómo pedir un presupuesto que puedas comparar.',
+    content: `## La respuesta corta
+
+Depende. Ya sabemos que es la respuesta que nadie quiere oír. Pero entre una página para dar a conocer tu negocio y una plataforma donde cientos de personas compran, venden y se escriben mensajes, el trabajo puede pasar de unas semanas a varios meses. Y el precio sigue al trabajo.
+
+Lo útil es saber *de qué* depende. Con eso puedes calcular si tu idea es pequeña, mediana o grande, y comparar presupuestos sabiendo qué estás comparando.
+
+## Primero: qué tipo de proyecto tienes
+
+De menos a más trabajo:
+
+- **Web informativa.** Unas pocas páginas para presentar tu negocio: quién eres, qué ofreces y cómo contactarte. Es lo más rápido de construir.
+- **Web con panel de gestión.** Lo mismo, pero tu equipo puede publicar noticias, cambiar precios o subir fotos sin depender de un programador.
+- **Catálogo o tienda online.** Productos, categorías, fotos y una forma de hacer pedidos. Aquí empieza a importar cómo cobras.
+- **Plataforma con usuarios.** Cuentas, perfiles, roles distintos (cliente, vendedor, administrador) y mensajes entre usuarios. Un marketplace, un portal de empleo o un sistema de reservas entran aquí.
+- **App móvil.** Para Android, o para Android e iPhone a la vez con una sola base de código. Casi siempre necesita también un servidor y un panel de administración detrás.
+- **Sistema de gestión interno.** El software que tu equipo usa cada día: alumnos y notas en un colegio, ventas y caja en un comercio, inventario en un almacén.
+
+Como referencia de plazos, en BKLN una web lleva de 2 a 12 semanas según el alcance, y una app móvil de 4 a 16. La horquilla es amplia porque dentro de cada tipo hay proyectos muy distintos.
+
+## Lo que más mueve el precio
+
+Dentro de un mismo tipo de proyecto, estas preguntas son las que hacen subir o bajar el presupuesto:
+
+- **¿Cuántas pantallas y flujos?** No es lo mismo un formulario de contacto que un proceso de compra con carrito, pago y seguimiento del pedido.
+- **¿Cuántos tipos de usuario?** Cada rol tiene sus pantallas y sus permisos. Un portal con empresas, candidatos y administradores es casi como hacer tres aplicaciones.
+- **¿Hay que cobrar dentro de la plataforma?** Los pagos añaden trabajo, pruebas y responsabilidad.
+- **¿Se conecta con otros servicios?** WhatsApp, SMS, mapas, correo o el programa de contabilidad que ya usas. Cada conexión es una pieza más que construir y mantener.
+- **¿Diseño propio o adaptado?** Un diseño hecho a medida para tu marca lleva más tiempo que partir de una base que ya existe.
+- **¿Tiene que funcionar sin internet?** Una app que guarda los datos en el teléfono y los sincroniza cuando vuelve la conexión es más compleja que una que siempre está conectada.
+
+## Lo que cambia al construir para Guinea Ecuatorial
+
+Hay decisiones que en otros mercados casi no se plantean y aquí sí:
+
+- **Cobrar sin tarjeta.** Mucha gente no paga con tarjeta bancaria. Una solución habitual es que el cliente pague por transferencia, en efectivo o por el móvil, y que alguien active el servicio desde un panel de administración. Es más sencillo que integrar una pasarela de pago, pero hay que diseñarlo bien desde el principio.
+- **Conexión irregular.** Si tus usuarios entran con datos móviles y la cobertura va y viene, la web tiene que ser ligera y la app tiene que saber esperar. Prepararlo cuesta algo más; no hacerlo cuesta clientes.
+- **El móvil, primero.** La mayoría de tus clientes te verá desde un teléfono Android, no desde un ordenador. El diseño tiene que pensarse primero para esa pantalla.
+- **Idiomas.** Si además vendes en Camerún o Gabón, el francés no es opcional. Traducir una plataforma ya terminada sale más caro que prepararla para varios idiomas desde el inicio.
+- **Soporte cercano.** Instalar un sistema en un colegio o en una oficina y formar al personal en persona también es trabajo, y el presupuesto debería decirlo.
+
+## Los costes que no salen en el primer presupuesto
+
+El desarrollo no es el único gasto. Pregunta siempre por estos:
+
+- **Dominio y alojamiento.** Se pagan cada año. Son pequeños para una web informativa y crecen con el tráfico y el número de usuarios.
+- **Servicios de terceros.** Enviar SMS, usar la API de WhatsApp Business o un modelo de inteligencia artificial tiene un coste por uso que paga el propietario del proyecto.
+- **Publicar en Google Play.** Google cobra una cuota de registro como desarrollador, y la app tiene que cumplir sus normas para que la aprueben.
+- **Mantenimiento.** Corregir errores, actualizar componentes y adaptar la app a nuevas versiones de Android. Un software sin mantenimiento se va estropeando aunque nadie lo toque.
+- **Formación.** Si tu equipo no sabe usar la herramienta, no la va a usar.
+
+## Cómo gastar menos sin acabar con un mal producto
+
+- **Empieza por lo imprescindible.** Una primera versión con solo lo que necesitas para operar (lo que se suele llamar MVP) te deja lanzar antes y gastar menos. El resto se añade cuando sepas qué piden tus usuarios.
+- **Puede que no necesites una app.** Una web bien hecha para móvil se abre sin instalar nada y a veces cubre lo mismo por bastante menos.
+- **Aprovecha lo que ya existe.** Si un producto ya hecho cubre la mayor parte de lo que buscas, adaptarlo suele salir mejor que construirlo desde cero.
+- **Decide antes de empezar.** Los cambios a mitad de proyecto son lo que más encarece. Dedicar unos días a definir bien el alcance ahorra semanas después.
+
+## Qué debe incluir un buen presupuesto
+
+Antes de firmar, comprueba que tienes por escrito:
+
+1. **El alcance**: qué pantallas y funciones entran y, tan importante como eso, cuáles no.
+2. **Los plazos por fases**, con entregas que puedas ver y probar.
+3. **Los pagos por hitos**, ligados a esas entregas.
+4. **De quién es el código** al terminar. Debería ser tuyo.
+5. **El soporte después del lanzamiento**: cuánto dura y qué cubre.
+6. **Los costes recurrentes**: alojamiento, servicios externos y mantenimiento.
+
+## Señales de alarma
+
+Desconfía si te dan un precio cerrado sin preguntarte nada sobre tu negocio, si no hay nada por escrito, si el código y las cuentas quedan a nombre del proveedor o si no te entregan documentación. Lo barato sale caro cuando hay que rehacer el proyecto.
+
+## ¿Y en tu caso?
+
+Cuéntanos qué quieres construir, para quién y en qué plazo. Te respondemos con una estimación de alcance, tecnología y presupuesto, sin compromiso.`,
+    category: 'guias',
+    relatedService: 'desarrollo-web',
+    coverImage: '/service-consulting.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-10-09',
+    readTime: 5,
+    tags: ['Presupuesto', 'Desarrollo web', 'Apps móviles', 'Guinea Ecuatorial'],
+  },
+  {
+    id: '5',
+    slug: 'digitalizar-gestion-colegio-guinea-ecuatorial',
+    title: 'Cómo digitalizar la gestión de un colegio en Guinea Ecuatorial',
+    excerpt: 'Del cuaderno y el Excel a un sistema que todo el personal pueda usar: por dónde empezar, qué decidir antes (nube o sin internet, quién accede a qué) y cómo hacer el cambio sin perder el curso.',
+    content: `## El punto de partida de muchos colegios
+
+Alumnos en una hoja de Excel, pagos de matrícula apuntados en un cuaderno, boletines rellenados a mano al final de cada trimestre. Funciona mientras el colegio es pequeño y una misma persona lo sabe todo. Cuando crece, empiezan los problemas: datos repetidos en varios archivos, pagos que nadie sabe si se cobraron, boletines que tardan semanas y listas de aula que hay que rehacer cada vez que alguien cambia de grupo.
+
+Digitalizar no es comprar ordenadores. Es conseguir que la información de cada alumno esté en un solo sitio, que cada persona vea lo que necesita y que los documentos salgan solos.
+
+## Qué conviene digitalizar primero
+
+No hace falta hacerlo todo a la vez. Este orden suele funcionar:
+
+1. **La ficha del alumno.** Datos personales, tutor o tutora, contacto de emergencia y observaciones médicas. Es la base de todo lo demás.
+2. **Matrículas y pagos.** Qué ha pagado cada familia, qué debe y desde cuándo. Es lo que más tiempo ahorra a secretaría y lo que más discusiones evita.
+3. **Aulas, grados y profesores.** Quién está en qué grupo y quién imparte cada materia.
+4. **Notas y boletines.** Con lo anterior en orden, el boletín trimestral se genera a partir de las notas en lugar de escribirse a mano.
+5. **Comunicaciones.** Circulares y avisos para el personal y las familias.
+
+## Una decisión clave: en la nube o sin internet
+
+Un sistema en la nube se usa desde cualquier sitio, pero depende de que la conexión funcione justo cuando la secretaria tiene a una familia delante. Un sistema instalado en la red local del colegio funciona aunque no haya internet: el servidor está en la oficina y los demás ordenadores del centro entran desde el navegador.
+
+Ninguna opción gana en todos los casos. Si la conexión de tu colegio es estable y quieres consultar datos desde casa, la nube tiene sentido. Si la conexión falla a menudo, un sistema local da tranquilidad. En ese caso pregunta siempre cómo se hacen las copias de seguridad, porque los datos están en un solo equipo.
+
+## Quién puede ver qué
+
+En un colegio se manejan datos delicados: información médica, situación de pagos y notas de menores. No todo el personal necesita verlo todo.
+
+- La **dirección o administración** necesita la visión completa.
+- **Secretaría** gestiona alumnos, matrículas y documentos.
+- El **profesorado**, si usa el sistema, solo debería ver y editar las notas de sus grupos.
+
+Pide que cada persona entre con su propio usuario y contraseña, nunca con una cuenta compartida. Así se sabe quién hizo cada cambio.
+
+## Los documentos que deberían salir solos
+
+Un buen sistema escolar ahorra horas de papeleo. Comprueba que puede generar, listos para imprimir:
+
+- Carnets de estudiante.
+- Listas de alumnos por aula.
+- Boletines de notas por trimestre.
+- El historial de pagos de cada familia.
+
+## Cómo hacer el cambio sin perder el curso
+
+- **Elige bien el momento.** Lo ideal es arrancar antes del inicio del curso o entre trimestres, nunca en plena época de exámenes.
+- **Pregunta cómo se pasan los datos que ya tienes.** Volver a escribir a cada alumno uno a uno es la parte más pesada del cambio; conviene saber desde el principio quién la hace y cómo.
+- **Forma al personal.** Una o dos sesiones prácticas con quien va a usar el sistema cada día valen más que cualquier manual.
+- **Mantén el método antiguo unas semanas.** Durante el primer mes conviene poder comparar con el Excel por si algo no cuadra.
+- **Nombra a un responsable.** Alguien del colegio que conozca bien la herramienta y sea el contacto con el proveedor.
+
+## Cuánto cuesta
+
+Hay dos modelos habituales: pagar una licencia de una vez o pagar una cuota periódica. Con la licencia el gasto es mayor al principio; con la cuota es menor al principio, pero continuo. En los dos casos pregunta qué incluye: instalación, formación, actualizaciones y qué pasa cuando algo falla. Si quieres entender qué mueve el precio de un proyecto de software, lee nuestra guía [¿Cuánto cuesta una web o una app en Guinea Ecuatorial?](/blog/cuanto-cuesta-web-app-guinea-ecuatorial).
+
+## Cómo lo resolvemos en BKLN
+
+GestEscolar es el sistema de gestión escolar que hemos desarrollado para colegios. Funciona sin internet en la red local del centro, se instala en un ordenador con Windows y cubre alumnos, matrículas con seguimiento de pagos, notas por trimestre, profesores, aulas y circulares. Genera carnets, listas de aula, boletines e historial de pagos listos para imprimir, e incluye la instalación, un manual y dos días de formación del personal.
+
+Si quieres verlo funcionando, pídenos una demostración.`,
+    category: 'guias',
+    relatedProduct: 'gestescolar',
+    coverImage: '/Screenshot2.png',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-10-09',
+    readTime: 4,
+    tags: ['Educación', 'Gestión escolar', 'Digitalización', 'Guinea Ecuatorial'],
+  },
+  {
+    id: '6',
+    slug: 'web-o-redes-sociales-negocio',
+    title: '¿Tu negocio necesita una web o te basta con WhatsApp y las redes?',
+    excerpt: 'Muchos negocios venden solo por WhatsApp, Facebook e Instagram, y les funciona. Cuándo es suficiente, cuándo empieza a quedarse corto y cómo combinar redes, web y WhatsApp sin gastar de más.',
+    content: `## Las redes funcionan (hasta cierto punto)
+
+Muchos negocios venden solo por WhatsApp, Facebook e Instagram, y les va bien. Tiene sentido: es gratis, tus clientes ya están ahí todos los días y puedes empezar hoy mismo. Nadie debería pagar una web solo porque "hay que tenerla".
+
+La pregunta útil no es si necesitas una web, sino en qué momento las redes empiezan a quedarse cortas para lo que quieres conseguir.
+
+## Cuándo te basta con WhatsApp y redes
+
+Probablemente no necesitas una web todavía si:
+
+- Vendes pocos productos o servicios y cambian poco.
+- Tus clientes ya te conocen o llegan por recomendación.
+- Puedes contestar tú mismo todos los mensajes del día.
+- No te preocupa que alguien que no te conoce te encuentre buscando en Google.
+
+En ese caso, saca todo el partido a lo que ya tienes. Pásate a **WhatsApp Business**, que es gratuito: te permite mostrar un catálogo con fotos y precios, dejar mensajes automáticos de bienvenida y de fuera de horario, guardar respuestas rápidas y etiquetar a cada cliente según en qué punto está su pedido.
+
+## Señales de que se te está quedando corto
+
+- **Contestas las mismas preguntas veinte veces al día.** Precio, horario, dónde estáis, si hacéis envíos. Cada una de esas respuestas es tiempo que no dedicas a vender.
+- **Te buscan y no te encuentran.** Alguien escribe en Google lo que vendes y tu ciudad, y aparecen otros.
+- **Empresas o instituciones te piden más.** Para trabajar como proveedor, presentarte a un concurso o simplemente dar confianza, una web y un correo con tu propio nombre (info@tunegocio.com) pesan mucho más que un número de teléfono.
+- **Tu catálogo se pierde entre publicaciones.** Si tienes muchos productos o cambian a menudo, en las redes se hunden bajo las publicaciones nuevas y nadie los vuelve a ver.
+- **Dependes de algo que no controlas.** Si te bloquean la cuenta o la plataforma cambia sus reglas, pierdes de golpe tu escaparate y tus contactos.
+- **Quieres recibir pedidos o reservas mientras duermes.** Las redes no toman pedidos por sí solas; una web con un formulario o una tienda, sí.
+
+## Lo que aporta una web propia
+
+- **Te encuentran en Google** cuando alguien busca lo que vendes cerca de él.
+- **Una dirección que es tuya**: tu propio dominio y tu propio correo, que no dependen de ninguna red social.
+- **Toda la información ordenada en un solo sitio**: qué vendes, precios, horario, ubicación con mapa y cómo pedir.
+- **Credibilidad** ante empresas, instituciones y clientes de fuera del país.
+- **Un sitio al que enlazar** desde tus redes, tu WhatsApp, tus tarjetas y tu local.
+
+## No es una cosa o la otra
+
+Lo que mejor funciona es combinar las tres piezas, cada una con su papel:
+
+1. **Las redes atraen.** Publicas, la gente te descubre.
+2. **La web informa.** Quien quiere saber más encuentra todo ordenado, sin tener que preguntarlo.
+3. **WhatsApp cierra.** Un botón visible en la web lleva directamente a la conversación para pedir o reservar.
+
+Así no tienes que elegir. Las redes y WhatsApp siguen siendo tu día a día; la web es la base que lo ordena todo.
+
+## Cómo empezar sin gastar de más
+
+- **Empieza sencillo.** Una web de una o pocas páginas con quién eres, qué ofreces, dónde estás y cómo contactarte ya resuelve la mayoría de los problemas de arriba.
+- **Botón de WhatsApp en todas las páginas.** Es la forma más natural de que tus clientes te escriban.
+- **Fotos reales.** De tu local, tus productos y tu equipo. Las imágenes genéricas de internet no generan confianza.
+- **Pensada para el móvil.** La mayoría de tus visitas llegarán desde un teléfono, a veces con poca cobertura: la web tiene que cargar rápido.
+- **Crea tu perfil de empresa en Google.** Es gratuito y te ayuda a aparecer en Google Maps cuando alguien busca negocios como el tuyo cerca.
+- **Mantenla al día.** Una web con precios o un horario de hace dos años resta más de lo que suma.
+
+## Test rápido
+
+Responde con sinceridad:
+
+1. ¿Me preguntan lo mismo muchas veces al día?
+2. ¿Quiero que me encuentren clientes que todavía no me conocen?
+3. ¿Trabajo, o quiero trabajar, con empresas o instituciones?
+4. ¿Tengo más productos o servicios de los que caben en unas cuantas publicaciones?
+
+Si has contestado que sí a dos o más, una web te va a ayudar. Si quieres saber qué influye en el precio, lo explicamos en [¿Cuánto cuesta una web o una app en Guinea Ecuatorial?](/blog/cuanto-cuesta-web-app-guinea-ecuatorial).
+
+## Cómo lo hacemos en BKLN
+
+Diseñamos webs para negocios pensadas primero para el móvil y para conexiones lentas, con botón de WhatsApp y, si lo necesitas, un panel para que tú mismo cambies precios, fotos y horarios sin depender de nadie. Cuéntanos qué vendes y te decimos qué necesitas, y también qué no.`,
+    category: 'guias',
+    relatedService: 'desarrollo-web',
+    coverImage: '/blog-tutorials.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-10-09',
+    readTime: 4,
+    tags: ['Desarrollo web', 'WhatsApp', 'Redes sociales', 'Pequeños negocios'],
+  },
+  {
     id: '2',
     slug: 'python-automatizacion-casos-reales',
     title: 'Python para automatización: casos reales que hemos resuelto',
@@ -954,7 +1205,8 @@ Simple, efectivo, sin dependencias de terceros innecesarias.
 Los tres comparten el mismo principio: **hacen una sola cosa y la hacen bien**. No intentan ser frameworks. No tienen configuración XML ni YAML. Son scripts Python directos que cualquier desarrollador puede leer, modificar y mantener.
 
 La automatización no tiene que ser compleja para ser valiosa. A veces el mayor impacto viene de la tarea más aburrida que alguien estaba haciendo a mano.`,
-    category: 'python',
+    category: 'taller',
+    relatedService: 'python-automatizacion',
     coverImage: '/course-python.jpg',
     author: {
       name: 'BKLN Software',
@@ -1084,7 +1336,8 @@ Supabase es la mejor opción que conocemos para proyectos donde quieres una base
 La curva de aprendizaje de RLS es real, pero vale la pena. Una vez que lo entiendes, te da un nivel de control sobre quién accede a qué que Firebase simplemente no tiene.
 
 ¿Lo usaríamos para un proyecto de millones de usuarios? Dependería del caso. Para los proyectos que construimos — aplicaciones de negocio, plataformas de nicho, sistemas de gestión — es exactamente la herramienta que necesitamos.`,
-    category: 'databases',
+    category: 'taller',
+    relatedService: 'databases-apis',
     coverImage: '/course-sql.jpg',
     author: {
       name: 'BKLN Software',
@@ -1096,5 +1349,12 @@ La curva de aprendizaje de RLS es real, pero vale la pena. Una vez que lo entien
     tags: ['Supabase', 'PostgreSQL', 'RLS', 'Realtime', 'Auth'],
   },
 ]
+
+const showDrafts = process.env.NODE_ENV !== 'production'
+
+// Más recientes primero; los borradores solo aparecen en desarrollo.
+export const visiblePosts = blogPosts
+  .filter((p) => showDrafts || !p.draft)
+  .sort((a, b) => b.publishedAt.localeCompare(a.publishedAt))
 
 export const testimonials: Testimonial[] = []

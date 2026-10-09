@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const siteName = 'BKLN Software & Systems'
+export const siteUrl = process.env.NEXT_PUBLIC_APP_URL ?? 'https://www.bklnsoftware.tech'
 const defaultImage = '/brand-logo.png'
 
 interface PageMetadataInput {

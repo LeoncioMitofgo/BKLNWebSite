@@ -92,12 +92,17 @@ export interface BlogPost {
   title: string
   excerpt: string
   content: string
-  category: 'python' | 'android' | 'ia-ml' | 'web' | 'databases' | 'tutoriales'
+  /** guias: para quien compra software · taller: artículos técnicos */
+  category: 'guias' | 'taller'
   coverImage: string
   author: Author
   publishedAt: string
   readTime: number
   tags: string[]
+  relatedService?: string
+  relatedProduct?: string
+  /** Borrador: solo visible en desarrollo (npm run dev) hasta que se apruebe. */
+  draft?: boolean
 }
 
 export interface Author {

@@ -5,7 +5,7 @@ import { contactEmail } from '@/data/contact'
 
 const resourceLinks = [
   { label: 'Cursos', href: '/cursos' },
-  { label: 'Blog técnico', href: '/blog' },
+  { label: 'Guías', href: '/blog' },
   { label: 'Privacidad', href: '/privacidad' },
   { label: 'Términos', href: '/terminos' },
 ]
