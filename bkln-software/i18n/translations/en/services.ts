@@ -159,6 +159,66 @@ export const services: Record<string, ServiceText> = {
       },
     ],
   },
+  'oficina-digital-microsoft-365': {
+    title: 'Digital office with Microsoft 365',
+    description: 'Your organisation’s case files, approvals, documents and email in Microsoft 365, with Teams as the office: every matter with its own number, owner and deadline.',
+    longDescription:
+      'For institutions, companies and organisations where matters still travel in folders from desk to desk. We build a system on Microsoft 365 in which every request gets a registration number and a case file, reaches the person who has to act on it automatically, and management can approve, return or sign it from a computer or a phone. Everything is recorded: who received each matter, who reviewed it and when it was decided.\n\nStaff work from Microsoft Teams and don’t need to know what runs behind it: SharePoint, Microsoft Lists and Power Automate. We build it inside your organisation’s own Microsoft 365 and in its name, with role-based permissions and two-step verification, and hand it over fully documented. We start with what is used most, phase out paper step by step and train your team in person.',
+    forWho: [
+      'Matters circulate in folders and nobody knows where each one is until someone asks.',
+      'Management has to be in the office to decide or sign, and a trip brings everything to a halt.',
+      'Documents are scattered across filing cabinets, personal email accounts and WhatsApp.',
+      'When someone changes roles or leaves, the information leaves with them.',
+      'Your team uses personal email addresses instead of one with your organisation’s name.',
+    ],
+    examples: [
+      { title: 'Digital registry and case files', description: 'Every request, letter or document that comes in gets a number and a case file that brings everything together, from arrival to archive.' },
+      { title: 'Management approvals', description: 'One inbox with everything awaiting a decision and a traffic-light view of deadlines, to approve, return or request information from a phone.' },
+      { title: 'Automatic tasks and reminders', description: 'Every decision becomes tasks with an owner and a deadline, and the system warns you when something falls behind.' },
+      { title: 'Online desk for external requests', description: 'A web form where partners, suppliers or members of the public submit requests with documents and check their status.' },
+      { title: 'Shared email and documents', description: 'Email on your organisation’s domain, Teams for meetings and chat, and documents in SharePoint with versions and permissions.' },
+      { title: 'Progress dashboards', description: 'What is pending, what is late and how each department is doing, on a single screen.' },
+    ],
+    deliverables: [
+      'System set up in your organisation’s own Microsoft 365, in its name',
+      'Teams apps for staff and for management',
+      'Role-based permissions and two-step verification',
+      'User manual and short guides for each process',
+      'In-person training by role',
+      '30 days of support after handover',
+    ],
+    pricingFactors: [
+      'Number of departments, processes and users',
+      'Whether you already have Microsoft 365 or are starting from scratch',
+      'Online desk for external requests',
+      'Migration of existing email and documents',
+      'Electronic signature, advanced dashboards or other components with an additional Microsoft cost',
+      'Number of people and training sessions',
+    ],
+    timeline: 'From 1 week (email and Teams) to 4 months (full system)',
+    faqs: [
+      {
+        question: 'Do I need to buy Microsoft licences?',
+        answer: 'Everyone who uses the system needs a Microsoft 365 licence. If you already have them, we use them; if not, we work out how many you need and of which type before you buy anything, and you pay Microsoft or its reseller directly. If your organisation is a non-profit, Microsoft offers free or discounted licences: we help you check whether you qualify.',
+      },
+      {
+        question: 'Why Microsoft 365 rather than custom software?',
+        answer: 'Because many organisations already pay for it or need it for email, and their staff already know Teams, Word and Excel. Building on top of it is faster, comes with the vendor’s support and doesn’t depend on your own server. If your case calls for a custom system, we’ll tell you.',
+      },
+      {
+        question: 'Do we have to stop using paper overnight?',
+        answer: 'No. First, paper that arrives is scanned at reception and handled in the system; then internal copies are no longer printed; and finally processes are handled only digitally, with whatever exceptions you decide.',
+      },
+      {
+        question: 'Does approval in the system replace a signature?',
+        answer: 'An approval records who decided what, and when. Signing contracts or resolutions with legal validity requires an electronic signature solution, which we integrate once your legal department has approved it.',
+      },
+      {
+        question: 'Who owns the system?',
+        answer: 'Your organisation does. It is built inside its own Microsoft 365, with institutional accounts, and handed over documented so that any technician can maintain it.',
+      },
+    ],
+  },
   'ia-y-automatizacion': {
     title: 'AI assistants and automation',
     description: 'Assistants that serve your customers on WhatsApp and on your website using your own information, and automation of the repetitive tasks you do by hand today.',

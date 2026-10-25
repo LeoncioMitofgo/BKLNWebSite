@@ -181,6 +181,73 @@ export const services: Service[] = [
     featured: true,
   },
   {
+    id: '8',
+    slug: 'oficina-digital-microsoft-365',
+    title: 'Oficina digital con Microsoft 365',
+    description: 'Expedientes, aprobaciones, documentos y correo de tu organización en Microsoft 365, con Teams como oficina: cada asunto con su número, su responsable y su plazo.',
+    longDescription:
+      'Para instituciones, empresas y organizaciones en las que los asuntos todavía viajan en carpetas de mesa en mesa. Montamos sobre Microsoft 365 un sistema en el que cada solicitud recibe un número de registro y un expediente, llega sola a quien tiene que actuar y la dirección puede aprobar, devolver o firmar desde el ordenador o desde el móvil. Todo queda registrado: quién recibió cada asunto, quién lo revisó y cuándo se decidió.\n\nEl personal entra por Microsoft Teams y no necesita saber qué hay detrás: SharePoint, Microsoft Lists y Power Automate. Lo construimos dentro del Microsoft 365 de tu organización y a su nombre, con permisos por puesto y verificación en dos pasos, y lo entregamos documentado. Empezamos por lo que más se usa, retiramos el papel por etapas y formamos a tu equipo de forma presencial.',
+    icon: 'FolderKanban',
+    forWho: [
+      'Los asuntos circulan en carpetas y nadie sabe dónde está cada uno hasta que alguien pregunta.',
+      'La dirección tiene que estar en la oficina para decidir o firmar, y un viaje detiene la tramitación.',
+      'Los documentos están repartidos entre archivadores, correos personales y WhatsApp.',
+      'Cuando alguien cambia de puesto o se marcha, la información se va con esa persona.',
+      'Tu equipo usa correos personales en lugar de un correo con el nombre de tu organización.',
+    ],
+    examples: [
+      { title: 'Registro y expediente digital', description: 'Cada solicitud, carta o documento que entra recibe un número y un expediente que lo reúne todo, desde la entrada hasta el archivo.' },
+      { title: 'Aprobaciones de la dirección', description: 'Una bandeja con todo lo que espera decisión, con un semáforo de plazos, para aprobar, devolver o pedir información desde el móvil.' },
+      { title: 'Tareas y avisos automáticos', description: 'Cada decisión se convierte en tareas con responsable y plazo, y el sistema avisa cuando algo se retrasa.' },
+      { title: 'Ventanilla para solicitudes externas', description: 'Un formulario web para que socios, proveedores o ciudadanos presenten solicitudes con documentos y consulten en qué estado están.' },
+      { title: 'Correo y documentos compartidos', description: 'Correo con el dominio de tu organización, Teams para reuniones y chat, y documentos en SharePoint con versiones y permisos.' },
+      { title: 'Paneles de seguimiento', description: 'Qué está pendiente, qué va con retraso y cómo avanza cada área, en una sola pantalla.' },
+    ],
+    deliverables: [
+      'Sistema configurado en el Microsoft 365 de tu organización, a su nombre',
+      'Aplicaciones en Teams para el personal y para la dirección',
+      'Permisos por puesto y verificación en dos pasos',
+      'Manual de usuario y guías breves de cada proceso',
+      'Formación presencial por perfiles',
+      'Acompañamiento 30 días tras la entrega',
+    ],
+    pricingFactors: [
+      'Número de áreas, procesos y usuarios',
+      'Si ya tienes Microsoft 365 o hay que empezar desde cero',
+      'Ventanilla web para solicitudes externas',
+      'Migración del correo y de los documentos que ya existen',
+      'Firma electrónica, paneles avanzados u otras piezas con coste adicional de Microsoft',
+      'Número de personas y de sesiones de formación',
+    ],
+    timeline: 'De 1 semana (correo y Teams) a 4 meses (sistema completo)',
+    faqs: [
+      {
+        question: '¿Tengo que comprar licencias de Microsoft?',
+        answer: 'Cada persona que use el sistema necesita una licencia de Microsoft 365. Si ya las tienes, las aprovechamos; si no, calculamos cuántas hacen falta y de qué tipo antes de comprar nada, y se pagan directamente a Microsoft o a su distribuidor. Si tu organización no tiene ánimo de lucro, Microsoft ofrece licencias gratuitas o con descuento: te ayudamos a comprobar si cumples los requisitos.',
+      },
+      {
+        question: '¿Por qué Microsoft 365 y no un programa a medida?',
+        answer: 'Porque muchas organizaciones ya lo pagan o lo necesitan para el correo, y su personal ya conoce Teams, Word y Excel. Construir encima es más rápido, tiene el soporte del fabricante y no depende de un servidor propio. Si tu caso pide un sistema a medida, te lo decimos.',
+      },
+      {
+        question: '¿Hay que dejar el papel de un día para otro?',
+        answer: 'No. Primero se digitaliza en recepción lo que llega en papel y se tramita ya en el sistema; después se dejan de imprimir copias internas, y al final los procesos se tramitan solo en digital, con las excepciones que decidas.',
+      },
+      {
+        question: '¿La aprobación en el sistema sustituye a la firma?',
+        answer: 'La aprobación deja constancia de quién decidió, qué y cuándo. Para firmar contratos o resoluciones con validez legal hace falta una solución de firma electrónica, que integramos cuando tu servicio jurídico la valida.',
+      },
+      {
+        question: '¿De quién es el sistema?',
+        answer: 'De tu organización. Se construye dentro de su Microsoft 365, con cuentas institucionales, y se entrega documentado para que cualquier técnico pueda mantenerlo.',
+      },
+    ],
+    relatedProjects: [],
+    relatedProducts: [],
+    technologies: ['Microsoft 365', 'Microsoft Teams', 'SharePoint', 'Microsoft Lists', 'Power Automate', 'Power Apps', 'Microsoft Entra ID', 'Power BI', 'Next.js'],
+    featured: false,
+  },
+  {
     id: '4',
     slug: 'ia-y-automatizacion',
     title: 'Asistentes con IA y automatización',

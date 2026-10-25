@@ -25,6 +25,7 @@ const slugs: Partial<Record<Section, SlugMap>> = {
     'desarrollo-web': { en: 'web-development', fr: 'developpement-web' },
     'apps-moviles': { en: 'mobile-apps', fr: 'applications-mobiles' },
     'sistemas-de-gestion': { en: 'management-systems', fr: 'systemes-de-gestion' },
+    'oficina-digital-microsoft-365': { en: 'digital-office-microsoft-365', fr: 'bureau-numerique-microsoft-365' },
     'ia-y-automatizacion': { en: 'ai-and-automation', fr: 'ia-et-automatisation' },
     'medios-de-comunicacion': { en: 'media-platforms', fr: 'plateformes-medias' },
     'mantenimiento-y-soporte': { en: 'maintenance-and-support', fr: 'maintenance-et-support' },

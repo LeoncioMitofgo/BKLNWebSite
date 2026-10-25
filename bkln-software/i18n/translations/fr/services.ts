@@ -159,6 +159,66 @@ export const services: Record<string, ServiceText> = {
       },
     ],
   },
+  'oficina-digital-microsoft-365': {
+    title: 'Bureau numérique avec Microsoft 365',
+    description: 'Dossiers, validations, documents et messagerie de votre organisation dans Microsoft 365, avec Teams comme bureau : chaque affaire a son numéro, son responsable et son délai.',
+    longDescription:
+      'Pour les institutions, entreprises et organisations où les dossiers voyagent encore dans des chemises de bureau en bureau. Nous construisons sur Microsoft 365 un système dans lequel chaque demande reçoit un numéro d’enregistrement et un dossier, arrive automatiquement à la personne qui doit agir, et la direction peut valider, renvoyer ou signer depuis un ordinateur ou un téléphone. Tout est tracé : qui a reçu chaque affaire, qui l’a examinée et quand elle a été décidée.\n\nLe personnel travaille depuis Microsoft Teams, sans avoir à savoir ce qui fonctionne en arrière-plan : SharePoint, Microsoft Lists et Power Automate. Nous le construisons dans le Microsoft 365 de votre organisation et à son nom, avec des droits par poste et la vérification en deux étapes, et nous le livrons documenté. Nous commençons par ce qui sert le plus, nous retirons le papier par étapes et nous formons votre équipe sur place.',
+    forWho: [
+      'Les dossiers circulent dans des chemises et personne ne sait où en est chacun avant que quelqu’un ne demande.',
+      'La direction doit être au bureau pour décider ou signer, et un déplacement bloque tout.',
+      'Les documents sont dispersés entre classeurs, messageries personnelles et WhatsApp.',
+      'Quand quelqu’un change de poste ou s’en va, l’information part avec cette personne.',
+      'Votre équipe utilise des adresses e-mail personnelles au lieu d’une adresse au nom de votre organisation.',
+    ],
+    examples: [
+      { title: 'Registre et dossier numériques', description: 'Chaque demande, courrier ou document entrant reçoit un numéro et un dossier qui rassemble tout, de l’arrivée à l’archivage.' },
+      { title: 'Validations de la direction', description: 'Une corbeille avec tout ce qui attend une décision et un code couleur des délais, pour valider, renvoyer ou demander des informations depuis le téléphone.' },
+      { title: 'Tâches et alertes automatiques', description: 'Chaque décision devient des tâches avec un responsable et un délai, et le système prévient quand quelque chose prend du retard.' },
+      { title: 'Guichet pour les demandes externes', description: 'Un formulaire web pour que partenaires, fournisseurs ou citoyens déposent leurs demandes avec des documents et en suivent l’état.' },
+      { title: 'Messagerie et documents partagés', description: 'Adresses e-mail sur le domaine de votre organisation, Teams pour les réunions et la discussion, et documents dans SharePoint avec versions et droits d’accès.' },
+      { title: 'Tableaux de suivi', description: 'Ce qui est en attente, ce qui est en retard et l’avancement de chaque service, sur un seul écran.' },
+    ],
+    deliverables: [
+      'Système configuré dans le Microsoft 365 de votre organisation, à son nom',
+      'Applications Teams pour le personnel et pour la direction',
+      'Droits par poste et vérification en deux étapes',
+      'Manuel d’utilisation et guides courts pour chaque processus',
+      'Formation sur place par profil',
+      '30 jours d’accompagnement après la livraison',
+    ],
+    pricingFactors: [
+      'Nombre de services, de processus et d’utilisateurs',
+      'Microsoft 365 déjà en place ou à mettre en place',
+      'Guichet web pour les demandes externes',
+      'Migration de la messagerie et des documents existants',
+      'Signature électronique, tableaux avancés ou autres éléments payants chez Microsoft',
+      'Nombre de personnes et de sessions de formation',
+    ],
+    timeline: 'De 1 semaine (messagerie et Teams) à 4 mois (système complet)',
+    faqs: [
+      {
+        question: 'Faut-il acheter des licences Microsoft ?',
+        answer: 'Chaque personne qui utilise le système a besoin d’une licence Microsoft 365. Si vous en avez déjà, nous les utilisons ; sinon, nous calculons combien il en faut et de quel type avant tout achat, et vous les payez directement à Microsoft ou à son revendeur. Si votre organisation est à but non lucratif, Microsoft propose des licences gratuites ou à prix réduit : nous vous aidons à vérifier si vous y avez droit.',
+      },
+      {
+        question: 'Pourquoi Microsoft 365 plutôt qu’un logiciel sur mesure ?',
+        answer: 'Parce que beaucoup d’organisations le paient déjà ou en ont besoin pour la messagerie, et que leur personnel connaît déjà Teams, Word et Excel. Construire dessus est plus rapide, bénéficie du support de l’éditeur et ne dépend pas d’un serveur à vous. Si votre cas demande un système sur mesure, nous vous le dirons.',
+      },
+      {
+        question: 'Faut-il abandonner le papier du jour au lendemain ?',
+        answer: 'Non. D’abord, le courrier papier est numérisé à l’accueil et traité dans le système ; ensuite, on cesse d’imprimer les copies internes ; enfin, les processus se traitent uniquement en numérique, avec les exceptions que vous décidez.',
+      },
+      {
+        question: 'La validation dans le système remplace-t-elle la signature ?',
+        answer: 'La validation garde la trace de qui a décidé quoi, et quand. Pour signer des contrats ou des décisions ayant une valeur juridique, il faut une solution de signature électronique, que nous intégrons une fois validée par votre service juridique.',
+      },
+      {
+        question: 'À qui appartient le système ?',
+        answer: 'À votre organisation. Il est construit dans son propre Microsoft 365, avec des comptes institutionnels, et livré documenté pour que n’importe quel technicien puisse le maintenir.',
+      },
+    ],
+  },
   'ia-y-automatizacion': {
     title: 'Assistants IA et automatisation',
     description: 'Des assistants qui répondent à vos clients sur WhatsApp et sur votre site avec vos propres informations, et l’automatisation des tâches répétitives que vous faites aujourd’hui à la main.',
