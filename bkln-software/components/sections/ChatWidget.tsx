@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
+import { Bot, X } from 'lucide-react'
+import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { waLink } from '@/data/contact'
 import type { Dictionary } from '@/i18n/dictionaries'
 
 type Message = {
@@ -12,9 +15,12 @@ type Message = {
 }
 
 const STORAGE_KEY = 'bkln_chat_session_id'
+// La burbuja de presentación sale una vez por visita (pestaña).
+const TEASER_KEY = 'bkln_chat_teaser_seen'
+const TEASER_DELAY_MS = 4000
 // Mensajes previos que se envían con cada pregunta para que el asistente recuerde la conversación.
 const HISTORY_LIMIT = 8
-const LOCAL_MESSAGE_IDS = new Set(['welcome', 'notice'])
+const LOCAL_MESSAGE_IDS = new Set(['welcome'])
 
 // Un id por pestaña, creado al enviar el primer mensaje (sessionStorage puede fallar en modo privado).
 function getSessionId(): string {
@@ -30,8 +36,44 @@ function getSessionId(): string {
     }
 }
 
-export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
+function messageId(prefix: string): string {
+    return `${prefix}-${Date.now()}`
+}
+
+function teaserSeen(): boolean {
+    try {
+        return window.sessionStorage.getItem(TEASER_KEY) === '1'
+    } catch {
+        return false
+    }
+}
+
+function markTeaserSeen() {
+    try {
+        window.sessionStorage.setItem(TEASER_KEY, '1')
+    } catch {
+        // Sin almacenamiento: la burbuja podría volver a salir en otra página, sin más.
+    }
+}
+
+/** Avatar del asistente con el punto verde de "en línea". */
+function AssistantAvatar({ size = 'md' }: { size?: 'sm' | 'md' }) {
+    const box = size === 'sm' ? 'h-8 w-8' : 'h-10 w-10'
+    const icon = size === 'sm' ? 'h-4 w-4' : 'h-5 w-5'
+    return (
+        <span className={`relative flex ${box} flex-none items-center justify-center rounded-full bg-white text-brand-green`}>
+            <Bot className={icon} aria-hidden="true" />
+            <span className="absolute -right-0.5 -top-0.5 flex h-3 w-3">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-accent-green opacity-75 motion-safe:animate-ping" />
+                <span className="relative inline-flex h-3 w-3 rounded-full bg-accent-green ring-2 ring-bg-surface" />
+            </span>
+        </span>
+    )
+}
+
+export default function ChatWidget({ t, whatsappMessage }: { t: Dictionary['chat']; whatsappMessage: string }) {
     const [isOpen, setIsOpen] = useState(false)
+    const [showTeaser, setShowTeaser] = useState(false)
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
     const [messages, setMessages] = useState<Message[]>([
@@ -40,13 +82,15 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
             text: t.welcome,
             sender: 'assistant',
         },
-        {
-            id: 'notice',
-            text: t.notice,
-            sender: 'assistant',
-        },
     ])
     const messagesEndRef = useRef<HTMLDivElement | null>(null)
+    const hasConversation = messages.some((m) => m.sender === 'user')
+
+    useEffect(() => {
+        if (teaserSeen()) return
+        const timer = window.setTimeout(() => setShowTeaser(true), TEASER_DELAY_MS)
+        return () => window.clearTimeout(timer)
+    }, [])
 
     useEffect(() => {
         const onKeyDown = (event: KeyboardEvent) => {
@@ -63,12 +107,22 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
     }, [messages, loading])
 
-    const sendMessage = async () => {
-        const trimmed = input.trim()
+    const dismissTeaser = () => {
+        setShowTeaser(false)
+        markTeaserSeen()
+    }
+
+    const openChat = () => {
+        dismissTeaser()
+        setIsOpen(true)
+    }
+
+    const sendMessage = async (text?: string) => {
+        const trimmed = (text ?? input).trim()
         if (!trimmed || loading) return
 
         const userMessage: Message = {
-            id: `user-${Date.now()}`,
+            id: messageId('user'),
             text: trimmed,
             sender: 'user',
         }
@@ -104,18 +158,18 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
             }
 
             const assistantMessage: Message = {
-                id: `assistant-${Date.now()}`,
+                id: messageId('assistant'),
                 text: data.answer || t.noAnswer,
                 sender: 'assistant',
                 sources: Array.isArray(data.sources) ? data.sources : [],
             }
 
             setMessages((current) => [...current, assistantMessage])
-        } catch (error) {
+        } catch {
             setMessages((current) => [
                 ...current,
                 {
-                    id: `error-${Date.now()}`,
+                    id: messageId('error'),
                     text: t.error,
                     sender: 'assistant',
                 },
@@ -125,39 +179,87 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
         }
     }
 
+    const askSuggestion = (question: string) => {
+        openChat()
+        void sendMessage(question)
+    }
+
+    const suggestionClass =
+        'rounded-full border border-accent-green/30 bg-brand-green/10 px-3 py-1.5 text-left text-xs font-medium text-accent-green transition hover:border-accent-green/60 hover:bg-brand-green/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-green'
+
     return (
         <>
+            {showTeaser && !isOpen && (
+                <div
+                    role="dialog"
+                    aria-label={t.teaserTitle}
+                    className="fixed bottom-24 right-4 z-50 w-[calc(100vw-2rem)] max-w-[300px] rounded-2xl border border-white/10 bg-bg-surface p-4 text-text-primary shadow-2xl shadow-black/60"
+                >
+                    <button
+                        type="button"
+                        aria-label={t.teaserClose}
+                        onClick={dismissTeaser}
+                        className="absolute right-2 top-2 rounded-full p-1 text-white/50 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/60"
+                    >
+                        <X className="h-4 w-4" aria-hidden="true" />
+                    </button>
+                    <button type="button" onClick={openChat} className="flex items-center gap-3 pr-6 text-left">
+                        <AssistantAvatar size="sm" />
+                        <span className="text-sm font-semibold leading-snug">{t.teaserTitle}</span>
+                    </button>
+                    <p className="mt-2 text-sm leading-relaxed text-white/70">{t.teaserText}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                        {t.suggestions.map((question) => (
+                            <button key={question} type="button" onClick={() => askSuggestion(question)} className={suggestionClass}>
+                                {question}
+                            </button>
+                        ))}
+                    </div>
+                    {/* Pico que apunta al botón */}
+                    <span aria-hidden="true" className="absolute -bottom-1.5 right-8 h-3 w-3 rotate-45 border-b border-r border-white/10 bg-bg-surface" />
+                </div>
+            )}
+
             <button
                 type="button"
-                aria-label={t.open}
-                onClick={() => setIsOpen((value) => !value)}
-                className="fixed bottom-4 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-600 text-white shadow-lg shadow-green-900/30 transition hover:bg-green-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0b1220]"
+                aria-label={isOpen ? t.close : t.open}
+                aria-expanded={isOpen}
+                onClick={() => (isOpen ? setIsOpen(false) : openChat())}
+                className={`fixed bottom-4 right-4 z-50 flex items-center rounded-full bg-brand-green text-white shadow-lg shadow-black/40 ring-1 ring-white/10 transition hover:bg-[#00b862] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-green focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark ${isOpen ? 'h-14 w-14 justify-center' : 'gap-3 py-2 pl-2 pr-5'}`}
             >
-                <svg viewBox="0 0 24 24" aria-hidden="true" className="h-6 w-6 fill-current">
-                    <path d="M6 18h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2Zm0 0 1.5-3h9L18 18M8 9.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm8 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM9.5 13h5" />
-                </svg>
+                {isOpen ? (
+                    <X className="h-6 w-6" aria-hidden="true" />
+                ) : (
+                    <>
+                        <AssistantAvatar />
+                        <span className="flex flex-col items-start text-left leading-tight">
+                            <span className="text-sm font-semibold">{t.launcher}</span>
+                            <span className="text-[11px] text-white/85">{t.launcherHint}</span>
+                        </span>
+                    </>
+                )}
             </button>
 
             {isOpen && (
-                <div className="fixed bottom-20 right-4 z-40 w-[calc(100vw-1.5rem)] max-w-[360px] rounded-2xl border border-white/10 bg-[#0f172a] text-slate-100 shadow-2xl shadow-black/40 sm:w-[360px]">
-                    <div className="flex items-center justify-between border-b border-white/10 bg-green-600 px-4 py-3 text-white">
-                        <div>
-                            <p className="text-sm font-semibold uppercase tracking-wide">{t.title}</p>
+                <div className="fixed bottom-24 right-4 z-40 flex w-[calc(100vw-2rem)] max-w-[370px] flex-col overflow-hidden rounded-2xl border border-white/10 bg-bg-dark text-text-primary shadow-2xl shadow-black/60 sm:w-[370px]">
+                    <div className="flex items-center gap-3 border-b border-white/10 bg-bg-surface px-4 py-3">
+                        <AssistantAvatar size="sm" />
+                        <div className="min-w-0 flex-1">
+                            <p className="text-sm font-semibold text-white">{t.title}</p>
+                            <p className="truncate text-xs text-accent-green">{t.status}</p>
                         </div>
                         <button
                             type="button"
                             aria-label={t.close}
                             onClick={() => setIsOpen(false)}
-                            className="rounded-full p-1 text-white/90 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+                            className="rounded-full p-1 text-white/70 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
                         >
-                            <svg viewBox="0 0 24 24" aria-hidden="true" className="h-5 w-5 fill-current">
-                                <path d="M6.707 5.293a1 1 0 0 0-1.414 1.414L10.586 12l-5.293 5.293a1 1 0 1 0 1.414 1.414L12 13.414l5.293 5.293a1 1 0 0 0 1.414-1.414L13.414 12l5.293-5.293a1 1 0 0 0-1.414-1.414L12 10.586 6.707 5.293Z" />
-                            </svg>
+                            <X className="h-5 w-5" aria-hidden="true" />
                         </button>
                     </div>
 
-                    <div className="flex h-[520px] flex-col">
-                        <div className="flex-1 space-y-3 overflow-y-auto bg-slate-950/30 p-3">
+                    <div className="flex h-[min(520px,calc(100dvh-9rem))] flex-col">
+                        <div className="flex-1 space-y-3 overflow-y-auto p-3">
                             {messages.map((message) => (
                                 <div
                                     key={message.id}
@@ -165,8 +267,8 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
                                 >
                                     <div
                                         className={`max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-relaxed ${message.sender === 'user'
-                                            ? 'bg-green-600 text-white'
-                                            : 'bg-slate-800 text-slate-100'
+                                            ? 'bg-brand-green text-white'
+                                            : 'border border-white/5 bg-white/[0.06] text-slate-100'
                                             }`}
                                     >
                                         <div className="markdown-content whitespace-pre-wrap text-sm leading-relaxed text-slate-100">
@@ -212,15 +314,28 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
                                 </div>
                             ))}
 
+                            {!hasConversation && !loading && (
+                                <div className="pt-1">
+                                    <p className="mb-2 text-xs text-white/50">{t.suggestionsLabel}</p>
+                                    <div className="flex flex-wrap gap-2">
+                                        {t.suggestions.map((question) => (
+                                            <button key={question} type="button" onClick={() => void sendMessage(question)} className={suggestionClass}>
+                                                {question}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
+
                             {loading && (
                                 <div className="flex justify-start">
-                                    <div className="rounded-2xl bg-slate-800 px-3 py-2 text-sm text-slate-100">
+                                    <div className="rounded-2xl border border-white/5 bg-white/[0.06] px-3 py-2 text-sm text-slate-100">
                                         <div className="flex items-center gap-2">
                                             <span>{t.thinking}</span>
                                             <span className="flex gap-1">
-                                                <span className="h-2 w-2 animate-bounce rounded-full bg-green-400 [animation-delay:-0.3s]" />
-                                                <span className="h-2 w-2 animate-bounce rounded-full bg-green-400 [animation-delay:-0.15s]" />
-                                                <span className="h-2 w-2 animate-bounce rounded-full bg-green-400" />
+                                                <span className="h-2 w-2 animate-bounce rounded-full bg-accent-green [animation-delay:-0.3s]" />
+                                                <span className="h-2 w-2 animate-bounce rounded-full bg-accent-green [animation-delay:-0.15s]" />
+                                                <span className="h-2 w-2 animate-bounce rounded-full bg-accent-green" />
                                             </span>
                                         </div>
                                     </div>
@@ -230,7 +345,7 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
                             <div ref={messagesEndRef} />
                         </div>
 
-                        <div className="border-t border-white/10 bg-slate-900 p-3">
+                        <div className="border-t border-white/10 bg-bg-surface p-3">
                             <div className="flex gap-2">
                                 <input
                                     aria-label={t.inputLabel}
@@ -243,7 +358,7 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
                                         }
                                     }}
                                     placeholder={t.placeholder}
-                                    className="flex-1 rounded-xl border border-slate-700 bg-slate-950 px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/40"
+                                    className="flex-1 rounded-xl border border-white/10 bg-bg-dark px-3 py-2 text-sm text-white placeholder:text-slate-400 focus:border-brand-green focus:outline-none focus:ring-2 focus:ring-brand-green/40"
                                     disabled={loading}
                                 />
                                 <button
@@ -251,11 +366,24 @@ export default function ChatWidget({ t }: { t: Dictionary['chat'] }) {
                                     aria-label={t.sendLabel}
                                     onClick={() => void sendMessage()}
                                     disabled={loading || !input.trim()}
-                                    className="rounded-xl bg-green-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-green-500 disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
+                                    className="rounded-xl bg-brand-green px-3 py-2 text-sm font-medium text-white transition hover:bg-[#00b862] disabled:cursor-not-allowed disabled:bg-slate-700 disabled:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-green"
                                 >
                                     {t.send}
                                 </button>
                             </div>
+                            <p className="mt-2 text-[11px] text-white/45">{t.notice}</p>
+                            <p className="mt-1 flex flex-wrap items-center gap-x-1.5 text-[11px] text-white/60">
+                                <span>{t.human}</span>
+                                <a
+                                    href={waLink(whatsappMessage)}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1 font-medium text-[#25D366] hover:underline"
+                                >
+                                    <WhatsAppIcon size={12} />
+                                    {t.humanLink}
+                                </a>
+                            </p>
                         </div>
                     </div>
                 </div>

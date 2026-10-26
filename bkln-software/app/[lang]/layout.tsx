@@ -105,7 +105,7 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
         <main className="flex-1">{children}</main>
         <Footer lang={lang} nav={t.nav} t={t.footer} />
         <WhatsAppButton message={t.whatsapp.general} label={t.whatsapp.buttonLabel} />
-        <ChatWidget t={t.chat} />
+        <ChatWidget t={t.chat} whatsappMessage={t.whatsapp.general} />
         <Analytics />
       </body>
     </html>
