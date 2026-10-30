@@ -19,7 +19,7 @@ const socialLinks = [
     ),
   },
   {
-    href: 'https://linkedin.com/company/bklnsoftware',
+    href: 'https://linkedin.com/company/bkln-software-systems',
     label: 'LinkedIn',
     svg: (
       <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">

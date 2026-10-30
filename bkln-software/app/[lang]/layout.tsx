@@ -87,7 +87,7 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
     availableLanguage: ['es', 'en', 'fr'],
     sameAs: [
       'https://github.com/LeoncioMitofgo',
-      'https://linkedin.com/company/bklnsoftware',
+      'https://linkedin.com/company/bkln-software-systems',
       'https://twitter.com/bklnsoftware',
     ],
   }
