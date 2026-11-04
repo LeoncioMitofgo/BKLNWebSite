@@ -1,6 +1,25 @@
 import type { ProjectText } from '../../content'
 
 export const projects: Record<string, ProjectText> = {
+  'bkln-marketplace': {
+    description: 'Un site de petites annonces pour toute la Guinée équatoriale : achat et vente entre particuliers et professionnels, messagerie en temps réel, boutiques Premium et panneau de modération. Pensé pour le mobile et les connexions lentes.',
+    longDescription:
+      'La Guinée équatoriale n’avait pas de site d’achat-vente pensé pour son marché : des prix en francs CFA, des acheteurs qui naviguent presque toujours sur leur téléphone et très peu de paiements par carte. BKLN Marketplace est notre propre produit pour combler ce manque : des annonces de toutes sortes, des voitures et des appartements aux téléphones, aux meubles ou aux services, à Malabo, à Bata et dans le reste du pays.\n\nTout le monde peut consulter les annonces sans créer de compte. Avec un compte, on publie une annonce en quatre étapes depuis son téléphone, on enregistre ses favoris et on discute avec le vendeur dans une messagerie avec photos en temps réel, sans donner son numéro. Si le vendeur le souhaite, un bouton WhatsApp apparaît aussi, mais seulement pour les utilisateurs connectés : le numéro n’est jamais public et n’apparaît jamais sur Google.\n\nIl y a deux formules. La formule Normale est gratuite. La formule Premium, de 1 à 12 mois, donne plus d’annonces en même temps, plus de photos, une place parmi les annonces à la une et une boutique avec sa propre adresse. Comme presque personne ne paie par carte, Premium se règle à notre bureau de Malabo ou, depuis une autre ville, par une agence de transfert d’argent, et nous l’activons depuis le panneau d’administration. La plateforme est prête pour ajouter le paiement mobile plus tard.\n\nPour que le site reste digne de confiance, tout utilisateur peut signaler une annonce ou une conversation : au troisième signalement, l’annonce est masquée automatiquement jusqu’à ce qu’un modérateur l’examine. Les annonces contenant des termes interdits ne sont pas publiées, et le panneau réunit les paiements, les signalements et les utilisateurs, avec un journal de chaque action.\n\nTout est pensé pour un Android d’entrée de gamme en 3G : les photos sont compressées sur le téléphone avant l’envoi, chaque écran arrive du serveur en un seul aller-retour et le site peut s’installer sur l’écran d’accueil comme une application, avec des alertes pour les nouveaux messages. Plus de 500 vérifications automatiques parcourent ses vrais parcours, de l’inscription à la modération depuis le panneau.',
+    sector: 'Petites annonces',
+    status: 'En développement',
+    challenges: [
+      'Des utilisateurs sur des téléphones d’entrée de gamme, avec une 3G lente et chère : chaque photo et chaque aller-retour vers le serveur comptent',
+      'Mettre en relation acheteurs et vendeurs sans exposer leur numéro de téléphone',
+      'Faire payer une formule dans un marché où presque personne n’utilise de carte',
+      'Garder le site propre, sans arnaques, annonces interdites ni spam, sans une grande équipe de modération',
+    ],
+    solutions: [
+      'Photos converties en WebP et réduites sur le téléphone lui-même, sans données de localisation ; pages générées sur le serveur avec leurs données demandées en parallèle',
+      'Une messagerie interne en temps réel avec photos et notifications push ; le bouton WhatsApp n’est visible qu’aux utilisateurs connectés et seulement si le vendeur l’active',
+      'Paiement au bureau ou par agence de transfert et activation depuis le panneau, avec les limites de chaque formule dans une configuration modifiable et non dans le code',
+      'Signalements avec masquage automatique au troisième, termes interdits détectés en mots entiers, blocages et permissions vérifiées dans la base de données elle-même (Row Level Security)',
+    ],
+  },
   zentry: {
     description: 'Une application multiplateforme de gestion d’événements et de contrôle d’accès par QR code — billets VIP, Standard et Staff, scanner en temps réel avec son et vibration, disponible sur Android, iOS, Web et ordinateur.',
     longDescription:

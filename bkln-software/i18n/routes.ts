@@ -69,6 +69,10 @@ const slugs: Partial<Record<Section, SlugMap>> = {
       en: 'supabase-in-production-what-nobody-tells-you',
       fr: 'supabase-en-production-ce-que-personne-ne-dit',
     },
+    'como-construimos-marketplace-guinea-ecuatorial': {
+      en: 'how-we-built-a-marketplace-for-equatorial-guinea',
+      fr: 'comment-nous-avons-construit-une-marketplace-guinee-equatoriale',
+    },
   },
 }
 

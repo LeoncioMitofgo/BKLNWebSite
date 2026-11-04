@@ -10,6 +10,7 @@ import { post as school } from './posts/school'
 import { post as webOrSocial } from './posts/web-or-social'
 import { post as pythonAutomation } from './posts/python-automation'
 import { post as supabase } from './posts/supabase'
+import { post as marketplace } from './posts/marketplace'
 
 // Indexado por slug interno (el español): las direcciones traducidas están en i18n/routes.ts.
 export const contentEn: ContentTranslation = {
@@ -25,5 +26,6 @@ export const contentEn: ContentTranslation = {
     'web-o-redes-sociales-negocio': webOrSocial,
     'python-automatizacion-casos-reales': pythonAutomation,
     'supabase-en-produccion-lo-que-nadie-cuenta': supabase,
+    'como-construimos-marketplace-guinea-ecuatorial': marketplace,
   },
 }

@@ -31,7 +31,7 @@ export default async function HomePage({ params }: LangParams) {
   const h = t.home
   const { services, projects, products, posts } = getContent(lang)
   const featuredServices = services.filter((s) => s.featured)
-  const featuredProjects = pick(projects, ['sistema-pos-android-comercios', 'gestescolar', 'brookai'])
+  const featuredProjects = pick(projects, ['bkln-marketplace', 'sistema-pos-android-comercios', 'gestescolar'])
   const featuredProducts = pick(products, ['gestescolar', 'brookai', 'zentry'])
   const latestPosts = posts.slice(0, 3)
   const href = (path: string) => localizePath(lang, path)

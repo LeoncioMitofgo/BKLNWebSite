@@ -1,6 +1,25 @@
 import type { ProjectText } from '../../content'
 
 export const projects: Record<string, ProjectText> = {
+  'bkln-marketplace': {
+    description: 'A classified ads website for the whole of Equatorial Guinea: buying and selling between individuals and businesses, real-time chat, Premium shops and a moderation panel. Built for mobile phones and slow connections.',
+    longDescription:
+      'Equatorial Guinea had no buy-and-sell website built for its market: prices in CFA francs, buyers who almost always browse on their phones and very few card payments. BKLN Marketplace is our own product to fill that gap: ads of every kind, from cars and flats to phones, furniture or services, in Malabo, Bata and the rest of the country.\n\nAnyone can browse the ads without an account. With an account, people post an ad in four steps from their phone, save favourites and talk to the seller in a real-time chat with photos, without giving out their phone number. If the seller wants, a WhatsApp button appears too, but only for signed-in users: the phone number is never public and never shows up on Google.\n\nThere are two plans. Normal is free. Premium, from 1 to 12 months, gives more ads at once, more photos, a place among the featured ads and a shop with its own address. As hardly anyone pays by card, Premium is paid at our office in Malabo or, from elsewhere, through a money transfer agency, and we activate it from the admin panel. The platform is ready to add mobile payments later.\n\nTo keep the site trustworthy, any user can report an ad or a conversation: after three reports, the ad is hidden automatically until a moderator reviews it. Ads with banned terms are not published, and the panel brings together payments, reports and users, with a log of every action.\n\nEverything is designed for a basic Android phone on 3G: photos are compressed on the phone itself before uploading, each screen comes from the server in a single round trip, and the website can be installed on the home screen like an app, with alerts for new messages. More than 500 automated checks run through its real flows, from signing up to moderating from the panel.',
+    sector: 'Classified ads',
+    status: 'In development',
+    challenges: [
+      'Users on low-end phones with slow, expensive 3G connections: every photo and every trip to the server counts',
+      'Putting buyers and sellers in touch without exposing their phone numbers',
+      'Charging for a paid plan in a market where hardly anyone uses a card',
+      'Keeping the site free of scams, banned ads and spam without a large moderation team',
+    ],
+    solutions: [
+      'Photos converted to WebP and resized on the phone itself, with location data removed; pages built on the server with their data fetched in parallel',
+      'An in-app real-time chat with photos and push notifications; the WhatsApp button is only visible to signed-in users and only if the seller turns it on',
+      'Payment at the office or through a money transfer agency and activation from the panel, with each plan’s limits in an editable configuration rather than in the code',
+      'Reports with automatic hiding after the third one, banned terms matched as whole words, blocking, and permissions enforced in the database itself (Row Level Security)',
+    ],
+  },
   zentry: {
     description: 'A cross-platform app for event management and QR access control — VIP, Standard and Staff tickets, a real-time scanner with sound and vibration, available on Android, iOS, Web and desktop.',
     longDescription:

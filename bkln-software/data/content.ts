@@ -56,7 +56,7 @@ export const services: Service[] = [
         answer: 'Sí. Una vez completado el pago, el código y los contenidos son tuyos.',
       },
     ],
-    relatedProjects: ['plataforma-delivery-multivertical'],
+    relatedProjects: ['bkln-marketplace', 'plataforma-delivery-multivertical'],
     relatedProducts: [],
     technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Node.js', 'Vercel'],
     featured: true,
@@ -983,6 +983,34 @@ export const publishedCourses = courses.filter((c) => c.status === 'available' &
 
 export const projects: Project[] = [
   {
+    id: '14',
+    slug: 'bkln-marketplace',
+    title: 'BKLN Marketplace',
+    description: 'Web de anuncios clasificados para toda Guinea Ecuatorial: compra y venta entre particulares y negocios, chat en tiempo real, tiendas Premium y panel de moderación. Pensada para el móvil y para conexiones lentas.',
+    longDescription:
+      'En Guinea Ecuatorial no había una web de compraventa pensada para su mercado: precios en francos CFA, compradores que entran casi siempre desde el móvil y muy pocos pagos con tarjeta. BKLN Marketplace es nuestro propio producto para cubrir ese hueco: anuncios de todo tipo, de coches y pisos a móviles, muebles o servicios, en Malabo, Bata y el resto del país.\n\nCualquiera puede ver los anuncios sin crear una cuenta. Con una cuenta se publica en cuatro pasos desde el móvil, se guardan favoritos y se habla con el vendedor en un chat con fotos que funciona en tiempo real, sin dar el número de teléfono. Si el vendedor quiere, aparece también un botón de WhatsApp, pero solo para usuarios con sesión: el teléfono nunca es público ni sale en Google.\n\nHay dos planes. El Normal es gratis. El Premium, de 1 a 12 meses, da más anuncios a la vez, más fotos, un sitio en «Destacados» y una tienda con dirección propia. Como casi nadie paga con tarjeta, Premium se paga en nuestra oficina de Malabo o, desde fuera, por una agencia de envío de dinero, y lo activamos desde el panel de administración. La plataforma está preparada para añadir el pago por móvil más adelante.\n\nPara que el sitio sea de confianza, cualquier usuario puede denunciar un anuncio o una conversación: con tres denuncias, el anuncio se oculta solo hasta que lo revisa un moderador. Los anuncios con términos prohibidos no se publican, y el panel recoge los pagos, las denuncias y los usuarios, con un registro de cada acción.\n\nTodo está pensado para un Android sencillo con 3G: las fotos se comprimen en el propio móvil antes de subirlas, cada pantalla llega del servidor en un solo viaje y la web se puede instalar en la pantalla de inicio como una app, con avisos de los mensajes nuevos. Más de 500 comprobaciones automáticas recorren sus flujos reales, de registrarse a moderar desde el panel.',
+    category: 'web',
+    sector: 'Compraventa y anuncios',
+    status: 'En desarrollo',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Supabase', 'PostgreSQL', 'Realtime', 'Web Push', 'Vercel', 'Playwright'],
+    image: '/marketplace-cover.jpg',
+    gallery: ['/marketplace-cover.jpg', '/marketplace-buscar.jpg', '/marketplace-chat.jpg', '/marketplace-premium.jpg'],
+    year: 2026,
+    liveUrl: 'https://www.bklnmarketplace.com',
+    challenges: [
+      'Usuarios con móviles de gama baja y conexiones 3G lentas y caras: cada foto y cada viaje al servidor cuentan',
+      'Poner en contacto a compradores y vendedores sin exponer su número de teléfono',
+      'Cobrar un plan de pago en un mercado donde casi nadie usa tarjeta',
+      'Mantener el sitio limpio de estafas, anuncios prohibidos y spam sin un equipo de moderación grande',
+    ],
+    solutions: [
+      'Fotos convertidas a WebP y reducidas en el propio móvil, sin datos de ubicación; páginas que se generan en el servidor con los datos pedidos en paralelo',
+      'Chat interno en tiempo real con fotos y avisos push; el botón de WhatsApp solo se ve con sesión iniciada y si el vendedor lo activa',
+      'Pago en oficina o por agencia de envío y activación desde el panel, con los límites de cada plan en una configuración editable y no en el código',
+      'Denuncias con ocultado automático a la tercera, términos prohibidos por palabras completas, bloqueos y permisos comprobados en la propia base de datos (Row Level Security)',
+    ],
+  },
+  {
     id: '8',
     slug: 'zentry',
     title: 'Zentry',
@@ -1122,6 +1150,84 @@ export const projects: Project[] = [
 ]
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: '9',
+    slug: 'como-construimos-marketplace-guinea-ecuatorial',
+    title: 'Cómo construimos un marketplace para Guinea Ecuatorial',
+    excerpt: 'Móviles sencillos, 3G y casi nadie con tarjeta. Las siete decisiones con las que construimos BKLN Marketplace, nuestra web de anuncios para todo el país.',
+    content: `## El punto de partida
+
+[BKLN Marketplace](/portfolio/bkln-marketplace) es nuestro propio producto: una web de anuncios clasificados para toda Guinea Ecuatorial, donde cualquiera puede vender un coche, alquilar un piso o encontrar un móvil de segunda mano, y donde los negocios pueden tener su propia tienda.
+
+Antes de escribir una línea de código pusimos por escrito qué iba a ser y qué no. Tres datos del mercado marcaron todo lo demás:
+
+- **Casi todo el mundo entra desde el móvil**, y muchas veces es un Android sencillo.
+- **La conexión es lenta y los datos son caros.** Cada megabyte que descarga la web lo paga el usuario.
+- **Muy poca gente paga con tarjeta.** El efectivo, las transferencias y las agencias de envío mandan.
+
+De ahí salen estas siete decisiones.
+
+## 1. Una web, no una app
+
+Si alguien te manda un anuncio por WhatsApp, tienes que poder abrirlo al momento, sin instalar nada. Por eso BKLN Marketplace es una web: se comparte con un enlace, se abre en cualquier móvil y Google puede encontrar los anuncios.
+
+Quien la use todos los días puede **instalarla en la pantalla de inicio**: tiene su icono, se abre sin la barra del navegador y avisa de los mensajes nuevos, como una app. Sin pasar por la tienda de aplicaciones ni ocupar espacio en el teléfono.
+
+## 2. Diseñada para una pantalla de 360 píxeles
+
+Cada pantalla se diseñó primero para el ancho de un móvil pequeño, 360 píxeles, y después para el ordenador. Los botones tienen al menos 44 píxeles para que se puedan pulsar con el pulgar, la acción principal queda siempre abajo y nada se sale de la pantalla. El primer anuncio real se publicó desde un Android, no desde un ordenador.
+
+## 3. Las fotos se comprimen en el propio móvil
+
+Una foto hecha con el móvil pesa entre 3 y 5 MB. Subir cinco con 3G es lento y gasta los datos del vendedor. Por eso la web convierte cada foto a WebP y la reduce **en el propio teléfono, antes de subirla**, y le quita los datos de ubicación que guarda la cámara.
+
+En el primer anuncio real, tres fotos ocuparon entre 14 y 127 KB cada una. Además, como el servidor no tiene que procesar imágenes, la plataforma cuesta menos de mantener.
+
+## 4. Una sola ida y vuelta por pantalla
+
+Los servidores están en Europa. Cada viaje desde Malabo cuesta unos 150 milisegundos, así que lo importante no es solo la velocidad del servidor, sino **cuántas veces hay que ir y volver**.
+
+Cada pantalla se prepara en el servidor con todos sus datos pedidos a la vez y llega al móvil de una sola vez. Las páginas públicas, como los anuncios o las categorías, se guardan en caché y se sirven al momento. El móvil recibe la página lista para leer, sin esperar a que se carguen piezas una detrás de otra.
+
+## 5. El teléfono del vendedor no es público
+
+En muchos sitios de anuncios el vendedor tiene que poner su número, y desde ese momento lo recibe cualquiera. En BKLN Marketplace se habla por un **chat interno**, en tiempo real y con fotos, y el vendedor recibe un aviso en el móvil cuando le escriben.
+
+Si el vendedor quiere, puede añadir un botón de WhatsApp o de llamada, pero **solo lo ven los usuarios con sesión iniciada**. El número nunca aparece en la página pública ni en Google. Y el chat recuerda a los compradores lo básico: no pagar por adelantado y quedar en un lugar público.
+
+## 6. Un plan de pago sin pasarela de pago
+
+El plan Premium da más anuncios, más fotos, un sitio en «Destacados» y una tienda con dirección propia. Para cobrarlo no pusimos una pasarela de tarjeta, porque la mayoría de los vendedores no la usaría. Se paga **en nuestra oficina de Malabo** o, desde otra ciudad, **por una agencia de envío de dinero**, mandando el código por WhatsApp. El equipo lo activa desde el panel de administración, con su fecha de fin.
+
+Los límites de cada plan (anuncios a la vez, fotos, días que dura un anuncio) están en una configuración que se cambia desde el panel, no repartidos por el código. Y la plataforma está preparada para añadir el pago por móvil cuando llegue el momento, sin rehacerla.
+
+## 7. Moderación que no depende de alguien mirando todo el día
+
+Un sitio de anuncios vive de la confianza. Cualquier usuario puede **denunciar** un anuncio o una conversación, y con tres denuncias el anuncio se oculta solo hasta que lo revisa un moderador. Las palabras prohibidas se detectan como palabras completas, para no bloquear anuncios normales por error, y cualquiera puede bloquear a otra persona.
+
+Los permisos no viven solo en la pantalla: la propia base de datos comprueba que cada usuario solo puede ver y cambiar lo suyo. Aunque alguien manipule una petición, no puede leer los mensajes de otro ni darse Premium a sí mismo.
+
+## Cómo lo probamos
+
+Más de 500 comprobaciones automáticas recorren los flujos de verdad, en la base de datos y en un navegador del tamaño de un móvil: registrarse, publicar con fotos, buscar con filtros, chatear entre dos navegadores a la vez, denunciar, pedir Premium y moderar desde el panel. Y antes de abrirla al público la probaremos en móviles Android de gama baja con la red lenta, que es como la va a usar la gente.
+
+Por debajo usamos Next.js y React para la web, Supabase (PostgreSQL, tiempo real y almacenamiento de fotos) para los datos, y Vercel para servirla.
+
+## Lo que sirve para cualquier plataforma
+
+Estas decisiones no son solo para un marketplace. Un portal de empleo, un sistema de reservas o una plataforma de reparto en Guinea Ecuatorial se enfrentan a lo mismo: móviles sencillos, datos caros y pagos sin tarjeta. Si estás pensando en una plataforma así, lee también [¿Cuánto cuesta una web o una app en Guinea Ecuatorial?](/blog/cuanto-cuesta-web-app-guinea-ecuatorial) y cuéntanos tu idea.`,
+    category: 'taller',
+    relatedService: 'desarrollo-web',
+    coverImage: '/marketplace-cover.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-11-04',
+    readTime: 7,
+    tags: ['Marketplace', 'Guinea Ecuatorial', 'Móvil', 'Next.js', 'Supabase'],
+  },
   {
     id: '7',
     slug: 'sistema-caja-stock-farmacias-supermercados-restaurantes',
