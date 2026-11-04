@@ -20,22 +20,23 @@ export const projects: Record<string, ProjectText> = {
       'Signalements avec masquage automatique au troisième, termes interdits détectés en mots entiers, blocages et permissions vérifiées dans la base de données elle-même (Row Level Security)',
     ],
   },
-  zentry: {
-    description: 'Une application multiplateforme de gestion d’événements et de contrôle d’accès par QR code — billets VIP, Standard et Staff, scanner en temps réel avec son et vibration, disponible sur Android, iOS, Web et ordinateur.',
+  pasa: {
+    title: 'Billets pour Crazy December',
+    description: 'Vente et contrôle de billets avec QR code pour Crazy December, la fête de fin d’année de +240 Dream Team Party à Accra (Ghana) : l’équipe enregistre chaque paiement, envoie le billet par WhatsApp et le scanne à l’entrée.',
     longDescription:
-      'Organiser un événement à Malabo, c’était des listes sur papier, des billets photocopiés et un contrôle d’accès manuel. Avec Zentry, l’organisateur crée l’événement en quelques minutes, ajoute les invités depuis son téléphone et partage le QR code de chacun directement sur WhatsApp — d’un simple geste.\n\nÀ l’entrée, le staff scanne les codes avec la caméra de l’appareil. Le système répond en moins d’une seconde : billet valide, déjà scanné, capacité atteinte ou code invalide — chaque cas avec un son et une vibration distincts, pour que le staff n’ait pas à regarder l’écran dans un environnement bruyant. Les entrées en double sont impossibles.\n\nLe tableau de bord affiche en temps réel le nombre de personnes entrées, celles encore attendues et le taux de remplissage. Tout est synchronisé instantanément entre tous les appareils de l’équipe.\n\nZentry fonctionne sur Android, iOS, Web, Windows, macOS et Linux à partir d’une seule application — l’organisateur gère depuis son ordinateur portable et le staff contrôle depuis son téléphone, sans installer d’applications différentes.',
-    sector: 'Événementiel',
+      '+240 Dream Team Party est un groupe d’étudiants équato-guinéens à Accra (Ghana) qui organise Crazy December : deux soirées d’affilée, les 25 et 26 décembre 2026. Les billets se vendent en direct, par MoMo (le paiement mobile du Ghana) ou en espèces, et il fallait suivre la caisse de chaque vendeur, envoyer les billets et contrôler l’entrée les deux soirs sans listes papier.\n\nNous leur avons créé une application web mobile aux couleurs de l’événement, devenue depuis notre produit Pasa. Chaque vendeur enregistre le billet (nom, WhatsApp, type VIP, Local ou Guest, montant et mode de paiement) et l’application génère un QR code unique et prépare le message WhatsApp avec le lien vers le billet. L’acheteur le reçoit dans sa conversation, avec sa carte et son code.\n\nChaque billet est valable pour les deux soirées, une fois à chacune. À l’entrée, les portiers scannent avec leur téléphone : l’écran devient vert ou rouge et affiche le type de billet en grand, pour orienter chacun vers sa zone. L’administrateur choisit la soirée active, car la nuit dépasse minuit et la date seule ne suffit pas.\n\nL’équipe se connecte avec un code PIN à six chiffres et chacun ne voit que ce qui le concerne. Le résumé affiche en direct les recettes, la caisse de chaque vendeur, avec les espèces et le MoMo séparés, et la fréquentation de chaque soirée.\n\nL’application sert déjà à vendre les billets avant les soirées. Les captures viennent d’une copie de démonstration avec des données inventées : les noms et numéros des vrais invités ne sortent jamais de l’application.',
+    sector: 'Événements',
     challenges: [
-      'Empêcher deux membres du staff de valider le même QR code au même moment — une situation de concurrence à l’entrée',
-      'Un retour instantané dans les environnements bruyants : le scanner doit communiquer sans dépendre uniquement du son',
-      'Partager des QR codes individuels sur WhatsApp en haute résolution depuis un téléphone',
-      'Une seule application qui fonctionne sur Android, iOS, Web et ordinateur sans dupliquer le code',
+      'Des ventes en direct, par MoMo ou en espèces, réparties entre plusieurs vendeurs : il fallait savoir à tout moment combien chacun avait encaissé',
+      'Deux soirées avec le même billet : chaque QR code devait valoir une fois par soirée, et jamais deux fois la même soirée',
+      'Des portiers pressés, la nuit et avec la musique forte : le résultat du scan devait se comprendre sans lire',
+      'Envoyer chaque billet par WhatsApp sans l’API payante de WhatsApp et sans enregistrer le numéro de l’acheteur dans les contacts',
     ],
     solutions: [
-      'Une requête Supabase avec mise à jour atomique du statut — si deux appareils scannent le même QR code en même temps, un seul passe',
-      'Une combinaison son + vibration avec des motifs distincts selon le résultat, avec repli sur la vibration seule',
-      'Export du QR code en image haute résolution (ratio de pixels 3x) avant le partage',
-      'Flutter, avec une logique séparée par plateforme uniquement là où c’est strictement nécessaire',
+      'Chaque billet enregistre qui l’a vendu, le montant encaissé et le mode de paiement ; le résumé additionne la caisse de chaque vendeur en direct',
+      'Une entrée par billet et par soirée, garantie dans la base de données : même si deux portiers scannent le même QR code en même temps, un seul passe',
+      'Un résultat plein écran en vert ou en rouge, avec vibration et son, et le type de billet en grand dans sa couleur',
+      'Un lien WhatsApp qui ouvre la conversation de l’acheteur avec le message et le lien vers son billet déjà rédigés',
     ],
   },
   brookai: {

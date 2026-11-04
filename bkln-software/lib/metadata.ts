@@ -16,7 +16,7 @@ interface PageMetadataInput {
   lang: Locale
   title: string
   description: string
-  /** Ruta interna (p. ej. '/productos/zentry'); se traduce según el idioma. */
+  /** Ruta interna (p. ej. '/productos/pasa'); se traduce según el idioma. */
   path: string
   image?: string
 }

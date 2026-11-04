@@ -20,22 +20,23 @@ export const projects: Record<string, ProjectText> = {
       'Reports with automatic hiding after the third one, banned terms matched as whole words, blocking, and permissions enforced in the database itself (Row Level Security)',
     ],
   },
-  zentry: {
-    description: 'A cross-platform app for event management and QR access control — VIP, Standard and Staff tickets, a real-time scanner with sound and vibration, available on Android, iOS, Web and desktop.',
+  pasa: {
+    title: 'Tickets for Crazy December',
+    description: 'QR ticket sales and door control for Crazy December, the end-of-year party of +240 Dream Team Party in Accra (Ghana): the team records each payment, sends the ticket on WhatsApp and scans it at the door.',
     longDescription:
-      'Organising an event in Malabo used to mean paper lists, photocopied tickets and manual access control. With Zentry, the organiser creates the event in minutes, adds guests from their phone and shares each guest’s QR code directly on WhatsApp — with a single tap.\n\nAt the door, staff scan the codes with the device’s camera. The system responds in under a second: valid ticket, already scanned, venue full or invalid code — each case with its own sound and vibration, so staff don’t need to look at the screen in a noisy environment. Duplicate entries are impossible.\n\nThe dashboard shows in real time how many people have entered, how many are still to come and how close the event is to capacity. Everything is synced instantly across all the team’s devices.\n\nZentry runs on Android, iOS, Web, Windows, macOS and Linux from a single app — which means the organiser manages from a laptop and the staff check tickets from their phones, without installing different apps.',
+      '+240 Dream Team Party is a group of Equatoguinean students in Accra (Ghana) who organise Crazy December: two back-to-back parties on 25 and 26 December 2026. Tickets are sold by hand, through MoMo (Ghana’s mobile money) or cash, and they needed to keep track of each seller, send the tickets and control the door on both nights without paper lists.\n\nWe built them a mobile web app with the event’s look, which has since become our product Pasa. Each seller records the ticket (name, WhatsApp number, VIP, Local or Guest type, amount and payment method) and the app generates a unique QR code and prepares the WhatsApp message with the link to the ticket. The buyer gets it in their chat, with their ticket card and code.\n\nEach ticket is valid for both parties, once at each. At the door, the doormen scan with their phones: the screen turns green or red and shows the ticket type in large letters, so everyone is sent to the right area. The admin decides which party is active, because the night goes past midnight and the date alone can’t tell.\n\nThe team logs in with a six-digit PIN and each person only sees what concerns them. The summary shows live what has been taken, each seller’s takings, with cash and MoMo shown separately, and attendance for each night.\n\nThe app is already being used to sell tickets ahead of the parties. The screenshots come from a demo copy with made-up data: the names and phone numbers of real guests never leave the app.',
     sector: 'Events',
     challenges: [
-      'Preventing two staff members from validating the same QR code at the same time — a race condition at the entrance',
-      'Instant feedback in noisy environments: the scanner has to communicate without relying on sound alone',
-      'Sharing individual QR codes on WhatsApp in high resolution from a phone',
-      'A single app that works on Android, iOS, Web and desktop without duplicating code',
+      'Hand sales, by MoMo or cash, spread across several sellers: they needed to know at all times how much each one had taken',
+      'Two parties on the same ticket: each QR code had to work once on each night, and never twice on the same night',
+      'Doormen in a hurry, at night and with loud music: the scan result had to be understood without reading',
+      'Sending each ticket on WhatsApp without the paid WhatsApp API and without saving the buyer’s number to the contacts',
     ],
     solutions: [
-      'A Supabase query with an atomic status update — if two devices scan the same QR code at once, only one gets through',
-      'A combination of sound + vibration with distinct patterns for each result, falling back to vibration only',
-      'Exporting the QR code as a high-resolution image (3x pixel ratio) before sharing',
-      'Flutter, with platform-specific logic separated only where strictly necessary',
+      'Each ticket stores who sold it, the amount paid and the payment method; the summary adds up each seller’s takings live',
+      'One entry per ticket and per night, guaranteed in the database: even if two doormen scan the same QR code at once, only one gets through',
+      'A full-screen green or red result, with vibration and sound, and the ticket type in large letters in its colour',
+      'A WhatsApp link that opens the buyer’s chat with the message and the link to their ticket already written',
     ],
   },
   brookai: {

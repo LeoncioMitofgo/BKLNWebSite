@@ -19,7 +19,7 @@ export type Section = keyof typeof sections
 type SlugMap = Record<string, Partial<Record<Locale, string>>>
 
 // slug interno -> slug visible por idioma. Si un idioma no aparece, se usa el interno
-// (p. ej. nombres de producto como gestescolar o zentry).
+// (p. ej. nombres de producto como gestescolar o pasa).
 const slugs: Partial<Record<Section, SlugMap>> = {
   servicios: {
     'desarrollo-web': { en: 'web-development', fr: 'developpement-web' },
