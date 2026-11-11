@@ -81,7 +81,7 @@ export interface Project {
   title: string
   description: string
   longDescription: string
-  category: 'android' | 'web' | 'desktop' | 'python' | 'ia'
+  category: 'android' | 'web' | 'desktop' | 'python' | 'ia' | 'erp'
   /** Sector del cliente, en lenguaje de comprador (se muestra en la tarjeta) */
   sector: string
   /** Solo si no está terminado, p. ej. 'En desarrollo' */

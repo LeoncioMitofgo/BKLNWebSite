@@ -181,6 +181,84 @@ export const services: Service[] = [
     featured: true,
   },
   {
+    id: '9',
+    slug: 'erp-odoo-sap',
+    title: 'ERP: Odoo y SAP',
+    description: 'Compras, almacenes, ventas, facturación y contabilidad en un solo sistema. Implantamos Odoo con la contabilidad de Guinea Ecuatorial y desarrollamos e integramos SAP.',
+    longDescription:
+      'Un ERP es el sistema donde vive toda la empresa: lo que compras, lo que tienes en cada almacén, lo que vendes, lo que te deben y lo que debes. Cuando entra mercancía, el stock sube y el contable ve la factura del proveedor; cuando sale una venta, el stock baja y la factura sale sola. Nadie copia datos de un Excel a otro.\n\nImplantamos Odoo de principio a fin: analizamos cómo trabajas, configuramos lo que Odoo ya trae (contabilidad SYSCOHADA de Guinea Ecuatorial, francos CFA, euros y dólares, varios almacenes), pasamos tus datos desde Excel, formamos a cada equipo y te acompañamos después del arranque. Lo usamos también en nuestra propia empresa, así que te lo enseñamos funcionando antes de empezar.\n\nSi tu empresa ya trabaja con SAP, desarrollamos en ABAP, conectamos SAP con tus otras aplicaciones y preparamos los informes y pantallas que te faltan. Y si todavía estás eligiendo, te decimos con franqueza qué te conviene: Odoo, SAP o algo más sencillo.',
+    icon: 'Boxes',
+    forWho: [
+      'Cada área lleva su propio Excel y a fin de mes los números no cuadran.',
+      'Importas mercancía y no sabes cuánto te cuesta de verdad cada producto con el flete y la aduana.',
+      'Compras en euros o dólares, vendes en francos CFA y el cambio lo calcula cada uno a su manera.',
+      'Tienes almacenes en Malabo y en Bata y nadie sabe qué hay en cada uno sin llamar.',
+      'Facturas horas o servicios por proyecto y se te escapan horas sin cobrar.',
+      'Tu contable vuelve a teclear todo en otro programa para cerrar el mes.',
+      'Ya usas SAP y necesitas un desarrollo, un informe o conectarlo con otra aplicación.',
+    ],
+    examples: [
+      { title: 'Compras e importación', description: 'Pedidos a proveedores en euros o dólares, recepción en almacén y el flete, la aduana y el transporte repartidos en el coste de cada producto.' },
+      { title: 'Almacenes y trazabilidad', description: 'Existencias por almacén, traspasos entre Malabo y Bata, números de serie y lotes, y avisos cuando algo baja del mínimo.' },
+      { title: 'Ventas y facturación', description: 'Presupuestos, pedidos, entregas y facturas con tu logotipo, en francos CFA o en divisa, con los cobros y lo pendiente a la vista.' },
+      { title: 'Contabilidad de Guinea Ecuatorial', description: 'Plan contable SYSCOHADA, IVA y monedas configurados desde el primer día, para que la contabilidad salga del propio trabajo diario.' },
+      { title: 'Proyectos y horas facturables', description: 'Cada pedido de servicios crea su proyecto; el equipo apunta sus horas y se factura lo realizado, no lo estimado.' },
+      { title: 'Mantenimiento, gastos y personal', description: 'Revisiones programadas de vehículos, generadores y equipos, gastos de desplazamiento con aprobación y fichas de empleados.' },
+      { title: 'Varias empresas en un solo sistema', description: 'Grupos con más de una sociedad: cada una con su contabilidad y sus permisos, y la dirección con la visión de conjunto.' },
+      { title: 'Desarrollo e integración SAP', description: 'Programas e informes en ABAP, ampliaciones, conexiones con otras aplicaciones mediante servicios OData, BAPI/RFC o IDoc, y pantallas Fiori.' },
+    ],
+    deliverables: [
+      'Análisis de tus procesos y propuesta cerrada antes de configurar nada',
+      'Sistema configurado a nombre de tu empresa, con tus datos migrados',
+      'Permisos por puesto y plantillas de documentos con tu imagen',
+      'Manuales en español y formación por perfiles: compras, almacén, ventas, contabilidad y dirección',
+      'Acompañamiento tras el arranque',
+    ],
+    pricingFactors: [
+      'Número de empresas, áreas y usuarios',
+      'Aplicaciones de Odoo que necesitas y edición (Community o Enterprise)',
+      'Alojamiento: en la nube de Odoo o en un servidor propio',
+      'Datos que hay que migrar y en qué estado están',
+      'Desarrollos a medida e integraciones con otros sistemas',
+      'En SAP: alcance del desarrollo o de la integración y acceso a tus entornos',
+    ],
+    timeline: 'De 6 a 12 semanas para una empresa con 4–6 áreas; los desarrollos SAP, según alcance',
+    faqs: [
+      {
+        question: '¿Odoo o SAP?',
+        answer: 'Para la mayoría de pymes y grupos medianos, Odoo: se implanta en semanas, cuesta bastante menos y cubre compras, almacén, ventas, contabilidad y proyectos. SAP tiene sentido en empresas grandes o cuando lo exige la casa matriz. Si ya tienes SAP, trabajamos sobre él; si estás eligiendo, te lo decimos con franqueza después de ver tus procesos.',
+      },
+      {
+        question: '¿Sirve para la contabilidad de Guinea Ecuatorial?',
+        answer: 'Sí. Odoo trae la localización oficial de Guinea Ecuatorial, con el plan contable SYSCOHADA, y maneja francos CFA, euros y dólares. Antes de presentar declaraciones lo validamos con tu contable o tu auditor.',
+      },
+      {
+        question: '¿Tengo que pagar licencias?',
+        answer: 'Depende de la edición. Odoo Community es gratuito y se instala en un servidor propio; Enterprise se paga por usuario y mes directamente a Odoo e incluye más aplicaciones y las actualizaciones. Te recomendamos la que encaja con lo que necesitas y calculamos cuántos usuarios hacen falta antes de comprar nada.',
+      },
+      {
+        question: '¿Qué pasa si se va internet?',
+        answer: 'En la nube de Odoo hace falta conexión. Si tu conexión no es fiable, se puede instalar en un servidor dentro de tu oficina, con copias de seguridad fuera. Lo decidimos juntos después de ver tu conexión, la luz y los SAI o generadores que tienes.',
+      },
+      {
+        question: '¿Incluye las nóminas?',
+        answer: 'Odoo no trae todavía las nóminas de Guinea Ecuatorial ya preparadas. Se pueden configurar a medida, pero recomendamos dejarlas para una segunda fase y arrancar primero con compras, almacén, ventas y contabilidad.',
+      },
+      {
+        question: 'Somos un grupo con varias empresas, ¿se hace todo a la vez?',
+        answer: 'No lo recomendamos. Empezamos por una empresa y pocas áreas, arrancamos, y después vamos sumando el resto. Querer meterlo todo a la vez es la causa número uno de los proyectos ERP que fracasan.',
+      },
+      {
+        question: 'Ya usamos SAP. ¿Qué podéis hacer?',
+        answer: 'Desarrollos en ABAP (programas, informes, formularios y ampliaciones), integraciones con otras aplicaciones mediante OData, BAPI/RFC o IDoc, y pantallas Fiori. Trabajamos en tu entorno de desarrollo y pasamos los cambios a producción siguiendo tu procedimiento.',
+      },
+    ],
+    relatedProjects: ['bkln-en-odoo'],
+    relatedProducts: [],
+    technologies: ['Odoo', 'SAP', 'ABAP', 'SAP Fiori', 'OData', 'Python', 'PostgreSQL', 'XML-RPC / JSON-RPC'],
+    featured: true,
+  },
+  {
     id: '8',
     slug: 'oficina-digital-microsoft-365',
     title: 'Oficina digital con Microsoft 365',
@@ -1015,6 +1093,34 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: '15',
+    slug: 'bkln-en-odoo',
+    title: 'BKLN en Odoo',
+    description: 'Llevamos nuestra propia empresa en Odoo, con la contabilidad de Guinea Ecuatorial, y tenemos montada una empresa de demostración completa: compras importadas con su coste real, almacenes en Malabo y Bata, ventas, facturas, proyectos con horas y mantenimiento.',
+    longDescription:
+      'Antes de implantar Odoo en la empresa de un cliente, lo montamos en la nuestra. BKLN Software & Systems trabaja en Odoo con la localización oficial de Guinea Ecuatorial: plan contable SYSCOHADA, IVA, francos CFA como moneda principal, el euro con su paridad fija y el dólar con su tipo de cambio.\n\nJunto a nuestra gestión hemos preparado una empresa de demostración que importa, almacena y vende, para enseñar a cada cliente cómo quedaría su día a día antes de empezar. Una oportunidad entra en el CRM, se convierte en presupuesto y en pedido, el almacén entrega y la factura sale sola, con los cobros y lo pendiente siempre a la vista.\n\nLas compras se hacen en euros o en dólares y se reciben en el almacén de Malabo o en el de Bata, con número de serie para los equipos que lo necesitan. Cuando llegan las facturas del flete, la aduana y el transporte del puerto, se reparten sobre lo recibido y el coste de cada producto se actualiza: en la demostración, un portátil comprado por 410.000 FCFA cuesta en realidad 544.436 FCFA puesto en el almacén. Con ese coste se calculan los márgenes de verdad.\n\nLos servicios se facturan por lo realizado. Al confirmar un pedido de instalación, Odoo crea el proyecto; el equipo apunta sus horas en cada tarea y la factura recoge las horas hechas (42 de las 60 presupuestadas en el ejemplo), no las estimadas. El mismo sistema programa las revisiones de generadores, vehículos y servidores, y recoge los gastos de desplazamiento del personal con su aprobación.\n\nTodo se cargó y se comprobó por la API de Odoo con scripts, en lugar de a mano: es la misma forma en que migramos los datos de un cliente desde sus Excel. Las capturas son de nuestro Odoo con datos de demostración: los clientes, productos, importes y personas son inventados.',
+    category: 'erp',
+    sector: 'Gestión empresarial (ERP)',
+    technologies: ['Odoo 20', 'Python', 'PostgreSQL', 'XML-RPC', 'SYSCOHADA'],
+    image: '/odoo-cover.jpg',
+    gallery: ['/odoo-cover.jpg', '/odoo-crm.jpg', '/odoo-venta.jpg', '/odoo-compra.jpg', '/odoo-costes-destino.jpg', '/odoo-existencias.jpg', '/odoo-proyecto.jpg', '/odoo-mantenimiento.jpg'],
+    year: 2026,
+    challenges: [
+      'Contabilidad de Guinea Ecuatorial (SYSCOHADA, IVA, francos CFA) con proveedores que facturan en euros y en dólares',
+      'Conocer el coste real de lo importado cuando el flete, la aduana y el transporte llegan en facturas distintas y semanas después',
+      'Dos almacenes en ciudades distintas y equipos que hay que seguir uno a uno por número de serie',
+      'Facturar los servicios por las horas realmente trabajadas, sin hojas de Excel paralelas',
+      'Cargar datos maestros y documentos sin errores de tecleo y de forma repetible',
+    ],
+    solutions: [
+      'Localización oficial de Guinea Ecuatorial; euro con la paridad fija de 655,957 FCFA y dólar con tipo de cambio por fecha',
+      'Costes en destino repartidos por valor o por cantidad sobre cada recepción, con coste promedio por producto',
+      'Un almacén por ciudad con traspasos internos, recepciones y entregas, y números de serie desde la recepción',
+      'Servicios que crean su proyecto al confirmar el pedido; las horas de las tareas pasan solas a la factura',
+      'Datos y documentos cargados por XML-RPC con scripts idempotentes que comprueban cada paso',
+    ],
+  },
+  {
     id: '8',
     slug: 'pasa',
     title: 'Entradas para Crazy December',
@@ -1154,6 +1260,150 @@ export const projects: Project[] = [
 ]
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: '10',
+    slug: 'odoo-sap-o-excel-erp-guinea-ecuatorial',
+    title: 'Odoo, SAP o Excel: qué sistema de gestión necesita tu empresa en Guinea Ecuatorial',
+    excerpt: 'Cuándo el Excel deja de bastar, qué es de verdad un ERP, en qué se diferencian Odoo y SAP y qué hay que mirar en Guinea Ecuatorial: contabilidad SYSCOHADA, francos CFA, importaciones, conexión y luz.',
+    content: `## Señales de que el Excel ya no da más
+
+El Excel es una herramienta magnífica para empezar. El problema llega cuando la empresa crece y cada área tiene el suyo: compras en uno, almacén en otro, ventas en un tercero y la contabilidad en un programa aparte donde alguien vuelve a teclearlo todo. Algunas señales de que ha llegado el momento de cambiar:
+
+- **A fin de mes los números no cuadran** y se pierden días buscando la diferencia.
+- **Nadie sabe qué hay en el almacén** sin ir a contarlo o llamar a alguien.
+- **No sabes cuánto te cuesta de verdad lo que importas**, porque el flete y la aduana llegan en facturas distintas y semanas después.
+- **Compras en euros o dólares y vendes en francos CFA**, y cada persona calcula el cambio a su manera.
+- **Se escapan horas o servicios sin facturar** porque nadie cruza lo trabajado con lo cobrado.
+- **Todo depende de una persona** que sabe dónde está cada archivo.
+
+Si te reconoces en tres o más, lo que necesitas probablemente es un ERP.
+
+## Qué es un ERP, en una frase
+
+Un ERP es un sistema donde vive toda la operación de la empresa en una sola base de datos: lo que compras, lo que tienes, lo que vendes, lo que te deben y lo que debes. Cuando entra mercancía, el stock sube y el contable ve la factura del proveedor pendiente de pago. Cuando sale una venta, el stock baja y la factura se genera sola. Nadie copia datos de un sitio a otro.
+
+## Las tres opciones realistas
+
+**1. Excel y un programa de facturación.** Suficiente para un negocio pequeño, con pocos productos y una sola persona que lo controla todo. Barato, pero no escala y no conecta el almacén con la contabilidad.
+
+**2. Odoo.** Un ERP de código abierto, muy extendido entre pequeñas y medianas empresas de todo el mundo, que funciona por aplicaciones: Compras, Inventario, Ventas, Facturación y Contabilidad, Proyectos, Empleados, Mantenimiento… Instalas solo las que necesitas y todas comparten los datos. Tiene una edición gratuita (Community), que se instala en un servidor propio, y otra de pago por usuario (Enterprise), con más aplicaciones, la contabilidad completa y las actualizaciones incluidas.
+
+**3. SAP.** El estándar de las grandes empresas y de muchas multinacionales. Muy potente y muy configurable, pero su implantación es larga y cara, y necesita especialistas para mantenerlo. Tiene sentido cuando la empresa es grande o cuando lo exige la casa matriz. Si ya trabajas con SAP, lo normal no es cambiarlo, sino ampliarlo: desarrollos en ABAP, informes, pantallas Fiori o conectarlo con otras aplicaciones.
+
+Para la mayoría de las empresas de Guinea Ecuatorial que dan el salto desde el Excel, la opción razonable es Odoo.
+
+## Lo que hay que mirar en Guinea Ecuatorial
+
+- **Contabilidad SYSCOHADA.** Odoo trae la localización oficial de Guinea Ecuatorial, con el plan contable SYSCOHADA. Aun así, antes de presentar declaraciones hay que revisarlo con tu contable o tu auditor.
+- **Monedas.** El franco CFA como moneda principal, el euro con su paridad fija (1 euro = 655,957 FCFA) y el dólar con su tipo de cambio. Un buen ERP convierte cada factura sola.
+- **Importaciones.** En un país que importa casi todo, el sistema tiene que sumar el flete, la aduana y el transporte al coste de cada producto. Si no, calculas los márgenes sobre un precio que no es el real.
+- **Varios almacenes.** Malabo y Bata como mínimo, con traspasos entre ellos y existencias por almacén.
+- **Conexión y luz.** La versión en la nube necesita internet. Si tu conexión falla a menudo, se puede instalar en un servidor dentro de la oficina, con un SAI o generador y copias de seguridad fuera.
+- **Nóminas.** Odoo todavía no trae las nóminas de Guinea Ecuatorial preparadas. Se pueden configurar a medida, pero es mejor dejarlas para una segunda fase.
+- **Soporte cercano.** Un ERP no se instala y se olvida: habrá dudas, ajustes y personal nuevo que formar. Que quien te lo implanta esté en Malabo marca la diferencia.
+
+## Cuánto cuesta
+
+Un ERP tiene dos costes distintos. El primero son las **licencias**: gratis en Odoo Community; en Enterprise, un importe por usuario y mes que se paga directamente a Odoo. El segundo, y el que más pesa, es la **implantación**: analizar tus procesos, configurar el sistema, pasar tus datos y formar a tu equipo.
+
+Lo que más mueve el precio de la implantación es el número de empresas y áreas, la cantidad y el estado de los datos que hay que migrar, y los desarrollos a medida. Cuanto más te adaptes a lo que el sistema ya trae, más barato y más fácil de mantener será.
+
+## Cómo se implanta sin fracasar
+
+1. **Análisis.** Entrevistas con cada área y un mapa de cómo trabajáis hoy.
+2. **Qué cubre el sistema y qué no.** Antes de configurar nada, se decide qué se resuelve con lo estándar, qué se configura y qué habría que desarrollar.
+3. **Configuración y migración.** Empresa, plan contable, impuestos, almacenes, productos, clientes y proveedores, saldos iniciales y permisos.
+4. **Pruebas con las personas que lo van a usar**, con casos reales de su trabajo.
+5. **Formación por perfiles:** compras, almacén, ventas, contabilidad y dirección.
+6. **Arranque**, mejor a principio de mes o, si se puede, de año fiscal.
+7. **Acompañamiento** las semanas siguientes.
+
+La regla que más proyectos salva: **empezar pequeño**. Una empresa y pocas áreas, arrancar, y después ir sumando. Querer meter todas las sociedades y todas las aplicaciones a la vez es la causa número uno de los ERP que acaban abandonados.
+
+## Cómo lo hacemos en BKLN
+
+Implantamos Odoo con la contabilidad de Guinea Ecuatorial y desarrollamos e integramos SAP para las empresas que ya lo usan. Antes de empezar te enseñamos [nuestro propio Odoo](/portfolio/bkln-en-odoo) funcionando con una empresa de demostración: compras importadas con su coste real, almacenes en Malabo y Bata, ventas, facturas y proyectos con horas.
+
+Si quieres saber qué opción te conviene, [cuéntanos cómo trabajáis hoy](/servicios/erp-odoo-sap) y te lo decimos con franqueza, aunque la respuesta sea que todavía te basta con el Excel.`,
+    category: 'guias',
+    relatedService: 'erp-odoo-sap',
+    coverImage: '/odoo-cover.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-11-11',
+    readTime: 6,
+    tags: ['ERP', 'Odoo', 'SAP', 'Contabilidad SYSCOHADA', 'Guinea Ecuatorial'],
+  },
+  {
+    id: '11',
+    slug: 'coste-real-importacion-flete-aduana',
+    title: 'El coste real de lo que importas: flete, aduana y el margen que crees que ganas',
+    excerpt: 'Si calculas tus precios con lo que pagas al proveedor, probablemente ganas menos de lo que piensas. Qué hay que sumar a cada producto importado, cómo repartirlo y cómo dejar de hacerlo a mano.',
+    content: `## El precio del proveedor no es tu coste
+
+En Guinea Ecuatorial casi todo lo que se vende llega de fuera: de Europa, de Asia, de Camerún o de Dubái. Y casi todos los negocios calculan sus precios de la misma forma: lo que pagan al proveedor, más un porcentaje.
+
+El problema es que el precio del proveedor es solo una parte de lo que te cuesta un producto puesto en tu almacén. El resto llega después, en otras facturas, a veces semanas más tarde: el barco o el avión, la aduana, el puerto, el camión hasta tu almacén. Si no lo sumas a cada producto, estás fijando tus precios sobre un coste que no es el real.
+
+## Qué hay que sumar
+
+Lo que en contabilidad se llama **costes en destino** (o costes de importación) suele incluir:
+
+- **El precio del proveedor**, convertido a francos CFA al cambio del día del pago. Con el euro es fácil, porque la paridad es fija (1 euro = 655,957 FCFA); con el dólar, el cambio se mueve.
+- **El flete**, marítimo o aéreo, y el seguro de la mercancía si lo contratas.
+- **La aduana**: aranceles, impuestos y tasas de importación.
+- **El puerto y el transitario**: manipulación, almacenaje si la mercancía espera, y los honorarios de quien hace los trámites.
+- **El transporte del puerto o del aeropuerto hasta tu almacén.**
+- **Las comisiones bancarias** de la transferencia al extranjero, si son importantes.
+
+## Un ejemplo con números
+
+Tomemos un pedido de demostración a un proveedor europeo: 28 equipos informáticos por un valor de 5.710.000 FCFA. Llegan después tres facturas más: flete de 480.000 FCFA, aduana de 1.350.000 FCFA y transporte del puerto al almacén de 85.000 FCFA. En total, 1.915.000 FCFA más, un 33 % del valor del pedido.
+
+Uno de esos equipos, un portátil, costó 410.000 FCFA en la factura del proveedor. Repartidos los gastos, su coste real puesto en el almacén es de **544.436 FCFA**.
+
+Ahora imagina que lo vendes a 565.000 FCFA. Si calculas el margen con el precio del proveedor, crees que ganas 155.000 FCFA por portátil. En realidad ganas unos **20.500**. Multiplica eso por cada producto y cada pedido del año.
+
+## Cómo se reparte
+
+Los gastos de un envío hay que repartirlos entre los productos que llegaron en él. Hay varias formas, y cada una tiene sentido para un tipo de gasto:
+
+- **Por valor:** cada producto carga una parte proporcional a lo que costó. Es la más habitual para la aduana, porque los aranceles se calculan sobre el valor.
+- **Por cantidad:** cada unidad carga lo mismo. Sirve para gastos que no dependen del valor, como descargar o mover cajas.
+- **Por peso o volumen:** lo más justo para el flete cuando mezclas productos ligeros y pesados en el mismo contenedor.
+
+Lo importante es elegir un criterio, aplicarlo siempre igual y hacerlo en cada envío, no "a ojo" una vez al año.
+
+## Coste promedio: cuando el mismo producto llega varias veces
+
+Si compras el mismo producto en varios envíos, cada uno llegará con un coste distinto, porque cambian el flete, el cambio del dólar o los aranceles. Lo más práctico es trabajar con el **coste promedio**: cada nueva entrada se mezcla con lo que ya tenías en el almacén y el coste unitario se recalcula. Así tus márgenes reflejan lo que de verdad te ha costado el stock que vendes hoy.
+
+## En Excel o en un sistema
+
+Se puede hacer en Excel, y es mucho mejor que no hacerlo. Pero exige disciplina: guardar todas las facturas de cada envío, repartirlas a mano, actualizar el coste de cada producto y no equivocarse en ninguna fórmula. Y cuando lo necesitas, para fijar un precio o negociar un descuento, el dato suele estar desactualizado.
+
+Un ERP como Odoo lo hace como parte del trabajo diario. Recibes la mercancía en el almacén, registras las facturas del flete, la aduana y el transporte asociadas a esa recepción, eliges cómo repartir cada gasto y el sistema actualiza el coste de cada producto. A partir de ahí, cada venta muestra su margen real y la contabilidad registra el valor correcto del inventario.
+
+## Cómo lo hacemos en BKLN
+
+En [nuestro Odoo de demostración](/portfolio/bkln-en-odoo) puedes ver exactamente este ejemplo: el pedido en euros, la recepción en el almacén de Malabo, los costes en destino repartidos y el coste de cada producto actualizado.
+
+Si importas y quieres saber cuánto ganas de verdad con cada producto, [te ayudamos a montarlo](/servicios/erp-odoo-sap), con Odoo o, si todavía no te hace falta, con un Excel bien hecho.`,
+    category: 'guias',
+    relatedService: 'erp-odoo-sap',
+    coverImage: '/odoo-existencias.jpg',
+    author: {
+      name: 'BKLN Software',
+      avatar: '',
+      bio: 'Equipo de desarrollo de BKLN Software & Systems.',
+    },
+    publishedAt: '2026-11-11',
+    readTime: 5,
+    tags: ['Importación', 'Costes', 'Inventario', 'ERP', 'Guinea Ecuatorial'],
+  },
   {
     id: '9',
     slug: 'como-construimos-marketplace-guinea-ecuatorial',

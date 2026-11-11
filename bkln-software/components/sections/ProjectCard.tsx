@@ -14,6 +14,7 @@ const categoryImages: Record<Project['category'], string> = {
   desktop: '/project-desktop.jpg',
   python: '/project-python.jpg',
   ia: '/project-ia.jpg',
+  erp: '/odoo-cover.jpg',
 }
 
 interface ProjectCardProps {

@@ -414,4 +414,75 @@ export const services: Record<string, ServiceText> = {
     ],
     technologies: ['Revue de code', 'Architecture', 'Sécurité', 'Performances', 'DevOps'],
   },
+  'erp-odoo-sap': {
+    title: 'ERP : Odoo et SAP',
+    description: 'Achats, entrepôts, ventes, facturation et comptabilité dans un seul système. Nous déployons Odoo avec la comptabilité de la Guinée équatoriale, et nous développons et intégrons SAP.',
+    longDescription:
+      'Un ERP est le système où vit toute l’entreprise : ce que vous achetez, ce que vous avez dans chaque entrepôt, ce que vous vendez, ce qu’on vous doit et ce que vous devez. Quand la marchandise arrive, le stock augmente et le comptable voit la facture du fournisseur ; quand une vente part, le stock diminue et la facture se crée toute seule. Personne ne recopie des données d’un tableur à l’autre.\n\nNous déployons Odoo de bout en bout : nous analysons votre façon de travailler, configurons ce qu’Odoo propose déjà (comptabilité SYSCOHADA de la Guinée équatoriale, francs CFA, euros et dollars, plusieurs entrepôts), reprenons vos données depuis Excel, formons chaque équipe et vous accompagnons après le démarrage. Nous l’utilisons aussi dans notre propre entreprise : nous vous le montrons en fonctionnement avant de commencer.\n\nSi votre entreprise travaille déjà avec SAP, nous développons en ABAP, connectons SAP à vos autres applications et préparons les rapports et les écrans qui vous manquent. Et si vous êtes encore en train de choisir, nous vous disons franchement ce qui vous convient : Odoo, SAP ou une solution plus simple.',
+    forWho: [
+      'Chaque service tient son propre tableur et les chiffres ne concordent pas en fin de mois.',
+      'Vous importez de la marchandise et ne savez pas ce que coûte vraiment chaque produit avec le fret et la douane.',
+      'Vous achetez en euros ou en dollars, vendez en francs CFA, et chacun calcule le change à sa manière.',
+      'Vous avez des entrepôts à Malabo et à Bata et personne ne sait ce qu’il y a dans chacun sans téléphoner.',
+      'Vous facturez des heures ou des services par projet et des heures ne sont jamais facturées.',
+      'Votre comptable ressaisit tout dans un autre logiciel pour clôturer le mois.',
+      'Vous utilisez déjà SAP et avez besoin d’un développement, d’un rapport ou d’une connexion avec une autre application.',
+    ],
+    examples: [
+      { title: 'Achats et importation', description: 'Commandes fournisseurs en euros ou en dollars, réception en entrepôt, et le fret, la douane et le transport répartis sur le coût de chaque produit.' },
+      { title: 'Entrepôts et traçabilité', description: 'Stock par entrepôt, transferts entre Malabo et Bata, numéros de série et lots, et alertes quand un article passe sous le minimum.' },
+      { title: 'Ventes et facturation', description: 'Devis, commandes, livraisons et factures à votre logo, en francs CFA ou en devise, avec les encaissements et les impayés toujours visibles.' },
+      { title: 'Comptabilité de la Guinée équatoriale', description: 'Plan comptable SYSCOHADA, TVA et devises configurés dès le premier jour, pour que la comptabilité découle du travail quotidien.' },
+      { title: 'Projets et heures facturables', description: 'Chaque commande de services crée son projet ; l’équipe saisit ses heures et vous facturez le réalisé, pas l’estimé.' },
+      { title: 'Maintenance, notes de frais et personnel', description: 'Entretiens planifiés des véhicules, groupes électrogènes et équipements, frais de déplacement avec validation et fiches des employés.' },
+      { title: 'Plusieurs sociétés dans un seul système', description: 'Groupes de plusieurs sociétés : chacune avec sa comptabilité et ses droits, et la direction avec la vue d’ensemble.' },
+      { title: 'Développement et intégration SAP', description: 'Programmes et rapports ABAP, extensions, connexions avec d’autres applications via des services OData, BAPI/RFC ou IDoc, et écrans Fiori.' },
+    ],
+    deliverables: [
+      'Analyse de vos processus et proposition ferme avant toute configuration',
+      'Système configuré au nom de votre entreprise, avec vos données reprises',
+      'Droits par poste et modèles de documents à votre image',
+      'Manuels et formation par profil : achats, entrepôt, ventes, comptabilité et direction',
+      'Accompagnement après le démarrage',
+    ],
+    pricingFactors: [
+      'Nombre de sociétés, de services et d’utilisateurs',
+      'Applications Odoo nécessaires et édition (Community ou Enterprise)',
+      'Hébergement : dans le cloud d’Odoo ou sur votre propre serveur',
+      'Données à reprendre et leur état',
+      'Développements sur mesure et intégrations avec d’autres systèmes',
+      'Pour SAP : périmètre du développement ou de l’intégration et accès à vos environnements',
+    ],
+    timeline: 'De 6 à 12 semaines pour une entreprise de 4 à 6 services ; les développements SAP selon le périmètre',
+    faqs: [
+      {
+        question: 'Odoo ou SAP ?',
+        answer: 'Pour la plupart des PME et des groupes de taille moyenne, Odoo : il se déploie en quelques semaines, coûte beaucoup moins cher et couvre achats, entrepôt, ventes, comptabilité et projets. SAP se justifie dans les grandes entreprises ou quand la maison mère l’exige. Si vous avez déjà SAP, nous travaillons dessus ; si vous choisissez, nous vous le disons franchement après avoir vu vos processus.',
+      },
+      {
+        question: 'Est-ce adapté à la comptabilité de la Guinée équatoriale ?',
+        answer: 'Oui. Odoo inclut la localisation officielle de la Guinée équatoriale, avec le plan comptable SYSCOHADA, et gère les francs CFA, les euros et les dollars. Avant toute déclaration, nous le validons avec votre comptable ou votre auditeur.',
+      },
+      {
+        question: 'Faut-il payer des licences ?',
+        answer: 'Cela dépend de l’édition. Odoo Community est gratuit et s’installe sur votre propre serveur ; Enterprise se paie par utilisateur et par mois directement à Odoo et inclut plus d’applications et les mises à jour. Nous vous recommandons celle qui correspond à vos besoins et calculons le nombre d’utilisateurs nécessaires avant tout achat.',
+      },
+      {
+        question: 'Que se passe-t-il si internet est coupé ?',
+        answer: 'Le cloud d’Odoo nécessite une connexion. Si votre connexion n’est pas fiable, il peut être installé sur un serveur dans vos bureaux, avec des sauvegardes conservées ailleurs. Nous décidons ensemble après avoir vu votre connexion, votre alimentation électrique et vos onduleurs ou groupes électrogènes.',
+      },
+      {
+        question: 'La paie est-elle incluse ?',
+        answer: 'Odoo ne propose pas encore de paie prête à l’emploi pour la Guinée équatoriale. Elle peut être configurée sur mesure, mais nous recommandons de la garder pour une deuxième phase et de commencer par les achats, l’entrepôt, les ventes et la comptabilité.',
+      },
+      {
+        question: 'Nous sommes un groupe de plusieurs sociétés. Fait-on tout en même temps ?',
+        answer: 'Nous ne le recommandons pas. Nous commençons par une société et quelques services, nous démarrons, puis nous ajoutons le reste. Vouloir tout faire d’un coup est la première cause d’échec des projets ERP.',
+      },
+      {
+        question: 'Nous utilisons déjà SAP. Que pouvez-vous faire ?',
+        answer: 'Des développements ABAP (programmes, rapports, formulaires et extensions), des intégrations avec d’autres applications via OData, BAPI/RFC ou IDoc, et des écrans Fiori. Nous travaillons dans votre environnement de développement et passons les modifications en production selon votre procédure.',
+      },
+    ],
+  },
 }

@@ -26,6 +26,9 @@ const technologies = [
   { name: 'Claude', icon: '/icons/claude.svg' },
   // Desktop
   { name: 'Electron', icon: '/icons/electron.svg' },
+  // ERP
+  { name: 'Odoo', icon: '/icons/odoo.svg' },
+  { name: 'SAP', icon: '/icons/sap.svg' },
 ]
 
 export function TechStack({ descriptions }: { descriptions: Record<string, string> }) {

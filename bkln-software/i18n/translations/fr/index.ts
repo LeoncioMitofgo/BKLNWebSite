@@ -11,6 +11,8 @@ import { post as webOrSocial } from './posts/web-or-social'
 import { post as pythonAutomation } from './posts/python-automation'
 import { post as supabase } from './posts/supabase'
 import { post as marketplace } from './posts/marketplace'
+import { post as erp } from './posts/erp'
+import { post as landedCosts } from './posts/landed-costs'
 
 // Indexado por slug interno (el español): las direcciones traducidas están en i18n/routes.ts.
 export const contentFr: ContentTranslation = {
@@ -19,6 +21,8 @@ export const contentFr: ContentTranslation = {
   projects,
   courses,
   posts: {
+    'odoo-sap-o-excel-erp-guinea-ecuatorial': erp,
+    'coste-real-importacion-flete-aduana': landedCosts,
     'sistema-caja-stock-farmacias-supermercados-restaurantes': posStock,
     'asistente-ia-whatsapp-web-negocio': aiAssistant,
     'cuanto-cuesta-web-app-guinea-ecuatorial': cost,

@@ -32,6 +32,7 @@ const slugs: Partial<Record<Section, SlugMap>> = {
     'consultoria-y-formacion': { en: 'consulting-and-training', fr: 'conseil-et-formation' },
   },
   portfolio: {
+    'bkln-en-odoo': { en: 'bkln-on-odoo', fr: 'bkln-sur-odoo' },
     'sistema-pos-android-comercios': { en: 'android-pos-system', fr: 'systeme-caisse-android' },
     'plataforma-delivery-multivertical': { en: 'multi-category-delivery-platform', fr: 'plateforme-livraison-multicategorie' },
     'suite-herramientas-web-privadas': { en: 'private-web-tools-suite', fr: 'suite-outils-web-prives' },
@@ -41,6 +42,14 @@ const slugs: Partial<Record<Section, SlugMap>> = {
     'ia-machine-learning-python': { en: 'ai-machine-learning-python' },
   },
   blog: {
+    'odoo-sap-o-excel-erp-guinea-ecuatorial': {
+      en: 'odoo-sap-or-excel-erp-equatorial-guinea',
+      fr: 'odoo-sap-ou-excel-erp-guinee-equatoriale',
+    },
+    'coste-real-importacion-flete-aduana': {
+      en: 'real-cost-of-imports-freight-customs',
+      fr: 'cout-reel-importations-fret-douane',
+    },
     'sistema-caja-stock-farmacias-supermercados-restaurantes': {
       en: 'pos-stock-control-pharmacies-supermarkets-restaurants',
       fr: 'caisse-stock-pharmacies-supermarches-restaurants',

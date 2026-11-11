@@ -31,7 +31,7 @@ export default async function HomePage({ params }: LangParams) {
   const h = t.home
   const { services, projects, products, posts } = getContent(lang)
   const featuredServices = services.filter((s) => s.featured)
-  const featuredProjects = pick(projects, ['bkln-marketplace', 'sistema-pos-android-comercios', 'gestescolar'])
+  const featuredProjects = pick(projects, ['bkln-marketplace', 'bkln-en-odoo', 'gestescolar'])
   const featuredProducts = pick(products, ['gestescolar', 'brookai', 'pasa'])
   const latestPosts = posts.slice(0, 3)
   const href = (path: string) => localizePath(lang, path)
@@ -102,7 +102,7 @@ export default async function HomePage({ params }: LangParams) {
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <SectionHeader title={h.servicesTitle} subtitle={h.servicesSubtitle} />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredServices.map((service) => (
               <ServiceCard key={service.id} service={service} lang={lang} />
             ))}

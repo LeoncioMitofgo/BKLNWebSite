@@ -14,4 +14,13 @@ export interface Announcement {
  * algo nuevo que destacar (curso, producto, proyecto, evento...).
  * Pon `announcement` en `null` para ocultarlo sin borrar el archivo.
  */
-export const announcement: Announcement | null = null
+export const announcement: Announcement | null = {
+  label: { es: 'Nuevo', en: 'New', fr: 'Nouveau' },
+  title: {
+    es: 'Implantamos Odoo con la contabilidad de Guinea Ecuatorial, y desarrollamos en SAP',
+    en: 'We implement Odoo with Equatorial Guinea’s accounting, and develop on SAP',
+    fr: 'Nous déployons Odoo avec la comptabilité de la Guinée équatoriale, et développons sur SAP',
+  },
+  href: '/servicios/erp-odoo-sap',
+  expiresAt: '2026-12-31',
+}

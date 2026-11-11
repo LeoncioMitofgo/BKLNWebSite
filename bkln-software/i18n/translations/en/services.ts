@@ -414,4 +414,75 @@ export const services: Record<string, ServiceText> = {
     ],
     technologies: ['Code review', 'Architecture', 'Security', 'Performance', 'DevOps'],
   },
+  'erp-odoo-sap': {
+    title: 'ERP: Odoo and SAP',
+    description: 'Purchasing, warehouses, sales, invoicing and accounting in a single system. We implement Odoo with Equatorial Guinea’s accounting, and we develop and integrate SAP.',
+    longDescription:
+      'An ERP is the system where the whole company lives: what you buy, what you have in each warehouse, what you sell, what you are owed and what you owe. When goods come in, stock goes up and the accountant sees the supplier’s bill; when a sale goes out, stock goes down and the invoice is created automatically. Nobody copies data from one spreadsheet to another.\n\nWe implement Odoo from start to finish: we analyse how you work, configure what Odoo already includes (Equatorial Guinea’s SYSCOHADA accounting, CFA francs, euros and dollars, several warehouses), move your data over from Excel, train each team and stay with you after go-live. We also use it in our own company, so we show it to you working before we start.\n\nIf your company already runs SAP, we develop in ABAP, connect SAP to your other applications and build the reports and screens you are missing. And if you are still choosing, we tell you frankly what suits you: Odoo, SAP or something simpler.',
+    forWho: [
+      'Every department keeps its own spreadsheet and the numbers don’t add up at the end of the month.',
+      'You import goods and don’t know what each product really costs once freight and customs are added.',
+      'You buy in euros or dollars, sell in CFA francs, and everyone works out the exchange rate their own way.',
+      'You have warehouses in Malabo and Bata and nobody knows what is in each one without phoning.',
+      'You bill hours or services per project and some hours never get invoiced.',
+      'Your accountant re-types everything into another program to close the month.',
+      'You already use SAP and need a development, a report or a connection to another application.',
+    ],
+    examples: [
+      { title: 'Purchasing and imports', description: 'Supplier orders in euros or dollars, receipt into the warehouse, and freight, customs and transport spread over the cost of each product.' },
+      { title: 'Warehouses and traceability', description: 'Stock per warehouse, transfers between Malabo and Bata, serial and lot numbers, and alerts when something drops below the minimum.' },
+      { title: 'Sales and invoicing', description: 'Quotations, orders, deliveries and invoices with your logo, in CFA francs or foreign currency, with payments and amounts due always in view.' },
+      { title: 'Equatorial Guinea accounting', description: 'SYSCOHADA chart of accounts, VAT and currencies set up from day one, so the accounts come out of the daily work itself.' },
+      { title: 'Projects and billable hours', description: 'Each service order creates its project; the team logs its hours and you invoice what was done, not what was estimated.' },
+      { title: 'Maintenance, expenses and staff', description: 'Scheduled servicing for vehicles, generators and equipment, travel expenses with approval, and employee records.' },
+      { title: 'Several companies in one system', description: 'Groups with more than one company: each with its own accounts and permissions, and management with the overall view.' },
+      { title: 'SAP development and integration', description: 'ABAP programs and reports, enhancements, connections to other applications through OData services, BAPI/RFC or IDoc, and Fiori screens.' },
+    ],
+    deliverables: [
+      'Analysis of your processes and a fixed proposal before anything is configured',
+      'System set up in your company’s name, with your data migrated',
+      'Role-based permissions and document templates with your branding',
+      'Manuals and role-based training: purchasing, warehouse, sales, accounting and management',
+      'Support after go-live',
+    ],
+    pricingFactors: [
+      'Number of companies, departments and users',
+      'Which Odoo apps you need and which edition (Community or Enterprise)',
+      'Hosting: Odoo’s cloud or your own server',
+      'Data to migrate and what state it is in',
+      'Custom developments and integrations with other systems',
+      'For SAP: scope of the development or integration and access to your environments',
+    ],
+    timeline: '6 to 12 weeks for a company with 4–6 departments; SAP developments depending on scope',
+    faqs: [
+      {
+        question: 'Odoo or SAP?',
+        answer: 'For most small and mid-sized companies and groups, Odoo: it is implemented in weeks, costs much less and covers purchasing, warehouse, sales, accounting and projects. SAP makes sense for large companies or when the parent company requires it. If you already have SAP, we work on it; if you are choosing, we tell you frankly after looking at your processes.',
+      },
+      {
+        question: 'Does it work for Equatorial Guinea’s accounting?',
+        answer: 'Yes. Odoo includes the official localisation for Equatorial Guinea, with the SYSCOHADA chart of accounts, and handles CFA francs, euros and dollars. Before filing any returns we validate it with your accountant or auditor.',
+      },
+      {
+        question: 'Do I have to pay for licences?',
+        answer: 'It depends on the edition. Odoo Community is free and is installed on your own server; Enterprise is paid per user per month directly to Odoo and includes more apps and updates. We recommend the one that fits what you need and work out how many users you need before you buy anything.',
+      },
+      {
+        question: 'What happens if the internet goes down?',
+        answer: 'Odoo’s cloud needs a connection. If your connection is unreliable, it can be installed on a server inside your office, with backups kept off-site. We decide together after looking at your connection, your power supply and the UPS units or generators you have.',
+      },
+      {
+        question: 'Does it include payroll?',
+        answer: 'Odoo does not yet include ready-made payroll for Equatorial Guinea. It can be set up as a custom configuration, but we recommend leaving it for a second phase and starting with purchasing, warehouse, sales and accounting.',
+      },
+      {
+        question: 'We are a group with several companies. Do we do everything at once?',
+        answer: 'We don’t recommend it. We start with one company and a few departments, go live, and then add the rest. Trying to do everything at once is the number one reason ERP projects fail.',
+      },
+      {
+        question: 'We already use SAP. What can you do?',
+        answer: 'ABAP developments (programs, reports, forms and enhancements), integrations with other applications through OData, BAPI/RFC or IDoc, and Fiori screens. We work in your development environment and move changes to production following your procedure.',
+      },
+    ],
+  },
 }

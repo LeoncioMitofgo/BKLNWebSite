@@ -13,7 +13,7 @@ interface PortfolioExplorerProps {
   emptyText: string
 }
 
-const ORDER: Category[] = ['todos', 'android', 'web', 'desktop', 'python', 'ia']
+const ORDER: Category[] = ['todos', 'android', 'web', 'desktop', 'erp', 'python', 'ia']
 
 export function PortfolioExplorer({ items, labels, emptyText }: PortfolioExplorerProps) {
   const [activeCategory, setActiveCategory] = useState<Category>('todos')

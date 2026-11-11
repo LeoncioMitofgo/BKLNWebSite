@@ -194,7 +194,7 @@ export const fr: Dictionary = {
     h1Start: 'Nos',
     h1Highlight: 'projets',
     lead: 'Une sélection des plus de 35 projets que nous avons livrés. Beaucoup concernent des entreprises et des institutions publiques dont le travail est confidentiel : nous n’en montrons donc qu’une partie ici.',
-    filters: { todos: 'Tous', android: 'Android', web: 'Web', desktop: 'Desktop', python: 'Python', ia: 'IA' },
+    filters: { todos: 'Tous', android: 'Android', web: 'Web', desktop: 'Desktop', erp: 'ERP', python: 'Python', ia: 'IA' },
     empty: 'Aucun projet dans cette catégorie pour l’instant.',
     card: { more: 'Voir le cas' },
     detail: {
@@ -375,6 +375,8 @@ export const fr: Dictionary = {
     LangChain: 'Connecter des modèles d’IA à de vrais documents, outils et données.',
     Claude: 'Des modèles de langage pour les assistants, l’automatisation et un service client intelligent.',
     Electron: 'Des applications de bureau multiplateformes basées sur les technologies web.',
+    Odoo: 'ERP pour les achats, l’entrepôt, les ventes et la comptabilité SYSCOHADA : nous le déployons et l’utilisons nous-mêmes.',
+    SAP: 'Développement ABAP, intégrations (OData, BAPI/RFC, IDoc) et écrans Fiori pour les entreprises qui utilisent SAP.',
   },
   legal: {
     privacyTitle: 'Politique de confidentialité',

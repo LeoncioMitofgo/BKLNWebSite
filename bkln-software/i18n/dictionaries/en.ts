@@ -194,7 +194,7 @@ export const en: Dictionary = {
     h1Start: 'Our',
     h1Highlight: 'projects',
     lead: 'A selection of the more than 35 projects we have delivered. Many are for companies and public institutions whose work is confidential, so we only show part of it here.',
-    filters: { todos: 'All', android: 'Android', web: 'Web', desktop: 'Desktop', python: 'Python', ia: 'AI' },
+    filters: { todos: 'All', android: 'Android', web: 'Web', desktop: 'Desktop', erp: 'ERP', python: 'Python', ia: 'AI' },
     empty: 'No projects in this category yet.',
     card: { more: 'See the case' },
     detail: {
@@ -375,6 +375,8 @@ export const en: Dictionary = {
     LangChain: 'Connecting AI models to real documents, tools and data.',
     Claude: 'Language models for assistants, automation and smart customer service.',
     Electron: 'Cross-platform desktop applications built with web technologies.',
+    Odoo: 'ERP for purchasing, warehouse, sales and SYSCOHADA accounting: we implement it and use it ourselves.',
+    SAP: 'ABAP development, integrations (OData, BAPI/RFC, IDoc) and Fiori screens for companies that run SAP.',
   },
   legal: {
     privacyTitle: 'Privacy Policy',

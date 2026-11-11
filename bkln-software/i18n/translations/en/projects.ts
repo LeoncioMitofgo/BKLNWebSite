@@ -1,6 +1,27 @@
 import type { ProjectText } from '../../content'
 
 export const projects: Record<string, ProjectText> = {
+  'bkln-en-odoo': {
+    title: 'BKLN on Odoo',
+    description: 'We run our own company on Odoo, with Equatorial Guinea’s accounting, and we have set up a complete demo company: imported purchases at their real cost, warehouses in Malabo and Bata, sales, invoices, projects with hours and maintenance.',
+    longDescription:
+      'Before implementing Odoo in a client’s company, we set it up in our own. BKLN Software & Systems works on Odoo with the official localisation for Equatorial Guinea: SYSCOHADA chart of accounts, VAT, CFA francs as the main currency, the euro at its fixed parity and the dollar at its exchange rate.\n\nAlongside our own management we have prepared a demo company that imports, stores and sells, so we can show each client what their day-to-day would look like before we start. An opportunity comes into the CRM, becomes a quotation and an order, the warehouse delivers and the invoice is created automatically, with payments and amounts due always in view.\n\nPurchases are made in euros or dollars and received into the Malabo or Bata warehouse, with a serial number for the equipment that needs one. When the bills for freight, customs and transport from the port arrive, they are spread over what was received and the cost of each product is updated: in the demo, a laptop bought for 410,000 FCFA actually costs 544,436 FCFA once it is in the warehouse. Real margins are calculated with that cost.\n\nServices are invoiced for what was actually done. When an installation order is confirmed, Odoo creates the project; the team logs its hours on each task and the invoice picks up the hours worked (42 of the 60 quoted in the example), not the estimate. The same system schedules servicing for generators, vehicles and servers, and collects staff travel expenses with their approval.\n\nEverything was loaded and checked through Odoo’s API with scripts rather than by hand: the same way we migrate a client’s data from their spreadsheets. The screenshots come from our Odoo with demo data: the customers, products, amounts and people are made up.',
+    sector: 'Business management (ERP)',
+    challenges: [
+      'Equatorial Guinea accounting (SYSCOHADA, VAT, CFA francs) with suppliers who invoice in euros and dollars',
+      'Knowing the real cost of imported goods when freight, customs and transport arrive on separate bills, weeks later',
+      'Two warehouses in different cities and equipment that has to be tracked one by one by serial number',
+      'Invoicing services for the hours actually worked, without parallel spreadsheets',
+      'Loading master data and documents without typing errors, in a repeatable way',
+    ],
+    solutions: [
+      'Official Equatorial Guinea localisation; euro at the fixed parity of 655.957 FCFA and dollar with a dated exchange rate',
+      'Landed costs spread by value or by quantity over each receipt, with average cost per product',
+      'One warehouse per city with internal transfers, receipts and deliveries, and serial numbers from receipt onwards',
+      'Services that create their project when the order is confirmed; hours logged on tasks flow straight into the invoice',
+      'Data and documents loaded over XML-RPC with idempotent scripts that check every step',
+    ],
+  },
   'bkln-marketplace': {
     description: 'A classified ads website for the whole of Equatorial Guinea: buying and selling between individuals and businesses, real-time chat, Premium shops and a moderation panel. Built for mobile phones and slow connections.',
     longDescription:

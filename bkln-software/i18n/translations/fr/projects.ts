@@ -1,6 +1,27 @@
 import type { ProjectText } from '../../content'
 
 export const projects: Record<string, ProjectText> = {
+  'bkln-en-odoo': {
+    title: 'BKLN sur Odoo',
+    description: 'Nous gérons notre propre entreprise sur Odoo, avec la comptabilité de la Guinée équatoriale, et nous avons monté une entreprise de démonstration complète : achats importés à leur coût réel, entrepôts à Malabo et à Bata, ventes, factures, projets avec heures et maintenance.',
+    longDescription:
+      'Avant de déployer Odoo chez un client, nous l’avons mis en place chez nous. BKLN Software & Systems travaille sur Odoo avec la localisation officielle de la Guinée équatoriale : plan comptable SYSCOHADA, TVA, franc CFA comme devise principale, euro à sa parité fixe et dollar à son taux de change.\n\nÀ côté de notre propre gestion, nous avons préparé une entreprise de démonstration qui importe, stocke et vend, pour montrer à chaque client à quoi ressemblerait son quotidien avant de commencer. Une opportunité entre dans le CRM, devient un devis puis une commande, l’entrepôt livre et la facture se crée toute seule, avec les encaissements et les impayés toujours visibles.\n\nLes achats se font en euros ou en dollars et sont réceptionnés dans l’entrepôt de Malabo ou de Bata, avec un numéro de série pour les équipements qui en ont besoin. Quand arrivent les factures du fret, de la douane et du transport depuis le port, elles sont réparties sur ce qui a été reçu et le coût de chaque produit est mis à jour : dans la démonstration, un ordinateur portable acheté 410 000 FCFA coûte en réalité 544 436 FCFA une fois en entrepôt. Les vraies marges se calculent avec ce coût.\n\nLes services sont facturés au réalisé. À la confirmation d’une commande d’installation, Odoo crée le projet ; l’équipe saisit ses heures sur chaque tâche et la facture reprend les heures effectuées (42 sur les 60 prévues dans l’exemple), pas l’estimation. Le même système planifie l’entretien des groupes électrogènes, des véhicules et des serveurs, et regroupe les frais de déplacement du personnel avec leur validation.\n\nTout a été chargé et vérifié via l’API d’Odoo avec des scripts plutôt qu’à la main : c’est ainsi que nous reprenons les données d’un client depuis ses tableurs. Les captures proviennent de notre Odoo avec des données de démonstration : clients, produits, montants et personnes sont fictifs.',
+    sector: 'Gestion d’entreprise (ERP)',
+    challenges: [
+      'Comptabilité de la Guinée équatoriale (SYSCOHADA, TVA, francs CFA) avec des fournisseurs qui facturent en euros et en dollars',
+      'Connaître le coût réel des importations quand le fret, la douane et le transport arrivent sur des factures séparées, des semaines plus tard',
+      'Deux entrepôts dans deux villes et des équipements à suivre un par un par numéro de série',
+      'Facturer les services selon les heures réellement travaillées, sans tableurs parallèles',
+      'Charger les données de base et les documents sans erreurs de saisie, de façon reproductible',
+    ],
+    solutions: [
+      'Localisation officielle de la Guinée équatoriale ; euro à la parité fixe de 655,957 FCFA et dollar avec un taux de change daté',
+      'Coûts logistiques répartis par valeur ou par quantité sur chaque réception, avec coût moyen par produit',
+      'Un entrepôt par ville avec transferts internes, réceptions et livraisons, et numéros de série dès la réception',
+      'Des services qui créent leur projet à la confirmation de la commande ; les heures des tâches passent directement sur la facture',
+      'Données et documents chargés par XML-RPC avec des scripts idempotents qui vérifient chaque étape',
+    ],
+  },
   'bkln-marketplace': {
     description: 'Un site de petites annonces pour toute la Guinée équatoriale : achat et vente entre particuliers et professionnels, messagerie en temps réel, boutiques Premium et panneau de modération. Pensé pour le mobile et les connexions lentes.',
     longDescription:

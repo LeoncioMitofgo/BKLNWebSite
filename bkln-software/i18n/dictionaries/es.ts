@@ -193,7 +193,7 @@ export const es = {
     h1Start: 'Nuestros',
     h1Highlight: 'proyectos',
     lead: 'Una selección de los más de 35 proyectos que hemos entregado. Muchos son para empresas e instituciones públicas cuyo trabajo es confidencial, así que aquí solo mostramos una parte.',
-    filters: { todos: 'Todos', android: 'Android', web: 'Web', desktop: 'Desktop', python: 'Python', ia: 'IA' },
+    filters: { todos: 'Todos', android: 'Android', web: 'Web', desktop: 'Desktop', erp: 'ERP', python: 'Python', ia: 'IA' },
     empty: 'No hay proyectos en esta categoría aún.',
     card: { more: 'Ver el caso' },
     detail: {
@@ -374,6 +374,8 @@ export const es = {
     LangChain: 'Conexión de modelos de IA con documentos, herramientas y datos reales.',
     Claude: 'Modelos de lenguaje para asistentes, automatización y atención inteligente.',
     Electron: 'Aplicaciones de escritorio multiplataforma usando tecnologías web.',
+    Odoo: 'ERP para compras, almacén, ventas y contabilidad SYSCOHADA: lo implantamos y lo usamos nosotros.',
+    SAP: 'Desarrollo ABAP, integraciones (OData, BAPI/RFC, IDoc) y pantallas Fiori para empresas que trabajan con SAP.',
   },
   legal: {
     privacyTitle: 'Política de Privacidad',

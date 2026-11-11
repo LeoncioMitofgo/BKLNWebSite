@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import {
-  Globe, Smartphone, LayoutDashboard, FolderKanban, Bot, Radio, Wrench, Lightbulb, Code2,
+  Globe, Smartphone, LayoutDashboard, FolderKanban, Boxes, Bot, Radio, Wrench, Lightbulb, Code2,
   type LucideIcon,
 } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
@@ -10,7 +10,7 @@ import { localizePath } from '@/i18n/routes'
 import type { Service } from '@/types'
 
 export const serviceIcons: Record<string, LucideIcon> = {
-  Globe, Smartphone, LayoutDashboard, FolderKanban, Bot, Radio, Wrench, Lightbulb,
+  Globe, Smartphone, LayoutDashboard, FolderKanban, Boxes, Bot, Radio, Wrench, Lightbulb,
 }
 
 interface ServiceCardProps {
