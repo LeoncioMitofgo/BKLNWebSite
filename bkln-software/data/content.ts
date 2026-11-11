@@ -1394,7 +1394,7 @@ En [nuestro Odoo de demostración](/portfolio/bkln-en-odoo) puedes ver exactamen
 Si importas y quieres saber cuánto ganas de verdad con cada producto, [te ayudamos a montarlo](/servicios/erp-odoo-sap), con Odoo o, si todavía no te hace falta, con un Excel bien hecho.`,
     category: 'guias',
     relatedService: 'erp-odoo-sap',
-    coverImage: '/odoo-existencias.jpg',
+    coverImage: '/odoo-cover-costes.jpg',
     author: {
       name: 'BKLN Software',
       avatar: '',
