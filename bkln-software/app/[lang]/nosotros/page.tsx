@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, ArrowUpRight, CheckCircle, Clock, Lock, Mail, MapPin } from 'lucide-react'
+import { ArrowRight, CheckCircle, Clock, Lock, Mail, MapPin } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { Button } from '@/components/ui/Button'
@@ -63,37 +63,11 @@ export default async function NosotrosPage({ params }: LangParams) {
             </p>
           </div>
 
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Fundador */}
-            <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
-              <h3 className="text-text-primary font-bold text-lg mb-5">{a.founderTitle}</h3>
-              <div className="flex items-center gap-4 mb-4">
-                <span
-                  aria-hidden="true"
-                  className="w-14 h-14 shrink-0 rounded-full bg-brand-green/15 border border-brand-green/30 flex items-center justify-center text-accent-green font-bold"
-                >
-                  {company.founder.initials}
-                </span>
-                <div>
-                  <p className="text-text-primary font-semibold leading-snug">{company.founder.name}</p>
-                  <p className="text-accent-green text-sm">{a.founderRole}</p>
-                </div>
-              </div>
-              <p className="text-text-secondary text-sm leading-relaxed">{a.founderBio}</p>
-              <a
-                href={company.founder.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 mt-4 text-sm text-accent-green hover:underline"
-              >
-                {a.founderLinkedIn} <ArrowUpRight size={14} />
-              </a>
-            </div>
-
-            {/* Datos de la empresa */}
+          {/* Datos de la empresa */}
+          <div className="mt-12">
             <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
               <h3 className="text-text-primary font-bold text-lg mb-5">{a.companyTitle}</h3>
-              <dl className="space-y-3 text-sm">
+              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm">
                 <div>
                   <dt className="text-text-secondary text-xs">{a.companyLegalName}</dt>
                   <dd className="text-text-primary">{company.legalName}</dd>

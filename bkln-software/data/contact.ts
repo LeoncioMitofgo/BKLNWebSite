@@ -8,7 +8,6 @@ export const company = {
   mapsUrl: 'https://maps.app.goo.gl/bkzwoj4cZEknCBhAA',
   founder: {
     name: 'Leoncio Felipe Mitogo Edjang Obono',
-    initials: 'LM',
     linkedin: 'https://www.linkedin.com/in/leoncio-felipe-mitogo-edjang-obono-362627420',
   },
   /** Hora de Malabo (WAT, UTC+1). */
