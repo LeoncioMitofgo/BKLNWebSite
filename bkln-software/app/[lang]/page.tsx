@@ -7,6 +7,7 @@ import { HeroWall } from '@/components/home/HeroWall'
 import { OfflineDemo } from '@/components/home/OfflineDemo'
 import { ServiceList } from '@/components/home/ServiceList'
 import { company, contactEmail, waLink, whatsappDisplay } from '@/data/contact'
+import { serviceImages } from '@/data/service-images'
 import { getContent } from '@/i18n/content'
 import { getDictionary } from '@/i18n/dictionaries'
 import { localizePath } from '@/i18n/routes'
@@ -20,15 +21,6 @@ function pick<T extends { slug: string }>(items: T[], slugs: string[]): T[] {
 }
 
 const HOME_SERVICES = ['desarrollo-web', 'apps-moviles', 'sistemas-de-gestion', 'erp-odoo-sap', 'oficina-digital-microsoft-365', 'ia-y-automatizacion']
-
-// Captura que aparece al pasar el ratón por cada servicio (trabajo real relacionado).
-const SERVICE_IMAGES: Record<string, string> = {
-  'desarrollo-web': '/marketplace-buscar.jpg',
-  'apps-moviles': '/pasa-1.jpg',
-  'sistemas-de-gestion': '/pasa-crazy-december-2.jpg',
-  'erp-odoo-sap': '/odoo-existencias.jpg',
-  'ia-y-automatizacion': '/brookai-cover.jpg',
-}
 
 // El título, la descripción, el canonical y los hreflang de la home vienen del layout.
 export default async function HomePage({ params }: LangParams) {
@@ -201,7 +193,7 @@ export default async function HomePage({ params }: LangParams) {
               href: href(`/servicios/${s.slug}`),
               title: s.title,
               description: s.description,
-              image: SERVICE_IMAGES[s.slug],
+              image: serviceImages[s.slug],
             }))}
           />
           <p className="mt-12">

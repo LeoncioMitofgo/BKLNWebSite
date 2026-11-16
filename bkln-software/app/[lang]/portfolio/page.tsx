@@ -18,16 +18,13 @@ export default async function PortfolioPage({ params }: LangParams) {
   const { projects } = getContent(lang)
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            {t.h1Start} <span className="text-accent-green">{t.h1Highlight}</span>
-          </h1>
-          <p className="text-text-secondary text-lg max-w-2xl mx-auto">{t.lead}</p>
-        </div>
-      </section>
+    <div className="min-h-screen">
+      <header className="mx-auto max-w-7xl px-5 pt-36 pb-12 sm:px-8 sm:pt-44">
+        <h1 className="font-display text-[clamp(52px,8vw,120px)] font-extrabold leading-[0.92] tracking-[-0.04em]">
+          {t.h1Start} <span className="text-accent-green">{t.h1Highlight}</span>
+        </h1>
+        <p className="mt-8 max-w-[56ch] text-lg text-text-secondary sm:text-xl">{t.lead}</p>
+      </header>
 
       <PortfolioExplorer
         labels={t.filters}

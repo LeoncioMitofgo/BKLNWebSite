@@ -1,5 +1,7 @@
 'use client'
 
+import { cn } from '@/lib/utils'
+
 interface CategoryOption<T extends string> {
   value: T
   label: string
@@ -17,12 +19,15 @@ export function CategoryFilter<T extends string>({ categories, active, onChange 
       {categories.map((cat) => (
         <button
           key={cat.value}
+          type="button"
+          aria-pressed={active === cat.value}
           onClick={() => onChange(cat.value)}
-          className={`px-4 py-2 rounded-md text-sm font-medium transition-colors ${
+          className={cn(
+            'rounded-full px-5 py-2.5 text-sm font-semibold transition-colors',
             active === cat.value
-              ? 'bg-brand-green text-white'
-              : 'bg-bg-surface text-text-secondary border border-white/10 hover:border-brand-green/30 hover:text-text-primary'
-          }`}
+              ? 'bg-accent-green text-bg-dark'
+              : 'border border-white/15 text-text-secondary hover:border-white/40 hover:text-text-primary'
+          )}
         >
           {cat.label}
         </button>

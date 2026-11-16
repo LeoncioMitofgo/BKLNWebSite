@@ -1,13 +1,11 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react'
+import { ArrowLeft, Share2 } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata, siteName, siteUrl } from '@/lib/metadata'
 import { MarkdownContent } from '@/components/ui/MarkdownContent'
-import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
-import { BlogCard } from '@/components/sections/BlogCard'
+import { ButtonLink, ExternalButton } from '@/components/ui/ButtonLink'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { visiblePosts } from '@/data/content'
 import { waLink, waShareLink } from '@/data/contact'
@@ -29,6 +27,10 @@ export async function generateMetadata({ params }: LangSlugParams): Promise<Meta
   return pageMetadata({ lang, title: post.title, description: post.excerpt, path: `/blog/${post.slug}`, image: post.coverImage })
 }
 
+// Colores de la tipografía del artículo sobre papel (plugin de typography).
+const PAPER_PROSE =
+  'prose prose-lg sm:prose-xl max-w-none font-read [--tw-prose-body:#232823] [--tw-prose-headings:var(--color-paper-ink)] [--tw-prose-bold:var(--color-paper-ink)] [--tw-prose-links:var(--color-paper-green)] [--tw-prose-bullets:var(--color-paper-green)] [--tw-prose-counters:var(--color-paper-muted)] [--tw-prose-hr:var(--color-paper-line)] [--tw-prose-quotes:var(--color-paper-ink)] [--tw-prose-quote-borders:var(--color-paper-green)] [--tw-prose-code:var(--color-paper-ink)] [--tw-prose-pre-bg:var(--color-paper-ink)] [--tw-prose-pre-code:var(--color-paper)] prose-headings:font-display prose-headings:font-extrabold prose-headings:tracking-[-0.025em] prose-h2:mt-14 prose-a:underline-offset-4 prose-a:decoration-1 prose-code:before:content-none prose-code:after:content-none prose-code:font-mono prose-code:text-[0.85em]'
+
 export default async function BlogPostPage({ params }: LangSlugParams) {
   const lang = await localeFromParams(params)
   const { slug } = await params
@@ -38,7 +40,7 @@ export default async function BlogPostPage({ params }: LangSlugParams) {
   const post = posts.find((p) => p.slug === slug)
   if (!post) notFound()
 
-  const related = posts.filter((p) => p.id !== post.id && p.category === post.category).slice(0, 2)
+  const related = posts.filter((p) => p.id !== post.id && p.category === post.category).slice(0, 3)
   const product = products.find((p) => p.slug === post.relatedProduct)
   const service = services.find((s) => s.slug === post.relatedService)
   // CTA contextual: el producto relacionado tiene prioridad sobre el servicio.
@@ -63,118 +65,96 @@ export default async function BlogPostPage({ params }: LangSlugParams) {
   }
 
   return (
-    <div className="min-h-screen pt-24">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
-      />
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link
-          href={localizePath(lang, '/blog')}
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-green transition-colors mb-8 text-sm"
-        >
+    <article className="bg-paper text-paper-ink">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
+
+      {/* Cabecera del artículo */}
+      <header className="mx-auto max-w-[760px] px-5 pt-32 pb-12 sm:px-7 sm:pt-40">
+        <Link href={localizePath(lang, '/blog')} className="mb-10 inline-flex items-center gap-2 text-sm text-paper-muted transition-colors hover:text-paper-ink">
           <ArrowLeft size={16} /> {d.back}
         </Link>
 
-        {post.draft && (
-          <p className="mb-6 rounded-md border border-warning/30 bg-warning/10 px-4 py-2.5 text-sm text-warning">
-            {d.draftNotice}
-          </p>
-        )}
+        {post.draft && <p className="mb-6 rounded-lg border border-warning/40 bg-warning/10 px-4 py-2.5 text-sm text-[#7a4a00]">{d.draftNotice}</p>}
 
-        {/* Portada */}
-        <div className="h-64 relative rounded-lg overflow-hidden mb-8">
-          <Image
-            src={post.coverImage}
-            alt={post.title}
-            fill
-            className="object-cover"
-            sizes="(min-width: 896px) 896px, 100vw"
-          />
-          <div className="absolute inset-0 bg-bg-dark/50" />
-        </div>
+        <p className="mb-5 text-[15px] text-paper-muted">
+          <span className="font-semibold text-paper-green">{t.blog.categories[post.category]}</span>
+          {' · '}
+          {formatDate(post.publishedAt, lang)}
+          {' · '}
+          {post.readTime} {t.common.readMinLong}
+        </p>
+        <h1 className="mb-7 font-display text-[clamp(38px,5.4vw,66px)] font-extrabold leading-[1.02] tracking-[-0.03em]">{post.title}</h1>
+        <p className="font-read text-[22px] leading-[1.5] text-paper-muted sm:text-[24px]">{post.excerpt}</p>
+        <p className="mt-8 text-sm text-paper-muted">
+          <span className="font-semibold text-paper-ink">{post.author.name}</span> · {post.author.bio}
+        </p>
+      </header>
 
-        {/* Meta */}
-        <div className="flex flex-wrap items-center gap-3 mb-4">
-          <Badge variant="blue">{t.blog.categories[post.category]}</Badge>
-          <span className="flex items-center gap-1.5 text-text-secondary text-sm">
-            <Calendar size={13} /> {formatDate(post.publishedAt, lang)}
-          </span>
-          <span className="flex items-center gap-1.5 text-text-secondary text-sm">
-            <Clock size={13} /> {post.readTime} {t.common.readMinLong}
-          </span>
-        </div>
+      {/* Portada */}
+      <div className="mx-auto max-w-[1100px] px-5 sm:px-7">
+        <Image src={post.coverImage} alt={post.title} width={1600} height={900} sizes="(min-width: 1100px) 1100px, 100vw" className="aspect-[16/9] w-full rounded-[20px] object-cover" priority />
+      </div>
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-text-primary mb-4">{post.title}</h1>
-        <p className="text-text-secondary text-lg mb-6">{post.excerpt}</p>
-
-        {/* Autor */}
-        <div className="flex items-center gap-3 pb-8 border-b border-white/5 mb-8">
-          <div className="w-10 h-10 bg-brand-green/20 rounded-full flex items-center justify-center">
-            <User size={16} className="text-accent-green" />
-          </div>
-          <div>
-            <p className="text-text-primary font-medium text-sm">{post.author.name}</p>
-            <p className="text-text-secondary text-xs">{post.author.bio}</p>
-          </div>
-        </div>
-
-        {/* Contenido */}
-        <div className="prose prose-invert prose-blue max-w-none mb-12 prose-headings:text-text-primary prose-p:text-text-secondary prose-strong:text-text-primary prose-code:text-accent-green prose-code:bg-bg-surface prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-bg-surface prose-pre:border prose-pre:border-white/10 prose-li:text-text-secondary prose-a:text-accent-green prose-blockquote:border-brand-green prose-blockquote:text-text-secondary">
+      {/* Texto */}
+      <div className="mx-auto max-w-[720px] px-5 pt-16 pb-12 sm:px-7">
+        <div className={PAPER_PROSE}>
           <MarkdownContent content={post.content} lang={lang} />
         </div>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-12 pb-8 border-b border-white/5">
+        <ul className="mt-14 flex flex-wrap gap-2 border-t border-paper-line pt-8">
           {post.tags.map((tag) => (
-            <Badge key={tag}>{tag}</Badge>
+            <li key={tag} className="rounded-full border border-paper-line px-3 py-1 text-sm text-paper-muted">
+              {tag}
+            </li>
           ))}
-        </div>
+        </ul>
+      </div>
 
-        {/* CTAs */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
-          <div className="bg-brand-green/10 border border-brand-green/20 rounded-lg p-5">
-            <p className="text-text-primary font-semibold mb-2">{d.applyTitle}</p>
-            <p className="text-text-secondary text-sm mb-4">{offer?.text ?? d.applyFallback}</p>
-            <div className="flex flex-wrap gap-2">
-              <Link href={localizePath(lang, offer?.quoteHref ?? '/contacto')}>
-                <Button size="sm">{d.quote}</Button>
-              </Link>
-              <a href={waLink(fmt(t.whatsapp.guide, { title: post.title }))} target="_blank" rel="noopener noreferrer">
-                <Button size="sm" variant="outline">
-                  <WhatsAppIcon size={14} /> {t.common.whatsapp}
-                </Button>
-              </a>
+      {/* Siguiente paso */}
+      <div className="mx-auto max-w-[1100px] px-5 pb-24 sm:px-7">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-[1.6fr_1fr]">
+          <div className="rounded-[22px] bg-bg-dark p-8 text-text-primary sm:p-10">
+            <p className="mb-3 font-display text-[28px] font-extrabold leading-tight tracking-[-0.02em]">{d.applyTitle}</p>
+            <p className="mb-7 max-w-[52ch] text-text-secondary">{offer?.text ?? d.applyFallback}</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <ButtonLink href={localizePath(lang, offer?.quoteHref ?? '/contacto')}>{d.quote}</ButtonLink>
+              <ExternalButton variant="outline" href={waLink(fmt(t.whatsapp.guide, { title: post.title }))}>
+                <WhatsAppIcon size={16} /> {t.common.whatsapp}
+              </ExternalButton>
             </div>
             {offer && (
-              <Link href={localizePath(lang, offer.pageHref)} className="inline-block mt-3 text-sm text-accent-green hover:underline">
-                {offer.pageLabel} →
+              <Link href={localizePath(lang, offer.pageHref)} className="mt-6 inline-block border-b border-accent-green pb-0.5 text-sm font-semibold">
+                {offer.pageLabel}
               </Link>
             )}
           </div>
-          <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
-            <p className="text-text-primary font-semibold mb-2">{d.shareTitle}</p>
-            <p className="text-text-secondary text-sm mb-4">{d.shareText}</p>
-            <a href={waShareLink(`${post.title} ${postUrl}`)} target="_blank" rel="noopener noreferrer">
-              <Button size="sm" variant="outline">
-                <Share2 size={14} /> {d.share}
-              </Button>
-            </a>
+          <div className="rounded-[22px] border border-paper-line p-8 sm:p-10">
+            <p className="mb-3 font-display text-[22px] font-bold tracking-[-0.02em]">{d.shareTitle}</p>
+            <p className="mb-7 text-paper-muted">{d.shareText}</p>
+            <ExternalButton variant="paper" href={waShareLink(`${post.title} ${postUrl}`)}>
+              <Share2 size={16} /> {d.share}
+            </ExternalButton>
           </div>
         </div>
 
-        {/* Artículos relacionados */}
         {related.length > 0 && (
-          <div>
-            <h2 className="text-xl font-bold text-text-primary mb-5">{d.related}</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="mx-auto mt-24 max-w-[720px]">
+            <h2 className="mb-2 text-sm font-semibold tracking-[0.06em] text-paper-muted">{d.related.toUpperCase()}</h2>
+            <ul>
               {related.map((p) => (
-                <BlogCard key={p.id} post={p} lang={lang} />
+                <li key={p.slug} className="border-b border-paper-line">
+                  <Link href={localizePath(lang, `/blog/${p.slug}`)} className="group block py-6">
+                    <span className="block font-read text-[24px] leading-[1.3] transition-colors group-hover:text-paper-green">{p.title}</span>
+                    <span className="text-sm text-paper-muted">
+                      {p.readTime} {t.common.readMinLong}
+                    </span>
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
         )}
       </div>
-    </div>
+    </article>
   )
 }
