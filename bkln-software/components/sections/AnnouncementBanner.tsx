@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Sparkles, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { announcement } from '@/data/announcement'
 import type { Locale } from '@/i18n/config'
 import { localizePath } from '@/i18n/routes'
@@ -11,13 +11,11 @@ export function AnnouncementBanner({ lang }: { lang: Locale }) {
   return (
     <Link
       href={localizePath(lang, announcement.href)}
-      className="group inline-flex flex-wrap items-center justify-center gap-2 bg-brand-green/15 border border-brand-green/40 hover:border-brand-green/60 hover:bg-brand-green/20 text-sm px-4 py-2 rounded-full transition-colors"
+      className="group inline-flex max-w-full items-center gap-3 rounded-full border border-white/15 bg-white/[0.03] py-1.5 pl-1.5 pr-4 text-sm transition-colors hover:border-accent-green/50"
     >
-      <Sparkles size={14} className="text-accent-green shrink-0" />
-      <span className="text-accent-green font-semibold">{announcement.label[lang]}</span>
-      <span className="text-text-secondary hidden sm:inline">·</span>
-      <span className="text-text-primary">{announcement.title[lang]}</span>
-      <ArrowRight size={14} className="text-accent-green shrink-0 transition-transform group-hover:translate-x-0.5" />
+      <span className="shrink-0 rounded-full bg-accent-green px-2.5 py-1 text-xs font-bold text-bg-dark">{announcement.label[lang]}</span>
+      <span className="truncate text-text-primary">{announcement.title[lang]}</span>
+      <ArrowRight size={14} className="shrink-0 text-accent-green transition-transform group-hover:translate-x-0.5" />
     </Link>
   )
 }

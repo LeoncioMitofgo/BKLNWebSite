@@ -10,7 +10,7 @@ export type ServiceText = Pick<Service, 'title' | 'description' | 'longDescripti
   // Solo cuando las "tecnologías" son palabras (p. ej. consultoría: «Revisión de código»).
   & { technologies?: string[] }
 export type ProductText = Pick<Product, 'title' | 'description' | 'longDescription' | 'pricingNote' | 'includes' | 'requirements' | 'supportPlan'>
-export type ProjectText = Pick<Project, 'description' | 'longDescription' | 'sector' | 'status' | 'challenges' | 'solutions'> & { title?: string }
+export type ProjectText = Pick<Project, 'description' | 'longDescription' | 'sector' | 'status' | 'challenges' | 'solutions'> & { title?: string; tagline?: string }
 export type CourseText = Pick<Course, 'title' | 'description' | 'longDescription' | 'duration' | 'modules' | 'includes' | 'instructor'>
 export type PostText = Pick<BlogPost, 'title' | 'excerpt' | 'content' | 'tags' | 'author'>
 

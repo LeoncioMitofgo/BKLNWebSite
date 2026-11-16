@@ -2,31 +2,37 @@
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --color-bg-dark: #0a0a0a;
-  --color-bg-surface: #111111;
+  /* Tinta (fondos oscuros con un punto de verde) */
+  --color-bg-dark: #06100b;
+  --color-bg-surface: #0b1912;
+  --color-bg-raised: #112219;
+  /* Verde de la marca: el vivo para acentos sobre oscuro, el profundo sobre papel */
   --color-brand-green: #00a85a;
   --color-accent-green: #00d97e;
   --color-brand-blue: #1d4ed8;
   --color-accent-blue: #3b82f6;
-  --color-text-primary: #f0f0f0;
-  --color-text-secondary: #6b7280;
+  --color-text-primary: #eef3ef;
+  --color-text-secondary: #9db0a5;
   --color-success: #00d97e;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
+  /* Papel: secciones y páginas pensadas para leer */
+  --color-paper: #f2efe7;
+  --color-paper-ink: #151916;
+  --color-paper-muted: #565c57;
+  --color-paper-line: #dcd7cb;
+  --color-paper-green: #00804a;
 
-  --font-primary: var(--font-inter), 'Inter', sans-serif;
-  --font-mono: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  --font-primary: var(--font-figtree), 'Figtree', system-ui, sans-serif;
+  --font-display: var(--font-bricolage), 'Bricolage Grotesque', system-ui, sans-serif;
+  --font-read: var(--font-newsreader), 'Newsreader', Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 16px;
-}
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
 
-.hero-grid-overlay {
-  background-image:
-    linear-gradient(rgba(0, 217, 126, 0.12) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 217, 126, 0.12) 1px, transparent 1px);
-  background-size: 60px 60px;
+  --ease-out-soft: cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 * {
@@ -38,41 +44,89 @@ html {
 }
 
 body {
-  background-color: #0a0a0a;
-  color: #f0f0f0;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2, h3, h4 {
-  font-family: var(--font-jetbrains), 'JetBrains Mono', monospace;
+  font-family: var(--font-display);
   letter-spacing: -0.02em;
 }
 
-/* Scrollbar personalizado */
+::selection {
+  background: var(--color-accent-green);
+  color: var(--color-bg-dark);
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: var(--color-bg-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #00a85a;
-  border-radius: 3px;
+  background: #1d3428;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #00d97e;
+  background: var(--color-brand-green);
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+/* Aparición al hacer scroll: solo se ocultan los elementos que aún no se han visto (RevealOnScroll) */
+.r-pending {
+  opacity: 0;
+  transform: translateY(28px);
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+.r-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.9s var(--ease-out-soft), transform 0.9s var(--ease-out-soft);
+}
+
+/* Portada: título que sube y "aquí" que se subraya */
+@keyframes rise {
+  from { transform: translateY(105%); }
+  to { transform: none; }
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+/* Pared de trabajos de la portada */
+@keyframes wall-up {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@keyframes wall-down {
+  from { transform: translateY(-50%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes pop-in {
+  from { opacity: 0; transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .r-pending {
+    opacity: 1;
+    transform: none;
+  }
+  .draw-line {
+    stroke-dashoffset: 0;
+  }
 }

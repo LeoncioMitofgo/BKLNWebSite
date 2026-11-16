@@ -1,11 +1,12 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { Inter, JetBrains_Mono } from 'next/font/google'
+import { Bricolage_Grotesque, Figtree, Newsreader } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import ChatWidget from '@/components/sections/ChatWidget'
 import { WhatsAppButton } from '@/components/sections/WhatsAppButton'
 import { Navbar } from '@/components/sections/Navbar'
 import { Footer } from '@/components/sections/Footer'
+import { RevealOnScroll } from '@/components/ui/RevealOnScroll'
 import { company, contactEmail, whatsappNumber } from '@/data/contact'
 import { hasLocale, localeInfo, locales } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
@@ -13,15 +14,23 @@ import { localizePath } from '@/i18n/routes'
 import { languageAlternates, siteName, siteUrl } from '@/lib/metadata'
 import '../globals.css'
 
-const inter = Inter({
+const figtree = Figtree({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-figtree',
   display: 'swap',
 })
 
-const jetbrainsMono = JetBrains_Mono({
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  variable: '--font-jetbrains',
+  variable: '--font-bricolage',
+  display: 'swap',
+})
+
+// Solo para textos largos (guías, lectura)
+const newsreader = Newsreader({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-newsreader',
   display: 'swap',
 })
 
@@ -114,7 +123,7 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
   }
 
   return (
-    <html lang={lang} className={`${inter.variable} ${jetbrainsMono.variable}`}>
+    <html lang={lang} className={`${figtree.variable} ${bricolage.variable} ${newsreader.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -124,9 +133,10 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
       <body className="min-h-screen bg-bg-dark text-text-primary font-primary antialiased">
         <Navbar lang={lang} t={t.nav} />
         <main className="flex-1">{children}</main>
-        <Footer lang={lang} nav={t.nav} t={t.footer} />
+        <Footer lang={lang} t={t} />
         <WhatsAppButton message={t.whatsapp.general} label={t.whatsapp.buttonLabel} />
         <ChatWidget t={t.chat} whatsappMessage={t.whatsapp.general} />
+        <RevealOnScroll />
         <Analytics />
       </body>
     </html>

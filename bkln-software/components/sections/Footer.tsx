@@ -1,156 +1,112 @@
 ﻿import Link from 'next/link'
 import { Logo } from '@/components/ui/Logo'
-import { contactEmail } from '@/data/contact'
+import { company, contactEmail, waLink, whatsappDisplay } from '@/data/contact'
 import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
 import { localizePath } from '@/i18n/routes'
 
 const EXPLORE = ['servicios', 'portfolio', 'productos', 'blog', 'cursos', 'nosotros'] as const
-const INFO = ['contacto', 'privacidad', 'terminos'] as const
 
 const socialLinks = [
-  {
-    href: 'https://github.com/LeoncioMitofgo',
-    label: 'GitHub',
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-        <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
-      </svg>
-    ),
-  },
-  {
-    href: 'https://linkedin.com/company/bkln-software-systems',
-    label: 'LinkedIn',
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-      </svg>
-    ),
-  },
-  {
-    href: 'https://twitter.com/bklnsoftware',
-    label: 'Twitter/X',
-    svg: (
-      <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
-        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-      </svg>
-    ),
-  },
-  {
-    href: `mailto:${contactEmail}`,
-    label: 'Email',
-    svg: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-        <rect width="20" height="16" x="2" y="4" rx="2" />
-        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-      </svg>
-    ),
-  },
+  { href: 'https://linkedin.com/company/bkln-software-systems', label: 'LinkedIn' },
+  { href: 'https://github.com/LeoncioMitofgo', label: 'GitHub' },
+  { href: 'https://twitter.com/bklnsoftware', label: 'X' },
 ]
 
 interface FooterProps {
   lang: Locale
-  nav: Dictionary['nav']
-  t: Dictionary['footer']
+  t: Dictionary
 }
 
-export function Footer({ lang, nav, t }: FooterProps) {
+export function Footer({ lang, t }: FooterProps) {
   const link = (section: string) => localizePath(lang, `/${section}`)
+  const f = t.footer
+  const a = t.about
+  const heading = 'text-text-primary font-semibold text-sm mb-4'
+  const muted = 'text-text-secondary hover:text-text-primary transition-colors'
+
   return (
-    <footer className="bg-bg-surface border-t border-white/5">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
-          {/* Brand */}
+    <footer className="border-t border-white/10 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr] gap-10">
           <div>
-            <div className="mb-4">
-              <Logo href={localizePath(lang, '/')} size="sm" />
-            </div>
-            <p className="text-text-secondary text-sm leading-relaxed max-w-xs mb-5">
-              {t.tagline}
-            </p>
-            <p className="text-accent-green text-xs font-medium">Code. Create. Educate.</p>
+            <Logo href={localizePath(lang, '/')} full />
+            <p className="mt-5 text-text-secondary text-[15px] leading-relaxed max-w-xs">{f.tagline}</p>
           </div>
 
-          {/* Navegación */}
           <div>
-            <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              {t.explore}
-            </h3>
-            <ul className="space-y-2">
+            <h2 className={heading}>{f.explore}</h2>
+            <ul className="space-y-2.5 text-[15px]">
               {EXPLORE.map((section) => (
                 <li key={section}>
-                  <Link
-                    href={link(section)}
-                    className="text-text-secondary hover:text-accent-green transition-colors text-sm"
-                  >
-                    {nav[section]}
+                  <Link href={link(section)} className={muted}>
+                    {t.nav[section]}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Recursos */}
           <div>
-            <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              {t.info}
-            </h3>
-            <ul className="space-y-2.5">
-              {INFO.map((section) => (
-                <li key={section}>
-                  <Link
-                    href={link(section)}
-                    className="text-text-secondary hover:text-accent-green transition-colors text-sm"
-                  >
-                    {nav[section]}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Contacto + redes */}
-          <div>
-            <h3 className="text-text-primary font-semibold mb-4 text-sm uppercase tracking-wider">
-              {t.talk}
-            </h3>
-            <p className="text-text-secondary text-sm leading-relaxed mb-1">{t.location}</p>
-            <p className="text-text-secondary text-sm mb-4">{t.response}</p>
-            <Link
-              href={link('contacto')}
-              className="inline-flex items-center text-accent-green hover:text-white text-sm font-semibold transition-colors mb-5"
-            >
-              {t.cta} <span aria-hidden="true" className="ml-1">→</span>
-            </Link>
-            <div className="flex gap-3">
-              {socialLinks.map(({ svg, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 rounded-md bg-bg-dark border border-white/10 flex items-center justify-center text-text-secondary hover:text-accent-green hover:border-accent-green/30 transition-all"
-                >
-                  {svg}
+            <h2 className={heading}>{f.talk}</h2>
+            <ul className="space-y-2.5 text-[15px] text-text-secondary">
+              <li>
+                <a href={waLink(t.whatsapp.general)} target="_blank" rel="noopener noreferrer" className={muted}>
+                  WhatsApp {whatsappDisplay}
                 </a>
+              </li>
+              <li>
+                <a href={`mailto:${contactEmail}`} className={muted}>
+                  {contactEmail}
+                </a>
+              </li>
+              <li>
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className={muted}>
+                  {a.companyAddressValue}
+                </a>
+              </li>
+              {a.companyHoursValue.map((line) => (
+                <li key={line}>{line}</li>
               ))}
-            </div>
+            </ul>
+          </div>
+
+          <div>
+            <h2 className={heading}>{f.info}</h2>
+            <ul className="space-y-2.5 text-[15px]">
+              {(['contacto', 'privacidad', 'terminos'] as const).map((section) => (
+                <li key={section}>
+                  <Link href={link(section)} className={muted}>
+                    {t.nav[section]}
+                  </Link>
+                </li>
+              ))}
+              {socialLinks.map((s) => (
+                <li key={s.label}>
+                  <a href={s.href} target="_blank" rel="noopener noreferrer" className={muted}>
+                    {s.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
+      </div>
 
-        <div className="mt-10 pt-6 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-text-secondary text-xs">
-            © {new Date().getFullYear()} BKLN Software & Systems. {t.rights}
+      {/* La marca, enorme y en hueco, cortada por abajo */}
+      <div
+        aria-hidden="true"
+        className="mt-14 select-none whitespace-nowrap font-display font-extrabold leading-[0.78] tracking-[-0.06em] text-transparent text-[31vw] -ml-[1vw] -mb-[4vw] [-webkit-text-stroke:1px_rgba(238,243,239,0.14)]"
+      >
+        BKLN
+      </div>
+
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-5 sm:px-8 py-6 flex flex-col sm:flex-row justify-between gap-2 text-sm text-text-secondary">
+          <p>
+            © {new Date().getFullYear()} {company.brandName} · {company.legalName}
           </p>
-          <div className="flex gap-4 text-xs text-text-secondary">
-            <Link href={link('privacidad')} className="hover:text-accent-green transition-colors">
-              {nav.privacidad}
-            </Link>
-            <Link href={link('terminos')} className="hover:text-accent-green transition-colors">
-              {nav.terminos}
-            </Link>
-          </div>
+          <p>{f.rights}</p>
         </div>
       </div>
     </footer>

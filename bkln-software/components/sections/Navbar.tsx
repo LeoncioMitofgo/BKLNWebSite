@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
+import { ButtonLink } from '@/components/ui/ButtonLink'
 import { Logo } from '@/components/ui/Logo'
 import { LanguageSwitcher } from '@/components/sections/LanguageSwitcher'
 import { cn } from '@/lib/utils'
@@ -12,7 +12,8 @@ import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
 import { localizePath, routeFromPathname } from '@/i18n/routes'
 
-const NAV_SECTIONS = ['servicios', 'portfolio', 'productos', 'blog', 'cursos', 'nosotros'] as const
+// Cursos sale del menú principal (otro público): está en el pie.
+const NAV_SECTIONS = ['servicios', 'portfolio', 'productos', 'blog', 'nosotros'] as const
 
 interface NavbarProps {
   lang: Locale
@@ -30,36 +31,39 @@ export function Navbar({ lang, t }: NavbarProps) {
   const isActive = (section: string) => internalPath === `/${section}` || internalPath.startsWith(`/${section}/`)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', handleScroll)
+    const handleScroll = () => setScrolled(window.scrollY > 24)
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : ''
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isOpen])
 
   return (
     <header
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-bg-dark/95 backdrop-blur-md border-b border-white/5 shadow-lg'
-          : 'bg-transparent'
+        'fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-500',
+        scrolled || isOpen ? 'bg-bg-dark/85 backdrop-blur-xl border-white/10' : 'bg-transparent border-transparent'
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Logo href={localizePath(lang, '/')} size="sm" className="mt-4 -ml-4 origin-left scale-[0.8]" />
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
+        <div className="flex items-center justify-between h-[72px] gap-6">
+          <Logo href={localizePath(lang, '/')} onClick={() => setIsOpen(false)} />
 
-          {/* Nav links desktop */}
-          <nav className="hidden lg:flex items-center gap-5">
+          <nav className="hidden lg:flex items-center gap-8">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
+                aria-current={isActive(link.section) ? 'page' : undefined}
                 className={cn(
-                  'relative px-0.5 py-2 text-sm font-semibold tracking-wide transition-colors duration-200 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:bg-accent-green after:transition-all after:duration-200',
-                  isActive(link.section)
-                    ? 'text-white after:w-full'
-                    : 'text-text-primary/75 after:w-0 hover:text-white hover:after:w-full'
+                  'text-[15px] transition-colors duration-200',
+                  isActive(link.section) ? 'text-text-primary' : 'text-text-secondary hover:text-text-primary'
                 )}
               >
                 {link.label}
@@ -67,55 +71,56 @@ export function Navbar({ lang, t }: NavbarProps) {
             ))}
           </nav>
 
-          {/* Idioma + CTA + Mobile toggle */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <div className="hidden sm:block">
               <LanguageSwitcher lang={lang} label={t.language} />
             </div>
-            <Link href={contactHref} className="hidden lg:block">
-              <Button size="sm">{t.cta}</Button>
-            </Link>
+            <ButtonLink href={contactHref} size="sm" className="hidden lg:inline-flex">
+              {t.cta}
+            </ButtonLink>
             <button
-              className="lg:hidden p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-white/5"
+              type="button"
+              className="lg:hidden -mr-2 flex h-11 w-11 items-center justify-center rounded-full text-text-primary hover:bg-white/10"
               onClick={() => setIsOpen(!isOpen)}
               aria-label={t.toggleMenu}
+              aria-expanded={isOpen}
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Menú del móvil a pantalla completa */}
       {isOpen && (
-        <div className="lg:hidden bg-bg-dark/98 backdrop-blur-md border-b border-white/5">
-          <div className="px-4 pt-2 pb-4 space-y-1">
+        <div className="lg:hidden fixed inset-x-0 top-[73px] bottom-0 bg-bg-dark overflow-y-auto">
+          <nav className="px-5 pt-8 pb-10 flex flex-col">
             {links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
+                aria-current={isActive(link.section) ? 'page' : undefined}
                 className={cn(
-                  'block px-3 py-2.5 rounded-md text-sm font-semibold transition-colors',
-                  isActive(link.section)
-                    ? 'text-accent-green bg-brand-green/10'
-                    : 'text-text-primary/80 hover:text-white hover:bg-white/10'
+                  'font-display font-extrabold text-[40px] leading-[1.15] tracking-[-0.03em] py-1.5',
+                  isActive(link.section) ? 'text-accent-green' : 'text-text-primary'
                 )}
               >
                 {link.label}
               </Link>
             ))}
-            <div className="px-3 py-2 sm:hidden">
+            <Link href={localizePath(lang, '/cursos')} onClick={() => setIsOpen(false)} className="mt-4 text-lg text-text-secondary">
+              {t.cursos}
+            </Link>
+            <div className="mt-8">
+              <ButtonLink href={contactHref} size="lg" className="w-full" onClick={() => setIsOpen(false)}>
+                {t.cta}
+              </ButtonLink>
+            </div>
+            <div className="mt-8 sm:hidden">
               <LanguageSwitcher lang={lang} label={t.language} onNavigate={() => setIsOpen(false)} />
             </div>
-            <div className="pt-2">
-              <Link href={contactHref} className="block" onClick={() => setIsOpen(false)}>
-                <Button className="w-full" size="sm">
-                  {t.cta}
-                </Button>
-              </Link>
-            </div>
-          </div>
+          </nav>
         </div>
       )}
     </header>

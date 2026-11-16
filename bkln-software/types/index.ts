@@ -86,6 +86,8 @@ export interface Project {
   sector: string
   /** Solo si no está terminado, p. ej. 'En desarrollo' */
   status?: string
+  /** Una frase de resultado para tarjetas y portada (si falta, se usa la descripción) */
+  tagline?: string
   technologies: string[]
   image: string
   gallery: string[]
