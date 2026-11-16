@@ -6,19 +6,24 @@ interface LogoProps {
   className?: string
   /** Portada del idioma actual */
   href?: string
-  /** Añade "Software & Systems" bajo el nombre */
-  full?: boolean
+  /** Versión grande (pie de página) */
+  large?: boolean
   onClick?: () => void
 }
 
-export function Logo({ className, href = '/', full = false, onClick }: LogoProps) {
+// brand-logo.png (1086×362) trae margen transparente: los márgenes negativos lo alinean con el contenido.
+export function Logo({ className, href = '/', large = false, onClick }: LogoProps) {
   return (
-    <Link href={href} onClick={onClick} className={cn('inline-flex items-center gap-2.5 shrink-0', className)} aria-label="BKLN Software & Systems">
-      <Image src="/brand-symbol.png" alt="" width={34} height={34} className="h-8 w-8 object-contain" priority />
-      <span className="flex flex-col leading-none">
-        <span className="font-display font-extrabold text-[22px] tracking-[0.01em] text-text-primary">BKLN</span>
-        {full && <span className="mt-1 text-[10px] font-semibold tracking-[0.18em] text-text-secondary">SOFTWARE &amp; SYSTEMS</span>}
-      </span>
+    <Link href={href} onClick={onClick} className={cn('inline-flex shrink-0 items-center', className)}>
+      <Image
+        src="/brand-logo.png"
+        alt="BKLN Software & Systems"
+        width={1086}
+        height={362}
+        sizes={large ? '216px' : '156px'}
+        priority={!large}
+        className={large ? 'h-[72px] w-auto -ml-[15px] -my-2' : 'h-[52px] w-auto -ml-[11px] -my-1'}
+      />
     </Link>
   )
 }

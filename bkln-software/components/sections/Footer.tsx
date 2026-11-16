@@ -30,7 +30,7 @@ export function Footer({ lang, t }: FooterProps) {
       <div className="max-w-7xl mx-auto px-5 sm:px-8 pt-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1.2fr_1fr] gap-10">
           <div>
-            <Logo href={localizePath(lang, '/')} full />
+            <Logo href={localizePath(lang, '/')} large />
             <p className="mt-5 text-text-secondary text-[15px] leading-relaxed max-w-xs">{f.tagline}</p>
           </div>
 
