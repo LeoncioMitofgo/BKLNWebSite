@@ -11,10 +11,11 @@ import { waLink } from '@/data/contact'
 
 const BUDGETS = ['menos-150k', '150k-500k', '500k-1500k', 'mas-1500k', 'negociar'] as const
 
+// 16px en los campos: con menos, el iPhone hace zoom al escribir.
 const inputClass =
-  'w-full bg-bg-dark border border-white/10 rounded-md px-4 py-2.5 text-text-primary text-sm placeholder:text-text-secondary/50 focus:outline-none focus:border-brand-green focus:ring-1 focus:ring-brand-green/30 transition-colors'
+  'w-full bg-bg-dark border border-white/15 rounded-xl px-4 py-3.5 text-text-primary text-base placeholder:text-text-secondary/60 focus:outline-none focus:border-accent-green focus:ring-2 focus:ring-accent-green/25 transition-colors'
 
-const labelClass = 'block text-text-secondary text-sm mb-1.5 font-medium'
+const labelClass = 'block text-text-primary text-sm mb-2 font-semibold'
 
 interface Option {
   slug: string
@@ -100,7 +101,7 @@ function ContactFormFields({ lang, t, waErrorMessage, services, initialProjectTy
 
   if (submitted) {
     return (
-      <div className="bg-bg-surface border border-white/5 rounded-lg p-8 text-center">
+      <div className="rounded-[22px] border border-accent-green/30 bg-accent-green/5 p-10 text-center">
         <CheckCircle size={48} className="text-success mx-auto mb-4" />
         <h3 className="text-text-primary font-bold text-xl mb-2">{t.successTitle}</h3>
         <p className="text-text-secondary">{t.successText}</p>
@@ -109,7 +110,7 @@ function ContactFormFields({ lang, t, waErrorMessage, services, initialProjectTy
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-bg-surface border border-white/5 rounded-lg p-6 space-y-5">
+    <form onSubmit={handleSubmit} className="space-y-6">
       {formData.product && (
         <p className="text-sm text-text-secondary bg-brand-green/10 border border-brand-green/20 rounded-md px-4 py-2.5">
           {t.productAbout} <span className="text-text-primary font-semibold">{formData.product}</span>
@@ -251,7 +252,7 @@ function ContactFormFields({ lang, t, waErrorMessage, services, initialProjectTy
 
 export function ContactForm(props: ContactFormProps) {
   return (
-    <Suspense fallback={<div className="bg-bg-surface border border-white/5 rounded-lg p-6 h-96 animate-pulse" />}>
+    <Suspense fallback={<div className="h-96 animate-pulse rounded-[22px] bg-white/[0.03]" />}>
       <ContactFormInner {...props} />
     </Suspense>
   )

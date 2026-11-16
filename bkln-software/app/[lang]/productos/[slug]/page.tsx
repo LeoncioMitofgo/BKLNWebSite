@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowLeft, CheckCircle, ShieldCheck } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
-import { Button } from '@/components/ui/Button'
+import { ButtonLink, ExternalButton } from '@/components/ui/ButtonLink'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { products as baseProducts } from '@/data/content'
 import { waLink } from '@/data/contact'
@@ -37,127 +37,106 @@ export default async function ProductPage({ params }: LangSlugParams) {
 
   const relatedProject = projects.find((p) => p.slug === product.slug)
   const contactHref = localizePath(lang, `/contacto?producto=${product.slug}`)
+  const screenshots = product.screenshots.filter((src) => src !== product.image)
 
   return (
-    <div className="min-h-screen pt-24">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link
-          href={localizePath(lang, '/productos')}
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-green transition-colors mb-8 text-sm"
-        >
+    <article>
+      <header className="mx-auto max-w-7xl px-5 pt-32 pb-14 sm:px-8 sm:pt-40">
+        <Link href={localizePath(lang, '/productos')} className="mb-10 inline-flex items-center gap-2 text-sm text-text-secondary transition-colors hover:text-text-primary">
           <ArrowLeft size={16} /> {d.back}
         </Link>
-
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row gap-6 mb-8">
-          <div className="relative w-full sm:w-48 h-40 rounded-lg overflow-hidden border border-white/5 bg-bg-surface shrink-0">
-            <Image src={product.image} alt={product.title} fill className="object-cover" sizes="(min-width: 640px) 192px, 100vw" />
-          </div>
-          <div className="flex-1">
-            <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="text-xs uppercase tracking-wider text-accent-green bg-brand-green/10 border border-brand-green/20 px-3 py-1 rounded-full">
-                {t.products.categories[product.category]}
-              </span>
-            </div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-text-primary mb-2">{product.title}</h1>
-            <p className="text-text-secondary text-sm leading-relaxed mb-4">{product.description}</p>
-            <div className="flex items-center gap-3 flex-wrap">
-              <Link href={contactHref}>
-                <Button>{product.requiresMeeting ? d.requestMeeting : d.requestInfo}</Button>
-              </Link>
-              <a href={waLink(fmt(t.whatsapp.product, { title: product.title }))} target="_blank" rel="noopener noreferrer">
-                <Button variant="outline">
-                  <WhatsAppIcon /> {t.common.whatsapp}
-                </Button>
-              </a>
-            </div>
-            {product.pricingNote && (
-              <p className="text-text-secondary text-sm leading-snug mt-3">{product.pricingNote}</p>
-            )}
-            {relatedProject && (
-              <Link
-                href={localizePath(lang, `/portfolio/${relatedProject.slug}`)}
-                className="inline-flex items-center gap-1.5 text-accent-green hover:underline text-sm mt-4"
-              >
-                {d.caseStudy}
-              </Link>
-            )}
-          </div>
+        <h1 className="font-display text-[clamp(52px,8vw,120px)] font-extrabold leading-[0.92] tracking-[-0.04em]">{product.title}</h1>
+        <p className="mt-8 max-w-[58ch] text-lg text-text-secondary sm:text-xl">{product.description}</p>
+        <div className="mt-10 flex flex-wrap items-center gap-3">
+          <ButtonLink href={contactHref} size="lg">
+            {product.requiresMeeting ? d.requestMeeting : d.requestInfo}
+          </ButtonLink>
+          <ExternalButton href={waLink(fmt(t.whatsapp.product, { title: product.title }))} variant="outline" size="lg">
+            <WhatsAppIcon size={18} /> {t.common.whatsapp}
+          </ExternalButton>
         </div>
-
-        {/* Capturas */}
-        {product.screenshots.length > 0 && (
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10">
-            {product.screenshots.map((src, i) => (
-              <div key={src} className="relative h-40 rounded-lg overflow-hidden border border-white/5">
-                <Image src={src} alt={fmt(d.screenshot, { n: i + 1 })} fill className="object-cover" sizes="(min-width: 640px) 300px, 50vw" />
-              </div>
-            ))}
-          </div>
+        {product.pricingNote && <p className="mt-5 text-sm text-text-secondary">{product.pricingNote}</p>}
+        {relatedProject && (
+          <Link href={localizePath(lang, `/portfolio/${relatedProject.slug}`)} className="mt-6 inline-flex items-center gap-2 border-b border-accent-green pb-0.5 font-semibold">
+            {d.caseStudy} <ArrowRight size={15} />
+          </Link>
         )}
+      </header>
 
-        {/* Descripción */}
-        <div className="mb-10">
-          {product.longDescription.split('\n\n').map((para, i) => (
-            <p key={i} className="text-text-secondary leading-relaxed mb-4">{para}</p>
+      <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
+        <Image src={product.image} alt={product.title} width={1600} height={900} sizes="(min-width: 1240px) 1240px, 100vw" className="w-full rounded-[22px] border border-white/10" priority />
+      </div>
+
+      {screenshots.length > 0 && (
+        <div className="mx-auto mt-6 grid max-w-[1240px] grid-cols-1 gap-6 px-5 sm:px-8 md:grid-cols-2">
+          {screenshots.map((src, i) => (
+            <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-[18px] border border-white/10" data-reveal>
+              <Image src={src} alt={fmt(d.screenshot, { n: i + 1 })} width={1200} height={720} sizes="(min-width: 768px) 50vw, 100vw" className="w-full" />
+            </a>
           ))}
         </div>
+      )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
-          {/* Qué incluye */}
-          {product.includes && product.includes.length > 0 && (
-            <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
-              <h2 className="text-text-primary font-bold mb-4">{d.includes}</h2>
-              <ul className="space-y-2">
-                {product.includes.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                    <CheckCircle size={13} className="text-accent-green mt-0.5 shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+      {/* Descripción para leer */}
+      <section className="mt-24 bg-paper py-24 text-paper-ink">
+        <div className="mx-auto max-w-[720px] space-y-6 px-5 font-read text-[20px] leading-[1.7] text-[#232823] sm:px-7 sm:text-[21px]">
+          {product.longDescription.split('\n\n').map((para, i) => (
+            <p key={i} data-reveal>
+              {para}
+            </p>
+          ))}
+        </div>
+      </section>
 
-          {/* Requisitos */}
-          <div className="space-y-4">
-            <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
-              <div className="flex items-center gap-2 mb-3">
-                <ShieldCheck size={14} className="text-accent-green" />
-                <h2 className="text-text-primary font-bold">{d.requirements}</h2>
-              </div>
-              <ul className="space-y-1.5">
-                {product.requirements.map((req) => (
-                  <li key={req} className="text-sm text-text-secondary">· {req}</li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Plan de soporte */}
-            {product.supportPlan && (
-              <div className="bg-brand-green/5 border border-brand-green/15 rounded-lg p-4">
-                <p className="text-text-primary font-semibold text-sm mb-1">
-                  {fmt(d.supportPlan, { period: product.supportPlan.period })}
-                </p>
-                <ul className="space-y-1">
-                  {product.supportPlan.includes.map((item) => (
-                    <li key={item} className="text-xs text-text-secondary">· {item}</li>
-                  ))}
-                </ul>
-              </div>
-            )}
+      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-5 py-24 sm:px-8 lg:grid-cols-3">
+        {product.includes && product.includes.length > 0 && (
+          <div data-reveal>
+            <h2 className="mb-6 font-display text-[26px] font-bold tracking-[-0.02em]">{d.includes}</h2>
+            <ul className="space-y-3.5">
+              {product.includes.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-text-secondary">
+                  <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent-green" />
+                  {item}
+                </li>
+              ))}
+            </ul>
           </div>
+        )}
+        <div data-reveal="1">
+          <h2 className="mb-6 font-display text-[26px] font-bold tracking-[-0.02em]">{d.requirements}</h2>
+          <ul className="space-y-3.5">
+            {product.requirements.map((req) => (
+              <li key={req} className="flex items-start gap-3 text-text-secondary">
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-green" />
+                {req}
+              </li>
+            ))}
+          </ul>
         </div>
+        {product.supportPlan && (
+          <div data-reveal="2">
+            <h2 className="mb-6 font-display text-[26px] font-bold tracking-[-0.02em]">{fmt(d.supportPlan, { period: product.supportPlan.period })}</h2>
+            <ul className="space-y-3.5">
+              {product.supportPlan.includes.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-text-secondary">
+                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-green" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </section>
 
-        {/* CTA final */}
-        <div className="bg-brand-green/10 border border-brand-green/20 rounded-lg p-6 text-center">
-          <p className="text-text-primary font-semibold mb-2">{d.customTitle}</p>
-          <p className="text-text-secondary text-sm mb-4">{d.customText}</p>
-          <Link href={contactHref}>
-            <Button>{d.contact}</Button>
-          </Link>
+      <section className="mx-auto max-w-7xl px-5 pb-24 sm:px-8">
+        <div className="rounded-[26px] border border-white/10 bg-bg-surface p-8 sm:p-14">
+          <p className="mb-4 font-display text-[clamp(32px,4.4vw,56px)] font-extrabold leading-none tracking-[-0.03em]">{d.customTitle}</p>
+          <p className="mb-9 max-w-[56ch] text-lg text-text-secondary">{d.customText}</p>
+          <ButtonLink href={contactHref} size="lg">
+            {d.contact}
+          </ButtonLink>
         </div>
-      </div>
-    </div>
+      </section>
+    </article>
   )
 }

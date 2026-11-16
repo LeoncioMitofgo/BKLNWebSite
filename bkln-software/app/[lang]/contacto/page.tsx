@@ -1,9 +1,10 @@
-import { Mail, MessageCircle, Clock, CheckCircle } from 'lucide-react'
+import { CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { ContactForm } from '@/components/sections/ContactForm'
-import { contactEmail, waLink } from '@/data/contact'
+import { ExternalButton } from '@/components/ui/ButtonLink'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { company, contactEmail, waLink, whatsappDisplay } from '@/data/contact'
 import { getContent } from '@/i18n/content'
 import { getDictionary } from '@/i18n/dictionaries'
 import { localeFromParams, type LangParams } from '@/i18n/server'
@@ -18,112 +19,98 @@ export default async function ContactoPage({ params }: LangParams) {
   const lang = await localeFromParams(params)
   const t = getDictionary(lang)
   const c = t.contact
+  const a = t.about
   const { services, products } = getContent(lang)
+  const row = 'border-b border-white/10 py-6'
+  const label = 'mb-1.5 text-sm text-text-secondary'
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            {c.h1Start} <span className="text-accent-green">{c.h1Highlight}</span>
-          </h1>
-          <p className="text-text-secondary text-lg max-w-2xl mx-auto">{c.lead}</p>
-          <a
-            href={waLink(t.whatsapp.project)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-6 rounded-md bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#1ebe5b]"
-          >
+    <div className="min-h-screen">
+      <header className="mx-auto max-w-7xl px-5 pt-36 pb-16 sm:px-8 sm:pt-44">
+        <h1 className="font-display text-[clamp(52px,8vw,120px)] font-extrabold leading-[0.92] tracking-[-0.04em]">
+          {c.h1Start} <span className="text-accent-green">{c.h1Highlight}</span>
+        </h1>
+        <p className="mt-8 max-w-[52ch] text-lg text-text-secondary sm:text-xl">{c.lead}</p>
+        <div className="mt-10">
+          <ExternalButton href={waLink(t.whatsapp.project)} size="lg" variant="whatsapp">
             <WhatsAppIcon size={18} /> {c.whatsappButton}
-          </a>
+          </ExternalButton>
         </div>
-      </section>
+      </header>
 
-      {/* Formulario + Info */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Formulario */}
-            <div className="lg:col-span-2">
-              <ContactForm
-                lang={lang}
-                t={t.form}
-                waErrorMessage={t.whatsapp.formError}
-                services={services.map(({ slug, title }) => ({ slug, title }))}
-                products={products.map(({ slug, title }) => ({ slug, title }))}
-              />
+      <section className="mx-auto grid max-w-7xl grid-cols-1 gap-16 px-5 pb-28 sm:px-8 lg:grid-cols-12">
+        <div className="lg:col-span-7">
+          <ContactForm
+            lang={lang}
+            t={t.form}
+            waErrorMessage={t.whatsapp.formError}
+            services={services.map(({ slug, title }) => ({ slug, title }))}
+            products={products.map(({ slug, title }) => ({ slug, title }))}
+          />
+        </div>
+
+        <aside className="lg:col-span-5">
+          <p className="mb-2 inline-flex items-center gap-2.5 text-sm font-semibold text-accent-green">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-green opacity-60 motion-reduce:hidden" />
+              <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-accent-green" />
+            </span>
+            {c.available}
+          </p>
+          <p className="mb-6 text-text-secondary">{c.availableText}</p>
+
+          <dl className="border-t border-white/10">
+            <div className={row}>
+              <dt className={label}>{c.whatsappTitle}</dt>
+              <dd>
+                <a href={waLink(t.whatsapp.general)} target="_blank" rel="noopener noreferrer" className="font-display text-[22px] font-bold hover:text-accent-green">
+                  {whatsappDisplay}
+                </a>
+                <p className="mt-1 text-sm text-text-secondary">{c.whatsappHint}</p>
+              </dd>
             </div>
-
-            {/* Info de contacto */}
-            <div className="space-y-5">
-              <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-brand-green/15 rounded-md flex items-center justify-center">
-                    <Mail size={16} className="text-accent-green" />
-                  </div>
-                  <h3 className="text-text-primary font-semibold text-sm">{c.emailTitle}</h3>
-                </div>
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="text-accent-green hover:underline text-sm"
-                >
+            <div className={row}>
+              <dt className={label}>{c.emailTitle}</dt>
+              <dd>
+                <a href={`mailto:${contactEmail}`} className="font-display text-[22px] font-bold hover:text-accent-green">
                   {contactEmail}
                 </a>
-              </div>
-
-              <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-brand-green/15 rounded-md flex items-center justify-center">
-                    <MessageCircle size={16} className="text-accent-green" />
-                  </div>
-                  <h3 className="text-text-primary font-semibold text-sm">{c.whatsappTitle}</h3>
-                </div>
-                <a
-                  href={waLink(t.whatsapp.general)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-accent-green hover:underline text-sm"
-                >
-                  {c.whatsappLink}
-                </a>
-                <p className="text-text-secondary text-xs mt-1">{c.whatsappHint}</p>
-              </div>
-
-              <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 bg-brand-green/15 rounded-md flex items-center justify-center">
-                    <Clock size={16} className="text-accent-green" />
-                  </div>
-                  <h3 className="text-text-primary font-semibold text-sm">{c.responseTitle}</h3>
-                </div>
-                <p className="text-text-secondary text-sm">{c.responseText}</p>
-              </div>
-
-              {/* Disponibilidad */}
-              <div className="bg-success/10 border border-success/20 rounded-lg p-5">
-                <div className="flex items-center gap-2 mb-2">
-                  <span className="w-2.5 h-2.5 bg-success rounded-full animate-pulse" />
-                  <span className="text-success font-semibold text-sm">{c.available}</span>
-                </div>
-                <p className="text-text-secondary text-sm">{c.availableText}</p>
-              </div>
-
-              {/* Qué esperar */}
-              <div className="bg-bg-surface border border-white/5 rounded-lg p-5">
-                <h3 className="text-text-primary font-semibold text-sm mb-3">{c.expectTitle}</h3>
-                <ul className="space-y-2">
-                  {c.expect.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                      <CheckCircle size={13} className="text-success mt-0.5 shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              </dd>
             </div>
-          </div>
-        </div>
+            <div className={row}>
+              <dt className={label}>{a.companyAddress}</dt>
+              <dd>
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent-green">
+                  {a.companyAddressValue}
+                </a>
+                <span className="text-text-secondary"> · </span>
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-accent-green hover:underline">
+                  {a.companyViewOnMaps}
+                </a>
+              </dd>
+            </div>
+            <div className={row}>
+              <dt className={label}>{a.companyHours}</dt>
+              {a.companyHoursValue.map((line) => (
+                <dd key={line}>{line}</dd>
+              ))}
+            </div>
+            <div className={row}>
+              <dt className={label}>{c.responseTitle}</dt>
+              <dd>{c.responseText}</dd>
+            </div>
+          </dl>
+
+          <h2 className="mt-10 mb-5 font-display text-[22px] font-bold tracking-[-0.01em]">{c.expectTitle}</h2>
+          <ul className="space-y-3">
+            {c.expect.map((item) => (
+              <li key={item} className="flex items-start gap-3 text-text-secondary">
+                <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent-green" />
+                {item}
+              </li>
+            ))}
+          </ul>
+        </aside>
       </section>
     </div>
   )

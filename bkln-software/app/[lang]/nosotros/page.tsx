@@ -1,9 +1,8 @@
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Clock, Lock, Mail, MapPin } from 'lucide-react'
+import { CheckCircle, Lock } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
-import { Button } from '@/components/ui/Button'
-import { SectionHeader } from '@/components/ui/SectionHeader'
+import { ButtonLink, ExternalButton } from '@/components/ui/ButtonLink'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { TechStack } from '@/components/sections/TechStack'
 import { company, contactEmail, waLink, whatsappDisplay } from '@/data/contact'
@@ -17,114 +16,55 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
   return pageMetadata({ lang, title: t.metaTitle, description: t.metaDescription, path: '/nosotros' })
 }
 
+const sectionTitle = 'font-display text-[clamp(40px,5.4vw,80px)] font-extrabold leading-[0.95] tracking-[-0.03em]'
+
 export default async function NosotrosPage({ params }: LangParams) {
   const lang = await localeFromParams(params)
   const t = getDictionary(lang)
   const a = t.about
+  const dt = 'mb-1 text-sm text-text-secondary'
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            {a.h1Start} <span className="text-accent-green">{a.h1Highlight}</span>
-          </h1>
-          <p className="text-text-secondary text-lg leading-relaxed">{a.lead}</p>
-        </div>
-      </section>
+    <div className="min-h-screen">
+      <header className="mx-auto max-w-7xl px-5 pt-36 pb-16 sm:px-8 sm:pt-44">
+        <h1 className="font-display text-[clamp(52px,8vw,120px)] font-extrabold leading-[0.92] tracking-[-0.04em]">
+          {a.h1Start} <span className="text-accent-green">{a.h1Highlight}</span>
+        </h1>
+        <p className="mt-8 max-w-[60ch] text-lg text-text-secondary sm:text-xl">{a.lead}</p>
+      </header>
 
       {/* Cifras */}
-      <section className="py-10 border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <section className="mx-auto max-w-7xl px-5 pb-20 sm:px-8">
+        <dl className="grid grid-cols-2 gap-x-8 gap-y-10 border-t border-white/10 pt-10 md:grid-cols-4">
           {t.stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <p className="text-3xl font-bold text-accent-green">{stat.value}</p>
-              <p className="text-text-secondary text-sm mt-1">{stat.label}</p>
+            <div key={stat.label} className="flex flex-col-reverse" data-reveal>
+              <dt className="mt-2 text-sm text-text-secondary">{stat.label}</dt>
+              <dd className="font-display text-[clamp(32px,3.6vw,48px)] font-extrabold leading-none tracking-[-0.03em]">{stat.value}</dd>
             </div>
           ))}
-        </div>
+        </dl>
       </section>
 
-      {/* Quiénes somos */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader title={a.whoTitle} />
-          <div className="space-y-4 text-text-secondary leading-relaxed">
-            <p>{a.whoP1}</p>
-            <p>{a.whoP2}</p>
-            <p>{a.whoP3}</p>
+      {/* Quiénes somos, sobre papel */}
+      <section className="bg-paper py-24 text-paper-ink">
+        <div className="mx-auto max-w-[720px] px-5 sm:px-7">
+          <h2 className="mb-10 font-display text-[clamp(38px,5vw,64px)] font-extrabold leading-none tracking-[-0.03em]">{a.whoTitle}</h2>
+          <div className="space-y-6 font-read text-[20px] leading-[1.7] text-[#232823] sm:text-[21px]">
+            <p data-reveal>{a.whoP1}</p>
+            <p data-reveal>{a.whoP2}</p>
+            <p data-reveal>{a.whoP3}</p>
           </div>
-
-          <div className="mt-8 flex items-start gap-3 bg-bg-surface border border-white/5 rounded-lg p-5">
-            <Lock size={18} className="text-accent-green mt-0.5 shrink-0" />
-            <p className="text-text-secondary text-sm leading-relaxed">
-              <span className="text-text-primary font-semibold">{a.confidentialTitle}</span> {a.confidentialText}
-            </p>
-          </div>
-
-          {/* Datos de la empresa */}
-          <div className="mt-12">
-            <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
-              <h3 className="text-text-primary font-bold text-lg mb-5">{a.companyTitle}</h3>
-              <dl className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm">
-                <div>
-                  <dt className="text-text-secondary text-xs">{a.companyLegalName}</dt>
-                  <dd className="text-text-primary">{company.legalName}</dd>
-                </div>
-                <div>
-                  <dt className="text-text-secondary text-xs">{a.companyBrand}</dt>
-                  <dd className="text-text-primary">{company.brandName}</dd>
-                </div>
-                <div>
-                  <dt className="text-text-secondary text-xs">{a.companyAddress}</dt>
-                  <dd className="text-text-primary">
-                    <MapPin size={14} className="inline -mt-0.5 mr-1 text-accent-green" />
-                    {a.companyAddressValue}
-                    <a
-                      href={company.mapsUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-2 text-accent-green hover:underline whitespace-nowrap"
-                    >
-                      {a.companyViewOnMaps}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-text-secondary text-xs">{a.companyHours}</dt>
-                  <dd className="text-text-primary">
-                    {a.companyHoursValue.map((line) => (
-                      <span key={line} className="flex items-center gap-1">
-                        <Clock size={14} className="text-accent-green shrink-0" /> {line}
-                      </span>
-                    ))}
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-text-secondary text-xs">{a.companyContact}</dt>
-                  <dd className="text-text-primary flex flex-col gap-1">
-                    <a href={`mailto:${contactEmail}`} className="inline-flex items-center gap-1 hover:text-accent-green">
-                      <Mail size={14} className="text-accent-green" /> {contactEmail}
-                    </a>
-                    <a href={waLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-accent-green">
-                      <WhatsAppIcon size={14} /> {whatsappDisplay}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-text-secondary text-xs">{a.companyFounded}</dt>
-                  <dd className="text-text-primary">{company.foundingYear}</dd>
-                </div>
-              </dl>
-            </div>
-          </div>
-
-          <div className="mt-10">
-            <h3 className="text-text-primary font-bold text-lg mb-4">{a.sectorsTitle}</h3>
+          <p className="mt-10 flex items-start gap-3 border-t border-paper-line pt-8 text-paper-muted" data-reveal>
+            <Lock size={18} className="mt-1 shrink-0 text-paper-green" />
+            <span>
+              <strong className="text-paper-ink">{a.confidentialTitle}</strong> {a.confidentialText}
+            </span>
+          </p>
+          <div className="mt-12" data-reveal>
+            <h3 className="mb-4 text-sm font-semibold tracking-[0.06em] text-paper-muted">{a.sectorsTitle.toUpperCase()}</h3>
             <ul className="flex flex-wrap gap-2">
               {a.sectors.map((sector) => (
-                <li key={sector} className="px-3 py-1.5 rounded-full border border-white/10 bg-bg-surface text-text-secondary text-sm">
+                <li key={sector} className="rounded-full border border-paper-line px-4 py-1.5 text-paper-ink">
                   {sector}
                 </li>
               ))}
@@ -133,78 +73,133 @@ export default async function NosotrosPage({ params }: LangParams) {
         </div>
       </section>
 
-      {/* Por qué nosotros */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-6xl mx-auto">
-          <SectionHeader title={a.whyTitle} centered />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {t.whyUs.map((item) => (
-              <div key={item.title} className="bg-bg-dark border border-white/5 rounded-lg p-5">
-                <CheckCircle size={18} className="text-accent-green mb-3" />
-                <h3 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h3>
-                <p className="text-text-secondary text-xs leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
-          <h3 className="text-text-primary font-bold text-lg mb-4 text-center">{a.marketTitle}</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
-            {t.localContext.map((item) => (
-              <div key={item.title} className="bg-bg-dark border border-white/5 rounded-lg p-4">
-                <h4 className="text-text-primary font-semibold mb-1 text-sm">{item.title}</h4>
-                <p className="text-text-secondary text-xs leading-relaxed">{item.description}</p>
-              </div>
-            ))}
-          </div>
+      {/* Por qué y mercado real */}
+      <section className="mx-auto max-w-7xl px-5 py-28 sm:px-8">
+        <h2 className={`${sectionTitle} mb-14`} data-reveal>
+          {a.whyTitle}
+        </h2>
+        <div className="grid grid-cols-1 gap-x-12 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {t.whyUs.map((item, i) => (
+            <div key={item.title} className="border-t-2 border-text-primary pt-6" data-reveal={String(i)}>
+              <h3 className="mb-3 font-display text-[22px] font-bold leading-tight tracking-[-0.01em]">{item.title}</h3>
+              <p className="text-text-secondary">{item.description}</p>
+            </div>
+          ))}
         </div>
+
+        <h3 className="mt-24 mb-10 font-display text-[clamp(30px,3.4vw,44px)] font-extrabold tracking-[-0.02em]" data-reveal>
+          {a.marketTitle}
+        </h3>
+        <ul className="grid grid-cols-1 gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+          {t.localContext.map((item) => (
+            <li key={item.title} className="flex items-start gap-3" data-reveal>
+              <CheckCircle size={20} className="mt-1 shrink-0 text-accent-green" />
+              <span>
+                <span className="block font-semibold">{item.title}</span>
+                <span className="text-text-secondary">{item.description}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
       </section>
 
       {/* Cómo trabajamos */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <SectionHeader title={a.processTitle} />
-          <ol className="space-y-4">
-            {t.process.map((step) => (
-              <li key={step.step} className="flex items-start gap-4">
-                <span className="w-10 h-10 shrink-0 rounded-full bg-brand-green/15 flex items-center justify-center text-accent-green font-bold text-sm">
-                  {step.step}
-                </span>
-                <div>
-                  <h3 className="text-text-primary font-semibold">{step.title}</h3>
-                  <p className="text-text-secondary text-sm leading-relaxed">{step.description}</p>
-                </div>
+      <section className="border-y border-white/10 bg-bg-surface py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <h2 className={`${sectionTitle} mb-14`} data-reveal>
+            {a.processTitle}
+          </h2>
+          <ol className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            {t.process.map((step, i) => (
+              <li key={step.step} className="border-t-2 border-text-primary pt-6" data-reveal={String(i)}>
+                <span className="font-display text-sm font-bold text-accent-green">{step.step}</span>
+                <h3 className="mt-2 mb-3 font-display text-[22px] font-bold leading-tight tracking-[-0.01em]">{step.title}</h3>
+                <p className="text-text-secondary">{step.description}</p>
               </li>
             ))}
           </ol>
-          <Link href={localizePath(lang, '/servicios')} className="inline-flex items-center gap-1.5 mt-6 text-sm text-accent-green hover:underline">
-            {a.seeServices} <ArrowRight size={14} />
+          <Link href={localizePath(lang, '/servicios')} className="mt-12 inline-block border-b-[1.5px] border-accent-green pb-1 font-semibold">
+            {a.seeServices}
           </Link>
         </div>
       </section>
 
+      {/* Datos de la empresa */}
+      <section className="mx-auto max-w-7xl px-5 py-28 sm:px-8">
+        <h2 className={`${sectionTitle} mb-14`} data-reveal>
+          {a.companyTitle}
+        </h2>
+        <dl className="grid grid-cols-1 gap-x-12 gap-y-8 border-t border-white/10 pt-10 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
+          <div>
+            <dt className={dt}>{a.companyLegalName}</dt>
+            <dd className="text-lg">{company.legalName}</dd>
+          </div>
+          <div>
+            <dt className={dt}>{a.companyBrand}</dt>
+            <dd className="text-lg">{company.brandName}</dd>
+          </div>
+          <div>
+            <dt className={dt}>{a.companyAddress}</dt>
+            <dd className="text-lg">
+              {a.companyAddressValue}{' '}
+              <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="whitespace-nowrap text-accent-green hover:underline">
+                {a.companyViewOnMaps}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className={dt}>{a.companyHours}</dt>
+            {a.companyHoursValue.map((line) => (
+              <dd key={line} className="text-lg">
+                {line}
+              </dd>
+            ))}
+          </div>
+          <div>
+            <dt className={dt}>{a.companyContact}</dt>
+            <dd className="text-lg">
+              <a href={`mailto:${contactEmail}`} className="hover:text-accent-green">
+                {contactEmail}
+              </a>
+            </dd>
+            <dd className="text-lg">
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="hover:text-accent-green">
+                WhatsApp {whatsappDisplay}
+              </a>
+            </dd>
+          </div>
+          <div>
+            <dt className={dt}>{a.companyFounded}</dt>
+            <dd className="text-lg">{company.foundingYear}</dd>
+          </div>
+        </dl>
+      </section>
+
       {/* Tecnología */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-7xl mx-auto">
-          <SectionHeader title={a.techTitle} subtitle={a.techSubtitle} centered />
+      <section className="border-t border-white/10 py-28">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <h2 className={`${sectionTitle} mb-5`} data-reveal>
+            {a.techTitle}
+          </h2>
+          <p className="mb-14 max-w-[56ch] text-lg text-text-secondary" data-reveal="1">
+            {a.techSubtitle}
+          </p>
           <TechStack descriptions={t.techStack} />
         </div>
       </section>
 
       {/* Llamada final */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-text-primary mb-4">{a.finalTitle}</h2>
-          <p className="text-text-secondary text-lg mb-8 leading-relaxed">{a.finalText}</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href={localizePath(lang, '/contacto')}>
-              <Button size="lg">
-                {t.common.requestProposal} <ArrowRight size={18} />
-              </Button>
-            </Link>
-            <a href={waLink(t.whatsapp.project)} target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="lg">
-                <WhatsAppIcon size={18} /> {t.common.whatsappWrite}
-              </Button>
-            </a>
+      <section className="mx-auto max-w-7xl px-5 pb-28 sm:px-8">
+        <div className="rounded-[26px] border border-white/10 bg-bg-surface p-8 sm:p-14">
+          <h2 className="mb-4 font-display text-[clamp(36px,5vw,64px)] font-extrabold leading-none tracking-[-0.03em]">{a.finalTitle}</h2>
+          <p className="mb-9 max-w-[56ch] text-lg text-text-secondary">{a.finalText}</p>
+          <div className="flex flex-wrap gap-3">
+            <ButtonLink href={localizePath(lang, '/contacto')} size="lg">
+              {t.common.requestProposal}
+            </ButtonLink>
+            <ExternalButton href={waLink(t.whatsapp.project)} variant="outline" size="lg">
+              <WhatsAppIcon size={18} /> {t.common.whatsappWrite}
+            </ExternalButton>
           </div>
         </div>
       </section>

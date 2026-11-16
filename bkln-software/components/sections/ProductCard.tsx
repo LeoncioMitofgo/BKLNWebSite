@@ -1,19 +1,10 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-import { Badge } from '@/components/ui/Badge'
-import { Button } from '@/components/ui/Button'
 import type { Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import { localizePath } from '@/i18n/routes'
 import type { Product } from '@/types'
-
-const categoryImages: Record<Product['category'], string> = {
-  android: '/course-android.jpg',
-  desktop: '/service-desktop.jpg',
-  web: '/product-web.jpg',
-  ia: '/product-ia.jpg',
-}
 
 interface ProductCardProps {
   product: Product
@@ -22,34 +13,25 @@ interface ProductCardProps {
 
 export function ProductCard({ product, lang }: ProductCardProps) {
   const t = getDictionary(lang).products
-  const imageUrl = product.image || categoryImages[product.category]
 
   return (
-    <div className="group flex flex-col bg-bg-surface border border-white/5 rounded-lg overflow-hidden hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
-      <div className="h-40 relative overflow-hidden">
+    <Link href={localizePath(lang, `/productos/${product.slug}`)} className="group flex flex-col" data-reveal>
+      <div className="overflow-hidden rounded-[18px] border border-white/10 bg-bg-surface">
         <Image
-          src={imageUrl}
+          src={product.image}
           alt={product.title}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
-          sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+          width={1200}
+          height={750}
+          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+          className="aspect-[16/10] w-full object-cover transition-transform duration-[1400ms] ease-out-soft group-hover:scale-[1.035]"
         />
-        <div className="absolute inset-0 bg-bg-dark/50" />
-        <div className="absolute top-2 left-2">
-          <Badge variant="blue">{t.categories[product.category]}</Badge>
-        </div>
       </div>
-      <div className="p-5 flex flex-col flex-1">
-        <h3 className="text-text-primary font-semibold mb-1.5">{product.title}</h3>
-        <p className="text-text-secondary text-sm leading-relaxed mb-5 line-clamp-3">
-          {product.description}
-        </p>
-        <Link href={localizePath(lang, `/productos/${product.slug}`)} className="mt-auto">
-          <Button size="sm" variant="outline" className="w-full">
-            {t.card.more} <ArrowRight size={14} />
-          </Button>
-        </Link>
-      </div>
-    </div>
+      <h3 className="mt-5 mb-2 font-display text-[24px] font-bold tracking-[-0.02em]">{product.title}</h3>
+      <p className="mb-4 text-text-secondary line-clamp-3">{product.description}</p>
+      <span className="mt-auto inline-flex items-center gap-2 font-semibold">
+        {t.card.more}
+        <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+      </span>
+    </Link>
   )
 }

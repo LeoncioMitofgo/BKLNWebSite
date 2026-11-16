@@ -1,8 +1,9 @@
 import Link from 'next/link'
+import Image from 'next/image'
+import { ArrowRight } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
-import { Button } from '@/components/ui/Button'
-import { ProductCard } from '@/components/sections/ProductCard'
+import { ButtonLink } from '@/components/ui/ButtonLink'
 import { getContent } from '@/i18n/content'
 import { getDictionary } from '@/i18n/dictionaries'
 import { localizePath } from '@/i18n/routes'
@@ -21,36 +22,57 @@ export default async function ProductosPage({ params }: LangParams) {
   const { products } = getContent(lang)
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30">
-        <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold text-text-primary mb-4">
-            {p.h1Start} <span className="text-accent-green">{p.h1Highlight}</span>
-          </h1>
-          <p className="text-text-secondary text-lg max-w-2xl mx-auto">{p.lead}</p>
-        </div>
+    <div className="min-h-screen">
+      <header className="mx-auto max-w-7xl px-5 pt-36 pb-20 sm:px-8 sm:pt-44">
+        <h1 className="font-display text-[clamp(52px,8vw,120px)] font-extrabold leading-[0.92] tracking-[-0.04em]">
+          {p.h1Start} <span className="text-accent-green">{p.h1Highlight}</span>
+        </h1>
+        <p className="mt-8 max-w-[56ch] text-lg text-text-secondary sm:text-xl">{p.lead}</p>
+      </header>
+
+      <section className="mx-auto max-w-7xl space-y-24 px-5 pb-28 sm:px-8 lg:space-y-32">
+        {products.map((product, i) => (
+          <Link
+            key={product.slug}
+            href={localizePath(lang, `/productos/${product.slug}`)}
+            className="group grid grid-cols-1 items-center gap-8 lg:grid-cols-12"
+            data-reveal
+          >
+            <div className={`overflow-hidden rounded-[22px] border border-white/10 bg-bg-surface lg:col-span-7 ${i % 2 ? 'lg:col-start-6 lg:row-start-1' : ''}`}>
+              <Image
+                src={product.image}
+                alt={product.title}
+                width={1600}
+                height={900}
+                sizes="(min-width: 1024px) 58vw, 100vw"
+                className="aspect-[16/9] w-full object-cover transition-transform duration-[1400ms] ease-out-soft group-hover:scale-[1.035]"
+                priority={i === 0}
+              />
+            </div>
+            <div className={`lg:col-span-5 ${i % 2 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
+              <h2 className="mb-4 font-display text-[clamp(36px,4vw,56px)] font-extrabold leading-none tracking-[-0.03em]">{product.title}</h2>
+              <p className="mb-5 text-lg text-text-secondary">{product.description}</p>
+              {product.pricingNote && <p className="mb-6 text-sm text-text-secondary">{product.pricingNote}</p>}
+              <span className="inline-flex items-center gap-2.5 font-semibold">
+                {p.card.more}
+                <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+              </span>
+            </div>
+          </Link>
+        ))}
       </section>
 
-      <section className="py-14 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} lang={lang} />
-          ))}
-        </div>
-      </section>
-
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg-surface/30 border-t border-white/5">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold text-text-primary mb-3">{p.notFoundTitle}</h2>
-          <p className="text-text-secondary mb-6">{p.notFoundText}</p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Link href={localizePath(lang, '/contacto')}>
-              <Button>{t.common.requestProposal}</Button>
-            </Link>
-            <Link href={localizePath(lang, '/servicios')}>
-              <Button variant="outline">{p.seeServices}</Button>
-            </Link>
+      <section className="border-t border-white/10 bg-bg-surface py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <h2 className="mb-5 max-w-[18ch] font-display text-[clamp(36px,5vw,64px)] font-extrabold leading-none tracking-[-0.03em]">{p.notFoundTitle}</h2>
+          <p className="mb-10 max-w-[56ch] text-lg text-text-secondary">{p.notFoundText}</p>
+          <div className="flex flex-wrap gap-3">
+            <ButtonLink href={localizePath(lang, '/contacto')} size="lg">
+              {t.common.requestProposal}
+            </ButtonLink>
+            <ButtonLink href={localizePath(lang, '/servicios')} variant="outline" size="lg">
+              {p.seeServices}
+            </ButtonLink>
           </div>
         </div>
       </section>

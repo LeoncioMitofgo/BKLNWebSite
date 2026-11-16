@@ -1,6 +1,6 @@
 import { cn } from '@/lib/utils'
 
-export type ButtonVariant = 'primary' | 'outline' | 'ghost' | 'paper'
+export type ButtonVariant = 'primary' | 'outline' | 'ghost' | 'paper' | 'whatsapp'
 export type ButtonSize = 'sm' | 'md' | 'lg'
 
 const base =
@@ -11,6 +11,7 @@ const variants: Record<ButtonVariant, string> = {
   outline: 'border border-white/20 text-text-primary hover:border-accent-green hover:text-accent-green',
   ghost: 'text-text-secondary hover:text-text-primary',
   paper: 'bg-paper-ink text-paper hover:bg-black hover:-translate-y-0.5',
+  whatsapp: 'bg-[#25D366] text-[#06100b] hover:bg-[#3ee07f] hover:-translate-y-0.5',
 }
 
 const sizes: Record<ButtonSize, string> = {
