@@ -10,7 +10,7 @@ import { localizePath } from '@/i18n/routes'
 import { localeFromParams, type LangParams } from '@/i18n/server'
 import { fmt, formatDate } from '@/lib/utils'
 
-const UPDATED = '2026-10-09'
+const UPDATED = '2026-11-16'
 
 const content: Record<Locale, () => React.JSX.Element> = {
   es: PrivacyEs,

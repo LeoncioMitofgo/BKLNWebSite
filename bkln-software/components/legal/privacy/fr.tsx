@@ -5,8 +5,9 @@ export function PrivacyFr() {
     <>
       <LegalSection title="1. Responsable du traitement">
         <p>
-          <B>BKLN Software & Systems</B> est responsable du traitement des données que vous nous
-          communiquez via ce site. Vous pouvez nous contacter à l’adresse <EmailLink />.
+          <B>Brooklyn Software and Systems</B> (nom commercial BKLN Software & Systems), dont le siège
+          est à Banapa, Malabo (Guinée équatoriale), est responsable du traitement des données que
+          vous nous communiquez via ce site. Vous pouvez nous contacter à l’adresse <EmailLink />.
         </p>
       </LegalSection>
 

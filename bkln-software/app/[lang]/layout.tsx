@@ -6,7 +6,7 @@ import ChatWidget from '@/components/sections/ChatWidget'
 import { WhatsAppButton } from '@/components/sections/WhatsAppButton'
 import { Navbar } from '@/components/sections/Navbar'
 import { Footer } from '@/components/sections/Footer'
-import { contactEmail, whatsappNumber } from '@/data/contact'
+import { company, contactEmail, whatsappNumber } from '@/data/contact'
 import { hasLocale, localeInfo, locales } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import { localizePath } from '@/i18n/routes'
@@ -75,13 +75,34 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: siteName,
+    legalName: company.legalName,
     url: siteUrl,
     logo: `${siteUrl}/brand-logo.png`,
     image: `${siteUrl}/brand-logo.png`,
     description: t.meta.siteDescription,
     email: contactEmail,
     telephone: `+${whatsappNumber}`,
-    address: { '@type': 'PostalAddress', addressLocality: 'Malabo', addressCountry: 'GQ' },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: company.address.area,
+      addressLocality: company.address.city,
+      addressRegion: company.address.region,
+      addressCountry: company.address.countryCode,
+    },
+    hasMap: company.mapsUrl,
+    openingHoursSpecification: company.openingHours.map((h) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: h.days,
+      opens: h.opens,
+      closes: h.closes,
+    })),
+    foundingDate: String(company.foundingYear),
+    founder: {
+      '@type': 'Person',
+      name: company.founder.name,
+      jobTitle: 'CEO',
+      sameAs: [company.founder.linkedin],
+    },
     areaServed: t.meta.areaServed,
     knowsAbout: t.meta.knowsAbout,
     availableLanguage: ['es', 'en', 'fr'],

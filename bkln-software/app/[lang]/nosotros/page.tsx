@@ -1,12 +1,12 @@
 import Link from 'next/link'
-import { ArrowRight, CheckCircle, Lock } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, CheckCircle, Clock, Lock, Mail, MapPin } from 'lucide-react'
 import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { Button } from '@/components/ui/Button'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
 import { TechStack } from '@/components/sections/TechStack'
-import { waLink } from '@/data/contact'
+import { company, contactEmail, waLink, whatsappDisplay } from '@/data/contact'
 import { getDictionary } from '@/i18n/dictionaries'
 import { localizePath } from '@/i18n/routes'
 import { localeFromParams, type LangParams } from '@/i18n/server'
@@ -61,6 +61,100 @@ export default async function NosotrosPage({ params }: LangParams) {
             <p className="text-text-secondary text-sm leading-relaxed">
               <span className="text-text-primary font-semibold">{a.confidentialTitle}</span> {a.confidentialText}
             </p>
+          </div>
+
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Fundador */}
+            <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
+              <h3 className="text-text-primary font-bold text-lg mb-5">{a.founderTitle}</h3>
+              <div className="flex items-center gap-4 mb-4">
+                <span
+                  aria-hidden="true"
+                  className="w-14 h-14 shrink-0 rounded-full bg-brand-green/15 border border-brand-green/30 flex items-center justify-center text-accent-green font-bold"
+                >
+                  {company.founder.initials}
+                </span>
+                <div>
+                  <p className="text-text-primary font-semibold leading-snug">{company.founder.name}</p>
+                  <p className="text-accent-green text-sm">{a.founderRole}</p>
+                </div>
+              </div>
+              <p className="text-text-secondary text-sm leading-relaxed">{a.founderBio}</p>
+              <a
+                href={company.founder.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 mt-4 text-sm text-accent-green hover:underline"
+              >
+                {a.founderLinkedIn} <ArrowUpRight size={14} />
+              </a>
+            </div>
+
+            {/* Datos de la empresa */}
+            <div className="bg-bg-surface border border-white/5 rounded-lg p-6">
+              <h3 className="text-text-primary font-bold text-lg mb-5">{a.companyTitle}</h3>
+              <dl className="space-y-3 text-sm">
+                <div>
+                  <dt className="text-text-secondary text-xs">{a.companyLegalName}</dt>
+                  <dd className="text-text-primary">{company.legalName}</dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary text-xs">{a.companyBrand}</dt>
+                  <dd className="text-text-primary">{company.brandName}</dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary text-xs">{a.companyAddress}</dt>
+                  <dd className="text-text-primary">
+                    <MapPin size={14} className="inline -mt-0.5 mr-1 text-accent-green" />
+                    {a.companyAddressValue}
+                    <a
+                      href={company.mapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="ml-2 text-accent-green hover:underline whitespace-nowrap"
+                    >
+                      {a.companyViewOnMaps}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary text-xs">{a.companyHours}</dt>
+                  <dd className="text-text-primary">
+                    {a.companyHoursValue.map((line) => (
+                      <span key={line} className="flex items-center gap-1">
+                        <Clock size={14} className="text-accent-green shrink-0" /> {line}
+                      </span>
+                    ))}
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary text-xs">{a.companyContact}</dt>
+                  <dd className="text-text-primary flex flex-col gap-1">
+                    <a href={`mailto:${contactEmail}`} className="inline-flex items-center gap-1 hover:text-accent-green">
+                      <Mail size={14} className="text-accent-green" /> {contactEmail}
+                    </a>
+                    <a href={waLink()} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 hover:text-accent-green">
+                      <WhatsAppIcon size={14} /> {whatsappDisplay}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-text-secondary text-xs">{a.companyFounded}</dt>
+                  <dd className="text-text-primary">{company.foundingYear}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <h3 className="text-text-primary font-bold text-lg mb-4">{a.sectorsTitle}</h3>
+            <ul className="flex flex-wrap gap-2">
+              {a.sectors.map((sector) => (
+                <li key={sector} className="px-3 py-1.5 rounded-full border border-white/10 bg-bg-surface text-text-secondary text-sm">
+                  {sector}
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
