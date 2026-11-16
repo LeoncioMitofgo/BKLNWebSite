@@ -29,6 +29,9 @@ export function Navbar({ lang, t }: NavbarProps) {
   // Se compara la ruta interna: al prerenderizar, pathname es la reescrita ('/es/servicios').
   const internalPath = routeFromPathname(pathname)?.internalPath ?? '/'
   const isActive = (section: string) => internalPath === `/${section}` || internalPath.startsWith(`/${section}/`)
+  // Páginas que empiezan sobre papel claro: la cabecera va oscura desde el principio.
+  const paperTop = /^\/(blog|privacidad|terminos)(\/|$)/.test(internalPath)
+  const solid = scrolled || paperTop
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 24)
@@ -49,7 +52,7 @@ export function Navbar({ lang, t }: NavbarProps) {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-500',
         // Sin desenfoque con el menú abierto: backdrop-filter encerraría el panel fijo dentro de la cabecera.
-        isOpen ? 'bg-bg-dark border-white/10' : scrolled ? 'bg-bg-dark/85 backdrop-blur-xl border-white/10' : 'bg-transparent border-transparent'
+        isOpen ? 'bg-bg-dark border-white/10' : solid ? 'bg-bg-dark/90 backdrop-blur-xl border-white/10' : 'bg-transparent border-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">

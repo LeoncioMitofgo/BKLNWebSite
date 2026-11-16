@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: LangSlugParams) {
         {product.pricingNote && <p className="mt-5 text-sm text-text-secondary">{product.pricingNote}</p>}
         {relatedProject && (
           <Link href={localizePath(lang, `/portfolio/${relatedProject.slug}`)} className="mt-6 inline-flex items-center gap-2 border-b border-accent-green pb-0.5 font-semibold">
-            {d.caseStudy} <ArrowRight size={15} />
+            {d.caseStudy.replace(/\s*→\s*$/, '')} <ArrowRight size={15} />
           </Link>
         )}
       </header>
