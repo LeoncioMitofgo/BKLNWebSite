@@ -48,7 +48,8 @@ export function Navbar({ lang, t }: NavbarProps) {
     <header
       className={cn(
         'fixed top-0 left-0 right-0 z-50 border-b transition-[background-color,border-color] duration-500',
-        scrolled || isOpen ? 'bg-bg-dark/85 backdrop-blur-xl border-white/10' : 'bg-transparent border-transparent'
+        // Sin desenfoque con el menú abierto: backdrop-filter encerraría el panel fijo dentro de la cabecera.
+        isOpen ? 'bg-bg-dark border-white/10' : scrolled ? 'bg-bg-dark/85 backdrop-blur-xl border-white/10' : 'bg-transparent border-transparent'
       )}
     >
       <div className="max-w-7xl mx-auto px-5 sm:px-8">
@@ -75,9 +76,11 @@ export function Navbar({ lang, t }: NavbarProps) {
             <div className="hidden sm:block">
               <LanguageSwitcher lang={lang} label={t.language} />
             </div>
-            <ButtonLink href={contactHref} size="sm" className="hidden lg:inline-flex">
-              {t.cta}
-            </ButtonLink>
+            <div className="hidden sm:block">
+              <ButtonLink href={contactHref} size="sm">
+                {t.cta}
+              </ButtonLink>
+            </div>
             <button
               type="button"
               className="lg:hidden -mr-2 flex h-11 w-11 items-center justify-center rounded-full text-text-primary hover:bg-white/10"
