@@ -115,7 +115,7 @@ export const en: Dictionary = {
       wallblue: {
         meta: 'WallBlue · Airport · In production',
         title: 'POS for the airport trolleys',
-        desc: 'Operators charge for each trolley in cash or by card and hand over a printed receipt. The owner follows sales from a dashboard, and every cash-up is validated on the server. If the internet drops or slows down, the sale is stored on the terminal and sent later.',
+        desc: 'It processes thousands of payments at the airport: operators charge for each trolley in cash or by card and hand over a printed receipt. The owner follows sales from a dashboard, and every cash-up is validated on the server. If the internet drops or slows down, the sale is stored on the terminal and sent later.',
         see: 'See the case and try the demo',
         alt: 'Recreation with demo data: a payment terminal with the checkout app, a card, the printed receipt and the owner’s phone with the dashboard',
       },

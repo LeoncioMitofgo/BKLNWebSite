@@ -115,7 +115,7 @@ export const fr: Dictionary = {
       wallblue: {
         meta: 'WallBlue · Aéroport · En production',
         title: 'Caisse des chariots de l’aéroport',
-        desc: 'Les opérateurs encaissent chaque chariot en espèces ou par carte et remettent un reçu imprimé. Le propriétaire suit les ventes depuis son tableau de bord, et chaque clôture de caisse est validée sur le serveur. Si internet coupe ou devient lent, la vente est enregistrée sur le terminal et envoyée plus tard.',
+        desc: 'Elle traite des milliers d’encaissements à l’aéroport : les opérateurs encaissent chaque chariot en espèces ou par carte et remettent un reçu imprimé. Le propriétaire suit les ventes depuis son tableau de bord, et chaque clôture de caisse est validée sur le serveur. Si internet coupe ou devient lent, la vente est enregistrée sur le terminal et envoyée plus tard.',
         see: 'Voir le projet et essayer la démo',
         alt: 'Reconstitution avec des données de démonstration : terminal de paiement avec l’application d’encaissement, une carte, le reçu imprimé et le téléphone du propriétaire avec le tableau de bord',
       },

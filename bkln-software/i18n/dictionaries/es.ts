@@ -114,7 +114,7 @@ export const es = {
       wallblue: {
         meta: 'WallBlue · Aeropuerto · En producción',
         title: 'TPV de los carritos del aeropuerto',
-        desc: 'Los operadores cobran cada carrito en efectivo o con tarjeta y entregan el recibo impreso. El dueño sigue las ventas desde su panel, y cada cierre de caja se valida en el servidor. Si internet se va o va lento, la venta se guarda en el terminal y se envía después.',
+        desc: 'Procesa miles de cobros en el aeropuerto: los operadores cobran cada carrito en efectivo o con tarjeta y entregan el recibo impreso. El dueño sigue las ventas desde su panel, y cada cierre de caja se valida en el servidor. Si internet se va o va lento, la venta se guarda en el terminal y se envía después.',
         see: 'Ver el caso y probar la demo',
         alt: 'Recreación con datos de demostración: datáfono con la app de cobro, una tarjeta, el recibo impreso y el móvil del dueño con el panel',
       },
