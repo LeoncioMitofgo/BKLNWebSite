@@ -24,7 +24,7 @@ export function LegalLayout({ title, updated, links, children }: LegalLayoutProp
 
           <div className="flex flex-col gap-3 border-t border-paper-line pt-8 sm:flex-row sm:gap-6">
             {links.map((link) => (
-              <Link key={link.href} href={link.href} className="font-semibold text-paper-green hover:underline">
+              <Link key={link.href} href={link.href} className="font-semibold text-paper-ink underline decoration-paper-line underline-offset-4 hover:decoration-paper-ink">
                 {link.label}
               </Link>
             ))}
@@ -45,7 +45,7 @@ export function LegalSection({ title, children }: { title: string; children: Rea
 }
 
 export function LegalList({ children }: { children: ReactNode }) {
-  return <ul className="ml-2 list-inside list-disc space-y-1.5 marker:text-paper-green">{children}</ul>
+  return <ul className="ml-2 list-inside list-disc space-y-1.5 marker:text-paper-muted">{children}</ul>
 }
 
 export function B({ children }: { children: ReactNode }) {
@@ -54,7 +54,7 @@ export function B({ children }: { children: ReactNode }) {
 
 export function EmailLink() {
   return (
-    <a href={`mailto:${contactEmail}`} className="font-semibold text-paper-green hover:underline">
+    <a href={`mailto:${contactEmail}`} className="font-semibold text-paper-ink underline decoration-paper-line underline-offset-4 hover:decoration-paper-ink">
       {contactEmail}
     </a>
   )

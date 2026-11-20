@@ -100,7 +100,7 @@ export default async function ProductPage({ params }: LangSlugParams) {
             <ul className="space-y-3.5">
               {product.includes.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-text-secondary">
-                  <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent-green" />
+                  <CheckCircle size={18} className="mt-0.5 shrink-0 text-text-secondary" />
                   {item}
                 </li>
               ))}
@@ -112,7 +112,7 @@ export default async function ProductPage({ params }: LangSlugParams) {
           <ul className="space-y-3.5">
             {product.requirements.map((req) => (
               <li key={req} className="flex items-start gap-3 text-text-secondary">
-                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-green" />
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-text-secondary" />
                 {req}
               </li>
             ))}
@@ -124,7 +124,7 @@ export default async function ProductPage({ params }: LangSlugParams) {
             <ul className="space-y-3.5">
               {product.supportPlan.includes.map((item) => (
                 <li key={item} className="flex items-start gap-3 text-text-secondary">
-                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-green" />
+                  <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-text-secondary" />
                   {item}
                 </li>
               ))}

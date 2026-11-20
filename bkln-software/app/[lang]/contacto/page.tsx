@@ -63,7 +63,7 @@ export default async function ContactoPage({ params }: LangParams) {
             <div className={row}>
               <dt className={label}>{c.whatsappTitle}</dt>
               <dd>
-                <a href={waLink(t.whatsapp.general)} target="_blank" rel="noopener noreferrer" className="font-display text-[22px] font-bold hover:text-accent-green">
+                <a href={waLink(t.whatsapp.general)} target="_blank" rel="noopener noreferrer" className="font-display text-[22px] font-bold underline-offset-4 hover:underline">
                   {whatsappDisplay}
                 </a>
                 <p className="mt-1 text-sm text-text-secondary">{c.whatsappHint}</p>
@@ -72,7 +72,7 @@ export default async function ContactoPage({ params }: LangParams) {
             <div className={row}>
               <dt className={label}>{c.emailTitle}</dt>
               <dd>
-                <a href={`mailto:${contactEmail}`} className="font-display text-[22px] font-bold hover:text-accent-green">
+                <a href={`mailto:${contactEmail}`} className="font-display text-[22px] font-bold underline-offset-4 hover:underline">
                   {contactEmail}
                 </a>
               </dd>
@@ -80,11 +80,11 @@ export default async function ContactoPage({ params }: LangParams) {
             <div className={row}>
               <dt className={label}>{a.companyAddress}</dt>
               <dd>
-                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-accent-green">
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="underline-offset-4 hover:underline">
                   {a.companyAddressValue}
                 </a>
                 <span className="text-text-secondary"> · </span>
-                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-accent-green hover:underline">
+                <a href={company.mapsUrl} target="_blank" rel="noopener noreferrer" className="text-text-primary underline decoration-white/30 underline-offset-4 hover:decoration-text-primary">
                   {a.companyViewOnMaps}
                 </a>
               </dd>
@@ -105,7 +105,7 @@ export default async function ContactoPage({ params }: LangParams) {
           <ul className="space-y-3">
             {c.expect.map((item) => (
               <li key={item} className="flex items-start gap-3 text-text-secondary">
-                <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent-green" />
+                <CheckCircle size={18} className="mt-0.5 shrink-0 text-text-secondary" />
                 {item}
               </li>
             ))}

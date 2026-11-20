@@ -75,7 +75,7 @@ export default async function ServiciosPage({ params }: LangParams) {
           <ol className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {t.process.map((step, i) => (
               <li key={step.step} className="border-t-2 border-text-primary pt-6" data-reveal={String(i)}>
-                <span className="font-display text-sm font-bold text-accent-green">{step.step}</span>
+                <span className="font-display text-sm font-bold text-text-secondary">{step.step}</span>
                 <h3 className="mt-2 mb-3 font-display text-[22px] font-bold leading-tight tracking-[-0.01em]">{step.title}</h3>
                 <p className="text-text-secondary">{step.description}</p>
               </li>
@@ -88,7 +88,7 @@ export default async function ServiciosPage({ params }: LangParams) {
           <ul className="grid grid-cols-1 gap-x-10 gap-y-5 md:grid-cols-3">
             {s.commitments.map((item) => (
               <li key={item} className="flex items-start gap-3 text-text-secondary" data-reveal>
-                <CheckCircle size={20} className="mt-0.5 shrink-0 text-accent-green" />
+                <CheckCircle size={20} className="mt-0.5 shrink-0 text-text-secondary" />
                 {item}
               </li>
             ))}

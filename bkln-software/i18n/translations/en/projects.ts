@@ -82,7 +82,7 @@ export const projects: Record<string, ProjectText> = {
     ],
   },
   gestescolar: {
-    description: 'A complete school management system for schools in Equatorial Guinea — students, enrolment, grades, payments and printable documents. Works without internet, one-click installation.',
+    description: 'A complete school management system for schools in Equatorial Guinea — students, enrolment, grades, payments and printable documents. Works without internet and installs in under five minutes.',
     longDescription:
       'Most schools in Equatorial Guinea manage their students in Excel, their payments in notebooks and their report cards by hand. GestEscolar digitises that whole workflow in a system any school secretary can learn to use in a day.\n\nFrom day one, the school can register students with a full record (medical details, guardian, documents), manage enrolment with payment tracking, enter grades by term and generate report cards ready to print. Student ID cards are produced automatically. So are class lists. All from the browser, without installing anything on each computer.\n\nThe system works completely without internet — it runs on the school’s local network. If the server is switched off, nobody loses data: everything is in the local database. To use it from another computer in the school, you just open the browser and type the server’s IP address.\n\nThe full installation takes less than 5 minutes: a .bat file sets up the Python environment, creates the database and starts the server. No IT knowledge is needed to install it or maintain it.',
     sector: 'Education',

@@ -203,7 +203,7 @@ export default async function ProjectPage({ params }: LangSlugParams) {
                     <ul className="space-y-3">
                       {project.challenges.map((c) => (
                         <li key={c} className="flex items-start gap-2.5 text-[15px] text-text-secondary">
-                          <span className="mt-0.5 shrink-0 text-accent-green">→</span>
+                          <span className="mt-0.5 shrink-0 text-text-secondary">→</span>
                           {c}
                         </li>
                       ))}
@@ -214,7 +214,7 @@ export default async function ProjectPage({ params }: LangSlugParams) {
                     <ul className="space-y-3">
                       {project.solutions.map((s) => (
                         <li key={s} className="flex items-start gap-2.5 text-[15px] text-text-secondary">
-                          <CheckCircle size={15} className="mt-1 shrink-0 text-accent-green" />
+                          <CheckCircle size={15} className="mt-1 shrink-0 text-text-secondary" />
                           {s}
                         </li>
                       ))}

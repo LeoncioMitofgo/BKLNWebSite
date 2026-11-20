@@ -1181,7 +1181,7 @@ export const projects: Project[] = [
     slug: 'gestescolar',
     demoData: true,
     title: 'GestEscolar',
-    description: 'Sistema de gestión escolar completo para colegios en Guinea Ecuatorial — alumnos, matrículas, notas, pagos y documentos imprimibles. Funciona sin internet, instalación en un clic.',
+    description: 'Sistema de gestión escolar completo para colegios en Guinea Ecuatorial — alumnos, matrículas, notas, pagos y documentos imprimibles. Funciona sin internet y se instala en menos de cinco minutos.',
     longDescription:
       'La mayoría de los colegios de Guinea Ecuatorial gestionan sus alumnos en Excel, sus pagos en cuadernos y sus boletines de notas a mano. GestEscolar digitaliza todo ese flujo en un sistema que cualquier secretaria puede aprender a usar en un día.\n\nDesde el primer día, el colegio puede registrar alumnos con ficha completa (datos médicos, tutor, documentos), gestionar matrículas con seguimiento de pagos, introducir calificaciones por trimestre y generar boletines listos para imprimir. Los carnets de estudiante se producen automáticamente. Las listas de aula también. Todo desde el navegador, sin instalar nada en cada equipo.\n\nEl sistema funciona completamente sin internet — corre en la red local del colegio. Si el servidor se apaga, nadie pierde datos: todo está en la base de datos local. Si se necesita acceder desde otro equipo del colegio, basta con abrir el navegador y escribir la IP del servidor.\n\nLa instalación completa tarda menos de 5 minutos: un archivo .bat configura el entorno Python, crea la base de datos y arranca el servidor. No hace falta saber de informática para instalarlo ni para mantenerlo.',
     category: 'desktop',

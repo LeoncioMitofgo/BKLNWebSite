@@ -16,7 +16,7 @@
 - **Verde solo como acento:** el botón principal y la palabra "Malabo.".
 - **Un único botón flotante (WhatsApp).** El chat del asistente está retirado hasta que `ai.bklnsoftware.tech` vuelva a funcionar (ahora falla la conexión segura desde fuera). Cuando vuelva, irá como un enlace que no se abre solo.
 - **Fuera "35+ proyectos" y "3 países"**, porque no se pueden respaldar. Tampoco Madrid.
-- **"ERP con Odoo", sin SAP**, hasta que haya un proyecto de SAP que enseñar.
+- **SAP se queda** (decisión de Mike, 20-11-2026): el servicio sigue siendo "ERP: Odoo y SAP", con su oferta de desarrollo e integración, también en la portada y en el pie. (La maqueta v3 proponía "ERP con Odoo"; Mike prefirió mantenerlo).
 - **Cargo público: "Fundador".** "Fundador y CTO" cuando importa lo técnico. **Nunca "CEO".**
 - **El origen de BKLN se cuenta por su porqué** (apostar por la transformación digital con proyectos y formación), no por dónde ni cuándo nació.
 - **La foto de Mike solo va en "Nosotros", pequeña.** Nunca en la portada.
@@ -45,11 +45,22 @@
 - [ ] Crazy December, BKLN en Odoo y BrookAI: heredan el nuevo diseño. Su texto se revisa en la fase 3, junto con el resto.
 - [ ] Revisar "instalación en un clic" de GestEscolar (la ficha dice "en menos de cinco minutos").
 
-### Fase 3 — Resto de páginas
-- [ ] Nosotros: el porqué (`about.whoP1`), ficha "Quién está detrás de BKLN" con foto pequeña y "Fundador". Fuera "35+" y "3 países" (también en `about.metaDescription` y `about.confidentialText`). Textos en `CV/busqueda-empleo/09-textos-github-y-web.md`.
-- [ ] Servicios (listado y detalle): "ERP con Odoo", lenguaje para cualquier organización.
-- [ ] Contacto, guías (blog), cursos y páginas legales con el lenguaje visual v3.
-- [ ] Revisar `meta.siteDescription`, `keywords` y los textos de OG en los tres idiomas (que no digan "35+").
+### Fase 3 — Resto de páginas (hecha el 20-11-2026, pendiente de revisión de Mike)
+- [x] Nosotros en ES, EN y FR:
+  - "Quiénes somos" abre con el porqué y sin Madrid.
+  - Cifras comprobables: ES · EN · FR, 24 h y Malabo · Accra.
+  - Sectores de la portada.
+  - Bloque "Quién está detrás de BKLN" (`#fundador`) con foto pequeña (`public/fundador-leoncio.jpg`, 600 px y 52 KB; en móvil a 160 px), "Fundador", trayectoria y enlace a LinkedIn. La carta de la portada enlaza aquí.
+  - "Experiencia demostrable" con casos reales en vez de "35 proyectos".
+- [x] Fuera "35+", "3 países" y Madrid en toda la web: `stats`, `whyUs`, el texto de entrada y la descripción de Trabajos, y la descripción y el texto de confidencialidad de Nosotros.
+- [x] Trabajos: "Nuestros trabajos" en lugar de "Nuestros proyectos" (EN "Our work", FR "Nos réalisations").
+- [x] Lenguaje para cualquier organización:
+  - Guías: "Guías para decidir mejor" en vez de "para tu negocio".
+  - "¿Quieres aplicarlo a tu caso?" al final de cada guía.
+  - Productos: "organizaciones reales".
+- [x] GestEscolar: "se instala en menos de cinco minutos" (antes decía "instalación en un clic").
+- [x] Verde solo como acento en Servicios, Productos, Contacto, Cursos, Guías y las páginas legales: iconos, numeración, viñetas y subrayados en neutro. El filtro activo pasa a blanco. Se mantiene el verde en la palabra destacada de cada título, el indicador "Disponible" de Contacto, el foco y la confirmación del formulario, la demo sin conexión y los enlaces dentro de los artículos.
+- [x] SAP se queda como estaba (ver Decisiones).
 
 ### Fase 4 — Revisión y publicación
 - [ ] Revisión de los tres idiomas, el SEO (canonical, hreflang, sitemap) y la accesibilidad.

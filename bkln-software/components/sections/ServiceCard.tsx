@@ -25,7 +25,7 @@ export function ServiceCard({ service, lang }: ServiceCardProps) {
   return (
     <div className="group flex flex-col bg-bg-surface border border-white/5 rounded-lg p-6 hover:border-brand-green/30 hover:shadow-lg hover:shadow-brand-green/10 transition-all duration-300">
       <div className="w-11 h-11 rounded-md bg-brand-green/15 border border-brand-green/20 flex items-center justify-center mb-4">
-        <Icon size={20} className="text-accent-green" />
+        <Icon size={20} className="text-text-secondary" />
       </div>
       <h3 className="text-text-primary font-semibold text-lg mb-2">{service.title}</h3>
       <p className="text-text-secondary text-sm leading-relaxed mb-5">{service.description}</p>

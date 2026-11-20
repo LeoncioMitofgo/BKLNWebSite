@@ -46,7 +46,7 @@ export function BlogCard({ post, lang, featured = false }: BlogCardProps) {
             {post.draft && <Badge variant="warning">{t.common.draft}</Badge>}
           </div>
           <h3
-            className={`text-text-primary font-semibold mb-2 group-hover:text-accent-green transition-colors line-clamp-2 ${featured ? 'text-xl' : 'text-base'}`}
+            className={`text-text-primary font-semibold mb-2 group-hover:underline transition-colors line-clamp-2 ${featured ? 'text-xl' : 'text-base'}`}
           >
             {post.title}
           </h3>

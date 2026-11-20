@@ -114,7 +114,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
           <ul className="border-t border-white/10">
             {service.forWho.map((item) => (
               <li key={item} className="flex items-start gap-3 border-b border-white/10 py-4 text-text-primary">
-                <CheckCircle size={19} className="mt-0.5 shrink-0 text-accent-green" />
+                <CheckCircle size={19} className="mt-0.5 shrink-0 text-text-secondary" />
                 {item}
               </li>
             ))}
@@ -159,7 +159,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
           <ul className="space-y-3.5">
             {service.deliverables.map((item) => (
               <li key={item} className="flex items-start gap-3 text-text-secondary">
-                <CheckCircle size={18} className="mt-0.5 shrink-0 text-accent-green" />
+                <CheckCircle size={18} className="mt-0.5 shrink-0 text-text-secondary" />
                 {item}
               </li>
             ))}
@@ -170,7 +170,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
           <ul className="space-y-3.5">
             {service.pricingFactors.map((f) => (
               <li key={f} className="flex items-start gap-3 text-text-secondary">
-                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent-green" />
+                <span aria-hidden="true" className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-text-secondary" />
                 {f}
               </li>
             ))}
@@ -178,7 +178,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
         </div>
         <div data-reveal="2">
           <h2 className="mb-6 font-display text-[26px] font-bold tracking-[-0.02em]">{d.timeline}</h2>
-          <p className="font-display text-[clamp(28px,3vw,40px)] font-bold leading-[1.15] tracking-[-0.02em] text-accent-green">{service.timeline}</p>
+          <p className="font-display text-[clamp(28px,3vw,40px)] font-bold leading-[1.15] tracking-[-0.02em] text-text-primary">{service.timeline}</p>
         </div>
       </section>
 
@@ -203,7 +203,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
             {relatedGuides.map((post) => (
               <li key={post.slug} className="border-b border-white/10">
                 <Link href={localizePath(lang, `/blog/${post.slug}`)} className="group block py-6">
-                  <span className="block font-read text-[24px] leading-[1.3] transition-colors group-hover:text-accent-green sm:text-[28px]">{post.title}</span>
+                  <span className="block font-read text-[24px] leading-[1.3] transition-colors group-hover:underline sm:text-[28px]">{post.title}</span>
                   <span className="text-sm text-text-secondary">
                     {post.readTime} {t.common.readMinLong}
                   </span>
@@ -223,7 +223,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
               <details key={faq.question} className="group border-b border-white/10">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 font-display text-[20px] font-bold tracking-[-0.01em] sm:text-[22px]">
                   {faq.question}
-                  <ChevronDown size={22} className="shrink-0 text-accent-green transition-transform group-open:rotate-180" />
+                  <ChevronDown size={22} className="shrink-0 text-text-secondary transition-transform group-open:rotate-180" />
                 </summary>
                 <p className="max-w-[64ch] pb-7 text-lg leading-relaxed text-text-secondary">{faq.answer}</p>
               </details>
@@ -237,7 +237,7 @@ export default async function ServicePage({ params }: LangSlugParams) {
         <div className="mx-auto max-w-2xl px-5 sm:px-8">
           <h2 className={`${blockTitle} mb-5`}>{d.formTitle}</h2>
           <p className="mb-4 text-lg text-text-secondary">{d.formSubtitle}</p>
-          <a href={waLink(waMessage)} target="_blank" rel="noopener noreferrer" className="mb-12 inline-flex items-center gap-2 font-semibold text-accent-green hover:underline">
+          <a href={waLink(waMessage)} target="_blank" rel="noopener noreferrer" className="mb-12 inline-flex items-center gap-2 font-semibold text-text-primary underline decoration-white/30 underline-offset-4 hover:decoration-text-primary">
             <WhatsAppIcon size={18} /> {t.common.whatsappPrefer}
           </a>
           <ContactForm

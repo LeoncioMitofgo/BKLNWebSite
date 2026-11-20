@@ -38,7 +38,7 @@ export default async function CoursePage({ params }: LangSlugParams) {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Link
           href={localizePath(lang, '/cursos')}
-          className="inline-flex items-center gap-2 text-text-secondary hover:text-accent-green transition-colors mb-6 text-sm"
+          className="inline-flex items-center gap-2 text-text-secondary hover:text-text-primary transition-colors mb-6 text-sm"
         >
           <ArrowLeft size={16} /> {d.back}
         </Link>
@@ -68,7 +68,7 @@ export default async function CoursePage({ params }: LangSlugParams) {
         {/* Los libros están en español: avisarlo en las otras versiones */}
         {d.spanishNotice && (
           <p className="flex items-start gap-2 mb-8 rounded-md border border-brand-green/20 bg-brand-green/5 px-4 py-3 text-sm text-text-secondary">
-            <Languages size={16} className="text-accent-green mt-0.5 shrink-0" />
+            <Languages size={16} className="text-text-secondary mt-0.5 shrink-0" />
             {d.spanishNotice}
           </p>
         )}
@@ -87,7 +87,7 @@ export default async function CoursePage({ params }: LangSlugParams) {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
               {course.includes.map((item) => (
                 <li key={item} className="flex items-start gap-2 text-sm text-text-secondary">
-                  <CheckCircle size={13} className="text-accent-green mt-0.5 shrink-0" />
+                  <CheckCircle size={13} className="text-text-secondary mt-0.5 shrink-0" />
                   {item}
                 </li>
               ))}
@@ -110,7 +110,7 @@ export default async function CoursePage({ params }: LangSlugParams) {
                     {mod.lessons.map((lesson) => (
                       <li key={lesson.id} className="flex items-center justify-between px-5 py-2.5">
                         <div className="flex items-center gap-2.5">
-                          <BookOpen size={13} className="text-accent-green shrink-0" />
+                          <BookOpen size={13} className="text-text-secondary shrink-0" />
                           <span className="text-text-secondary text-sm">{lesson.title}</span>
                         </div>
                         <span className="text-text-secondary text-xs">{lesson.duration}</span>

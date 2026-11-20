@@ -77,7 +77,7 @@ export default async function BlogPostPage({ params }: LangSlugParams) {
         {post.draft && <p className="mb-6 rounded-lg border border-warning/40 bg-warning/10 px-4 py-2.5 text-sm text-[#7a4a00]">{d.draftNotice}</p>}
 
         <p className="mb-5 text-[15px] text-paper-muted">
-          <span className="font-semibold text-paper-green">{t.blog.categories[post.category]}</span>
+          <span className="font-semibold text-paper-muted">{t.blog.categories[post.category]}</span>
           {' · '}
           {formatDate(post.publishedAt, lang)}
           {' · '}
@@ -123,7 +123,7 @@ export default async function BlogPostPage({ params }: LangSlugParams) {
               </ExternalButton>
             </div>
             {offer && (
-              <Link href={localizePath(lang, offer.pageHref)} className="mt-6 inline-block border-b border-accent-green pb-0.5 text-sm font-semibold">
+              <Link href={localizePath(lang, offer.pageHref)} className="mt-6 inline-block border-b border-current pb-0.5 text-sm font-semibold">
                 {offer.pageLabel}
               </Link>
             )}
@@ -144,7 +144,7 @@ export default async function BlogPostPage({ params }: LangSlugParams) {
               {related.map((p) => (
                 <li key={p.slug} className="border-b border-paper-line">
                   <Link href={localizePath(lang, `/blog/${p.slug}`)} className="group block py-6">
-                    <span className="block font-read text-[24px] leading-[1.3] transition-colors group-hover:text-paper-green">{p.title}</span>
+                    <span className="block font-read text-[24px] leading-[1.3] transition-colors group-hover:underline">{p.title}</span>
                     <span className="text-sm text-paper-muted">
                       {p.readTime} {t.common.readMinLong}
                     </span>

@@ -242,7 +242,7 @@ export default async function HomePage({ params }: LangParams) {
           </div>
           <div className="mt-10 flex flex-wrap items-baseline gap-x-5 gap-y-2 border-t border-paper-line pt-6" data-reveal>
             <span className="font-read text-[19px] italic text-paper-muted">{h.readSign}</span>
-            <Link href={href('/nosotros')} className={cn(paperLink, 'text-[15px]')}>
+            <Link href={`${href('/nosotros')}#fundador`} className={cn(paperLink, 'text-[15px]')}>
               {h.readMore} →
             </Link>
           </div>

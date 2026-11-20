@@ -33,7 +33,7 @@ export default async function BlogPage({ params }: LangParams) {
           <Link href={href(p)} className="group grid grid-cols-1 gap-2 py-8 md:grid-cols-[1fr_2fr] md:gap-10">
             <span className="text-sm text-paper-muted md:pt-2">{meta(p)}</span>
             <span>
-              <span className="block font-read text-[26px] leading-[1.25] transition-colors group-hover:text-paper-green sm:text-[30px]">{p.title}</span>
+              <span className="block font-read text-[26px] leading-[1.25] transition-colors group-hover:underline sm:text-[30px]">{p.title}</span>
               <span className="mt-3 block max-w-[62ch] text-paper-muted">{p.excerpt}</span>
             </span>
           </Link>
@@ -67,9 +67,9 @@ export default async function BlogPage({ params }: LangParams) {
             </div>
             <div className="lg:col-span-5">
               <p className="mb-4 text-sm text-paper-muted">
-                <span className="font-semibold text-paper-green">{t.categories.guias}</span> · {meta(featured)}
+                <span className="font-semibold text-paper-muted">{t.categories.guias}</span> · {meta(featured)}
               </p>
-              <h2 className="mb-5 font-read text-[32px] font-medium leading-[1.2] tracking-[-0.01em] transition-colors group-hover:text-paper-green sm:text-[40px]">
+              <h2 className="mb-5 font-read text-[32px] font-medium leading-[1.2] tracking-[-0.01em] transition-colors group-hover:underline sm:text-[40px]">
                 {featured.title}
               </h2>
               <p className="text-lg text-paper-muted">{featured.excerpt}</p>
