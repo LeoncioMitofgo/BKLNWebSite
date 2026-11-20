@@ -85,10 +85,11 @@ export default async function NosotrosPage({ params }: LangParams) {
             <p className="mb-2 text-[15px] text-paper-muted">{a.founderTitle}</p>
             <h2 className="font-display text-[clamp(30px,3.4vw,44px)] font-extrabold leading-[1.02] tracking-[-0.025em]">{a.founderName}</h2>
             <p className="mt-3 mb-7 text-[17px] text-paper-muted">{a.founderRole}</p>
+            {/* Enfoque A: primero la responsabilidad, en grande; luego las pruebas */}
+            <p className="mb-5 text-[21px] font-semibold leading-[1.45] text-paper-ink sm:text-[23px]">{a.founderP1}</p>
             <div className="space-y-4 text-[18px] leading-[1.65] text-[#2a302b]">
-              <p>{a.founderP1}</p>
               <p>{a.founderP2}</p>
-              <p className="text-[15px] text-paper-muted">{a.founderP3}</p>
+              <p>{a.founderP3}</p>
             </div>
             <p className="mt-7">
               <a
