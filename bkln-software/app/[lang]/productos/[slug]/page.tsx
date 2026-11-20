@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { ButtonLink, ExternalButton } from '@/components/ui/ButtonLink'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { demoTagClass } from '@/components/sections/ProjectCard'
 import { products as baseProducts } from '@/data/content'
 import { waLink } from '@/data/contact'
 import { getContent } from '@/i18n/content'
@@ -57,21 +58,25 @@ export default async function ProductPage({ params }: LangSlugParams) {
         </div>
         {product.pricingNote && <p className="mt-5 text-sm text-text-secondary">{product.pricingNote}</p>}
         {relatedProject && (
-          <Link href={localizePath(lang, `/portfolio/${relatedProject.slug}`)} className="mt-6 inline-flex items-center gap-2 border-b border-accent-green pb-0.5 font-semibold">
+          <Link href={localizePath(lang, `/portfolio/${relatedProject.slug}`)} className="mt-6 inline-flex items-center gap-2 border-b border-white/25 pb-0.5 font-semibold transition-colors hover:border-text-primary">
             {d.caseStudy.replace(/\s*→\s*$/, '')} <ArrowRight size={15} />
           </Link>
         )}
       </header>
 
       <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-        <Image src={product.image} alt={product.title} width={1600} height={900} sizes="(min-width: 1240px) 1240px, 100vw" className="w-full rounded-[22px] border border-white/10" priority />
+        <div className="relative">
+          <Image src={product.image} alt={product.title} width={1600} height={900} sizes="(min-width: 1240px) 1240px, 100vw" className="w-full rounded-[22px] border border-white/10" priority />
+          {product.demoData && <span className={demoTagClass}>{t.home.demoTag}</span>}
+        </div>
       </div>
 
       {screenshots.length > 0 && (
         <div className="mx-auto mt-6 grid max-w-[1240px] grid-cols-1 gap-6 px-5 sm:px-8 md:grid-cols-2">
           {screenshots.map((src, i) => (
-            <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-[18px] border border-white/10" data-reveal>
+            <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="relative block overflow-hidden rounded-[18px] border border-white/10" data-reveal>
               <Image src={src} alt={fmt(d.screenshot, { n: i + 1 })} width={1200} height={720} sizes="(min-width: 768px) 50vw, 100vw" className="w-full" />
+              {product.demoData && <span className={demoTagClass}>{t.home.demoTag}</span>}
             </a>
           ))}
         </div>

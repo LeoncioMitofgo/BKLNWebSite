@@ -34,6 +34,7 @@ const slugs: Partial<Record<Section, SlugMap>> = {
   portfolio: {
     'bkln-en-odoo': { en: 'bkln-on-odoo', fr: 'bkln-sur-odoo' },
     'sistema-pos-android-comercios': { en: 'android-pos-system', fr: 'systeme-caisse-android' },
+    'gestion-despacho-abogados': { en: 'law-firm-management', fr: 'gestion-cabinet-avocats' },
     'plataforma-delivery-multivertical': { en: 'multi-category-delivery-platform', fr: 'plateforme-livraison-multicategorie' },
     'suite-herramientas-web-privadas': { en: 'private-web-tools-suite', fr: 'suite-outils-web-prives' },
   },

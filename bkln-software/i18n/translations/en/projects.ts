@@ -100,11 +100,12 @@ export const projects: Record<string, ProjectText> = {
     ],
   },
   'sistema-pos-android-comercios': {
-    title: 'Android POS system for shops',
-    description: 'A point-of-sale system for Android terminals with a catalogue, operators, cash-up, printing and a remote management dashboard.',
+    title: 'POS for the airport trolleys',
+    description: 'The POS WallBlue uses to charge for the airport trolley service: Android payment terminals taking cash and card, printed receipts, an owner’s dashboard and cash-ups validated on the server.',
     longDescription:
-      'We developed an Android point-of-sale system and a mobile operations dashboard to manage products, operators, terminals, sales and revenue from a single backend.\n\nOn the terminal, the operator logs in with a PIN validated on the server, creates the sale, prints the receipt and can keep working from a local cache when the connection is unstable. The dashboard lets the owner monitor sales, products and terminals without interrupting the flow at the counter.\n\nThe hardware integration covers printing and contactless reading through the device’s SDK. The EMV flow was prepared and tested on development hardware; real bank authorisation still requires an acquirer, production keys and specific certification.\n\nStack: Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
-    sector: 'Retail and hospitality',
+      'WallBlue runs the airport trolley service. To charge for it, we built a POS for Android payment terminals and a mobile admin dashboard that share the same backend: products, operators, terminals, sales and revenue in one place.\n\nOn the terminal, the operator logs in with a PIN validated on the server, takes payment in cash or by card and hands over a printed receipt. If the connection drops or slows down, the sale is stored on the terminal and sent as soon as the network is back. The owner follows sales, revenue and terminals from the dashboard on their phone, without interrupting the operators.\n\nThe hardware integration covers the receipt printer and the contactless card reader, through the manufacturer’s SDK. Every cash-up is validated on the server: the device never assumes a cash-up went through.\n\nUnder the contract, the code, designs and interface belong to WallBlue. The screens on this page are a recreation with demo data.\n\nStack: Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
+    sector: 'WallBlue · Airport',
+    tagline: 'Operators charge for each trolley in cash or by card and hand over a printed receipt. The owner follows sales from a dashboard, and every cash-up is validated on the server. If the internet drops or slows down, the sale is stored on the terminal and sent later.',
     challenges: [
       'Keeping the sales flow available when the connection is intermittent',
       'Preventing two counters from claiming the same terminal or duplicating a sale if the connection drops mid-transaction',
@@ -117,6 +118,16 @@ export const projects: Record<string, ProjectText> = {
       'Cash-up validated on the server — the remote state always wins, and the device never “assumes” a cash-up went through',
       'A management dashboard on the same backend with its own sync cycle — the owner sees the business in real time without touching the counter flow',
     ],
+  },
+  'gestion-despacho-abogados': {
+    title: 'Running a law firm',
+    description: 'An internal system to run a law firm end to end, together with the firm’s website. In use since July 2026.',
+    longDescription:
+      'For a law firm we built its website and an internal management system (a Legal Practice Management System) to run the firm end to end, from the first client contact to the invoice. It has been in use since July 2026.\n\nThe system brings together clients, case files and court proceedings, documents, deadlines, calendar and tasks, fees and invoicing, and the tracking of every case. Documents are kept in private storage, legal documents are generated in PDF from templates, and alerts go out by email and WhatsApp.\n\nWe do not name the firm or show screenshots of the system.\n\nStack: Next.js · TypeScript · Tailwind CSS · NestJS · PostgreSQL · Supabase (Auth and private Storage) · Vercel · Resend · WhatsApp Business API.',
+    sector: 'Law firms',
+    tagline: 'An internal system to run the whole firm: case files and court proceedings, deadlines and calendar, documents, fees and invoicing, with email and WhatsApp alerts and documents generated in PDF from templates. Together with the firm’s website.',
+    challenges: [],
+    solutions: [],
   },
   'plataforma-delivery-multivertical': {
     title: 'Multi-category delivery platform',

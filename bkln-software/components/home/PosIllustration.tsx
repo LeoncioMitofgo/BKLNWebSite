@@ -21,7 +21,8 @@ function Contactless({ className }: { className?: string }) {
 export function PosIllustration({ t }: { t: PosTexts }) {
   const cardSelected = t.selected === 'card'
   return (
-    <div className={s.stage} aria-hidden="true">
+    <div className={s.wrap} aria-hidden="true">
+    <div className={s.stage}>
       <div className={s.term}>
         <div className={s.receipt}>
           <b>{t.receiptTitle}</b>
@@ -129,6 +130,7 @@ export function PosIllustration({ t }: { t: PosTexts }) {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 }

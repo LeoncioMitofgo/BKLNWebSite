@@ -34,6 +34,8 @@ export interface Product {
   includes?: string[]
   deliveryType?: 'source-code' | 'license' | 'install'
   supportPlan?: { period: string; includes: string[] }
+  /** Las capturas llevan datos de demostración: se marcan con una etiqueta */
+  demoData?: boolean
 }
 
 export interface Course {
@@ -97,6 +99,10 @@ export interface Project {
   clientTestimonial?: Testimonial
   challenges: string[]
   solutions: string[]
+  /** Ilustración en HTML en lugar de imagen (v3): 'pos' = datáfono de WallBlue, 'legal' = módulos del despacho */
+  visual?: 'pos' | 'legal'
+  /** Las capturas llevan datos de demostración: se marcan con una etiqueta */
+  demoData?: boolean
 }
 
 export interface BlogPost {

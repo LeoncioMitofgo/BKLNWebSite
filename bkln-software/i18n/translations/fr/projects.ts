@@ -100,11 +100,12 @@ export const projects: Record<string, ProjectText> = {
     ],
   },
   'sistema-pos-android-comercios': {
-    title: 'Système de caisse Android pour commerces',
-    description: 'Un système de point de vente pour terminaux Android avec catalogue, opérateurs, clôture de caisse, impression et tableau de bord de gestion à distance.',
+    title: 'Caisse des chariots de l’aéroport',
+    description: 'La caisse avec laquelle WallBlue encaisse le service de chariots de l’aéroport : terminaux de paiement Android en espèces et par carte, reçus imprimés, tableau de bord du propriétaire et clôtures de caisse validées sur le serveur.',
     longDescription:
-      'Nous avons développé un système de caisse Android et un tableau de bord mobile pour gérer produits, opérateurs, terminaux, ventes et recettes à partir d’un même backend.\n\nSur le terminal, l’opérateur se connecte avec un code PIN validé par le serveur, enregistre la vente, imprime le reçu et peut continuer à travailler avec un cache local quand la connexion est instable. Le tableau de bord permet de suivre les ventes, les produits et les terminaux sans interrompre le travail au comptoir.\n\nL’intégration matérielle couvre l’impression et la lecture sans contact via le SDK de l’appareil. Le flux EMV a été préparé et testé sur du matériel de développement ; l’autorisation bancaire réelle nécessite encore un acquéreur, des clés de production et une certification spécifique.\n\nStack : Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
-    sector: 'Commerce et restauration',
+      'WallBlue gère le service de chariots de l’aéroport. Pour l’encaisser, nous avons développé une caisse pour terminaux de paiement Android et un tableau de bord mobile d’administration qui partagent le même backend : produits, opérateurs, terminaux, ventes et recettes au même endroit.\n\nSur le terminal, l’opérateur se connecte avec un code PIN validé par le serveur, encaisse en espèces ou par carte et remet un reçu imprimé. Si la connexion coupe ou devient lente, la vente est enregistrée sur le terminal et envoyée dès que le réseau revient. Le propriétaire suit les ventes, les recettes et les terminaux depuis le tableau de bord sur son téléphone, sans interrompre le travail des opérateurs.\n\nL’intégration matérielle couvre l’imprimante de reçus et le lecteur de cartes sans contact, via le SDK du fabricant. Chaque clôture de caisse est validée par le serveur : l’appareil ne suppose jamais qu’une clôture a été appliquée.\n\nPar contrat, le code, les maquettes et l’interface appartiennent à WallBlue. Les écrans de cette page sont une reconstitution avec des données de démonstration.\n\nStack : Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
+    sector: 'WallBlue · Aéroport',
+    tagline: 'Les opérateurs encaissent chaque chariot en espèces ou par carte et remettent un reçu imprimé. Le propriétaire suit les ventes depuis son tableau de bord, et chaque clôture de caisse est validée sur le serveur. Si internet coupe ou devient lent, la vente est enregistrée sur le terminal et envoyée plus tard.',
     challenges: [
       'Garder le processus de vente disponible quand la connexion est intermittente',
       'Éviter que deux comptoirs réclament le même terminal ou dupliquent une vente si la connexion se coupe en pleine opération',
@@ -117,6 +118,16 @@ export const projects: Record<string, ProjectText> = {
       'Une clôture de caisse validée par le serveur — l’état distant fait toujours foi, l’appareil ne « suppose » jamais qu’une clôture a été appliquée',
       'Un tableau de bord sur le même backend avec son propre cycle de synchronisation — le gérant voit l’activité en temps réel sans toucher au travail du comptoir',
     ],
+  },
+  'gestion-despacho-abogados': {
+    title: 'Gestion d’un cabinet d’avocats',
+    description: 'Un système interne pour gérer un cabinet d’avocats de bout en bout, avec le site web du cabinet. Utilisé depuis juillet 2026.',
+    longDescription:
+      'Pour un cabinet d’avocats, nous avons développé son site web et un système interne de gestion (Legal Practice Management System) pour gérer le cabinet de bout en bout, du premier contact avec le client jusqu’à la facture. Il est utilisé depuis juillet 2026.\n\nLe système réunit les clients, les dossiers et les procédures judiciaires, les documents, les délais, l’agenda et les tâches, les honoraires et la facturation, ainsi que le suivi de chaque dossier. Les documents sont conservés dans un stockage privé, les actes sont générés en PDF à partir de modèles et les alertes partent par e-mail et par WhatsApp.\n\nNous ne nommons pas le cabinet et ne montrons pas de captures du système.\n\nStack : Next.js · TypeScript · Tailwind CSS · NestJS · PostgreSQL · Supabase (Auth et Storage privé) · Vercel · Resend · WhatsApp Business API.',
+    sector: 'Cabinets d’avocats',
+    tagline: 'Un système interne pour gérer tout le cabinet : dossiers et procédures judiciaires, délais et agenda, documents, honoraires et facturation, avec des alertes par e-mail et WhatsApp et des documents PDF générés à partir de modèles. Avec le site web du cabinet.',
+    challenges: [],
+    solutions: [],
   },
   'plataforma-delivery-multivertical': {
     title: 'Plateforme de livraison multicatégorie',

@@ -34,12 +34,16 @@
 - [x] Muro de capturas sin el Marketplace. `public/gestescolar-panel.jpg`, recortada sin el nombre del colegio.
 - [x] `tsc`, `eslint` y `next build` sin errores. Revisado con capturas en escritorio (1440 px) y en móvil (390 px).
 
-### Fase 2 — Casos y productos
-- [ ] Caso WallBlue: renombrar el caso `sistema-pos-android-comercios` y conservar el slug (y el inglés `android-pos-system`) para no romper enlaces. Recreación del Z92, demo sin conexión (`OfflineDemo`, que sale de la portada) y texto corregido según lo que de verdad cobra con tarjeta (ver Pendientes).
-- [ ] Caso nuevo `gestion-despacho-abogados` en ES, EN y FR: módulos, stack y "en uso desde julio de 2026". Hoy **el enlace de la portada da 404** hasta hacer esta página.
-- [ ] GestEscolar (producto y caso): etiqueta "Datos de demostración" en todas las capturas (`gest1–5.png`, que muestran el nombre del colegio). Decidir si se recortan.
-- [ ] Crazy December, BKLN en Odoo (demo) y BrookAI con el lenguaje v3.
-- [ ] Listado de Trabajos: los cuatro casos primero, luego el resto. El Marketplace, delivery y suite, con su estado.
+### Fase 2 — Casos y productos (hecha el 20-11-2026, pendiente de revisión de Mike)
+- [x] Caso WallBlue con el mismo slug (`sistema-pos-android-comercios`; en inglés `android-pos-system`, en francés `systeme-caisse-android`): "TPV de los carritos del aeropuerto" en ES, EN y FR, con la recreación del Z92 de portada, la demo sin conexión (sacada de la portada) y el cobro con tarjeta ya en producción. Se ha quitado el texto antiguo que decía que el flujo EMV estaba solo "preparado". Incluye la frase del contrato: el código, los diseños y la interfaz son de WallBlue y las pantallas son una recreación.
+- [x] Caso nuevo `gestion-despacho-abogados` (`law-firm-management` / `gestion-cabinet-avocats`) en ES, EN y FR: tarjeta de módulos, texto, stack y "en uso desde julio de 2026". Sin retos ni soluciones inventados. Es proyecto relacionado del servicio "Sistemas de gestión".
+- [x] Campo `visual` en `Project` ('pos' o 'legal'): las ilustraciones salen en la portada, en el listado y en la página del caso. Escalan con su recuadro (`container-type`).
+- [x] Campo `demoData` en `Project` y `Product`: etiqueta "Datos de demostración" en la portada y la galería de GestEscolar. La portada del producto y del proyecto pasa a `gestescolar-panel.jpg` (sin el nombre del colegio).
+- [x] Listado de Trabajos: los cuatro casos primero y después el resto en su orden (incluidos el Marketplace, delivery y suite).
+- [x] Enlaces secundarios y detalles sin verde (verde solo en la acción principal).
+- [ ] **Pendiente de Mike:** las capturas de la galería de GestEscolar (`gest1–5.png`) siguen mostrando el nombre del colegio. ¿Es un cliente real? Si lo es, se recortan como la portada.
+- [ ] Crazy December, BKLN en Odoo y BrookAI: heredan el nuevo diseño. Su texto se revisa en la fase 3, junto con el resto.
+- [ ] Revisar "instalación en un clic" de GestEscolar (la ficha dice "en menos de cinco minutos").
 
 ### Fase 3 — Resto de páginas
 - [ ] Nosotros: el porqué (`about.whoP1`), ficha "Quién está detrás de BKLN" con foto pequeña y "Fundador". Fuera "35+" y "3 países" (también en `about.metaDescription` y `about.confidentialText`). Textos en `CV/busqueda-empleo/09-textos-github-y-web.md`.
@@ -53,11 +57,15 @@
 - [ ] Producción solo con su aprobación.
 
 ## Pendientes de Mike
-1. **¿Se cobra ya con tarjeta en WallBlue?** El caso actual dice que el flujo EMV está "preparado" y que la autorización bancaria real necesita adquirente, claves y certificación. Si es así, la ilustración ("Pago aprobado") y el texto ("en efectivo o con tarjeta") exageran. Hay que cambiarlos a "preparado para tarjetas sin contacto".
-2. **El LinkedIn del fundador tiene dos URL:** `data/contact.ts` usa `linkedin.com/in/leoncio-felipe-mitogo-edjang-obono-362627420` y la ficha del CV usa `linkedin.com/in/leonciomitogoedjang`. ¿Cuál es la buena?
-3. ¿Existe la página de empresa en LinkedIn (`bkln-software-systems`) y tiene contenido? ¿Y la cuenta de X `@bklnsoftware`? (X se ha quitado del pie).
-4. ¿Con qué cargo figura Mike en el registro de la empresa? Es el que va en los contratos.
+1. ¿Con qué cargo figura Mike en el registro de la empresa? Es el que va en los contratos.
+2. Galería de GestEscolar: ¿el colegio que sale en las capturas es un cliente real? (Ver la fase 2).
+
+## Resuelto (20-11-2026)
+- WallBlue **ya cobra con tarjeta**: la ilustración con "Pago aprobado" es correcta.
+- LinkedIn del fundador: `www.linkedin.com/in/leoncio-felipe-mitogo-edjang-obono-362627420`, la que ya está en `data/contact.ts`.
+- La página de empresa en LinkedIn existe, tiene publicaciones semanales y unos 100 seguidores: se enlaza. La cuenta de X no tiene actividad: no se enlaza.
 
 ## Notas técnicas
 - En `next dev`, las clases nuevas de Tailwind a veces no se regeneran y la página se ve sin ellas. Para comprobar el aspecto real: `next build && next start`.
-- La sección `home` de los diccionarios conserva las claves `demo*` de la demo sin conexión hasta llevarla al caso de WallBlue (fase 2).
+- La demo sin conexión (`components/home/OfflineDemo.tsx`) vive ahora en el caso de WallBlue, pero sus textos siguen en la sección `home` de los diccionarios (`demo*`).
+- Los textos de las ilustraciones están en `home.pos` y `home.legal` de los diccionarios. Los usan la portada, el listado y la página del caso.

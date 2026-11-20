@@ -6,6 +6,11 @@ import type { Metadata } from 'next'
 import { pageMetadata } from '@/lib/metadata'
 import { ButtonLink, ExternalButton } from '@/components/ui/ButtonLink'
 import { WhatsAppIcon } from '@/components/ui/WhatsAppIcon'
+import { PosIllustration } from '@/components/home/PosIllustration'
+import { LegalCaseCard } from '@/components/home/LegalCaseCard'
+import { OfflineDemo } from '@/components/home/OfflineDemo'
+import { demoTagClass } from '@/components/sections/ProjectCard'
+import { cn } from '@/lib/utils'
 import { projects as baseProjects } from '@/data/content'
 import { waLink } from '@/data/contact'
 import { getContent } from '@/i18n/content'
@@ -23,7 +28,7 @@ export async function generateMetadata({ params }: LangSlugParams): Promise<Meta
   const { slug } = await params
   const project = getContent(lang).projects.find((p) => p.slug === slug)
   if (!project) return {}
-  return pageMetadata({ lang, title: project.title, description: project.description, path: `/portfolio/${project.slug}`, image: project.image })
+  return pageMetadata({ lang, title: project.title, description: project.description, path: `/portfolio/${project.slug}`, image: project.image || undefined })
 }
 
 const isStockImage = (src: string) => !src || /^\/(course|project|product|service|blog)-/.test(src)
@@ -56,18 +61,44 @@ export default async function ProjectPage({ params }: LangSlugParams) {
         <p className="mt-8 max-w-[60ch] text-lg text-text-secondary sm:text-xl">{project.tagline ?? project.description}</p>
       </header>
 
-      {showCover && (
+      {project.visual ? (
+        // v3: ilustración en HTML con datos de demostración (sin capturas del cliente)
         <div className="mx-auto max-w-[1240px] px-5 sm:px-8">
-          <Image
-            src={project.image}
-            alt={project.title}
-            width={1600}
-            height={900}
-            sizes="(min-width: 1240px) 1240px, 100vw"
-            className="w-full rounded-[22px] border border-white/10"
-            priority
-          />
+          <div
+            role="img"
+            aria-label={project.visual === 'pos' ? t.home.cases.wallblue.alt : t.home.cases.despacho.alt}
+            className={cn(
+              'relative overflow-hidden rounded-[22px] border border-white/10',
+              // La tarjeta del despacho es texto: con su altura natural, sin hueco
+              project.visual === 'legal' ? '' : 'aspect-[16/9]'
+            )}
+          >
+            {project.visual === 'pos' && (
+              <>
+                <PosIllustration t={t.home.pos} />
+                <span className={demoTagClass}>{t.home.recreationTag}</span>
+              </>
+            )}
+            {project.visual === 'legal' && <LegalCaseCard t={t.home.legal} />}
+          </div>
         </div>
+      ) : (
+        showCover && (
+          <div className="relative mx-auto max-w-[1240px] px-5 sm:px-8">
+            <div className="relative">
+              <Image
+                src={project.image}
+                alt={project.title}
+                width={1600}
+                height={900}
+                sizes="(min-width: 1240px) 1240px, 100vw"
+                className="w-full rounded-[22px] border border-white/10"
+                priority
+              />
+              {project.demoData && <span className={demoTagClass}>{t.home.demoTag}</span>}
+            </div>
+          </div>
+        )
       )}
 
       {/* La historia, sobre papel para leerla */}
@@ -84,12 +115,34 @@ export default async function ProjectPage({ params }: LangSlugParams) {
         </div>
       </section>
 
+      {/* WallBlue: la demo sin conexión (antes estaba en la portada) */}
+      {project.visual === 'pos' && (
+        <section className="border-b border-white/10 bg-bg-surface py-24 lg:py-28">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-14 px-5 sm:px-8 lg:grid-cols-12">
+            <div className="lg:col-span-6">
+              <h2 className="mb-7 font-display text-[clamp(40px,5.4vw,80px)] font-extrabold leading-[0.95] tracking-[-0.03em]" data-reveal>
+                {t.home.demoTitle}
+              </h2>
+              <p className="mb-5 max-w-[44ch] text-lg text-text-secondary sm:text-xl" data-reveal="1">
+                {t.home.demoText}
+              </p>
+              <p className="max-w-[44ch] text-text-secondary" data-reveal="2">
+                {t.home.demoHint}
+              </p>
+            </div>
+            <div className="flex justify-center lg:col-span-5 lg:col-start-8" data-reveal="1">
+              <OfflineDemo lang={lang} t={t.home} />
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Galería en grande */}
       {gallery.length > 0 && (
         <section className="mx-auto max-w-[1240px] px-5 py-24 sm:px-8">
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {gallery.map((src, i) => (
-              <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="group block overflow-hidden rounded-[18px] border border-white/10" data-reveal>
+              <a key={src} href={src} target="_blank" rel="noopener noreferrer" className="group relative block overflow-hidden rounded-[18px] border border-white/10" data-reveal>
                 <Image
                   src={src}
                   alt={fmt(d.image, { title: project.title, n: i + 1 })}
@@ -98,6 +151,7 @@ export default async function ProjectPage({ params }: LangSlugParams) {
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="w-full transition-transform duration-[1200ms] ease-out-soft group-hover:scale-[1.02]"
                 />
+                {project.demoData && <span className={demoTagClass}>{t.home.demoTag}</span>}
               </a>
             ))}
           </div>
@@ -128,7 +182,7 @@ export default async function ProjectPage({ params }: LangSlugParams) {
             )}
           </div>
           {relatedService && (
-            <Link href={localizePath(lang, `/servicios/${relatedService.slug}`)} className="mt-8 inline-flex items-center gap-2 border-b border-accent-green pb-0.5 font-semibold">
+            <Link href={localizePath(lang, `/servicios/${relatedService.slug}`)} className="mt-8 inline-flex items-center gap-2 border-b border-white/25 pb-0.5 font-semibold transition-colors hover:border-text-primary">
               {d.relatedService} {relatedService.title} <ArrowRight size={15} />
             </Link>
           )}
@@ -139,7 +193,7 @@ export default async function ProjectPage({ params }: LangSlugParams) {
           <details className="group mt-6 rounded-[22px] border border-white/10">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-8 py-6 font-semibold">
               {d.technical}
-              <ChevronDown size={20} className="shrink-0 text-accent-green transition-transform group-open:rotate-180" />
+              <ChevronDown size={20} className="shrink-0 text-text-secondary transition-transform group-open:rotate-180" />
             </summary>
             <div className="px-8 pb-8">
               {project.challenges.length > 0 && (

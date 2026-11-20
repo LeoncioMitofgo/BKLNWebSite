@@ -175,7 +175,7 @@ export const services: Service[] = [
         answer: 'Si el sistema está diseñado para trabajar sin conexión, las operaciones se guardan en el equipo y se sincronizan al volver. Para los cortes de luz recomendamos un SAI o un terminal con batería.',
       },
     ],
-    relatedProjects: ['sistema-pos-android-comercios', 'gestescolar'],
+    relatedProjects: ['sistema-pos-android-comercios', 'gestion-despacho-abogados', 'gestescolar'],
     relatedProducts: ['gestescolar'],
     technologies: ['Python', 'FastAPI', 'SQLite', 'PostgreSQL', 'Supabase', 'Kotlin', 'React', 'Electron'],
     featured: true,
@@ -553,6 +553,7 @@ export const products: Product[] = [
   {
     id: '5',
     slug: 'gestescolar',
+    demoData: true,
     title: 'GestEscolar',
     description: 'Sistema de gestión escolar completo para Windows — instalación, formación y manual incluidos. Funciona offline en red local.',
     longDescription:
@@ -560,7 +561,7 @@ export const products: Product[] = [
     category: 'desktop',
     pricingNote: 'Compra de licencia o licencia anual. Requiere reunión previa para definir alcance.',
     requiresMeeting: true,
-    image: '/Screenshot2.png',
+    image: '/gestescolar-panel.jpg',
     screenshots: ['/gest1.png', '/gest2.png', '/gest3.png', '/gest4.png'],
     deliveryType: 'install',
     includes: [
@@ -1178,6 +1179,7 @@ export const projects: Project[] = [
   {
     id: '7',
     slug: 'gestescolar',
+    demoData: true,
     title: 'GestEscolar',
     description: 'Sistema de gestión escolar completo para colegios en Guinea Ecuatorial — alumnos, matrículas, notas, pagos y documentos imprimibles. Funciona sin internet, instalación en un clic.',
     longDescription:
@@ -1185,8 +1187,8 @@ export const projects: Project[] = [
     category: 'desktop',
     sector: 'Educación',
     technologies: ['Python', 'FastAPI', 'SQLite', 'JWT', 'Jinja2', 'HTML5', 'CSS3', 'JavaScript'],
-    image: '/Screenshot2.png',
-    gallery: ['/Screenshot2.png', '/gest1.png', '/gest2.png', '/gest3.png', '/gest4.png', '/gest5.png'],
+    image: '/gestescolar-panel.jpg',
+    gallery: ['/gest1.png', '/gest2.png', '/gest3.png', '/gest4.png', '/gest5.png'],
     year: 2024,
     challenges: [
       'Colegios sin internet ni servidor cloud — todo tiene que funcionar offline en la red local',
@@ -1204,12 +1206,14 @@ export const projects: Project[] = [
   {
     id: '11',
     slug: 'sistema-pos-android-comercios',
-    title: 'Sistema POS Android para comercios',
-    description: 'Sistema de punto de venta para terminales Android con catálogo, operadores, cierre de caja, impresión y panel de gestión remoto.',
+    title: 'TPV de los carritos del aeropuerto',
+    description: 'El TPV con el que WallBlue cobra el servicio de carritos del aeropuerto: datáfonos Android con efectivo y tarjeta, recibo impreso, panel para el dueño y cierre de caja validado en el servidor.',
     longDescription:
-      'Desarrollamos un sistema de punto de venta Android y un panel móvil de operaciones para gestionar productos, operadores, terminales, ventas e ingresos desde un mismo backend.\n\nEn el terminal, el operador inicia sesión con un PIN validado en servidor, crea la venta, imprime el recibo y puede trabajar con caché local cuando la conexión es inestable. El panel permite supervisar ventas, productos y terminales sin interrumpir el flujo del mostrador.\n\nLa integración con hardware incluye impresión y lectura contactless con el SDK del dispositivo. El flujo EMV se dejó preparado y probado en hardware de desarrollo; la autorización bancaria real requiere todavía adquirente, claves de producción y certificación específica.\n\nStack: Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
+      'WallBlue gestiona el servicio de carritos del aeropuerto. Para cobrarlo desarrollamos un TPV para datáfonos Android y un panel móvil de administración que comparten el mismo backend: productos, operadores, terminales, ventas e ingresos en un solo sitio.\n\nEn el datáfono, el operador entra con un PIN validado en el servidor, cobra en efectivo o con tarjeta y entrega el recibo impreso. Si la conexión se va o va lenta, la venta se guarda en el terminal y se envía en cuanto vuelve la red. El dueño sigue las ventas, los ingresos y los terminales desde el panel del móvil, sin interrumpir el trabajo de los operadores.\n\nLa integración con el hardware del datáfono incluye la impresora de recibos y el lector de tarjetas sin contacto, a través del SDK del fabricante. Cada cierre de caja se valida en el servidor: el dispositivo nunca da por hecho que un cierre se aplicó.\n\nPor contrato, el código, los diseños y la interfaz son de WallBlue. Las pantallas de esta página son una recreación con datos de demostración.\n\nStack: Kotlin · Jetpack Compose · Hilt · Room · Retrofit · WorkManager · Supabase · PostgreSQL.',
     category: 'android',
-    sector: 'Comercio y restauración',
+    sector: 'WallBlue · Aeropuerto',
+    tagline: 'Los operadores cobran cada carrito en efectivo o con tarjeta y entregan el recibo impreso. El dueño sigue las ventas desde su panel, y cada cierre de caja se valida en el servidor. Si internet se va o va lento, la venta se guarda en el terminal y se envía después.',
+    visual: 'pos',
     technologies: ['Kotlin', 'Jetpack Compose', 'Hilt', 'Room', 'Retrofit', 'WorkManager', 'Supabase', 'PostgreSQL'],
     image: '/course-android.jpg',
     gallery: ['/course-android.jpg'],
@@ -1226,6 +1230,24 @@ export const projects: Project[] = [
       'Cierre de caja con validación server-side — el estado remoto siempre manda, el dispositivo nunca "asume" que un cierre se aplicó',
       'Panel de gestión sobre el mismo backend con su propio ciclo de sincronización — el dueño ve el negocio en tiempo real sin tocar el flujo del mostrador',
     ],
+  },
+  {
+    id: '16',
+    slug: 'gestion-despacho-abogados',
+    title: 'Gestión de un despacho de abogados',
+    description: 'Sistema interno para llevar un despacho de abogados de forma integral, junto con la web del despacho. En uso desde julio de 2026.',
+    longDescription:
+      'Para un despacho de abogados desarrollamos su web y un sistema interno de gestión (Legal Practice Management System) para llevar el despacho de forma integral, desde el primer contacto con el cliente hasta la factura. Está en uso desde julio de 2026.\n\nEl sistema reúne clientes, expedientes y procedimientos judiciales, documentos, plazos, agenda y tareas, honorarios y facturación, y el seguimiento de cada caso. Los documentos se guardan en un almacenamiento privado, los escritos se generan en PDF a partir de plantillas y los avisos llegan por correo y por WhatsApp.\n\nNo nombramos al despacho ni enseñamos capturas del sistema.\n\nStack: Next.js · TypeScript · Tailwind CSS · NestJS · PostgreSQL · Supabase (Auth y Storage privado) · Vercel · Resend · WhatsApp Business API.',
+    category: 'web',
+    sector: 'Despachos de abogados',
+    tagline: 'Un sistema interno para llevar el despacho de forma integral: expedientes y procedimientos, plazos y agenda, documentos, honorarios y facturación, con avisos por correo y WhatsApp y escritos en PDF a partir de plantillas. Junto con la web del despacho.',
+    visual: 'legal',
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'NestJS', 'PostgreSQL', 'Supabase', 'Vercel', 'Resend', 'WhatsApp Business API'],
+    image: '',
+    gallery: [],
+    year: 2026,
+    challenges: [],
+    solutions: [],
   },
   {
     id: '12',

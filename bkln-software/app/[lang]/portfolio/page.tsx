@@ -15,7 +15,11 @@ export async function generateMetadata({ params }: LangParams): Promise<Metadata
 export default async function PortfolioPage({ params }: LangParams) {
   const lang = await localeFromParams(params)
   const t = getDictionary(lang).portfolio
-  const { projects } = getContent(lang)
+  const { projects: all } = getContent(lang)
+  // v3: primero los cuatro casos de la portada (cuatro sectores); luego el resto en su orden.
+  const FEATURED = ['pasa', 'sistema-pos-android-comercios', 'gestion-despacho-abogados', 'gestescolar']
+  const rank = (slug: string) => (FEATURED.includes(slug) ? FEATURED.indexOf(slug) : FEATURED.length)
+  const projects = [...all].sort((a, b) => rank(a.slug) - rank(b.slug))
 
   return (
     <div className="min-h-screen">

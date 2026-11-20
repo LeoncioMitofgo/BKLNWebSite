@@ -4,6 +4,13 @@
  * Es una recreación con datos de demostración: el contrato no permite enseñar el producto en uso.
  * Todo se mide en em para que escale con el contenedor.
  */
+/* El dibujo escala con su recuadro (no con la ventana): se ve igual en la portada, el listado, el caso y el móvil */
+.wrap {
+  position: absolute;
+  inset: 0;
+  container-type: inline-size;
+}
+
 .stage {
   position: absolute;
   inset: 0;
@@ -12,7 +19,8 @@
   justify-content: center;
   gap: 15%;
   padding: 0 6%;
-  font-size: clamp(5.4px, 0.74vw, 10px);
+  /* 10px cuando el recuadro mide 790px, como en la maqueta */
+  font-size: max(3.5px, 1.266cqw);
   background: radial-gradient(110% 90% at 50% 105%, #173a86 0%, #0e2045 38%, #0b1912 75%);
 }
 
