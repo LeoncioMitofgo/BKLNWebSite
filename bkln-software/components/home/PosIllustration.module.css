@@ -1,0 +1,352 @@
+/*
+ * Ilustración del TPV de WallBlue: un datáfono ZCS Z92 (214 × 84 mm, impresora de 58 mm arriba)
+ * con la app de cobro, una tarjeta genérica sin marca y el móvil del dueño con el panel.
+ * Es una recreación con datos de demostración: el contrato no permite enseñar el producto en uso.
+ * Todo se mide en em para que escale con el contenedor.
+ */
+.stage {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 15%;
+  padding: 0 6%;
+  font-size: clamp(5.4px, 0.74vw, 10px);
+  background: radial-gradient(110% 90% at 50% 105%, #173a86 0%, #0e2045 38%, #0b1912 75%);
+}
+
+/* Datáfono */
+.term {
+  position: relative;
+  width: 21%;
+  margin-bottom: -2%;
+  transform: rotate(-6deg);
+  transition: transform 1.2s var(--ease-out-soft);
+}
+
+.receipt {
+  position: absolute;
+  left: 15%;
+  right: 15%;
+  bottom: calc(100% - 1.6em);
+  height: 12.5em;
+  z-index: 0;
+  background: #fbfbf8;
+  color: #1b1b1b;
+  font: 600 0.92em/1.5 var(--font-mono);
+  padding: 1.3em 0.9em 0;
+  box-shadow: 0 0.5em 1.2em rgba(0, 0, 0, 0.35);
+  clip-path: polygon(0 5%, 5% 0, 10% 5%, 15% 0, 20% 5%, 25% 0, 30% 5%, 35% 0, 40% 5%, 45% 0, 50% 5%, 55% 0, 60% 5%, 65% 0, 70% 5%, 75% 0, 80% 5%, 85% 0, 90% 5%, 95% 0, 100% 5%, 100% 100%, 0 100%);
+}
+
+.receipt b {
+  display: block;
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+.receiptRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.receipt hr {
+  border: 0;
+  border-top: 1px dashed #9aa3ad;
+  margin: 0.35em 0;
+}
+
+.body {
+  position: relative;
+  z-index: 1;
+  background: linear-gradient(165deg, #2b3038 0%, #171a1f 65%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.8em 1.8em 2.4em 2.4em;
+  padding: 3.4em 0.75em 7em;
+  box-shadow: 0 2.4em 5em rgba(0, 0, 0, 0.55), inset 0 0.12em 0.2em rgba(255, 255, 255, 0.08);
+}
+
+/* Tapa de la impresora y salida del papel */
+.body::before {
+  content: '';
+  position: absolute;
+  top: 0.5em;
+  left: 8%;
+  right: 8%;
+  height: 2.3em;
+  border-radius: 1.1em 1.1em 0.5em 0.5em;
+  background: linear-gradient(180deg, #3a414b, #262b32);
+  box-shadow: inset 0 0.1em 0.15em rgba(255, 255, 255, 0.1);
+}
+
+.body::after {
+  content: '';
+  position: absolute;
+  top: 1.05em;
+  left: 15%;
+  right: 15%;
+  height: 0.45em;
+  border-radius: 0.3em;
+  background: #07090b;
+  box-shadow: inset 0 0.12em 0.25em #000;
+}
+
+.nfc {
+  position: absolute;
+  left: 50%;
+  bottom: 2em;
+  width: 2.6em;
+  height: 2.6em;
+  transform: translateX(-50%);
+  color: #69727e;
+}
+
+.waves {
+  position: absolute;
+  z-index: 3;
+  right: -16%;
+  top: 47%;
+  width: 2.6em;
+  height: 2.6em;
+  color: #93c5fd;
+  transform: rotate(180deg);
+}
+
+/* Tarjeta genérica, sin marca */
+.card {
+  position: absolute;
+  z-index: 3;
+  width: 64%;
+  aspect-ratio: 1.586;
+  right: -52%;
+  top: 44%;
+  transform: rotate(16deg);
+  border-radius: 0.9em;
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #60a5fa 100%);
+  box-shadow: 0 1.2em 2.4em rgba(0, 0, 0, 0.45);
+  color: #fff;
+  padding: 0.9em;
+  font: 600 0.95em/1.2 var(--font-primary);
+}
+
+.chip {
+  width: 1.9em;
+  height: 1.45em;
+  border-radius: 0.3em;
+  background: linear-gradient(135deg, #f0d37e, #b8892b);
+  margin: 0.4em 0 0.8em;
+}
+
+.cardNum {
+  letter-spacing: 0.12em;
+  font-size: 0.95em;
+}
+
+.cardIcon {
+  position: absolute;
+  right: 0.7em;
+  top: 0.7em;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.cardDemo {
+  position: absolute;
+  left: 0.9em;
+  bottom: 0.6em;
+  font-size: 0.72em;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}
+
+/* Pantallas (las del datáfono y el móvil comparten estilo) */
+.screen,
+.phoneScreen {
+  background: #f4f6fa;
+  overflow: hidden;
+  color: #0f172a;
+  font-family: Roboto, 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.25;
+}
+
+.screen {
+  aspect-ratio: 9 / 16;
+  border-radius: 1em;
+  font-size: 0.74em;
+}
+
+.phone {
+  width: 26%;
+  align-self: center;
+  background: #0e1511;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 2.6em;
+  padding: 0.8em;
+  box-shadow: 0 2em 5em rgba(0, 0, 0, 0.5);
+  transform: translateY(6%);
+}
+
+.phoneScreen {
+  aspect-ratio: 9 / 18;
+  border-radius: 1.9em;
+  font-size: 0.8em;
+}
+
+.top {
+  background: #fff;
+  padding: 1.6em 1.4em 1.1em;
+  border-bottom: 1px solid #e5e9f0;
+}
+
+.top b {
+  display: block;
+  font-size: 1.7em;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.top small {
+  color: #64748b;
+  font-size: 1.05em;
+}
+
+.amount {
+  text-align: center;
+  padding: 1.1em 1em 0.5em;
+}
+
+.amount small {
+  color: #64748b;
+  font-size: 1em;
+}
+
+.amount strong {
+  display: block;
+  font-size: 3em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.pay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.7em;
+  padding: 0.4em 1.1em 0.9em;
+}
+
+.pay span {
+  text-align: center;
+  padding: 0.85em 0.4em;
+  border-radius: 1em;
+  font-weight: 700;
+  font-size: 1.1em;
+  border: 2px solid #e5e9f0;
+  background: #fff;
+  color: #334155;
+}
+
+.pay .onCash {
+  border-color: #15803d;
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.pay .onCard {
+  border-color: #7c3aed;
+  background: #f3eeff;
+  color: #6d28d9;
+}
+
+.ok {
+  margin: 1.1em;
+  padding: 1em;
+  border-radius: 1em;
+  background: #ecfdf3;
+  color: #15803d;
+  font-weight: 700;
+  font-size: 1.15em;
+  text-align: center;
+}
+
+.ok small {
+  display: block;
+  font-weight: 500;
+  color: #166534;
+  font-size: 0.82em;
+  margin-top: 0.2em;
+}
+
+.btn {
+  margin: 0 1.1em;
+  padding: 0.9em;
+  border-radius: 1em;
+  background: #1d4ed8;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8em;
+  padding: 1.1em;
+}
+
+.stat {
+  background: #fff;
+  border: 1px solid #e5e9f0;
+  border-radius: 1.1em;
+  padding: 0.9em;
+}
+
+.stat span {
+  display: block;
+  color: #64748b;
+  font-size: 0.95em;
+}
+
+.stat strong {
+  font-size: 1.75em;
+  font-weight: 700;
+}
+
+.blue { color: #1d4ed8; }
+.green { color: #15803d; }
+.purple { color: #7c3aed; }
+
+.section {
+  padding: 0 1.1em;
+  color: #64748b;
+  font-size: 0.9em;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin: 0.4em 0 0.6em;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e5e9f0;
+  border-radius: 1em;
+  margin: 0 1.1em 0.6em;
+  padding: 0.8em 0.9em;
+  font-size: 1.05em;
+}
+
+.row b { color: #1d4ed8; }
+
+.tagCash,
+.tagCard {
+  font-size: 0.85em;
+  padding: 0.2em 0.6em;
+  border-radius: 99px;
+  margin-right: 0.5em;
+}
+
+.tagCash { color: #15803d; background: #ecfdf3; }
+.tagCard { color: #6d28d9; background: #f3eeff; }

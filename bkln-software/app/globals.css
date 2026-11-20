@@ -101,6 +101,11 @@ h1, h2, h3, h4 {
   to { stroke-dashoffset: 0; }
 }
 
+/* Titular de la portada (v3): aparece entero, sin partir en líneas */
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(26px); }
+}
+
 /* Pared de trabajos de la portada */
 @keyframes wall-up {
   from { transform: translateY(0); }

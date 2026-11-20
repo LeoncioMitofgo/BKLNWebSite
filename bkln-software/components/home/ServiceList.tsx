@@ -44,7 +44,7 @@ export function ServiceList({ items }: { items: ServiceListItem[] }) {
               href={item.href}
               onMouseEnter={() => setActive(item.image ?? null)}
               onMouseLeave={() => setActive(null)}
-              className="group grid grid-cols-1 gap-1.5 py-6 transition-[padding,color] duration-500 ease-out-soft md:grid-cols-[1.4fr_1fr] md:items-center md:gap-6 md:py-8 hover:text-accent-green md:hover:pl-4"
+              className="group grid grid-cols-1 gap-1.5 py-6 transition-[padding,color] duration-500 ease-out-soft md:grid-cols-[1.4fr_1fr] md:items-center md:gap-6 md:py-8 md:hover:pl-4"
             >
               <span className="font-display text-[30px] font-bold leading-[1.05] tracking-[-0.025em] md:text-[clamp(32px,3.6vw,52px)]">{item.title}</span>
               <span className="text-[15px] text-text-secondary transition-colors group-hover:text-text-primary md:text-base">{item.description}</span>

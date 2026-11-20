@@ -12,8 +12,8 @@ import type { Locale } from '@/i18n/config'
 import type { Dictionary } from '@/i18n/dictionaries'
 import { localizePath, routeFromPathname } from '@/i18n/routes'
 
-// Cursos sale del menú principal (otro público): está en el pie.
-const NAV_SECTIONS = ['servicios', 'portfolio', 'productos', 'blog', 'nosotros'] as const
+// v3: cuatro entradas. Productos y Cursos están en el pie (y en el menú del móvil, debajo).
+const NAV_SECTIONS = ['portfolio', 'servicios', 'nosotros', 'blog'] as const
 
 interface NavbarProps {
   lang: Locale
@@ -80,7 +80,8 @@ export function Navbar({ lang, t }: NavbarProps) {
               <LanguageSwitcher lang={lang} label={t.language} />
             </div>
             <div className="hidden sm:block">
-              <ButtonLink href={contactHref} size="sm">
+              {/* El verde se reserva para la acción principal de cada página */}
+              <ButtonLink href={contactHref} size="sm" variant="outline">
                 {t.cta}
               </ButtonLink>
             </div>
@@ -115,9 +116,14 @@ export function Navbar({ lang, t }: NavbarProps) {
                 {link.label}
               </Link>
             ))}
-            <Link href={localizePath(lang, '/cursos')} onClick={() => setIsOpen(false)} className="mt-4 text-lg text-text-secondary">
-              {t.cursos}
-            </Link>
+            <div className="mt-4 flex gap-6 text-lg text-text-secondary">
+              <Link href={localizePath(lang, '/productos')} onClick={() => setIsOpen(false)}>
+                {t.productos}
+              </Link>
+              <Link href={localizePath(lang, '/cursos')} onClick={() => setIsOpen(false)}>
+                {t.cursos}
+              </Link>
+            </div>
             <div className="mt-8">
               <ButtonLink href={contactHref} size="lg" className="w-full" onClick={() => setIsOpen(false)}>
                 {t.cta}

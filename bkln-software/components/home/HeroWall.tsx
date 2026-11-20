@@ -1,11 +1,11 @@
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
 
-// Capturas reales (las de Odoo llevan la franja de datos de demostración).
+// Capturas reales (las de Odoo y GestEscolar con datos de demostración). Sin el Marketplace, que está en desarrollo.
 const COLUMNS = [
-  ['/pasa-1.jpg', '/odoo-crm.jpg', '/marketplace-chat.jpg', '/odoo-existencias.jpg'],
-  ['/marketplace-buscar.jpg', '/pasa-crazy-december-2.jpg', '/odoo-venta.jpg', '/brookai-cover.jpg'],
-  ['/odoo-compra.jpg', '/pasa-3.jpg', '/marketplace-premium.jpg', '/pasa-crazy-december-1.jpg'],
+  ['/pasa-1.jpg', '/odoo-crm.jpg', '/pasa-crazy-december-3.jpg', '/gestescolar-panel.jpg'],
+  ['/pasa-2.jpg', '/pasa-crazy-december-2.jpg', '/odoo-venta.jpg', '/brookai-cover.jpg'],
+  ['/odoo-compra.jpg', '/pasa-3.jpg', '/odoo-existencias.jpg', '/pasa-crazy-december-1.jpg'],
 ]
 
 const ANIMATION = ['wall-up 70s linear infinite', 'wall-down 82s linear infinite', 'wall-up 94s linear infinite']

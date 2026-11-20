@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Bricolage_Grotesque, Figtree, Newsreader } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import ChatWidget from '@/components/sections/ChatWidget'
 import { WhatsAppButton } from '@/components/sections/WhatsAppButton'
 import { Navbar } from '@/components/sections/Navbar'
 import { Footer } from '@/components/sections/Footer'
@@ -109,7 +108,8 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
     founder: {
       '@type': 'Person',
       name: company.founder.name,
-      jobTitle: 'CEO',
+      // Nunca "CEO": el cargo público es "Fundador" (decisión de Mike, 20-11-2026).
+      jobTitle: 'Founder',
       sameAs: [company.founder.linkedin],
     },
     areaServed: t.meta.areaServed,
@@ -118,7 +118,6 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
     sameAs: [
       'https://github.com/LeoncioMitofgo',
       'https://linkedin.com/company/bkln-software-systems',
-      'https://twitter.com/bklnsoftware',
     ],
   }
 
@@ -135,7 +134,7 @@ export default async function RootLayout({ children, params }: LayoutParams & { 
         <main className="flex-1">{children}</main>
         <Footer lang={lang} t={t} />
         <WhatsAppButton message={t.whatsapp.general} label={t.whatsapp.buttonLabel} />
-        <ChatWidget t={t.chat} whatsappMessage={t.whatsapp.general} />
+        {/* El chat del asistente está retirado hasta que ai.bklnsoftware.tech vuelva a funcionar (ver PLAN-WEB-V3.md). */}
         <RevealOnScroll />
         <Analytics />
       </body>
