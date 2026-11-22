@@ -1,7 +1,7 @@
 export const contactEmail = 'hello@bklnsoftware.tech'
 
 export const company = {
-  legalName: 'Brooklyn Software and Systems',
+  legalName: 'Brooklyn Software and Systems SL',
   brandName: 'BKLN Software & Systems',
   foundingYear: 2024,
   address: { area: 'Banapa', city: 'Malabo', region: 'Bioko Norte', countryCode: 'GQ' },

@@ -444,7 +444,7 @@ export const es = {
     founderTitle: 'Quién está detrás de BKLN',
     founderName: 'Leoncio Felipe Mitogo Edjang Obono',
     founderRole: 'Fundador',
-    founderP1: 'Dirige BKLN y responde personalmente de cada sistema que entrega: de la arquitectura a la puesta en marcha y el soporte.',
+    founderP1: 'Dirige el equipo de BKLN y responde personalmente de cada sistema que entrega: de la arquitectura a la puesta en marcha y el soporte.',
     founderP2: 'Sus sistemas están en producción: el TPV con el que WallBlue procesa miles de cobros en el aeropuerto y el sistema de gestión con el que un despacho de abogados lleva sus expedientes desde julio de 2026. Ha trabajado para banca, instituciones públicas, educación, deporte y empresas, en español, francés e inglés.',
     founderP3: 'Antes del software trabajó donde un fallo no es una opción: petróleo y gas, también en offshore, y automatización industrial. Ese rigor es el que aplica a cada proyecto. Por eso forma a los equipos que van a usar sus sistemas y sigue a su lado después del lanzamiento.',
     founderLinkedIn: 'Perfil de LinkedIn',

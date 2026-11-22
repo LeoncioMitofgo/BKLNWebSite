@@ -41,7 +41,7 @@
 - [x] Campo `demoData` en `Project` y `Product`: etiqueta "Datos de demostración" en la portada y la galería de GestEscolar. La portada del producto y del proyecto pasa a `gestescolar-panel.jpg` (sin el nombre del colegio).
 - [x] Listado de Trabajos: los cuatro casos primero y después el resto en su orden (incluidos el Marketplace, delivery y suite).
 - [x] Enlaces secundarios y detalles sin verde (verde solo en la acción principal).
-- [ ] **Pendiente de Mike:** las capturas de la galería de GestEscolar (`gest1–5.png`) siguen mostrando el nombre del colegio. ¿Es un cliente real? Si lo es, se recortan como la portada.
+- [x] Capturas de la galería de GestEscolar (`gest1–5.png`, `Screenshot2.png`): el colegio y los alumnos son **ficticios** (Mike, 22-11-2026). Se quedan como están, con la etiqueta "Datos de demostración".
 - [ ] Crazy December, BKLN en Odoo y BrookAI: heredan el nuevo diseño. Su texto se revisa en la fase 3, junto con el resto.
 - [ ] Revisar "instalación en un clic" de GestEscolar (la ficha dice "en menos de cinco minutos").
 
@@ -64,12 +64,16 @@
 
 ### Fase 4 — Revisión y publicación
 - [ ] Revisión de los tres idiomas, el SEO (canonical, hreflang, sitemap) y la accesibilidad.
-- [ ] Mike lo revisa en su móvil con un enlace de previsualización de Vercel. Antes hay que subir la rama, con su permiso.
+- [ ] Mike lo revisa en su móvil con un enlace de previsualización de Vercel. Rama subida con su OK (20-11 y 22-11-2026).
 - [ ] Producción solo con su aprobación.
 
-## Pendientes de Mike
-1. ¿Con qué cargo figura Mike en el registro de la empresa? Es el que va en los contratos.
-2. Galería de GestEscolar: ¿el colegio que sale en las capturas es un cliente real? (Ver la fase 2).
+## Resuelto (22-11-2026)
+- **Registro:** Mike fundó la empresa como **socio único**. Razón social: **Brooklyn Software and Systems SL** (en contratos). En la web el cargo sigue siendo "Fundador".
+- **Equipo:** BKLN es ya un equipo, pero **el número de personas no se publica** (decisión de Mike). La ficha del fundador abre con "Dirige el equipo de BKLN y responde personalmente…" (ES, EN y FR). Las cifras de Nosotros siguen siendo tres. Sin `numberOfEmployees` en el JSON-LD.
+- Razón social con "SL" en `data/contact.ts` (Nosotros, pie y JSON-LD) y en la política de privacidad de los tres idiomas. Fecha de la privacidad: 22-11-2026.
+- GestEscolar: el colegio y los alumnos de las capturas son ficticios.
+- Curso de IA: "más de 8 años" → **"6 años"** de experiencia (ES, EN y FR).
+- `tsc` y `eslint` sin errores.
 
 ## Resuelto (20-11-2026)
 - WallBlue **ya cobra con tarjeta**: la ilustración con "Pago aprobado" es correcta.

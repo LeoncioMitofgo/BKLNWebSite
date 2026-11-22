@@ -768,7 +768,7 @@ export const courses: Course[] = [
     bookUrl: '/libro-ia/index.html',
     instructor: {
       name: 'Leoncio Felipe Mitogo',
-      bio: 'Ingeniero de software con más de 8 años de experiencia en desarrollo de aplicaciones y sistemas de datos. Fundador de BKLN Software & Systems en Malabo.',
+      bio: 'Ingeniero de software con 6 años de experiencia en desarrollo de aplicaciones y sistemas de datos. Fundador de BKLN Software & Systems en Malabo.',
       avatar: '',
     },
     modules: [

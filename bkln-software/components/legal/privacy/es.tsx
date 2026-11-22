@@ -5,7 +5,7 @@ export function PrivacyEs() {
     <>
       <LegalSection title="1. Quién es el responsable">
         <p>
-          <B>Brooklyn Software and Systems</B> (marca comercial BKLN Software & Systems), con sede en
+          <B>Brooklyn Software and Systems SL</B> (marca comercial BKLN Software & Systems), con sede en
           Banapa, Malabo (Guinea Ecuatorial), es el responsable del tratamiento de los datos que nos
           facilitas a través de este sitio web. Puedes contactarnos en <EmailLink />.
         </p>

@@ -90,7 +90,7 @@ export const courses: Record<string, CourseText> = {
     duration: '3 livres · 24 modules',
     instructor: {
       name: 'Leoncio Felipe Mitogo',
-      bio: 'Ingénieur logiciel avec plus de 8 ans d’expérience dans le développement d’applications et de systèmes de données. Fondateur de BKLN Software & Systems à Malabo.',
+      bio: 'Ingénieur logiciel avec 6 ans d’expérience dans le développement d’applications et de systèmes de données. Fondateur de BKLN Software & Systems à Malabo.',
       avatar: '',
     },
     modules: [

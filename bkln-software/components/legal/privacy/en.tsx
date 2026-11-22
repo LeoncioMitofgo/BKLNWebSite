@@ -5,7 +5,7 @@ export function PrivacyEn() {
     <>
       <LegalSection title="1. Who is responsible">
         <p>
-          <B>Brooklyn Software and Systems</B> (trading as BKLN Software & Systems), based in Banapa,
+          <B>Brooklyn Software and Systems SL</B> (trading as BKLN Software & Systems), based in Banapa,
           Malabo (Equatorial Guinea), is responsible for processing the data you provide to us
           through this website. You can contact us at <EmailLink />.
         </p>

@@ -90,7 +90,7 @@ export const courses: Record<string, CourseText> = {
     duration: '3 books · 24 modules',
     instructor: {
       name: 'Leoncio Felipe Mitogo',
-      bio: 'Software engineer with more than 8 years of experience building applications and data systems. Founder of BKLN Software & Systems in Malabo.',
+      bio: 'Software engineer with 6 years of experience building applications and data systems. Founder of BKLN Software & Systems in Malabo.',
       avatar: '',
     },
     modules: [

@@ -445,7 +445,7 @@ export const en: Dictionary = {
     founderTitle: 'Who’s behind BKLN',
     founderName: 'Leoncio Felipe Mitogo Edjang Obono',
     founderRole: 'Founder',
-    founderP1: 'He runs BKLN and is personally accountable for every system it delivers, from architecture to go-live and support.',
+    founderP1: 'He leads the BKLN team and is personally accountable for every system it delivers, from architecture to go-live and support.',
     founderP2: 'His systems are in production: the POS WallBlue uses to process thousands of payments at the airport, and the management system a law firm has used to run its case files since July 2026. He has worked for banking, public institutions, education, sport and companies, in Spanish, French and English.',
     founderP3: 'Before software, he worked where failure is not an option: oil and gas, including offshore, and industrial automation. He brings that rigour to every project. That is why he trains the teams who will use his systems and stays with them after launch.',
     founderLinkedIn: 'LinkedIn profile',
